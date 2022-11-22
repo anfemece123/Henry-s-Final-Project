@@ -1,11 +1,5 @@
-
-
 function App() {
-  return <div className="App"> 
-  
-  <p> Modificacion de Andres </p>
-  </div>;
-
+  return <div className="App">App Component</div>;
 }
 
 export default App;
