@@ -3,18 +3,19 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Features/Card";
 import { getAllProducts } from "../../Redux/Reducer/allProductSlice";
+import Loading from "../Features/Loading";
 
 export default function Home() {
   // Esto deberia de traer todos los productos del estado
-  const product = useSelector((state) => state.allProduct);
+  const product = useSelector((state) => state.allProducts);
   const dispatch = useDispatch();
 
   useEffect(() => {
     // Esto deberia de invocar la action que trae todos los productos
     // Recordar que hay que importarla una vez creada.
     dispatch(getAllProducts());
-  });
-
+  }, [dispatch]);
+  if (product.loading) return <Loading />;
   return (
     <div className="container">
       <div>
@@ -65,16 +66,19 @@ export default function Home() {
         <div>
           {/* Aca van las Cards */}
           {product
-            ? product.map((element) => {
+            ? product.allProducts.map((element) => {
                 return (
                   <Card
                     id={element.id}
                     title={element.title}
-                    color={element.color}
+                    // color={element.color}
                     price={element.price}
-                    size={element.size}
-                    gender={element.gender}
+                    // size={element.size}
+                    // gender={element.gender}
                     stock={element.stock}
+                    category={element.category}
+                    images={element.images}
+                    thumbnail={element.thumbnail}
                   />
                 );
               })
