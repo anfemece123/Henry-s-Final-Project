@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Features/Card";
+import { getAllProducts } from "../../Redux/Reducer/allProductSlice";
 
 export default function Home() {
   // Esto deberia de traer todos los productos del estado

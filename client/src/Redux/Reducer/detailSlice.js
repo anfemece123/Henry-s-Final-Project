@@ -1,3 +1,0 @@
-function blabla() {
-  return null;
-}
