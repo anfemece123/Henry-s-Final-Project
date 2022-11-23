@@ -28,6 +28,11 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        isOnSale: { //en descuento por estar fuera de temporada o por ser liquidacion
+            type: DataTypes.BOOLEAN,
+            allowNull: true, //por si no pone que esta en descuento
+            defaultValue: false
+        },
         size: {
             type: DataTypes.ENUM('xs', 's', 'm', 'l', 'xl'),
             allowNull: false,
