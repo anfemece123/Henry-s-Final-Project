@@ -1,16 +1,16 @@
 //product controllers
-const express = require('express');
-const axios = require('axios');
+const express = require("express");
+const axios = require("axios");
 
 const { Product } = require("../../models/Product");
+const Test = require("../../../seeds.js");
 
 getAllProducts = async (req, res) => {
-    try {
-        console.log("esta ruta funciona")
-        return res.status(200).send("funciona");
-    } catch (error) {
-        return res.status(404).send(error.message)
-    }
+  try {
+    res.status(202).send(Test);
+  } catch (error) {
+    return res.status(404).send(error);
+  }
 };
 
 module.exports = getAllProducts;

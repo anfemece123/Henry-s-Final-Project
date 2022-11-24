@@ -9,7 +9,9 @@ const initialState = {
 export const getAllProducts = createAsyncThunk(
   "getAllProducts/getAllProducts",
   async () => {
-    return await fetch(`enlace`).then((response) => response.json());
+    return await fetch(`http://localhost:3001/product/allProducts`).then(
+      (response) => response.json()
+    );
   }
 );
 
