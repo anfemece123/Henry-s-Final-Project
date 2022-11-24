@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../Redux/Reducer/productDetails";
 import { useParams } from "react-router";
 import Loading from "../Features/Loading";
+import { Link } from "react-router-dom";
 
 export default function Details() {
   const details = useSelector((state) => state.details);
@@ -21,6 +22,9 @@ export default function Details() {
   if (!loading && error) return <h1>{error}</h1>;
   return (
     <div>
+      <button>
+        <Link to="/home">Volver al Home</Link>
+      </button>
       <p>ID: ${details.details.id}</p>
       <p>Size: {details.details.size}</p>
       <p>Price: {details.details.price}</p>
