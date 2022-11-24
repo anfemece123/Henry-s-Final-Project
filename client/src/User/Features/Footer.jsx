@@ -6,9 +6,9 @@ export default function Footer() {
       <div className="md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
           <a href="asdas" className="flex items-center">
-            <img src="asdasd" className="mr-3 h-8" alt="FlowBite Logo" />
+            <img src="asdasd" className="mr-3 h-8" alt="Icono nuestro" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Icono
+              TIENDA NUESTRA
             </span>
           </a>
         </div>
@@ -19,12 +19,12 @@ export default function Footer() {
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
-                <a href="https://flowbite.com/" className="hover:underline">
+                <a href="" className="hover:underline">
                   Moda X
                 </a>
               </li>
               <li>
-                <a href="https://tailwindcss.com/" className="hover:underline">
+                <a href="" className="hover:underline">
                   Moda Y
                 </a>
               </li>
