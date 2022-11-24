@@ -14,9 +14,9 @@ getDetails = async (req, res) => {
     //TODO 
     //search into db 
     if(searched){
-        res.send(searched).status(404);
+        res.send(searched).status(200);
     }else{
-        res.send("error").status(404);
+        res.send("404").status(404);
     }
 
   } catch (error) {
