@@ -9,7 +9,9 @@ const initialState = {
 export const getAllProducts = createAsyncThunk(
   "getAllProducts/getAllProducts",
   async () => {
-    return await fetch(`enlace`).then((response) => response.json());
+    return await fetch(`http://localhost:3001/product/allProducts`).then(
+      (response) => response.json()
+    );
   }
 );
 
@@ -17,7 +19,7 @@ const productsSlice = createSlice({
   name: "products",
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(getAllproducts.pending, (state) => {
+    builder.addCase(getAllProducts.pending, (state) => {
       state.loading = true;
     });
     builder.addCase(getAllProducts.fulfilled, (state, action) => {
