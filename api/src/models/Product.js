@@ -51,7 +51,8 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
     },
-        {
-            timestamps: true //interesa saber cuando se creo
-        });
-}
+    {
+      timestamps: true, //interesa saber cuando se creo
+    }
+  );
+};
