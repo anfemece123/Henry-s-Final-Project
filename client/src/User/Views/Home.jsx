@@ -60,30 +60,41 @@ export default function Home() {
               <option value="Price">Pirce</option>
             </select>
           </div>
+          <div className="border-none font-serif text-2xl">
+            <select>
+              <option>Category</option>
+              <option value="Shirt">Shirt</option>
+              <option value="T-shirt">T-shirt</option>
+              <option value="Shoes">Shoes</option>
+              <option value="Pants">Pants</option>
+            </select>
+          </div>
         </div>
       </div>
-      <div>
+      <div className="border border-slate-900 w-screen">
         {/* Aca van las Cards */}
-        {product
-          ? product.allProducts.map((element) => {
-              return (
-                <div>
-                  <Card
-                    id={element.id}
-                    title={element.title}
-                    // color={element.color}
-                    price={element.price}
-                    // size={element.size}
-                    // gender={element.gender}
-                    stock={element.stock}
-                    category={element.category}
-                    images={element.images}
-                    thumbnail={element.thumbnail}
-                  />
-                </div>
-              );
-            })
-          : null}
+        <div className="flex justify-around flex-row flex-wrap">
+          {product
+            ? product.allProducts.map((element) => {
+                return (
+                  <div>
+                    <Card
+                      id={element.id}
+                      title={element.title}
+                      // color={element.color}
+                      price={element.price}
+                      // size={element.size}
+                      // gender={element.gender}
+                      stock={element.stock}
+                      category={element.category}
+                      images={element.images}
+                      thumbnail={element.thumbnail}
+                    />
+                  </div>
+                );
+              })
+            : null}
+        </div>
       </div>
     </div>
   );
