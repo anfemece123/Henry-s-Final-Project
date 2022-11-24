@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../../User/Views/Home";
 import Landing from "../../User/Views/Landing";
 import ErrorPage from "./errorPage";
+import {FormCreate} from "../../User/Views/FormCreate/FormCreate.jsx"
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Landing />,
+  },
+  
+  {
+    path: "/formCreate",
+    element: <FormCreate/>,
   },
 ]);
 
