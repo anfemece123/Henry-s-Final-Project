@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  details: [],
+  details: {},
   loading: false,
   error: "",
 };
@@ -9,7 +9,9 @@ const initialState = {
 export const getProductDetails = createAsyncThunk(
   "getProductDetails/getProductDetails",
   async (id) => {
-    return await fetch(`enlace${id}`).then((respuesta) => respuesta.json());
+    return await fetch(`http://localhost:3001/product/${id}`).then(
+      (respuesta) => respuesta.json()
+    );
   }
 );
 
