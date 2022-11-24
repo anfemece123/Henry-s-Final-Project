@@ -9,23 +9,30 @@ export default function Details() {
   const loading = useSelector((state) => state.loadin);
   const error = useSelector((state) => state.details.error);
   const dispatch = useDispatch();
-  const id = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     dispatch(getProductDetails(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
-  // Lo que tiene que mostrar // Color, talla, stock, price, title
+  // Falta stock
+
   if (loading) return <Loading />;
-  if (!loading) return <h1>{error}</h1>;
+  if (!loading && error) return <h1>{error}</h1>;
   return (
     <div>
-      Details
-      <p>{details.color}</p>
-      <p>{details.size}</p>
-      <p>{details.stock}</p>
-      <p>{details.price}</p>
-      <p>{details.title}</p>
+      <p>ID: ${details.details.id}</p>
+      <p>Size: {details.details.size}</p>
+      <p>Price: {details.details.price}</p>
+      <p>Nombre: {details.details.title}</p>
+      <p>Category: {details.details.category}</p>
+      <p>Color: {details.details.color}</p>
+      <p>Season: {details.details.season}</p>
+      <p>Gender: {details.details.gender}</p>
+      <img
+        src={details.details.image}
+        alt={`pic-for${details.details.title}`}
+      />
     </div>
   );
 }

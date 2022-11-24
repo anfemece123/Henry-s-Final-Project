@@ -87,7 +87,7 @@ export default function Home() {
                       // gender={element.gender}
                       stock={element.stock}
                       category={element.category}
-                      images={element.images}
+                      images={element.image}
                       thumbnail={element.thumbnail}
                     />
                   </div>
