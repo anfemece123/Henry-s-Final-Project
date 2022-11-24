@@ -131,7 +131,6 @@ export const FormCreate = () => {
                 value={values.size}
                 onChange={handleChange}
                 onBlur={handleBlur}
-
               >
                 <option> ------ </option>
                 <option>xs</option>
