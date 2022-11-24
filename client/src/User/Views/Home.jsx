@@ -2,10 +2,9 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Features/Card";
-import { getAllProducts } from "../../Redux/Reducer/allProductSlice";
+import { getAllProducts, getGender } from "../../Redux/Reducer/allProductSlice";
 import NavBar from "../Features/NavBar";
 import Loading from "../Features/Loading";
-import { getGender } from "../../Redux/Reducer/filtersReducer";
 
 export default function Home() {
   const product = useSelector((state) => state.allProducts);
