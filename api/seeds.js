@@ -36,7 +36,7 @@ const products = [
   },
   {
     id: 4,
-    title: "jean",
+    title: "blouse",
     category: "jeans",
     color: "blue",
     season: "spring",
@@ -83,7 +83,7 @@ const products = [
   },
   {
     id: 8,
-    title: "jean",
+    title: "short",
     category: "jeans",
     color: "blue",
     season: "spring",
