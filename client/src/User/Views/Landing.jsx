@@ -1,5 +1,10 @@
 import React from "react";
+import NavBar from "../Features/NavBar"
 
 export default function Landing() {
-  return <div>Landing</div>;
+  
+  return <div>
+    <NavBar/>Landing
+    
+    </div>;
 }
