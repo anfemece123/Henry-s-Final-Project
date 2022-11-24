@@ -33,6 +33,7 @@ export default function Details() {
       <p>Color: {details.details.color}</p>
       <p>Season: {details.details.season}</p>
       <p>Gender: {details.details.gender}</p>
+      <p>Stock: {details.details.stock}</p>
       <img
         src={details.details.image}
         alt={`pic-for${details.details.title}`}
