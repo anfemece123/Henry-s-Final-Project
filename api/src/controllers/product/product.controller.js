@@ -2,7 +2,7 @@
 const express = require("express");
 const axios = require("axios");
 
-const { Product } = require("../../models/Product");
+const { Product } = require("../../db");
 const Test = require("../../../seeds.js");
 
 getAllProducts = async (req, res) => {
