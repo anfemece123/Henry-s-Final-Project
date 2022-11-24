@@ -36,8 +36,9 @@ export default function validate(values) {
   if (!values.season) {
     errors.season = "Por favor ingresa un season";
   }
-  if (!RegExpressionNum.test(values.season)) {
-    errors.season = "Solo se permiten numeros";
+  if (!RegExpressionText.test(values.season)) {
+    errors.season = "No se permiten números ni caracteres especiales";
+
   }
 
   //price
@@ -84,6 +85,15 @@ export default function validate(values) {
   if (!RegExpressionUrl.test(values.image)) {
     errors.image = "Url incorrecto";
   }
+
+  //isOnSale
+  //   if (!values.isOnSale) {
+  //     errors.isOnSale = "Por favor ingresa un isOnSale";
+  //   }
+  //   if (!RegExpressionText.test(values.isOnSale)) {
+  //     errors.isOnSale = "No se permiten números ni caracteres especiales";
+  //   }
+
 
   return errors;
 }

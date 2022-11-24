@@ -4,15 +4,15 @@ module.exports = (sequelize) => {
   sequelize.define(
     "Product",
     {
-      id: {
-        type: DataTypes.UUID,
-        allowNull: false,
-        primaryKey: true,
-      },
       title: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+      },
+      brand: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "not specified",
       },
       category: {
         type: DataTypes.STRING,
@@ -27,13 +27,13 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
       isOnSale: {
         //en descuento por estar fuera de temporada o por ser liquidacion
         type: DataTypes.BOOLEAN,
-        allowNull: true, //por si no pone que esta en descuento
+        allowNull: false, //por si no pone que esta en descuento
         defaultValue: false,
       },
       size: {
@@ -46,8 +46,8 @@ module.exports = (sequelize) => {
       },
       stock: {
         type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 1, //si no lo especifica, que sea 1
+        allowNull: false,
+        defaultValue: 1,
       },
       image: {
         type: DataTypes.STRING,
