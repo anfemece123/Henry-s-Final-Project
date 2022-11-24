@@ -60,6 +60,15 @@ export default function Home() {
               <option value="Price">Pirce</option>
             </select>
           </div>
+          <div className="border-none font-serif text-2xl">
+            <select>
+              <option>Category</option>
+              <option value="Shirt">Shirt</option>
+              <option value="T-shirt">T-shirt</option>
+              <option value="Shoes">Shoes</option>
+              <option value="Pants">Pants</option>
+            </select>
+          </div>
         </div>
       </div>
       <div>
