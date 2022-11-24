@@ -133,11 +133,11 @@ export const FormCreate = () => {
                 onBlur={handleBlur}
               >
                 <option> ------ </option>
-                <option>xs</option>
-                <option>s</option>
-                <option>m</option>
-                <option>l</option>
-                <option>xl</option>
+                <option>XS</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
               </select>
               {touched.size && errors.size && <div>{errors.size}</div>}
             </div>

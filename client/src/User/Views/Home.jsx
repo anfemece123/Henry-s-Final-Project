@@ -15,7 +15,7 @@ export default function Home() {
   }, [dispatch]);
 
   if (product.loading) return <Loading />;
-
+  if (!product.loading && product.error) return <h1>{product.error}</h1>;
   return (
     <div className="grid grid-cols-4">
       <div className="col-span-4">

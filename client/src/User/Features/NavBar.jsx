@@ -12,6 +12,9 @@ export default function NavBar() {
         <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
           <Link to="/">Landing</Link>
         </button>
+        <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
+          <Link to="/formCreate">Formulario</Link>
+        </button>
         <SearchBar />
       </nav>
       ;
