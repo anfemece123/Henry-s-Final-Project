@@ -14,7 +14,7 @@ export default function Card({
   images,
 }) {
   return (
-    <div className="border border-slate-900 max-w-sm rounded overflow-hidden shadow-lg">
+    <div className="border border-slate-900 rounded overflow-hidden shadow-lg">
       <img
         className="m-auto"
         src={images}
@@ -27,7 +27,7 @@ export default function Card({
           </Link>
         </div>
       </div>
-      <div className="flex m-2 text-center">
+      <div className="flex text-center">
         <div>
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
             $ {price}

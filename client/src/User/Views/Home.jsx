@@ -71,28 +71,30 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div>
+      <div className="border border-slate-900 w-screen">
         {/* Aca van las Cards */}
-        {product
-          ? product.allProducts.map((element) => {
-              return (
-                <div>
-                  <Card
-                    id={element.id}
-                    title={element.title}
-                    // color={element.color}
-                    price={element.price}
-                    // size={element.size}
-                    // gender={element.gender}
-                    stock={element.stock}
-                    category={element.category}
-                    images={element.images}
-                    thumbnail={element.thumbnail}
-                  />
-                </div>
-              );
-            })
-          : null}
+        <div className="flex justify-around flex-row flex-wrap">
+          {product
+            ? product.allProducts.map((element) => {
+                return (
+                  <div>
+                    <Card
+                      id={element.id}
+                      title={element.title}
+                      // color={element.color}
+                      price={element.price}
+                      // size={element.size}
+                      // gender={element.gender}
+                      stock={element.stock}
+                      category={element.category}
+                      images={element.images}
+                      thumbnail={element.thumbnail}
+                    />
+                  </div>
+                );
+              })
+            : null}
+        </div>
       </div>
     </div>
   );
