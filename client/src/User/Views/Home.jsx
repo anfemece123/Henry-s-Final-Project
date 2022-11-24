@@ -13,7 +13,9 @@ export default function Home() {
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
+
   if (product.loading) return <Loading />;
+
   return (
     <div className="grid grid-cols-4">
       <div className="col-span-4">
