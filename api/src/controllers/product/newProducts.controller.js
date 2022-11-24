@@ -29,7 +29,7 @@ createNewProducts = async (req, res) => {
   }
   try {
     const [newProduct, created] = await Product.findOrCreate({
-      where: { title, category, color, gender },
+      where: { title },
       defaults: {
         title,
         category,
