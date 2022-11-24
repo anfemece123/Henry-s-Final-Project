@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import validate from "./validate";
 
+import { useDispatch } from "react-redux";
+import { formCreate } from "../../../Redux/actions";
+
 export const FormCreate = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
-
+  const dispatch = useDispatch();
   return (
     <div>
-      <h1> Formulario</h1>
-
       <Formik
         initialValues={{
           title: "",
           category: "",
+          //   isOnSale: "",
           color: "",
           season: "",
           price: "",
@@ -21,13 +23,16 @@ export const FormCreate = () => {
           stock: "",
           image: "",
         }}
-        validate={(values) => validate(values)}
         onSubmit={(values, { resetForm }) => {
+          dispatch(formCreate(values));
+          console.log(values);
+
           resetForm();
-          console.log("formulario enviado");
+
           setformularioEnviado(true);
           setTimeout(() => setformularioEnviado(false), 5000);
         }}
+        validate={(values) => validate(values)}
       >
         {({
           handleSubmit,
@@ -66,9 +71,10 @@ export const FormCreate = () => {
                 <div>{errors.category}</div>
               )}
             </div>
+
             <div>
               <label> Season</label>
-              <input
+              <select
                 type="text"
                 id="season"
                 name="season"
@@ -76,7 +82,13 @@ export const FormCreate = () => {
                 value={values.season}
                 onChange={handleChange}
                 onBlur={handleBlur}
-              />
+              >
+                <option> ------ </option>
+                <option>autumn</option>
+                <option>spring</option>
+                <option>summer</option>
+                <option>winter</option>
+              </select>
               {touched.season && errors.season && <div>{errors.season}</div>}
             </div>
 
@@ -110,7 +122,8 @@ export const FormCreate = () => {
 
             <div>
               <label> size</label>
-              <input
+
+              <select
                 type="text"
                 id="size"
                 name="size"
@@ -118,7 +131,15 @@ export const FormCreate = () => {
                 value={values.size}
                 onChange={handleChange}
                 onBlur={handleBlur}
-              />
+
+              >
+                <option> ------ </option>
+                <option>xs</option>
+                <option>s</option>
+                <option>m</option>
+                <option>l</option>
+                <option>xl</option>
+              </select>
               {touched.size && errors.size && <div>{errors.size}</div>}
             </div>
             <div>
@@ -134,6 +155,25 @@ export const FormCreate = () => {
               />
               {touched.stock && errors.stock && <div>{errors.stock}</div>}
             </div>
+
+            <div>
+              <label> gender</label>
+              <select
+                type="text "
+                id="gender"
+                name="gender"
+                placeholder="gender"
+                value={values.gender}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              >
+                <option> ------ </option>
+                <option>female</option>
+                <option>male</option>
+              </select>
+              {touched.gender && errors.gender && <div>{errors.gender}</div>}
+            </div>
+
             <div>
               <label> image</label>
               <input
@@ -147,8 +187,26 @@ export const FormCreate = () => {
               />
               {touched.image && errors.image && <div>{errors.image}</div>}
             </div>
+            {/* <div>
+              <label> isOnSale</label>
+              <input
+                type="text"
+                id="isOnSale"
+                name="isOnSale"
+                placeholder="isOnSale"
+                value={values.isOnSale}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.isOnSale && errors.isOnSale && (
+                <div>{errors.isOnSale}</div>
+              )} */}
+            {/* </div> */}
 
-            <button type="submit"> Enviar</button>
+            <button type="submit" className="rounded-full">
+              Accept
+            </button>
+
             {formularioEnviado && <p>Prenda creada con exito!!</p>}
           </form>
         )}
