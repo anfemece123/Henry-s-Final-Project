@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../Features/NavBar";
-import girLanding from "../../Images/diseño-landing-removebg-preview.png";
+import girLanding from "../../Images/bg2.png";
 import { Link } from "react-router-dom";
 import Footer from "../Features/Footer";
 
