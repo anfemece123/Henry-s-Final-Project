@@ -4,7 +4,9 @@ const { Product } = require("../../db");
 
 createNewProducts = async (req, res) => {
   const {
+    id,
     title,
+    brand,
     category,
     color,
     season,
@@ -16,6 +18,7 @@ createNewProducts = async (req, res) => {
     image,
   } = req.body;
   if (
+    !id ||
     !title ||
     !category ||
     !color ||
@@ -29,9 +32,11 @@ createNewProducts = async (req, res) => {
   }
   try {
     const [newProduct, created] = await Product.findOrCreate({
-      where: { title },
+      where: { id },
       defaults: {
+        id,
         title,
+        brand,
         category,
         color,
         season,
