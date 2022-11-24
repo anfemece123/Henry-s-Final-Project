@@ -24,6 +24,15 @@ export const getGender = createAsyncThunk(
   }
 );
 
+export const getCategory = createAsyncThunk(
+  "getCategory/getCategory",
+  async (category) => {
+    return await fetch(
+      `http://localhost:3001/product/category?category=${category}`
+    ).then((response) => response.json());
+  }
+);
+
 const productsSlice = createSlice({
   name: "products",
   initialState,
@@ -37,6 +46,11 @@ const productsSlice = createSlice({
       state.error = "";
     });
     builder.addCase(getGender.fulfilled, (state, action) => {
+      state.loading = false;
+      state.allProducts = action.payload;
+      state.error = "";
+    });
+    builder.addCase(getCategory.fulfilled, (state, action) => {
       state.loading = false;
       state.allProducts = action.payload;
       state.error = "";
