@@ -1,9 +1,36 @@
-const express = require('express');
+const express = require("express");
 
 const { Product } = require("../../db");
 
 createNewProducts = async (req, res) => {
-    const {
+  const {
+    title,
+    category,
+    color,
+    season,
+    price,
+    isOnSale,
+    size,
+    gender,
+    stock,
+    image,
+  } = req.body;
+  if (
+    !title ||
+    !category ||
+    !color ||
+    !season ||
+    !price ||
+    !size ||
+    !gender ||
+    !image
+  ) {
+    return res.status(400).send("Missing Data");
+  }
+  try {
+    const [newProduct, created] = await Product.findOrCreate({
+      where: { title, category, color, gender },
+      defaults: {
         title,
         category,
         color,
@@ -13,32 +40,13 @@ createNewProducts = async (req, res) => {
         size,
         gender,
         stock,
-        image
-    } = req.body;
-    if (!title || !category || !color || !season || !price || !size || !gender || !image) {
-        return res.status(400).send("Missing Data")
-    };
-    try {
-        const [newProduct, created] = await Product.findOrCreate({
-            where: { title, category, color, gender },
-            defaults: {
-                title,
-                category,
-                color,
-                season,
-                price,
-                isOnSale,
-                size,
-                gender,
-                stock,
-                image
-            }
-        })
-        return res.status(201).send([newProduct, created])
-    } catch (error) {
-        return res.status(404).send(error)
-    }
-
+        image,
+      },
+    });
+    return res.status(201).send([newProduct, created]);
+  } catch (error) {
+    return res.status(404).send(error);
+  }
 };
 
 module.exports = createNewProducts;

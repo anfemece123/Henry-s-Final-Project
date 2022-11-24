@@ -37,7 +37,17 @@ module.exports = (sequelize) => {
         defaultValue: false,
       },
       size: {
-        type: DataTypes.ENUM("xs", "s", "m", "l", "xl"),
+        type: DataTypes.ENUM(
+          "2XS",
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL"
+        ),
         allowNull: false,
       },
       gender: {
