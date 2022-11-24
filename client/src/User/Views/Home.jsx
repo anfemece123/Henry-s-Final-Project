@@ -2,10 +2,13 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Features/Card";
-import { getAllProducts } from "../../Redux/Reducer/allProductSlice";
+import {
+  getAllProducts,
+  getGender,
+  getCategory,
+} from "../../Redux/Reducer/allProductSlice";
 import NavBar from "../Features/NavBar";
 import Loading from "../Features/Loading";
-import { getGender } from "../../Redux/Reducer/filtersReducer";
 
 export default function Home() {
   const product = useSelector((state) => state.allProducts);
@@ -14,6 +17,11 @@ export default function Home() {
   function filtroGender(e) {
     e.preventDefault();
     dispatch(getGender(e.target.value));
+  }
+
+  function filterCategory(e) {
+    e.preventDefault();
+    dispatch(getCategory(e.target.value));
   }
 
   useEffect(() => {
@@ -70,7 +78,7 @@ export default function Home() {
             </select>
           </div>
           <div className="border-none font-serif text-2xl">
-            <select>
+            <select onChange={filterCategory}>
               <option>Category</option>
               <option value="shirt">Shirt</option>
               <option value="t-shirt">T-shirt</option>
