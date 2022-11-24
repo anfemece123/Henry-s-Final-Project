@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Card({
   id,
@@ -14,7 +15,9 @@ export default function Card({
 }) {
   return (
     <div>
-      <h1>{title}</h1>
+      <Link to={`/detail/${id}`}>
+        <h1>{title}</h1>
+      </Link>
       <p>{color}</p>
       <p>{price}</p>
       <p>{gender}</p>
