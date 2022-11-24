@@ -1,15 +1,24 @@
 //product controllers
 const express = require("express");
-const axios = require("axios");
 
 const { Product } = require("../../db");
 const Test = require("../../../seeds.js");
 
 getAllProducts = async (req, res) => {
+  const allProducts = await Product.findAll();
+  if (!allProducts.length) {
+    try {
+      const allProductsFromDb = await Product.bulkCreate(Test);
+      return res.status(200).send(allProductsFromDb);
+    } catch (error) {
+      return res.status(404).send(error.message);
+    }
+  }
   try {
-    res.status(202).send(Test);
+    const allProducts = await Product.findAll();
+    res.status(200).send(allProducts);
   } catch (error) {
-    return res.status(404).send(error);
+    return res.status(404).send(error.message);
   }
 };
 
