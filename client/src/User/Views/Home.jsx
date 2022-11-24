@@ -7,27 +7,23 @@ import NavBar from "../Features/NavBar";
 import Loading from "../Features/Loading";
 
 export default function Home() {
-  // Esto deberia de traer todos los productos del estado
   const product = useSelector((state) => state.allProducts);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Esto deberia de invocar la action que trae todos los productos
-    // Recordar que hay que importarla una vez creada.
     dispatch(getAllProducts());
   }, [dispatch]);
   if (product.loading) return <Loading />;
   return (
     <div className="grid grid-cols-4">
       <div className="col-span-4">
-        {" "}
-        <NavBar />{" "}
+        <NavBar />
       </div>
       <div className="col-span-4">
         <div className="font-serif text-5xl text-start">
           <h1>Products</h1>
         </div>
-        <div className="flex gap-4 mt-8 mb-8 justify-around">
+        <div className="flex mt-8 mb-8 justify-around">
           {/* Aca van los filtros */}
           <div className="border-none font-serif text-2xl">
             <select>
@@ -66,8 +62,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      <div className="flex justify-around flex-wrap w-screen gap-4">
+      <div>
         {/* Aca van las Cards */}
         {product
           ? product.allProducts.map((element) => {
