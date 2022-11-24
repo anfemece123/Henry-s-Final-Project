@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Features/Card";
 import { getAllProducts } from "../../Redux/Reducer/allProductSlice";
+import NavBar from "../Features/NavBar";
+
 
 export default function Home() {
   // Esto deberia de traer todos los productos del estado
@@ -16,7 +18,9 @@ export default function Home() {
   });
 
   return (
+   
     <div className="container">
+       <NavBar/>
       <div>
         <div>
           <div>
