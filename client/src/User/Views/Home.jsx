@@ -6,34 +6,26 @@ import { getAllProducts } from "../../Redux/Reducer/allProductSlice";
 import NavBar from "../Features/NavBar";
 import Loading from "../Features/Loading";
 
-
 export default function Home() {
-  // Esto deberia de traer todos los productos del estado
   const product = useSelector((state) => state.allProducts);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Esto deberia de invocar la action que trae todos los productos
-    // Recordar que hay que importarla una vez creada.
     dispatch(getAllProducts());
   }, [dispatch]);
   if (product.loading) return <Loading />;
   return (
-   
-    <div className="container">
-       <NavBar/>
-      <div>
-        <div>
-          <div>
-            <h1>Dresses</h1>
-          </div>
+    <div className="grid grid-cols-4">
+      <div className="col-span-4">
+        <NavBar />
+      </div>
+      <div className="col-span-4">
+        <div className="font-serif text-5xl text-start">
+          <h1>Products</h1>
         </div>
-        <div>
-          <div>
-            <h1>Filter products</h1>
-          </div>
-          <div>
-            {/* Aca van los filtros */}
+        <div className="flex mt-8 mb-8 justify-around">
+          {/* Aca van los filtros */}
+          <div className="border-none font-serif text-2xl">
             <select>
               <option>Color</option>
               <option value="White">White</option>
@@ -43,6 +35,8 @@ export default function Home() {
               <option value="Yellow">Yellow</option>
               <option value="Green">Green</option>
             </select>
+          </div>
+          <div className="border-none font-serif text-2xl">
             <select>
               <option>Size</option>
               <option value="2XS">2XS</option>
@@ -55,6 +49,8 @@ export default function Home() {
               <option value="3XL">3XL</option>
               <option value="4XL">4XL</option>
             </select>
+          </div>
+          <div className="border-none font-serif text-2xl">
             <select>
               <option>Filter products</option>
               <option value="Newest">Newest</option>
@@ -67,11 +63,11 @@ export default function Home() {
         </div>
       </div>
       <div>
-        <div>
-          {/* Aca van las Cards */}
-          {product
-            ? product.allProducts.map((element) => {
-                return (
+        {/* Aca van las Cards */}
+        {product
+          ? product.allProducts.map((element) => {
+              return (
+                <div>
                   <Card
                     id={element.id}
                     title={element.title}
@@ -84,10 +80,10 @@ export default function Home() {
                     images={element.images}
                     thumbnail={element.thumbnail}
                   />
-                );
-              })
-            : null}
-        </div>
+                </div>
+              );
+            })
+          : null}
       </div>
     </div>
   );

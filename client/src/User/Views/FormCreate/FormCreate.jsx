@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
 import validate from "./validate";
+
 import { useDispatch } from "react-redux";
 import { formCreate } from "../../../Redux/actions";
 
@@ -121,6 +122,7 @@ export const FormCreate = () => {
 
             <div>
               <label> size</label>
+
               <select
                 type="text"
                 id="size"
@@ -129,6 +131,7 @@ export const FormCreate = () => {
                 value={values.size}
                 onChange={handleChange}
                 onBlur={handleBlur}
+
               >
                 <option> ------ </option>
                 <option>xs</option>
@@ -139,7 +142,6 @@ export const FormCreate = () => {
               </select>
               {touched.size && errors.size && <div>{errors.size}</div>}
             </div>
-
             <div>
               <label> stock</label>
               <input
@@ -171,6 +173,7 @@ export const FormCreate = () => {
               </select>
               {touched.gender && errors.gender && <div>{errors.gender}</div>}
             </div>
+
             <div>
               <label> image</label>
               <input
@@ -203,6 +206,7 @@ export const FormCreate = () => {
             <button type="submit" className="rounded-full">
               Accept
             </button>
+
             {formularioEnviado && <p>Prenda creada con exito!!</p>}
           </form>
         )}

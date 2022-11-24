@@ -38,6 +38,7 @@ export default function validate(values) {
   }
   if (!RegExpressionText.test(values.season)) {
     errors.season = "No se permiten números ni caracteres especiales";
+
   }
 
   //price
@@ -84,6 +85,7 @@ export default function validate(values) {
   if (!RegExpressionUrl.test(values.image)) {
     errors.image = "Url incorrecto";
   }
+
   //isOnSale
   //   if (!values.isOnSale) {
   //     errors.isOnSale = "Por favor ingresa un isOnSale";
@@ -91,6 +93,7 @@ export default function validate(values) {
   //   if (!RegExpressionText.test(values.isOnSale)) {
   //     errors.isOnSale = "No se permiten números ni caracteres especiales";
   //   }
+
 
   return errors;
 }
