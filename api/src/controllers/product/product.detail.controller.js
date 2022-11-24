@@ -10,6 +10,9 @@ getDetails = async (req, res) => {
   try {
     const {id}=req.params;
     let searched=Test.find(element=>element.id==id);
+    
+    //TODO 
+    //search into db 
     if(searched){
         res.send(searched).status(404);
     }else{
