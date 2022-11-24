@@ -21,6 +21,7 @@ export default function Card({
       <p>{size}</p>
       <p>{stock}</p>
       <p>{category}</p>
+
       <img src={images} style={{ width: "200px", height: "200px" }} />
       <img src={thumbnail} sstyle={{ width: "70px", height: "70px" }} />
     </div>
