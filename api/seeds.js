@@ -5,10 +5,10 @@ const products = [
     category: "t-shirts",
     color: "blue",
     season: "summer",
-    stock: 20,
+    stock: 0,
     price: 10,
     size: "L",
-    gender: "female",
+    gender: "other",
     image:
       "https://img.freepik.com/foto-gratis/camiseta-azul_125540-727.jpg?w=1380&t=st=1669247583~exp=1669248183~hmac=ee87604dd6650209eeb88ddefa2f9c1733fa7e59c3de6762950e96a3752ad703",
   },

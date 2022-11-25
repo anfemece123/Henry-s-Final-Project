@@ -11,10 +11,10 @@ export default function Card({
   images,
 }) {
   return (
-    <div className="container h-[28rem] w-[28rem] hover:shadow-2xl hover:shadow-slate-900">
+    <div className="container h-[28rem] w-[28rem] hover:shadow-2xl hover:shadow-slate-900  hover:bg-slate-200 rounded-lg">
       <img
         src={images}
-        className="m-auto"
+        className="m-auto mt-2"
         style={{ width: "300px", height: "250px" }}
       />
       <div>
