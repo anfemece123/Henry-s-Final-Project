@@ -20,7 +20,8 @@ export const getByName = createAsyncThunk(
   async (name) => {
     console.log("getname", name);
     return await fetch(
-      `http://localhost:3001/product/search?title=${name}`
+      `http://localhost:3001/product/search?name=
+      ${name}`
     ).then((respuesta) => respuesta.json());
   }
 );
@@ -28,9 +29,9 @@ export const getByName = createAsyncThunk(
 export const getGender = createAsyncThunk(
   "getGender/getGender",
   async (gender) => {
-    return await fetch(`http://localhost:3001/product?gender=${gender}`).then(
-      (respuesta) => respuesta.json()
-    );
+    return await fetch(
+      `http://localhost:3001/product/byGender?gender=${gender}`
+    ).then((respuesta) => respuesta.json());
   }
 );
 
@@ -38,7 +39,7 @@ export const getCategory = createAsyncThunk(
   "getCategory/getCategory",
   async (category) => {
     return await fetch(
-      `http://localhost:3001/product/category?category=${category}`
+      `http://localhost:3001/product/byCategory?category=${category}`
     ).then((response) => response.json());
   }
 );
