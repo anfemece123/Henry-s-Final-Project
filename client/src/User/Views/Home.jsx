@@ -79,7 +79,7 @@ export default function Home() {
           </div>
           <div className="border-none font-serif text-2xl">
             <select onChange={filterCategory}>
-              <option>Category</option>
+              <option value="">Category</option>
               <option value="shirts">Shirt</option>
               <option value="t-shirt">T-shirt</option>
               <option value="shoes">Shoes</option>
