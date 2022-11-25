@@ -43,7 +43,7 @@ export default function Home() {
         <div className="flex mt-8 mb-8 justify-around">
           {/* Aca van los filtros */}
           <div className="border-none font-serif text-2xl">
-            <select>
+            {/* <select>
               <option>Color</option>
               <option value="White">White</option>
               <option value="Black">Black</option>
@@ -51,10 +51,10 @@ export default function Home() {
               <option value="Blue">Blue</option>
               <option value="Yellow">Yellow</option>
               <option value="Green">Green</option>
-            </select>
+            </select> */}
           </div>
           <div className="border-none font-serif text-2xl">
-            <select>
+            {/* <select>
               <option>Size</option>
               <option value="2XS">2XS</option>
               <option value="XS">XS</option>
@@ -65,7 +65,7 @@ export default function Home() {
               <option value="2XL">2XL</option>
               <option value="3XL">3XL</option>
               <option value="4XL">4XL</option>
-            </select>
+            </select> */}
           </div>
           <div className="border-none font-serif text-2xl">
             <select onChange={filtroGender}>
@@ -74,15 +74,15 @@ export default function Home() {
               <option value="Discount">Discount</option>
               <option value="female">Female</option>
               <option value="male">Male</option>
-              <option value="Price">Pirce</option>
+              <option value="Price">Price</option>
             </select>
           </div>
           <div className="border-none font-serif text-2xl">
             <select onChange={filterCategory}>
-              <option>Category</option>
-              <option value="shirt">Shirt</option>
-              <option value="t-shirt">T-shirt</option>
-              <option value="shoes">Shoes</option>
+              <option value="">Category</option>
+              <option value="shirts">Shirt</option>
+              <option value="t-shirts">T-shirt</option>
+              <option value="foot">Shoes</option>
               <option value="pants">Pants</option>
               <option value="jacket">Jackets</option>
             </select>
