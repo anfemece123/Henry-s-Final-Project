@@ -83,7 +83,7 @@ export default function Home() {
               <option value="shirts">Shirt</option>
               <option value="t-shirts">T-shirt</option>
               <option value="foot">Shoes</option>
-              <option value="pants">Pants</option>
+              <option value="jeans">jeans</option>
               <option value="jacket">Jackets</option>
             </select>
           </div>
