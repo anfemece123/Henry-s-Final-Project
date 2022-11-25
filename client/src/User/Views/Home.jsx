@@ -81,8 +81,8 @@ export default function Home() {
             <select onChange={filterCategory}>
               <option value="">Category</option>
               <option value="shirts">Shirt</option>
-              <option value="t-shirt">T-shirt</option>
-              <option value="shoes">Shoes</option>
+              <option value="t-shirts">T-shirt</option>
+              <option value="foot">Shoes</option>
               <option value="pants">Pants</option>
               <option value="jacket">Jackets</option>
             </select>
