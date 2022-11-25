@@ -5,6 +5,7 @@ const products = [
     category: "t-shirts",
     color: "blue",
     season: "summer",
+    stock: 20,
     price: 10,
     size: "L",
     gender: "female",

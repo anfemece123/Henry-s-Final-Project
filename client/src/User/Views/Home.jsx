@@ -42,7 +42,7 @@ export default function Home() {
         </div>
         <div>
           {/* Aca van los filtros */}
-          <div className="border-none font-serif text-2xl">
+          <div>
             <select>
               <option>Color</option>
               <option value="White">White</option>
@@ -89,30 +89,24 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div>
+      <div className="flex flex-wrap gap-7 justify-center">
         {/* Aca van las Cards */}
-        <div>
-          {product
-            ? product.allProducts.map((element) => {
-                return (
-                  <div>
-                    <Card
-                      id={element.id}
-                      title={element.title}
-                      // color={element.color}
-                      price={element.price}
-                      // size={element.size}
-                      // gender={element.gender}
-                      stock={element.stock}
-                      category={element.category}
-                      images={element.image}
-                      thumbnail={element.thumbnail}
-                    />
-                  </div>
-                );
-              })
-            : null}
-        </div>
+
+        {product
+          ? product.allProducts.map((element) => {
+              return (
+                <Card
+                  id={element.id}
+                  title={element.title}
+                  price={element.price}
+                  size={element.size}
+                  gender={element.gender}
+                  stock={element.stock}
+                  images={element.image}
+                />
+              );
+            })
+          : null}
       </div>
     </div>
   );
