@@ -15,6 +15,16 @@ export const getAllProducts = createAsyncThunk(
   }
 );
 
+export const getByName = createAsyncThunk(
+  "getByName/getByName",
+  async (name) => {
+    console.log("getname", name);
+    return await fetch(
+      `http://localhost:3001/product/search?title=${name}`
+    ).then((respuesta) => respuesta.json());
+  }
+);
+
 export const getGender = createAsyncThunk(
   "getGender/getGender",
   async (gender) => {
@@ -41,6 +51,11 @@ const productsSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(getAllProducts.fulfilled, (state, action) => {
+      state.loading = false;
+      state.allProducts = action.payload;
+      state.error = "";
+    });
+    builder.addCase(getByName.fulfilled, (state, action) => {
       state.loading = false;
       state.allProducts = action.payload;
       state.error = "";
