@@ -10,7 +10,7 @@ const products = [
     size: "L",
     gender: "other",
     image:
-      "https://img.freepik.com/foto-gratis/camiseta-azul_125540-727.jpg?w=1380&t=st=1669247583~exp=1669248183~hmac=ee87604dd6650209eeb88ddefa2f9c1733fa7e59c3de6762950e96a3752ad703",
+      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
   {
     id: 23,
@@ -22,7 +22,7 @@ const products = [
     size: "L",
     gender: "female",
     image:
-      "https://img.freepik.com/foto-gratis/camiseta-azul_125540-727.jpg?w=1380&t=st=1669247583~exp=1669248183~hmac=ee87604dd6650209eeb88ddefa2f9c1733fa7e59c3de6762950e96a3752ad703",
+      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
   {
     id: 27,
@@ -34,7 +34,7 @@ const products = [
     size: "L",
     gender: "female",
     image:
-      "https://img.freepik.com/foto-gratis/camiseta-azul_125540-727.jpg?w=1380&t=st=1669247583~exp=1669248183~hmac=ee87604dd6650209eeb88ddefa2f9c1733fa7e59c3de6762950e96a3752ad703",
+      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
   {
     id: 34,
@@ -46,7 +46,7 @@ const products = [
     size: "S",
     gender: "male",
     image:
-      "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
+      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
   {
     id: 35,
@@ -82,7 +82,7 @@ const products = [
     size: "S",
     gender: "male",
     image:
-      "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
+      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
 
   {
@@ -106,7 +106,8 @@ const products = [
     price: 50.5,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/51Bsd0OTSzL._AC_.jpg",
+    image:
+      "https://banner2.cleanpng.com/20180626/ekc/kisspng-flight-jacket-daunenjacke-clothing-horze-winter-poster-5b31f41ac381d3.4959373215300004108008.jpg",
   },
   {
     id: 40,
@@ -117,7 +118,8 @@ const products = [
     price: 50.5,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/51Bsd0OTSzL._AC_.jpg",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCDTLpHTpY059S-NHCwWw4PJcOLbjoYQT7nw&usqp=CAU",
   },
   {
     id: 41,
@@ -128,7 +130,7 @@ const products = [
     price: 50.5,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/51Bsd0OTSzL._AC_.jpg",
+    image: "https://ibb.co/6Y8WTnN",
   },
   {
     id: 42,

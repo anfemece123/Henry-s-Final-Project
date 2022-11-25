@@ -6,6 +6,7 @@ import {
   getAllProducts,
   getGender,
   getCategory,
+  getByColor,
   getByPrice,
 } from "../../Redux/Reducer/allProductSlice";
 import NavBar from "../Features/NavBar";
@@ -29,6 +30,10 @@ export default function Home() {
     e.preventDefault();
     dispatch(getByPrice(e.target.value));
   }
+  function filterByColor(e) {
+    e.preventDefault();
+    dispatch(getByColor(e.target.value));
+  }
 
   useEffect(() => {
     dispatch(getAllProducts());
@@ -51,14 +56,17 @@ export default function Home() {
         {/* Aca van los filtros */}
         <div className="flex flex-row justify-around">
           <div>
-            <select className="bg-transparent uppercase font-noto-serif">
+            <select
+              className="bg-transparent uppercase font-noto-serif"
+              onChange={filterByColor}
+            >
               <option value="">Color</option>
-              <option value="White">White</option>
-              <option value="Black">Black</option>
-              <option value="Red">Red</option>
-              <option value="Blue">Blue</option>
-              <option value="Yellow">Yellow</option>
-              <option value="Green">Green</option>
+              <option value="white">White</option>
+              <option value="black">Black</option>
+              <option value="red">Red</option>
+              <option value="blue">Blue</option>
+              <option value="yellow">Yellow</option>
+              <option value="green">Green</option>
             </select>
           </div>
           {/* <div className="border-none font-serif text-2xl">
