@@ -212,49 +212,5 @@ const products = [
     gender: "male",
     image: "https://m.media-amazon.com/images/I/71G-jdjT8ZL._AC_UX575_.jpg",
   },
-  {
-    title: "shirt A",
-    category: "shirts",
-    color: "white",
-    season: "winter",
-    price: 20.5,
-    size: "S",
-    gender: "male",
-    image:
-      "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
-  },
-  {
-    title: "shirt B",
-    category: "shirts",
-    color: "white",
-    season: "winter",
-    price: 20.5,
-    size: "S",
-    gender: "male",
-    image:
-      "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
-  },
-  {
-    title: "shirt 5",
-    category: "shirts",
-    color: "white",
-    season: "winter",
-    price: 20.5,
-    size: "S",
-    gender: "male",
-    image:
-      "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
-  },
-  {
-    title: "shirt C",
-    category: "shirts",
-    color: "white",
-    season: "winter",
-    price: 20.5,
-    size: "S",
-    gender: "male",
-    image:
-      "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
-  },
 ];
 module.exports = products;
