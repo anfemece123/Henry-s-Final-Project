@@ -32,18 +32,18 @@ export default function Home() {
   if (!product.loading && product.error) return <h1>{product.error}</h1>;
 
   return (
-    <div className="grid grid-cols-4">
-      <div className="col-span-4">
+    <div>
+      <div>
         <NavBar />
       </div>
-      <div className="col-span-4">
-        <div className="font-serif text-5xl text-start">
+      <div>
+        <div>
           <h1>Products</h1>
         </div>
-        <div className="flex mt-8 mb-8 justify-around">
+        <div>
           {/* Aca van los filtros */}
           <div className="border-none font-serif text-2xl">
-            {/* <select>
+            <select>
               <option>Color</option>
               <option value="White">White</option>
               <option value="Black">Black</option>
@@ -51,10 +51,10 @@ export default function Home() {
               <option value="Blue">Blue</option>
               <option value="Yellow">Yellow</option>
               <option value="Green">Green</option>
-            </select> */}
+            </select>
           </div>
-          <div className="border-none font-serif text-2xl">
-            {/* <select>
+          {/* <div className="border-none font-serif text-2xl">
+             <select>
               <option>Size</option>
               <option value="2XS">2XS</option>
               <option value="XS">XS</option>
@@ -65,9 +65,9 @@ export default function Home() {
               <option value="2XL">2XL</option>
               <option value="3XL">3XL</option>
               <option value="4XL">4XL</option>
-            </select> */}
-          </div>
-          <div className="border-none font-serif text-2xl">
+            </select> 
+          </div> */}
+          <div>
             <select onChange={filtroGender}>
               <option>Filter products</option>
               <option value="Newest">Newest</option>
@@ -77,7 +77,7 @@ export default function Home() {
               <option value="Price">Price</option>
             </select>
           </div>
-          <div className="border-none font-serif text-2xl">
+          <div>
             <select onChange={filterCategory}>
               <option value="">Category</option>
               <option value="shirts">Shirt</option>
@@ -89,9 +89,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="border border-slate-900 w-screen">
+      <div>
         {/* Aca van las Cards */}
-        <div className="flex justify-around flex-row flex-wrap">
+        <div>
           {product
             ? product.allProducts.map((element) => {
                 return (
