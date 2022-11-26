@@ -44,6 +44,24 @@ export const getCategory = createAsyncThunk(
   }
 );
 
+export const getByPrice = createAsyncThunk(
+  "getByPrice/getByPrice",
+  async (price) => {
+    return await fetch(
+      `http://localhost:3001/product/byPriceOrder?order=${price}`
+    ).then((response) => response.json());
+  }
+);
+
+export const getByColor = createAsyncThunk(
+  "getByColor/getByColor",
+  async (color) => {
+    return await fetch(
+      `http://localhost:3001/product/byColor?color=${color}`
+    ).then((response) => response.json());
+  }
+);
+
 const productsSlice = createSlice({
   name: "products",
   initialState,
@@ -67,6 +85,16 @@ const productsSlice = createSlice({
       state.error = "";
     });
     builder.addCase(getCategory.fulfilled, (state, action) => {
+      state.loading = false;
+      state.allProducts = action.payload;
+      state.error = "";
+    });
+    builder.addCase(getByPrice.fulfilled, (state, action) => {
+      state.loading = false;
+      state.allProducts = action.payload;
+      state.error = "";
+    });
+    builder.addCase(getByColor.fulfilled, (state, action) => {
       state.loading = false;
       state.allProducts = action.payload;
       state.error = "";
