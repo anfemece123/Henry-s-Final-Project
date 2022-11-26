@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   allProducts: [],
   loading: false,
-  error: "",
+  error: false,
 };
 
 export const getAllProducts = createAsyncThunk(
@@ -20,8 +20,7 @@ export const getByName = createAsyncThunk(
   async (name) => {
     console.log("getname", name);
     return await fetch(
-      `http://localhost:3001/product/search?name=
-      ${name}`
+      `http://localhost:3001/product/search?title=${name}`
     ).then((respuesta) => respuesta.json());
   }
 );
@@ -103,6 +102,11 @@ const productsSlice = createSlice({
       state.loading = false;
       state.allProducts = [];
       state.error = action.error.message;
+    });
+    builder.addCase(getByName.rejected, (state, action) => {
+      state.loading = false;
+      state.allProducts = [];
+      state.error = true;
     });
   },
 });
