@@ -9,6 +9,7 @@ import {
 } from "../../Redux/Reducer/allProductSlice";
 import NavBar from "../Features/NavBar";
 import Loading from "../Features/Loading";
+import PaginatedItems from "../Features/Paginate";
 
 export default function Home() {
   const product = useSelector((state) => state.allProducts);
@@ -89,31 +90,13 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div>
-        {/* Aca van las Cards */}
-        <div>
-          {product
-            ? product.allProducts.map((element) => {
-                return (
-                  <div>
-                    <Card
-                      id={element.id}
-                      title={element.title}
-                      // color={element.color}
-                      price={element.price}
-                      // size={element.size}
-                      // gender={element.gender}
-                      stock={element.stock}
-                      category={element.category}
-                      images={element.image}
-                      thumbnail={element.thumbnail}
-                    />
-                  </div>
-                );
-              })
-            : null}
-        </div>
+      <div className="commentBox">
+        {/* las cards ahora se renderizan desde PaginatedItems :/ */}
+        
+        <PaginatedItems itemsPerPage={4}/>
+        
       </div>
+      
     </div>
   );
 }
