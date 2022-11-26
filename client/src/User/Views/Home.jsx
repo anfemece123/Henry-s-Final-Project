@@ -12,6 +12,7 @@ import {
 import NavBar from "../Features/NavBar";
 import Loading from "../Features/Loading";
 import Footer from "../Features/Footer";
+import { ErrorSearch } from "../Features/ErrorSearch";
 
 export default function Home() {
   const product = useSelector((state) => state.allProducts);
@@ -40,7 +41,7 @@ export default function Home() {
   }, [dispatch]);
 
   if (product.loading) return <Loading />;
-  if (!product.loading && product.error) return <h1>{product.error}</h1>;
+  if (product.error) return <ErrorSearch />;
 
   return (
     <div className="grid grid-cols-5 ">
