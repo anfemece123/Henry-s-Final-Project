@@ -23,22 +23,22 @@ export default function Details() {
   if (loading) return <Loading />;
   if (!loading && error) return <h1>{error}</h1>;
   return (
-    <div className=" min-h-screen">
+    <div className=" min-h-screen bg-gray-200">
       <div className="grid grid-cols-5 ">
         <div className="col-span-5 ">
           <NavBar />
         </div>
-        <div className="col-span-2 w-[32rem] ml-5 mt-20 mb-20  shadow-2xl shadow-fuchsia-600 hover:shadow-2xl hover:shadow-green-700">
+        <div className="col-span-2 w-[32rem] ml-5 mt-20 mb-20  shadow-2xl shadow-gray-600 hover:shadow-2xl hover:shadow-green-700">
           <img
             className="h-[32rem] m-auto"
             src={details.details.image}
             alt={`pic-for${details.details.title}`}
           />
         </div>
-        <div className="col-span-3 border border-slate-900 bg-gray-800 rounded-lg text-white shadow-2xl shadow-fuchsia-600 hover:shadow-2xl hover:shadow-green-700 m-auto w-[65rem]">
+        <div className="col-span-3 border border-slate-900 bg-gray-800 rounded-lg text-white shadow-2xl  shadow-gray-600  hover:shadow-2xl hover:shadow-green-700 m-auto w-[65rem]">
           {/*no se si quedan mejor los detalles con esto en el div de arriba
          de este comentario  => bg-slate-300 p-10 */}
-          <div className="flex gap-32 mt-10 underline decoration-violet-800 hover:underline hover:decoration-green-700">
+          <div className="flex gap-32 mt-10">
             <div className="font-noto-serif text-3xl justify-center p-4">
               <h1 className="capitalize">PRODUCT: {details.details.title}</h1>
               <br />
@@ -49,7 +49,6 @@ export default function Details() {
               <p>CATEGORY: {details.details.category}</p>
               <br />
             </div>
-
             <div className="font-noto-serif text-2xl m-auto">
               <p className="capitalize">COLOR: {details.details.color}</p>
               <br />
@@ -61,8 +60,12 @@ export default function Details() {
               <br />
             </div>
           </div>
-          <div>
-            {details.details.stock >= 1 && <button>Añadir al carrito</button>}
+          <div className="text-center">
+            {details.details.stock >= 1 && (
+              <button className="animate-pulse border border-slate-200 p-2 mb-3 rounded-lg hover:bg-green-400 hover:border-slate-800 hover:text-black">
+                Añadir al carrito
+              </button>
+            )}
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0">

@@ -43,7 +43,7 @@ export default function Home() {
   if (!product.loading && product.error) return <h1>{product.error}</h1>;
 
   return (
-    <div className="grid grid-cols-5">
+    <div className="grid grid-cols-5 ">
       <div className="col-span-5">
         <NavBar />
       </div>

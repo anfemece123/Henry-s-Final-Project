@@ -107,7 +107,7 @@ const products = [
     size: "XL",
     gender: "male",
     image:
-      "https://banner2.cleanpng.com/20180626/ekc/kisspng-flight-jacket-daunenjacke-clothing-horze-winter-poster-5b31f41ac381d3.4959373215300004108008.jpg",
+      "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
   },
   {
     id: 40,
@@ -119,7 +119,7 @@ const products = [
     size: "XL",
     gender: "male",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCDTLpHTpY059S-NHCwWw4PJcOLbjoYQT7nw&usqp=CAU",
+      "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
   },
   {
     id: 41,
@@ -130,7 +130,8 @@ const products = [
     price: 50.5,
     size: "XL",
     gender: "male",
-    image: "https://ibb.co/6Y8WTnN",
+    image:
+      "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
   },
   {
     id: 42,
@@ -141,7 +142,8 @@ const products = [
     price: 50.5,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/51Bsd0OTSzL._AC_.jpg",
+    image:
+      "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
   },
   {
     id: 4,
@@ -153,7 +155,7 @@ const products = [
     size: "M",
     gender: "female",
     image:
-      "https://rukminim1.flixcart.com/image/832/832/xif0q/jean/b/0/g/32-jean-1439-bta-nifty-original-imagbf66nf4vbz5h-bb.jpeg?q=70",
+      "https://i.postimg.cc/BZ85W5sS/5402302434-1-1-3-removebg-preview.png",
   },
   {
     id: 54,
@@ -165,7 +167,7 @@ const products = [
     size: "M",
     gender: "female",
     image:
-      "https://rukminim1.flixcart.com/image/832/832/xif0q/jean/b/0/g/32-jean-1439-bta-nifty-original-imagbf66nf4vbz5h-bb.jpeg?q=70",
+      "https://i.postimg.cc/BZ85W5sS/5402302434-1-1-3-removebg-preview.png",
   },
   {
     id: 53,
@@ -177,11 +179,11 @@ const products = [
     size: "M",
     gender: "female",
     image:
-      "https://rukminim1.flixcart.com/image/832/832/xif0q/jean/b/0/g/32-jean-1439-bta-nifty-original-imagbf66nf4vbz5h-bb.jpeg?q=70",
+      "https://i.postimg.cc/BZ85W5sS/5402302434-1-1-3-removebg-preview.png",
   },
   {
     id: 6,
-    title: "sneakers",
+    title: "Jordans",
     category: "foot",
     color: "white",
     brand: "nike",
@@ -189,11 +191,12 @@ const products = [
     price: 80.0,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/71G-jdjT8ZL._AC_UX575_.jpg",
+    image:
+      "https://i.postimg.cc/VvyJPCBv/tenis-air-jordan-1-mid-team-red-in-DQ8426-615-1-removebg-preview.png",
   },
   {
     id: 62,
-    title: "sneakersA",
+    title: "Jordania",
     category: "foot",
     color: "blue",
     brand: "nike",
@@ -201,11 +204,12 @@ const products = [
     price: 80.0,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/71G-jdjT8ZL._AC_UX575_.jpg",
+    image:
+      "https://i.postimg.cc/VvyJPCBv/tenis-air-jordan-1-mid-team-red-in-DQ8426-615-1-removebg-preview.png",
   },
   {
     id: 63,
-    title: "sneakersB",
+    title: "Jordanito",
     category: "foot",
     color: "black",
     brand: "nike",
@@ -213,7 +217,8 @@ const products = [
     price: 80.0,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/71G-jdjT8ZL._AC_UX575_.jpg",
+    image:
+      "https://i.postimg.cc/VvyJPCBv/tenis-air-jordan-1-mid-team-red-in-DQ8426-615-1-removebg-preview.png",
   },
 ];
 module.exports = products;
