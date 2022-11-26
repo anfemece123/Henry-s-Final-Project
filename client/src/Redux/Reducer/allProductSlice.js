@@ -65,6 +65,7 @@ const productsSlice = createSlice({
   name: "products",
   initialState,
   extraReducers: (builder) => {
+    //?getAllProducts
     builder.addCase(getAllProducts.pending, (state) => {
       state.loading = true;
     });
@@ -73,35 +74,55 @@ const productsSlice = createSlice({
       state.allProducts = action.payload;
       state.error = "";
     });
-    builder.addCase(getByName.fulfilled, (state, action) => {
-      state.loading = false;
-      state.allProducts = action.payload;
-      state.error = "";
-    });
+    //?getGender
     builder.addCase(getGender.fulfilled, (state, action) => {
       state.loading = false;
       state.allProducts = action.payload;
       state.error = "";
     });
+    builder.addCase(getGender.rejected, (state, action) => {
+      state.loading = false;
+      state.allProducts = [];
+      state.error = true;
+    });
+    //?getCategory
     builder.addCase(getCategory.fulfilled, (state, action) => {
       state.loading = false;
       state.allProducts = action.payload;
       state.error = "";
     });
+    builder.addCase(getCategory.rejected, (state, action) => {
+      state.loading = false;
+      state.allProducts = [];
+      state.error = true;
+    });
+    //?getByPrice
     builder.addCase(getByPrice.fulfilled, (state, action) => {
       state.loading = false;
       state.allProducts = action.payload;
       state.error = "";
     });
+    builder.addCase(getByPrice.rejected, (state, action) => {
+      state.loading = false;
+      state.allProducts = [];
+      state.error = true;
+    });
+    //?getByColor
     builder.addCase(getByColor.fulfilled, (state, action) => {
       state.loading = false;
       state.allProducts = action.payload;
       state.error = "";
     });
-    builder.addCase(getAllProducts.rejected, (state, action) => {
+    builder.addCase(getByColor.rejected, (state, action) => {
       state.loading = false;
       state.allProducts = [];
-      state.error = action.error.message;
+      state.error = true;
+    });
+    //?getByName
+    builder.addCase(getByName.fulfilled, (state, action) => {
+      state.loading = false;
+      state.allProducts = action.payload;
+      state.error = "";
     });
     builder.addCase(getByName.rejected, (state, action) => {
       state.loading = false;
