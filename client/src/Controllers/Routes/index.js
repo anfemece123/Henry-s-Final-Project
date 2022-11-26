@@ -4,6 +4,7 @@ import Landing from "../../User/Views/Landing";
 import ErrorPage from "./errorPage";
 import { FormCreate } from "../../User/Views/FormCreate/FormCreate.jsx";
 import Detail from "../../User/Views/Details";
+import LogIn from "../../User/Views/logIn/LogIn";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/detail/:id",
     element: <Detail />,
+  },
+  {
+    path: "/login",
+    element: <LogIn />,
   },
 ]);
 
