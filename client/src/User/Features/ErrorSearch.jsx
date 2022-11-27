@@ -12,11 +12,9 @@ export const ErrorSearch = () => {
         </div>
       </div>
       <Filtros />
-
-      <img
-        width="800px"
-        src="https://cdn.dribbble.com/users/3512533/screenshots/14168376/media/1357b33cb4057ecb3c6f869fc977561d.jpg"
-      />
+      <div className="pl-20">
+        <img src="https://crazygiftgallery.com/uploads/no-product.png" />
+      </div>
     </div>
   );
 };
