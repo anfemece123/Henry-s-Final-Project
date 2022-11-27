@@ -33,7 +33,7 @@ export default function Home() {
   if (!product.loading && product.error) return <h1>{product.error}</h1>;
 
   return (
-    <div>
+    <div className="bg-slate-200">
       <div>
         <NavBar />
       </div>

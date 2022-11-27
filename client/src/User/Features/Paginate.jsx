@@ -68,27 +68,27 @@ function PaginatedItems({ itemsPerPage }) {
     if (!product.loading && product.error) return <h1>{product.error}</h1>;
 
     return (
-      <div>
+      <div className="m-4 ">
           <Items  currentItems={currentItems} />
           <nav className="mt-4">
           <ReactPaginate
-            className="inline-flex  "
+            className="inline-flex p-4 "
             nextLabel="next >"
             onPageChange={handlePageClick}
             pageRangeDisplayed={3}
             marginPagesDisplayed={2}
             pageCount={pageCount}
             previousLabel="< previous"
-            pageClassName="page-item"
+            pageClassName="bg-white border-gray-300 text-gray-500 hover:bg-blue-200 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
             pageLinkClassName="page-link"
-            previousClassName="page-item"
+            previousClassName="h-10 no-underline box-border bg-slate-500 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-300"
             previousLinkClassName="page-link"
-            nextClassName="page-item"
+            nextClassName="h-10 no-underline box-border bg-slate-500 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-300"
             nextLinkClassName="page-link"
             breakLabel="..."
             breakClassName="page-item"
             breakLinkClassName="page-link"
-            containerClassName="pagination justify-content-center"
+            containerClassName=""
             activeClassName="active"
             renderOnZeroPageCount={null}
           />
