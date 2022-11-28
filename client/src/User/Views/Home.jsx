@@ -16,9 +16,6 @@ export default function Home() {
     dispatch(getAllProducts());
   }, [dispatch]);
 
-  if (product.loading) return <Loading />;
-  if (product.error) return <ErrorSearch />;
-
   return (
     <div className="grid grid-cols-5 ">
       <div className="col-span-5">
@@ -33,7 +30,8 @@ export default function Home() {
 
       <div className="col-span-5 flex flex-wrap gap-7 justify-center">
         {/* Aca van las Cards */}
-
+        {product.loading && <Loading />}
+        {product.error && <ErrorSearch />}
         {product
           ? product.allProducts.map((element) => {
               return (

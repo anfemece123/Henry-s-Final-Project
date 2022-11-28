@@ -10,6 +10,7 @@ getAllProducts = async (req, res) => {
       const allProductsFromDb = await Product.bulkCreate(Test);
       return res.status(200).send(allProductsFromDb);
     } catch (error) {
+      console.log(error);
       return res.status(404).send(error.message);
     }
   }
@@ -17,6 +18,7 @@ getAllProducts = async (req, res) => {
     const allProducts = await Product.findAll();
     res.status(200).send(allProducts);
   } catch (error) {
+    console.log(error);
     return res.status(404).send(error.message);
   }
 };
