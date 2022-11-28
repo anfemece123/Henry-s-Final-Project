@@ -13,7 +13,7 @@ const products = [
       "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
   {
-    id: 23,
+    id: 2,
     title: "t-shirtA",
     category: "t-shirts",
     color: "black",
@@ -25,7 +25,7 @@ const products = [
       "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
   {
-    id: 27,
+    id: 3,
     title: "t-shirtB",
     category: "t-shirts",
     color: "red",
@@ -37,7 +37,7 @@ const products = [
       "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
   {
-    id: 34,
+    id: 4,
     title: "shirt A",
     category: "shirts",
     color: "white",
@@ -49,7 +49,7 @@ const products = [
       "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
   {
-    id: 35,
+    id: 5,
     title: "shirt B",
     category: "shirts",
     color: "red",
@@ -61,7 +61,7 @@ const products = [
       "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
   },
   {
-    id: 36,
+    id: 6,
     title: "shirt 5",
     category: "shirts",
     color: "blue",
@@ -73,7 +73,7 @@ const products = [
       "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
   },
   {
-    id: 37,
+    id: 7,
     title: "shirt C",
     category: "shirts",
     color: "black",
@@ -86,7 +86,7 @@ const products = [
   },
 
   {
-    id: 2,
+    id: 8,
     title: "shirt",
     category: "shirts",
     color: "white",
@@ -98,7 +98,7 @@ const products = [
       "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
   },
   {
-    id: 3,
+    id: 9,
     title: "jacket",
     category: "jacket",
     color: "black",
@@ -110,7 +110,7 @@ const products = [
       "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
   },
   {
-    id: 40,
+    id: 10,
     title: "jacketA",
     category: "jacket",
     color: "red",
@@ -122,7 +122,7 @@ const products = [
       "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
   },
   {
-    id: 41,
+    id: 11,
     title: "jacketB",
     category: "jacket",
     color: "blue",
@@ -134,7 +134,7 @@ const products = [
       "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
   },
   {
-    id: 42,
+    id: 12,
     title: "jacketC",
     category: "jacket",
     color: "white",
@@ -146,7 +146,7 @@ const products = [
       "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
   },
   {
-    id: 4,
+    id: 13,
     title: "jeans2",
     category: "jeans",
     color: "black",
@@ -158,7 +158,7 @@ const products = [
       "https://i.postimg.cc/BZ85W5sS/5402302434-1-1-3-removebg-preview.png",
   },
   {
-    id: 54,
+    id: 14,
     title: "jeans3",
     category: "jeans",
     color: "red",
@@ -170,7 +170,7 @@ const products = [
       "https://i.postimg.cc/BZ85W5sS/5402302434-1-1-3-removebg-preview.png",
   },
   {
-    id: 53,
+    id: 15,
     title: "jeans4",
     category: "jeans",
     color: "blue",
@@ -182,7 +182,7 @@ const products = [
       "https://i.postimg.cc/BZ85W5sS/5402302434-1-1-3-removebg-preview.png",
   },
   {
-    id: 6,
+    id: 16,
     title: "Jordans",
     category: "foot",
     color: "white",
@@ -195,7 +195,7 @@ const products = [
       "https://i.postimg.cc/VvyJPCBv/tenis-air-jordan-1-mid-team-red-in-DQ8426-615-1-removebg-preview.png",
   },
   {
-    id: 62,
+    id: 17,
     title: "Jordania",
     category: "foot",
     color: "blue",
@@ -208,7 +208,7 @@ const products = [
       "https://i.postimg.cc/VvyJPCBv/tenis-air-jordan-1-mid-team-red-in-DQ8426-615-1-removebg-preview.png",
   },
   {
-    id: 63,
+    id: 18,
     title: "Jordanito",
     category: "foot",
     color: "black",
