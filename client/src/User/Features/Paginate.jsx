@@ -1,49 +1,25 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import ReactPaginate from "react-paginate";
-/* import {
+ import {
   getAllProducts,
-} from "../../Redux/Reducer/allProductSlice"; */
+} from "../../Redux/Reducer/allProductSlice"; 
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Features/Card";
+import { ErrorSearch } from "../Features/ErrorSearch";
+import Loading from "../Features/Loading";
+import { Filtros } from "../Features/Filtros";
 
-
-
-
-function Items({ currentItems }) {
-  return (
-    <>
-      {
-          currentItems.map((element) => ( 
-           <div>
-           {/*  <div>
-            <h3>Item #{element}</h3>
-          </div> */}
-            {<Card
-                      id={element.id}
-                      key={element.id}
-                      title={element.title}
-                      // color={element.color}
-                      price={element.price}
-                      // size={element.size}
-                      // gender={element.gender}
-                      stock={element.stock}
-                      category={element.category}
-                      images={element.image}
-                      thumbnail={element.thumbnail}
-                    />}
-          </div> 
-         ))    }
-    </>
-  );
-}
 
 function PaginatedItems({ itemsPerPage }) {
-  const product = useSelector((state) => state.allProducts);
-  const items = product.allProducts;
-  //const dispatch = useDispatch();
+  const product = useSelector((state) => state.allProducts.allProducts);
+  const productos = useSelector((state) => state.allProducts);
+  
+  const items = product;
+  
+  //
     // We start with an empty list of items.
-    const [currentItems, setCurrentItems] = useState(product.allProducts);
+    const [currentItems, setCurrentItems] = useState(product);
     const [pageCount, setPageCount] = useState(0);
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
@@ -53,24 +29,45 @@ function PaginatedItems({ itemsPerPage }) {
       
       // Fetch items from another resources.
       const endOffset = itemOffset + itemsPerPage;
-      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+      
       setCurrentItems(items.slice(itemOffset, endOffset));
       setPageCount(Math.ceil(items.length / itemsPerPage));
-    }, [itemOffset, itemsPerPage]);
-  
+    }, [ itemOffset, itemsPerPage, ]);
+
+    if (productos.loading) return <Loading />;
+    if (productos.error) return <ErrorSearch />;
+    console.log(currentItems)
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
       const newOffset = event.selected * itemsPerPage % items.length;
       console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
       setItemOffset(newOffset);
+      
     };
-    if (product.loading) return <h3>cargando productos...</h3>;
-    if (!product.loading && product.error) return <h1>{product.error}</h1>;
+    
 
     return (
       <div className="m-4 ">
-          <Items  currentItems={currentItems} />
-          <nav className="mt-4">
+        {productos.loading && <Loading />}
+        {productos.error && <ErrorSearch />}
+        
+        {product
+          ? currentItems.map((element) => {
+              return (
+                <Card
+                  key={element.id}
+                  id={element.id}
+                  title={element.title}
+                  price={element.price}
+                  size={element.size}
+                  gender={element.gender}
+                  stock={element.stock}
+                  images={element.image}
+                />
+              );
+            })
+          : null}
+          <nav className="mt-4 flex justify-center">
           <ReactPaginate
             className="inline-flex p-4 "
             nextLabel="next >"
@@ -92,8 +89,10 @@ function PaginatedItems({ itemsPerPage }) {
             activeClassName="active"
             renderOnZeroPageCount={null}
           />
-          </nav>
-       </div>
+          </nav> 
+          </div>
+          
+        
       );
     }
 

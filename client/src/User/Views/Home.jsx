@@ -4,6 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import Card from "../Features/Card";
 import NavBar from "../Features/NavBar";
 import Loading from "../Features/Loading";
+import Footer from "../Features/Footer";
+import { ErrorSearch } from "../Features/ErrorSearch";
+import { Filtros } from "../Features/Filtros";
+import { getAllProducts } from "../../Redux/Reducer/allProductSlice";
+import PaginatedItems from "../Features/Paginate";
 
 export default function Home() {
   const product = useSelector((state) => state.allProducts);
@@ -16,39 +21,28 @@ export default function Home() {
   if (product.error) return <ErrorSearch />;
 
   return (
-    <div>
-      <div>
-        <NavBar />
+    <div className="grid grid-cols-5 ">
+    <div className="col-span-5">
+      <NavBar />
+    </div>
+    <div className="col-span-5 mt-5 mb-2">
+      <div className="text-center uppercase font-noto-serif text-3xl">
+        <h1>Products</h1>
       </div>
-      <div className="col-span-5 mt-5 mb-2">
-        <div className="text-center uppercase font-noto-serif text-3xl">
-          <h1>Products</h1>
+    </div>
+    <Filtros />
+
+    <div className="col-span-5 flex flex-wrap gap-7 justify-center">
+        <div className="">
+        {/* las cards ahora se renderizan desde PaginatedItems :/ */}
+        
+        <PaginatedItems itemsPerPage={4}/>
+        
+      
         </div>
+        <div className="mt-5 col-span-5">
+        <Footer />
       </div>
-      <div>
-        {/* Aca van las Cards */}
-        <div>
-          {product
-            ? product.allProducts.map((element) => {
-                return (
-                  <div>
-                    <Card
-                      id={element.id}
-                      title={element.title}
-                      // color={element.color}
-                      price={element.price}
-                      // size={element.size}
-                      // gender={element.gender}
-                      stock={element.stock}
-                      category={element.category}
-                      images={element.image}
-                      thumbnail={element.thumbnail}
-                    />
-                  </div>
-                );
-              })
-            : null}
-        </div>
       </div>
       
     </div>
