@@ -65,11 +65,12 @@ export const Filtros = () => {
             className="bg-transparent uppercase font-noto-serif"
             onChange={filtroGender}
           >
-            <option value="">Filter products</option>
-            <option value="Newest">Newest</option>
-            <option value="Discount">Discount</option>
+            <option value="">Gender</option>
+            {/* <option value="Newest">Newest</option>
+            <option value="Discount">Discount</option> */}
             <option value="female">Female</option>
             <option value="male">Male</option>
+            <option value="other">Both Genders</option>
           </select>
         </div>
         <div>
@@ -78,8 +79,8 @@ export const Filtros = () => {
             onChange={filterByPrice}
           >
             <option value="">Prices</option>
-            <option value="ASC">Hightest price</option>
-            <option value="DESC">Lowest price</option>
+            <option value="ASC">Lowest price</option>
+            <option value="DESC">Hightest price</option>
           </select>
         </div>
         <div>

@@ -19,7 +19,7 @@ export const FormCreate = () => {
         <div class="w-50 max-w-lg">
           <Formik
             initialValues={{
-              id: "",
+              /* id: "", */
               title: "",
               category: "",
               //   isOnSale: "",
@@ -54,7 +54,7 @@ export const FormCreate = () => {
               <form onSubmit={handleSubmit}>
                 {console.log(values)}
                 <div className="w-full px-3">
-                  <label class="block font-semibold">id</label>
+                  {/* <label class="block font-semibold">id</label>
                   <input
                     className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
                     type="id"
@@ -69,7 +69,7 @@ export const FormCreate = () => {
                     <div className="text-red-700 underline decoration-pink-500">
                       {errors.id}
                     </div>
-                  )}
+                  )} */}
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">

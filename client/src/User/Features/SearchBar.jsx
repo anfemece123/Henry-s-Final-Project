@@ -17,7 +17,7 @@ export default function SearchBar() {
         name="search"
         onChange={filterUsers}
         ref={inputRef}
-        placeholder="Search"
+        placeholder="Search Clothing..."
       />
     </>
   );

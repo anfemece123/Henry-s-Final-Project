@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     fontFamily: {
       "noto-serif": ["Noto Serif Khojki", "serif"],
+      "cursive-titles": ["Courgette", "cursive"],
     },
   },
   plugins: [],
