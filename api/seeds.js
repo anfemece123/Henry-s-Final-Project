@@ -5,11 +5,12 @@ const products = [
     category: "t-shirts",
     color: "blue",
     season: "summer",
+    stock: 0,
     price: 10,
     size: "L",
-    gender: "female",
+    gender: "other",
     image:
-      "https://img.freepik.com/foto-gratis/camiseta-azul_125540-727.jpg?w=1380&t=st=1669247583~exp=1669248183~hmac=ee87604dd6650209eeb88ddefa2f9c1733fa7e59c3de6762950e96a3752ad703",
+      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
   {
     id: 23,
@@ -21,7 +22,7 @@ const products = [
     size: "L",
     gender: "female",
     image:
-      "https://img.freepik.com/foto-gratis/camiseta-azul_125540-727.jpg?w=1380&t=st=1669247583~exp=1669248183~hmac=ee87604dd6650209eeb88ddefa2f9c1733fa7e59c3de6762950e96a3752ad703",
+      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
   {
     id: 27,
@@ -33,7 +34,7 @@ const products = [
     size: "L",
     gender: "female",
     image:
-      "https://img.freepik.com/foto-gratis/camiseta-azul_125540-727.jpg?w=1380&t=st=1669247583~exp=1669248183~hmac=ee87604dd6650209eeb88ddefa2f9c1733fa7e59c3de6762950e96a3752ad703",
+      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
   {
     id: 34,
@@ -45,7 +46,7 @@ const products = [
     size: "S",
     gender: "male",
     image:
-      "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
+      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
   {
     id: 35,
@@ -81,7 +82,7 @@ const products = [
     size: "S",
     gender: "male",
     image:
-      "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
+      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
   },
 
   {
@@ -105,7 +106,8 @@ const products = [
     price: 50.5,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/51Bsd0OTSzL._AC_.jpg",
+    image:
+      "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
   },
   {
     id: 40,
@@ -116,7 +118,8 @@ const products = [
     price: 50.5,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/51Bsd0OTSzL._AC_.jpg",
+    image:
+      "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
   },
   {
     id: 41,
@@ -127,7 +130,8 @@ const products = [
     price: 50.5,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/51Bsd0OTSzL._AC_.jpg",
+    image:
+      "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
   },
   {
     id: 42,
@@ -138,7 +142,8 @@ const products = [
     price: 50.5,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/51Bsd0OTSzL._AC_.jpg",
+    image:
+      "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
   },
   {
     id: 4,
@@ -150,7 +155,7 @@ const products = [
     size: "M",
     gender: "female",
     image:
-      "https://rukminim1.flixcart.com/image/832/832/xif0q/jean/b/0/g/32-jean-1439-bta-nifty-original-imagbf66nf4vbz5h-bb.jpeg?q=70",
+      "https://i.postimg.cc/BZ85W5sS/5402302434-1-1-3-removebg-preview.png",
   },
   {
     id: 54,
@@ -162,7 +167,7 @@ const products = [
     size: "M",
     gender: "female",
     image:
-      "https://rukminim1.flixcart.com/image/832/832/xif0q/jean/b/0/g/32-jean-1439-bta-nifty-original-imagbf66nf4vbz5h-bb.jpeg?q=70",
+      "https://i.postimg.cc/BZ85W5sS/5402302434-1-1-3-removebg-preview.png",
   },
   {
     id: 53,
@@ -174,11 +179,11 @@ const products = [
     size: "M",
     gender: "female",
     image:
-      "https://rukminim1.flixcart.com/image/832/832/xif0q/jean/b/0/g/32-jean-1439-bta-nifty-original-imagbf66nf4vbz5h-bb.jpeg?q=70",
+      "https://i.postimg.cc/BZ85W5sS/5402302434-1-1-3-removebg-preview.png",
   },
   {
     id: 6,
-    title: "sneakers",
+    title: "Jordans",
     category: "foot",
     color: "white",
     brand: "nike",
@@ -186,11 +191,12 @@ const products = [
     price: 80.0,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/71G-jdjT8ZL._AC_UX575_.jpg",
+    image:
+      "https://i.postimg.cc/VvyJPCBv/tenis-air-jordan-1-mid-team-red-in-DQ8426-615-1-removebg-preview.png",
   },
   {
     id: 62,
-    title: "sneakersA",
+    title: "Jordania",
     category: "foot",
     color: "blue",
     brand: "nike",
@@ -198,11 +204,12 @@ const products = [
     price: 80.0,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/71G-jdjT8ZL._AC_UX575_.jpg",
+    image:
+      "https://i.postimg.cc/VvyJPCBv/tenis-air-jordan-1-mid-team-red-in-DQ8426-615-1-removebg-preview.png",
   },
   {
     id: 63,
-    title: "sneakersB",
+    title: "Jordanito",
     category: "foot",
     color: "black",
     brand: "nike",
@@ -210,7 +217,8 @@ const products = [
     price: 80.0,
     size: "XL",
     gender: "male",
-    image: "https://m.media-amazon.com/images/I/71G-jdjT8ZL._AC_UX575_.jpg",
+    image:
+      "https://i.postimg.cc/VvyJPCBv/tenis-air-jordan-1-mid-team-red-in-DQ8426-615-1-removebg-preview.png",
   },
 ];
 module.exports = products;

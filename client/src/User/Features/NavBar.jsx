@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
-    <div className="w-full bg-slate-600">
-      <nav className="w-full h-fit mt-2  items-center flex gap-4">
+    <div className="w-full bg-gray-900">
+      <nav className="w-full h-fit items-center flex gap-4">
         <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
           <Link to="/home">Inicio</Link>
         </button>
