@@ -79,8 +79,8 @@ export const Filtros = () => {
             onChange={filterByPrice}
           >
             <option value="">Prices</option>
-            <option value="ASC">Hightest price</option>
-            <option value="DESC">Lowest price</option>
+            <option value="ASC">Lowest price</option>
+            <option value="DESC">Hightest price</option>
           </select>
         </div>
         <div>
