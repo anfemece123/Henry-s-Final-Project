@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   allProducts: [],
+  allProductsFiltered: [], // se renderiza home: tengo todos, aplico 1º filtro,
   loading: false,
   error: false,
 };
