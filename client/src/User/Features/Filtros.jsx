@@ -70,7 +70,7 @@ export const Filtros = () => {
             <option value="Discount">Discount</option> */}
             <option value="female">Female</option>
             <option value="male">Male</option>
-            <option value="male">Both Genders</option>
+            <option value="other">Both Genders</option>
           </select>
         </div>
         <div>
