@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import ReactPaginate from "react-paginate";
- import {
-  getAllProducts,
-} from "../../Redux/Reducer/allProductSlice"; 
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../Features/Card";
 import { ErrorSearch } from "../Features/ErrorSearch";

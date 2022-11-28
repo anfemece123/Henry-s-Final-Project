@@ -10,7 +10,7 @@ import { Filtros } from "../Features/Filtros";
 import { getAllProducts } from "../../Redux/Reducer/allProductSlice";
 import PaginatedItems from "../Features/Paginate";
 
-import PaginatedItems from "../Features/Paginate";
+
 
 
 export default function Home() {
@@ -30,49 +30,16 @@ export default function Home() {
         <h1>Products</h1>
       </div>
     </div>
-    <Filtros />
-
-    <div className="col-span-5 flex flex-wrap gap-7 justify-center">
-        <div className="">
-
-      <div className="commentBox">
-        {/* las cards ahora se renderizan desde PaginatedItems :/ */}
-        
-        <PaginatedItems itemsPerPage={4}/>
-        
-      
-        </div>
-        <div className="mt-5 col-span-5">
+      <div className="mt-5 col-span-5">
               <Filtros />
 
-      <div className="col-span-5 flex flex-wrap gap-7 justify-center">
-        {/* Aca van las Cards */}
-        {product.loading && <Loading />}
-        {product.error && <ErrorSearch />}
-        {product
-          ? product.allProducts.map((element) => {
-              return (
-                <Card
-                  id={element.id}
-                  title={element.title}
-                  price={element.price}
-                  size={element.size}
-                  gender={element.gender}
-                  stock={element.stock}
-                  images={element.image}
-                />
-              );
-            })
-          : null}
-      </div>
-      {/* Arreglar para que siempre quede fijo en el bottom */}
-      <div className="mt-5 col-span-5">
-        <Footer />
+              <PaginatedItems itemsPerPage={4}/>
+        
+      <Footer />
 
-      </div>
+      
     </div>
     </div>
-    </div>
-    </div>
+    
   );
 }
