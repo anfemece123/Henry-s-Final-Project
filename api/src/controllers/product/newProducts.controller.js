@@ -2,9 +2,10 @@ const express = require("express");
 
 const { Product } = require("../../db");
 
+let id = 19;
+
 createNewProducts = async (req, res) => {
   const {
-    id,
     title,
     brand,
     category,
@@ -18,7 +19,6 @@ createNewProducts = async (req, res) => {
     image,
   } = req.body;
   if (
-    !id ||
     !title ||
     !category ||
     !color ||
@@ -32,7 +32,7 @@ createNewProducts = async (req, res) => {
   }
   try {
     const [newProduct, created] = await Product.findOrCreate({
-      where: { id },
+      where: { title },
       defaults: {
         id,
         title,
@@ -48,8 +48,10 @@ createNewProducts = async (req, res) => {
         image,
       },
     });
+    created && id++;
     return res.status(201).send([newProduct, created]);
   } catch (error) {
+    console.log(error);
     return res.status(404).send(error);
   }
 };
