@@ -5,6 +5,7 @@ import ErrorPage from "./errorPage";
 import { FormCreate } from "../../User/Views/FormCreate/FormCreate.jsx";
 import Detail from "../../User/Views/Details";
 import LogIn from "../../User/Views/logIn/LogIn";
+import { ForrmRegister } from "../../User/Views/FormRegister/FormRegister";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/formCreate",
     element: <FormCreate />,
+  },
+  {
+    path: "/formRegister",
+    element: <ForrmRegister />,
   },
   {
     path: "/detail/:id",
