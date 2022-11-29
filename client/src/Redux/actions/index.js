@@ -8,3 +8,27 @@ export const formCreate = (data) => async () => {
     data: data,
   });
 };
+
+export const logIn = (user, password) => {
+  return function (dispatch) {
+    return axios
+      .post(`enlacedelBack`, {
+        user,
+        password,
+      })
+      .then((response) => {
+        const user = response.data;
+        dispatch({
+          type: "LOGIN",
+          payload: user,
+        });
+      })
+      .catch((error) => {
+        const messageError = error.response.data;
+        dispatch({
+          type: "LOGIN",
+          payload: messageError,
+        });
+      });
+  };
+};
