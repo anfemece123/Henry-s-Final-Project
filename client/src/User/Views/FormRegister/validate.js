@@ -56,6 +56,9 @@ export default function validate(values) {
   }
 
   //confirmPassword
+  if (values.password !== values.confirmPassword) {
+    errors.confirmPassword = "La contreseña no coinside";
+  }
 
   if (!values.confirmPassword) {
     errors.confirmPassword = "Please enter a confirm Password";
