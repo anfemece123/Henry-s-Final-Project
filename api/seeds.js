@@ -1,7 +1,7 @@
 const products = [
   {
     id: 1,
-    title: "t-shirt",
+    title: "t-shirt blue",
     category: "t-shirts",
     color: "blue",
     season: "summer",
@@ -10,11 +10,11 @@ const products = [
     size: "L",
     gender: "other",
     image:
-      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
+      "https://calvincolombia.vteximg.com.br/arquivos/ids/183281-650-709/K10K108836_C85_1.jpg?v=637931438959900000",
   },
   {
     id: 2,
-    title: "t-shirtA",
+    title: "t-shirt black",
     category: "t-shirts",
     color: "black",
     season: "summer",
@@ -26,7 +26,7 @@ const products = [
   },
   {
     id: 3,
-    title: "t-shirtB",
+    title: "t-shirt red",
     category: "t-shirts",
     color: "red",
     season: "summer",
@@ -34,11 +34,35 @@ const products = [
     size: "L",
     gender: "female",
     image:
-      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
+      "https://jumbocolombiaio.vtexassets.com/arquivos/ids/214196-1200-1200?v=637814277295200000&width=1200&height=1200&aspect=true",
   },
   {
     id: 4,
-    title: "shirt A",
+    title: "t-shirt green",
+    category: "t-shirts",
+    color: "green",
+    season: "winter",
+    price: 20.5,
+    size: "S",
+    gender: "male",
+    image:
+      "https://jumbocolombiaio.vtexassets.com/arquivos/ids/214034-800-600?v=637814276769400000&width=800&height=600&aspect=true",
+  },
+  {
+    id: 5,
+    title: "t-shirt yellow",
+    category: "t-shirts",
+    color: "yellow",
+    season: "winter",
+    price: 20.5,
+    size: "S",
+    gender: "female",
+    image:
+      "https://www.duracolor.co/components/com_virtuemart/shop_image/product/Camiseta_Gildan__5453a122b04ed.jpg",
+  },
+  {
+    id: 6,
+    title: "shirt white",
     category: "shirts",
     color: "white",
     season: "winter",
@@ -46,23 +70,11 @@ const products = [
     size: "S",
     gender: "male",
     image:
-      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
+      "https://i.pinimg.com/originals/bd/10/84/bd10842ad4fc8aa37668b6915d5929a4.jpg",
   },
   {
-    id: 5,
-    title: "shirt B",
-    category: "shirts",
-    color: "red",
-    season: "winter",
-    price: 20.5,
-    size: "S",
-    gender: "male",
-    image:
-      "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
-  },
-  {
-    id: 6,
-    title: "shirt 5",
+    id: 7,
+    title: "shirt blue",
     category: "shirts",
     color: "blue",
     season: "winter",
@@ -72,9 +84,10 @@ const products = [
     image:
       "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
   },
+
   {
-    id: 7,
-    title: "shirt C",
+    id: 8,
+    title: "shirt black",
     category: "shirts",
     color: "black",
     season: "winter",
@@ -82,24 +95,11 @@ const products = [
     size: "S",
     gender: "male",
     image:
-      "https://i.pinimg.com/originals/62/98/b0/6298b026a65cf80bcf9dce061e9b79c9.png",
-  },
-
-  {
-    id: 8,
-    title: "shirt",
-    category: "shirts",
-    color: "white",
-    season: "winter",
-    price: 20.5,
-    size: "S",
-    gender: "male",
-    image:
-      "https://www.pngplay.com/wp-content/uploads/2/Dress-Shirt-Transparent-Background.png",
+      "https://www.arteluniformes.com/wp-content/uploads/2017/03/04015.jpg",
   },
   {
     id: 9,
-    title: "jacket",
+    title: "jacket black",
     category: "jacket",
     color: "black",
     season: "winter",
@@ -111,7 +111,7 @@ const products = [
   },
   {
     id: 10,
-    title: "jacketA",
+    title: "jacket red",
     category: "jacket",
     color: "red",
     season: "winter",
@@ -119,35 +119,47 @@ const products = [
     size: "XL",
     gender: "male",
     image:
-      "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
+      "https://gamepals.co/1281-large_default/the-north-face-resolve-roja.jpg",
   },
   {
     id: 11,
-    title: "jacketB",
+    title: "jacket yellow",
     category: "jacket",
-    color: "blue",
+    color: "yellow",
     season: "winter",
     price: 50.5,
     size: "XL",
     gender: "male",
     image:
-      "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
+      "https://www.tradeinn.com/f/13815/138156173/superdry-chaqueta-spirit-sports.jpg",
   },
   {
     id: 12,
-    title: "jacketC",
+    title: "jacket white",
     category: "jacket",
     color: "white",
     season: "winter",
     price: 50.5,
     size: "XL",
-    gender: "male",
+    gender: "female",
     image:
-      "https://i.postimg.cc/hj2mFjZ7/363-3631961-leather-jacket-png-zip-up-black-leather-jacket-removebg-preview.png",
+      "https://i.linio.com/p/9c8686180b1bc7de9913bfc43456ffbe-product.webp",
   },
   {
     id: 13,
-    title: "jeans2",
+    title: "Jeans green",
+    category: "jeans",
+    color: "green",
+    season: "spring",
+    price: 40,
+    size: "M",
+    gender: "female",
+    image:
+      "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQsGJRx2ZU2gBlQgcsmwvdsncZag7GvhgkezWd0JmSqRyPPLYwGxA3rIqOoAIzhj-4xuV1a_p05RNtW0su4i36y6vvSEN6o&usqp=CAY",
+  },
+  {
+    id: 14,
+    title: "jeans Black",
     category: "jeans",
     color: "black",
     season: "spring",
@@ -155,23 +167,11 @@ const products = [
     size: "M",
     gender: "female",
     image:
-      "https://i.postimg.cc/BZ85W5sS/5402302434-1-1-3-removebg-preview.png",
-  },
-  {
-    id: 14,
-    title: "jeans3",
-    category: "jeans",
-    color: "red",
-    season: "spring",
-    price: 40,
-    size: "M",
-    gender: "female",
-    image:
-      "https://i.postimg.cc/BZ85W5sS/5402302434-1-1-3-removebg-preview.png",
+      "https://cdn-images.farfetch-contents.com/17/02/24/44/17022444_34042358_1000.jpg",
   },
   {
     id: 15,
-    title: "jeans4",
+    title: "jeans blue",
     category: "jeans",
     color: "blue",
     season: "spring",
@@ -183,20 +183,20 @@ const products = [
   },
   {
     id: 16,
-    title: "Jordans",
+    title: "jordan red",
     category: "foot",
-    color: "white",
+    color: "red",
     brand: "nike",
     season: "summer",
     price: 80.0,
     size: "XL",
     gender: "male",
     image:
-      "https://i.postimg.cc/VvyJPCBv/tenis-air-jordan-1-mid-team-red-in-DQ8426-615-1-removebg-preview.png",
+      "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR50ZaoCzfflb7loglrN4RTSVxx0MLgdbNxd1R9lVtHpLclpkQHMsgZQ7LXox5xxRFp6IB7yArZwX_yRfzqiYiByef3voCphQINL2hJF84wNpjA-z1B0WrAOQ&usqp=CAE",
   },
   {
     id: 17,
-    title: "Jordania",
+    title: "jordan blue",
     category: "foot",
     color: "blue",
     brand: "nike",
@@ -205,11 +205,11 @@ const products = [
     size: "XL",
     gender: "male",
     image:
-      "https://i.postimg.cc/VvyJPCBv/tenis-air-jordan-1-mid-team-red-in-DQ8426-615-1-removebg-preview.png",
+      "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRBxUoWDWnbsMrIEhREZMWBPCqdP2jDa4pg8W9pcmXPTG6ICpW6OuuTH1Sx7D9kautq8nwpnviTk_KVXYEbprG5q2rh4PLSos1JK6MsthiiOonFQSlGqzlyKg&usqp=CAE",
   },
   {
     id: 18,
-    title: "Jordanito",
+    title: "Jordan black",
     category: "foot",
     color: "black",
     brand: "nike",
@@ -218,7 +218,7 @@ const products = [
     size: "XL",
     gender: "male",
     image:
-      "https://i.postimg.cc/VvyJPCBv/tenis-air-jordan-1-mid-team-red-in-DQ8426-615-1-removebg-preview.png",
+      "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQUNQEWO3hkSLjwcjT-5B2gRCOWwraVqlLHgy6qMAsCkrbEitCNLFzKGB6IOGbKvu6o7r3ttQFTRadFsCIc-JKNZrKyAzP8vF4KnI5mqSb50aP292bgETJjwmM&usqp=CAE",
   },
 ];
 module.exports = products;
