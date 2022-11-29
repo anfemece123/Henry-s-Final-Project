@@ -16,7 +16,6 @@ logInUser = async (req, res) => {
     const userAux = await User.findOne({
       where: { email },
     });
-    console.log("se va a loguear: ", userAux);
     if (!userAux)
       return res
         .status(401 /* Unauthorized */)
@@ -30,11 +29,16 @@ logInUser = async (req, res) => {
       return res
         .status(401 /* Unauthorized */)
         .send("Username Or Password Wrong");
+    if (userAux.isBanned)
+      return res
+        .status(403 /* Forbidden */)
+        .send("Your Account Is Banned, Contact With The Admin");
     //aca tengo email y password correctos
     const userForToken = {
       id: userAux.id,
       email,
       password,
+      isAdmin,
     };
     const token = jwt.sign(userForToken, TOKEN_SECRET, {
       expiresIn: 60 * 60 * 24 * 30, //que se tenga que loguear cada 30 dias
@@ -42,15 +46,10 @@ logInUser = async (req, res) => {
 
     const loggedUser = {
       first_name: userAux.first_name,
-      last_name: userAux.last_name,
-      phoneNumber: userAux.phoneNumber,
-      address: userAux.address,
       profileImage: userAux.profileImage,
       isAdmin: userAux.isAdmin,
-      isBanned: userAux.isBanned,
       token,
     };
-
     return res.status(200).send(loggedUser);
   } catch (error) {
     console.log(error);

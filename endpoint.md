@@ -8,6 +8,7 @@
 • http://localhost:3001/product/byPriceRange?priceRange= tiene que tener esta forma priceRange=10-100
 
 • http://localhost:3001/user/newUser
+• http://localhost:3001/user/update
 
 
 http://localhost:3000/admin/dashboard
