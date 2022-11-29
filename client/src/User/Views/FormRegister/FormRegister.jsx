@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import validate from "./validate";
 
 import { useDispatch } from "react-redux";
-import { formCreate } from "../../../Redux/actions";
+import { formRegister } from "../../../Redux/actions";
 import { Link } from "react-router-dom";
 
 export const ForrmRegister = () => {
@@ -27,9 +27,10 @@ export const ForrmRegister = () => {
               phoneNumber: "",
               address: "",
               profileImage: "",
+              isAdmin: Boolean,
             }}
             onSubmit={(values, { resetForm }) => {
-              dispatch(formCreate(values));
+              dispatch(formRegister(values));
               console.log(values);
 
               resetForm();
@@ -46,6 +47,7 @@ export const ForrmRegister = () => {
               handleChange,
               handleBlur,
               touched,
+              setFieldValue,
             }) => (
               <form onSubmit={handleSubmit}>
                 {console.log(values)}
@@ -215,6 +217,52 @@ export const ForrmRegister = () => {
                       {errors.profileImage}
                     </div>
                   )}
+                </div>
+                <div>
+                  <label class="font-semibold"> isAdmin </label>
+                  <div
+                    class="grid w-[30rem] grid-cols-3 space-x-2 rounded-xl bg-gray-200 p-2"
+                    x-data="app"
+                  >
+                    <div>
+                      <input
+                        class="peer hidden"
+                        type="radio"
+                        id="1"
+                        name="option"
+                        value={true}
+                        checked={values.isAdmin === true}
+                        onChange={() => setFieldValue("isAdmin", true)}
+                        onBlur={handleBlur}
+                      />
+
+                      <label
+                        for="1"
+                        class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+                      >
+                        yes
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        class="peer hidden"
+                        type="radio"
+                        id="2"
+                        name="option"
+                        // value={false}
+                        checked={values.isAdmin === false}
+                        onChange={() => setFieldValue("isAdmin", false)}
+                        onBlur={handleBlur}
+                      />
+
+                      <label
+                        for="2"
+                        class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-red-600 peer-checked:font-bold peer-checked:text-white"
+                      >
+                        No
+                      </label>
+                    </div>
+                  </div>
                 </div>
                 <button
                   type="submit"

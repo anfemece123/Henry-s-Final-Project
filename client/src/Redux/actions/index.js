@@ -9,6 +9,15 @@ export const formCreate = (data) => async () => {
   });
 };
 
+export const formRegister = (data) => async () => {
+  console.log("data en actions", data);
+  await axios({
+    method: "POST",
+    url: `http://localhost:3001/user/newUser`,
+    data: data,
+  });
+};
+
 export const logIn = (user, password) => {
   return function (dispatch) {
     return axios
