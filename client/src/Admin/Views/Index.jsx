@@ -18,7 +18,7 @@ export default function Index() {
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
                 Notus React is Free and Open Source. It does not change any of
-                the CSS from{" "}
+                the CSS from
                 <a
                   href="https://tailwindcss.com/?ref=creativetim"
                   className="text-blueGray-600"
