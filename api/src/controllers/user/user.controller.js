@@ -57,4 +57,54 @@ createNewUser = async (req, res) => {
   }
 };
 
-module.exports = createNewUser;
+updateUser = async (req, res) => {
+  const {
+    first_name,
+    last_name,
+    email,
+    password,
+    phoneNumber,
+    address,
+    profileImage,
+    isAdmin,
+  } = req.body;
+
+  if (
+    !first_name ||
+    !last_name ||
+    !email ||
+    !password ||
+    !phoneNumber ||
+    !address ||
+    !profileImage ||
+    !isAdmin
+  ) {
+    return res.status(400).send("Missing Data");
+  }
+
+  try {
+    const user = await User.findOne({
+      where: { email },
+    });
+
+    const passwordHashed = await bcrypt.hash(password, 10 /* saltRounds */);
+
+    user.set({
+      first_name,
+      last_name,
+      email,
+      passwordHashed,
+      phoneNumber,
+      address,
+      profileImage,
+      isAdmin,
+      isBanned: false,
+    });
+    await user.save();
+    res.status(200).send(user);
+  } catch (error) {
+    return res.status(404).send(error.message);
+  }
+};
+
+module.exports = { createNewUser, updateUser };
