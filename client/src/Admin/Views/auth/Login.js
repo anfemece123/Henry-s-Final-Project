@@ -22,7 +22,7 @@ export default function Login() {
                     <img
                       alt="..."
                       className="w-5 mr-1"
-                      src={require("assets/img/github.svg").default}
+                      src={require("../../assets/img/github.svg").default}
                     />
                     Github
                   </button>
@@ -33,7 +33,7 @@ export default function Login() {
                     <img
                       alt="..."
                       className="w-5 mr-1"
-                      src={require("assets/img/google.svg").default}
+                      src={require("../../assets/img/google.svg").default}
                     />
                     Google
                   </button>
@@ -101,13 +101,13 @@ export default function Login() {
                 <a
                   href="#pablo"
                   onClick={(e) => e.preventDefault()}
-                  className="text-blueGray-200"
+                  className="text-black"
                 >
                   <small>Forgot password?</small>
                 </a>
               </div>
               <div className="w-1/2 text-right">
-                <Link to="/auth/register" className="text-blueGray-200">
+                <Link to="/auth/register" className="text-black">
                   <small>Create new account</small>
                 </Link>
               </div>

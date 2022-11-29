@@ -2,8 +2,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
-import UserDropdown from "components/Dropdowns/UserDropdown.js";
+import UserDropdown from "../Dropdowns/UserDropdown";
+import NotificationDropdown from "../Dropdowns/TableDropdown";
 
 export default function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
