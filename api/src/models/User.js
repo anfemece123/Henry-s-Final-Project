@@ -15,6 +15,7 @@ module.exports = (sequelize) => {
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
       passwordHashed: {
         type: DataTypes.STRING, //va a estar hasheado para ir a db
@@ -30,7 +31,7 @@ module.exports = (sequelize) => {
       },
       profileImage: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       isAdmin: {
         type: DataTypes.BOOLEAN,
