@@ -1,7 +1,7 @@
 import React from "react";
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footers/Footer.js";
+import Navbar from "../Features/Navbars/AuthNavbar";
+import Footer from "../Features/Footers/Footer";
 
 export default function Profile() {
   return (
@@ -50,7 +50,7 @@ export default function Profile() {
                     <div className="relative">
                       <img
                         alt="..."
-                        src={require("assets/img/team-2-800x800.jpg").default}
+                        src={require("../assets/img/team-2-800x800.jpg")}
                         className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                       />
                     </div>

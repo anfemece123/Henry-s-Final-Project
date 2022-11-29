@@ -3,8 +3,8 @@ import { Routes, Route, redirect } from "react-router-dom";
 
 // components
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import FooterSmall from "components/Footers/FooterSmall.js";
+import Navbar from "../Features/Navbars/AuthNavbar";
+import FooterSmall from "../Features/Footers/FooterSmall";
 
 // views
 
@@ -21,14 +21,12 @@ export default function Auth() {
             className="absolute top-0 w-full h-full bg-blueGray-800 bg-no-repeat bg-full"
             style={{
               backgroundImage:
-                "url(" +
-                require("../assets/img/register_bg_2.png").default +
-                ")",
+                "url(" + require("../assets/img/register_bg_2.png") + ")",
             }}
           ></div>
-          <Routes>
-            <Route path="/auth/login" component={Login} />
-            <Route path="/auth/register" component={Register} />
+          <Routes path="/auth">
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
             {/* <Redirect from="/auth" to="/auth/login" /> */}
           </Routes>
           <FooterSmall absolute />

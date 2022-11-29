@@ -13,6 +13,8 @@ import Tables from "../../Admin/Views/admin/Tables";
 import Admin from "../../Admin/layouts/Admin";
 import Login from "../../Admin/Views/auth/Login";
 import Register from "../../Admin/Views/auth/Register";
+import Profile from "../../Admin/Views/Profile";
+import Auth from "../../Admin/layouts/Auth";
 
 const router = createBrowserRouter([
   {
@@ -42,10 +44,19 @@ const router = createBrowserRouter([
     element: <LogIn />,
   },
 
-  { path: "/auth/login", element: <Login /> },
   {
-    path: "/auth/register",
-    element: <Register />,
+    path: "/auth",
+    element: <Auth />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
+    ],
   },
   {
     path: "/admin",
@@ -65,6 +76,10 @@ const router = createBrowserRouter([
       },
       { path: "tables", element: <Tables /> },
     ],
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
   },
 ]);
 
