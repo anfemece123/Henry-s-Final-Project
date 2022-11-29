@@ -32,7 +32,7 @@ export default function Home() {
         {/* Aca van las Cards */}
         {product.loading && <Loading />}
         {product.error && <ErrorSearch />}
-        <PaginatedItems itemsPerPage={4} />
+        <PaginatedItems itemsPerPage={5} />
       </div>
       {/* Arreglar para que siempre quede fijo en el bottom */}
       <div className="mt-5 col-span-5">
@@ -41,4 +41,3 @@ export default function Home() {
     </div>
   );
 }
-

@@ -1,7 +1,32 @@
 import React from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import NavBar from "../../Features/NavBar";
-import Footer from "../../Features/Footer";
+import { logIn } from "../../../Redux/actions/index";
+
 export default function LogIn() {
+  const dispatch = useDispatch();
+
+  let [input, setInput] = useState({
+    user: "",
+    password: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(`Valor del usuario => ${input.user}`);
+    console.log(`Valor del password => ${input.password}`);
+    dispatch(logIn(input));
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div className="bg-slate-800 min-h-screen min-w-screen flex">
       <div className="absolute w-screen">
@@ -19,14 +44,20 @@ export default function LogIn() {
             <input
               className="text-center font-noto-serif w-80 rounded-lg h-8 bg-slate-700 focus:outline focus:outline-offset-2 focus:outline-blue-600"
               type="text"
-              placeholder="Your Email"
+              name="user"
+              value={input.user}
+              placeholder="Your user name"
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="col-span-5 text-white text-center mt-20">
             <input
               className="text-center font-noto-serif w-80 rounded-lg h-8 bg-slate-700 focus:outline focus:outline-offset-2 focus:outline-blue-600"
               type="password"
+              value={input.password}
+              name="password"
               placeholder="Your password"
+              onChange={(e) => handleChange(e)}
             />
           </div>
           <div className="col-span-5 text-white ml-20 mt-10 font-noto-serif text-lg">
@@ -47,9 +78,10 @@ export default function LogIn() {
           </div>
           <div className="col-span-5 text-white font-noto-serif text-2xl m-auto text-center">
             <div className="mt-20 flex justify-center border border-slate-700 rounded-full w-80 h-10 transition ease-in-out delay-150 bg-slate-700 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
-              <button>LET ME IN!</button>
+              <button onClick={handleSubmit}>LET ME IN!</button>
             </div>
           </div>
+
           <div className="text-white mt-10 col-span-5 m-10">
             <hr />
           </div>

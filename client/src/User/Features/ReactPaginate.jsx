@@ -7,15 +7,12 @@ export default function PaginatedItems({ itemsPerPage }) {
   const product = useSelector((state) => state.allProducts.allProducts);
 
   const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = product.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(product.length / itemsPerPage);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % product.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
+
     setItemOffset(newOffset);
   };
 
