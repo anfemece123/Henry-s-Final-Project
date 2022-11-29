@@ -1,5 +1,3 @@
-const express = require("express");
-
 const { Product } = require("../../db");
 
 let id = 19;
