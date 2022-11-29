@@ -51,7 +51,7 @@ export default function Index() {
 
         <img
           className="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860px"
-          src={require("assets/img/pattern_react.png").default}
+          src={require("assets/img/pattern_react.png")}
           alt="..."
         />
       </section>
@@ -229,32 +229,32 @@ export default function Index() {
               <div className="relative flex flex-col min-w-0 w-full mb-6 mt-48 md:mt-0">
                 <img
                   alt="..."
-                  src={require("assets/img/component-btn.png").default}
+                  src={require("assets/img/component-btn.png")}
                   className="w-full align-middle rounded absolute shadow-lg max-w-100-px z-3 left-145-px -top-29-px"
                 />
                 <img
                   alt="..."
-                  src={require("assets/img/component-profile-card.png").default}
+                  src={require("assets/img/component-profile-card.png")}
                   className="w-full align-middle rounded-lg absolute shadow-lg -top-160-px left-260-px max-w-210-px"
                 />
                 <img
                   alt="..."
-                  src={require("assets/img/component-info-card.png").default}
+                  src={require("assets/img/component-info-card.png")}
                   className="w-full align-middle rounded-lg absolute shadow-lg max-w-180-px -top-225-px left-40-px z-2"
                 />
                 <img
                   alt="..."
-                  src={require("assets/img/component-info-2.png").default}
+                  src={require("assets/img/component-info-2.png")}
                   className="w-full align-middle rounded-lg absolute shadow-2xl max-w-200-px -left-50-px top-25-px"
                 />
                 <img
                   alt="..."
-                  src={require("assets/img/component-menu.png").default}
+                  src={require("assets/img/component-menu.png")}
                   className="w-full align-middle rounded absolute shadow-lg max-w-580-px -left-20-px top-210-px"
                 />
                 <img
                   alt="..."
-                  src={require("assets/img/component-btn-pink.png").default}
+                  src={require("assets/img/component-btn-pink.png")}
                   className="w-full align-middle rounded absolute shadow-xl max-w-120-px left-195-px top-95-px"
                 />
               </div>
@@ -486,7 +486,7 @@ export default function Index() {
                   transform:
                     "scale(1) perspective(1040px) rotateY(-11deg) rotateX(2deg) rotate(2deg)",
                 }}
-                src={require("assets/img/documentation.png").default}
+                src={require("assets/img/documentation.png")}
               />
             </div>
           </div>
@@ -518,7 +518,7 @@ export default function Index() {
                       <img
                         alt="..."
                         className="align-middle border-none max-w-full h-auto rounded-lg"
-                        src={require("assets/img/login.jpg").default}
+                        src={require("assets/img/login.jpg")}
                       />
                     </div>
                   </Link>
@@ -533,7 +533,7 @@ export default function Index() {
                       <img
                         alt="..."
                         className="align-middle border-none max-w-full h-auto rounded-lg"
-                        src={require("assets/img/profile.jpg").default}
+                        src={require("assets/img/profile.jpg")}
                       />
                     </div>
                   </Link>
@@ -548,7 +548,7 @@ export default function Index() {
                       <img
                         alt="..."
                         className="align-middle border-none max-w-full h-auto rounded-lg"
-                        src={require("assets/img/landing.jpg").default}
+                        src={require("assets/img/landing.jpg")}
                       />
                     </div>
                   </Link>

@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@popperjs/core": "^2.11.6",
     "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -11,7 +10,6 @@
     "axios": "^1.2.0",
     "formik": "^2.2.9",
     "react": "^18.2.0",
-    "chart.js": "2.9.4",
     "react-dom": "^18.2.0",
     "react-paginate": "^8.1.4",
     "react-redux": "^8.0.5",
@@ -19,6 +17,14 @@
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
+    "@fortawesome/fontawesome-free": "5.15.3",
+    "@popperjs/core": "2.9.1",
+    "@tailwindcss/forms": "0.2.1",
+    "autoprefixer": "10.2.5",
+    "chart.js": "2.9.4",
+    "gulp": "4.0.2",
+    "gulp-append-prepend": "1.0.8",
+    "postcss": "8.2.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
