@@ -240,7 +240,7 @@ export default function Sidebar() {
               Documentation
             </h6>
             {/* Navigation */}
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+            {/* <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="inline-flex">
                 <a
                   href="https://www.creative-tim.com/learning-lab/tailwind/react/colors/notus"
@@ -328,7 +328,7 @@ export default function Sidebar() {
                   VueJS
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </nav>
