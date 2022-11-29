@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+/* import getProductsFiltered from "../../Controllers/utils"; */
 const initialState = {
   allProducts: [],
-  allProductsFiltered: [], // se renderiza home: tengo todos, aplico 1º filtro,
+  allProductsFiltered: [],
   loading: false,
   error: false,
 };
@@ -19,7 +19,6 @@ export const getAllProducts = createAsyncThunk(
 export const getByName = createAsyncThunk(
   "getByName/getByName",
   async (name) => {
-    console.log("getname", name);
     return await fetch(
       `http://localhost:3001/product/search?title=${name}`
     ).then((respuesta) => respuesta.json());
@@ -28,10 +27,20 @@ export const getByName = createAsyncThunk(
 
 export const getGender = createAsyncThunk(
   "getGender/getGender",
-  async (gender) => {
+  async (gender /* , allProductsFiltered */) => {
     return await fetch(
       `http://localhost:3001/product/byGender?gender=${gender}`
-    ).then((respuesta) => respuesta.json());
+    ).then(
+      (respuesta) => respuesta.json() /* {
+      const productsByGender = respuesta.json();
+      console.log(productsByGender);
+      const productsFiltered = getProductsFiltered(
+        allProductsFiltered,
+        productsByGender
+      );
+      return productsFiltered;
+    } */
+    );
   }
 );
 
@@ -73,6 +82,7 @@ const productsSlice = createSlice({
     builder.addCase(getAllProducts.fulfilled, (state, action) => {
       state.loading = false;
       state.allProducts = action.payload;
+      /* state.allProductsFiltered = action.payload; */
       state.error = "";
     });
     //?getGender
