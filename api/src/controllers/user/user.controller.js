@@ -53,7 +53,6 @@ createNewUser = async (req, res) => {
     }
     return res.status(400).send("User Already Exists");
   } catch (error) {
-    console.log(error);
     return res.status(404).send(error);
   }
 };
