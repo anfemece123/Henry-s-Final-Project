@@ -6,8 +6,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const productRoutes = require("./routes/product");
 const userRoutes = require("./routes/user");
-
-require("./db.js");
+const logInRoutes = require("./routes/logIn");
 
 const server = express();
 
@@ -31,7 +30,7 @@ server.use((req, res, next) => {
 
 server.use("/product", productRoutes);
 server.use("/user", userRoutes);
-//resto de las rutas
+server.use("/logIn", logInRoutes);
 
 // Error catching endware.
 server.use((err, req, res, next) => {
