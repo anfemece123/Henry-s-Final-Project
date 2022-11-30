@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeProduct } from "../../../Redux/Reducer/cartSlice";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export const Cart = () => {
+  const dispatch = useDispatch();
   const infoCart = useSelector((state) => state.cart.products);
 
   // const quantity = infoCart.map((el) => el.quantity);
-
-  // console.log("quantity", quantity);
+  console.log(
+    "quantity",
+    infoCart.map((e) => e.price)
+  );
   const cart = useSelector((state) => state.cart);
+  console.log("q", cart.quantity);
   // const [quantitya, setQuantity] = useState(1);
 
   // const handleQuantity = (type) => {
@@ -24,6 +29,24 @@ export const Cart = () => {
   // };
 
   // console.log("info", cart);
+  const priceArr = infoCart.map((e) => e.price);
+  let sum = 0;
+
+  for (let i = 1; i < priceArr.length; i++) {
+    sum += priceArr[i];
+  }
+
+  console.log("sumaPrecios", sum);
+
+  const deleteItemShopList = (e) => {
+    dispatch(
+      removeProduct({
+        remove: e,
+        price: sum,
+        quantity: cart.quantity,
+      })
+    );
+  };
 
   return (
     <div
@@ -42,7 +65,7 @@ export const Cart = () => {
             <Link to="/home">
               <div
                 class="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer"
-                onclick="checkoutHandler(false)"
+                // onclick="checkoutHandler(false)"
               >
                 <ArrowBackIcon />
                 <p class="text-sm pl-2 leading-none dark:hover:text-gray-200">
@@ -55,7 +78,7 @@ export const Cart = () => {
             </p>
 
             {infoCart
-              ? infoCart.map((element) => {
+              ? infoCart.map((element, index) => {
                   return (
                     <div class="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
                       <div class="md:w-4/12 2xl:w-1/4 w-full">
@@ -96,9 +119,15 @@ export const Cart = () => {
                             <p class="text-xs leading-3 underline text-gray-800 dark:text-black cursor-pointer">
                               Add to favorites
                             </p>
-                            <p class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
-                              Remove
-                            </p>
+                            <button
+                              onClick={() => {
+                                deleteItemShopList(index);
+                              }}
+                            >
+                              <p class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
+                                Remove
+                              </p>
+                            </button>
                           </div>
                           <p class="text-base font-black leading-none text-gray-800 dark:text-black">
                             ${element.price}
@@ -143,7 +172,7 @@ export const Cart = () => {
                   </p>
                 </div>
                 <button
-                  onclick="checkoutHandler1(true)"
+                  // onclick="checkoutHandler1(true)"
                   class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
                 >
                   Checkout
