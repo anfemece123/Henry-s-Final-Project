@@ -32,7 +32,7 @@ logInUser = async (req, res) => {
     if (userAux.isBanned)
       return res
         .status(403 /* Forbidden */)
-        .send("Your Account Is Banned, Contact With The Admin");
+        .send("Your Account Is Banned, Contact With The Company");
     //aca tengo email y password correctos
     const userForToken = {
       id: userAux.id,
