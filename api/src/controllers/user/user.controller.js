@@ -107,4 +107,28 @@ updateUser = async (req, res) => {
   }
 };
 
-module.exports = { createNewUser, updateUser };
+getUserDetail = async (req, res) => {
+  console.log("entre");
+  try {
+    const { id } = req.params;
+    const userDetail = await User.findOne({ where: { id } });
+    if (!userDetail) return res.status(400).send("User Not Found");
+    return res.status(200).send(userDetail);
+  } catch (error) {
+    console.log(error);
+    return res.status(404).send(error);
+  }
+};
+
+getAllUsers = async (req, res) => {
+  try {
+    const allUsers = await User.findAll();
+    if (!allUsers) return res.status(400).send("User Not Found");
+    return res.status(200).send(allUsers);
+  } catch (error) {
+    console.log(error);
+    return res.status(404).send(error);
+  }
+};
+
+module.exports = { createNewUser, updateUser, getUserDetail, getAllUsers };
