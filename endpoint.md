@@ -6,11 +6,13 @@
 • http://localhost:3001/product/byCategory?category=
 • http://localhost:3001/product/byGender?gender=
 • http://localhost:3001/product/byPriceRange?priceRange= tiene que tener esta forma priceRange=10-100
+• http://localhost:3001/product/update
 
 • http://localhost:3001/user/newUser
 • http://localhost:3001/user/:id
 • http://localhost:3001/user/allUsers
 • http://localhost:3001/user/update
+• http://localhost:3001/user/delete
 
 • http://localhost:3001/logIn
 
