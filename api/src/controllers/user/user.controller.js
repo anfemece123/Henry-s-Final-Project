@@ -108,7 +108,6 @@ updateUser = async (req, res) => {
 };
 
 getUserDetail = async (req, res) => {
-  console.log("entre");
   try {
     const { id } = req.params;
     const userDetail = await User.findOne({ where: { id } });
@@ -130,5 +129,25 @@ getAllUsers = async (req, res) => {
     return res.status(404).send(error);
   }
 };
+//LOGICAL ERASING
+deleteUser = async (req, res) => {
+  const { id } = req.params; // en realidad lo voy a recibir de req.userId cuando conecte el middleware
+  try {
+    const user = await User.findOne({
+      where: { id },
+    });
+    await user.update({ isBanned: true });
+    await user.save();
+    res.status(200).send("User Succesfully Banned");
+  } catch (error) {
+    return res.status(404).send(error.message);
+  }
+};
 
-module.exports = { createNewUser, updateUser, getUserDetail, getAllUsers };
+module.exports = {
+  createNewUser,
+  updateUser,
+  getUserDetail,
+  getAllUsers,
+  deleteUser,
+};
