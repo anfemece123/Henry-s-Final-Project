@@ -15,6 +15,7 @@ import Login from "../../Admin/Views/auth/Login";
 import Register from "../../Admin/Views/auth/Register";
 import Profile from "../../Admin/Views/Profile";
 import Auth from "../../Admin/layouts/Auth";
+import { Cart } from "../../User/Views/Cart/Cart";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LogIn />,
+  },
+  {
+    path: "/cart",
+    element: <Cart />,
   },
 
   {

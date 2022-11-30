@@ -57,4 +57,97 @@ createNewUser = async (req, res) => {
   }
 };
 
-module.exports = createNewUser;
+updateUser = async (req, res) => {
+  const {
+    first_name,
+    last_name,
+    email,
+    password,
+    phoneNumber,
+    address,
+    profileImage,
+    isAdmin,
+  } = req.body;
+
+  if (
+    !first_name ||
+    !last_name ||
+    !email ||
+    !password ||
+    !phoneNumber ||
+    !address ||
+    !profileImage ||
+    !isAdmin
+  ) {
+    return res.status(400).send("Missing Data");
+  }
+
+  try {
+    const user = await User.findOne({
+      where: { email },
+    });
+
+    const passwordHashed = await bcrypt.hash(password, 10 /* saltRounds */);
+
+    user.set({
+      first_name,
+      last_name,
+      email,
+      passwordHashed,
+      phoneNumber,
+      address,
+      profileImage,
+      isAdmin,
+      isBanned: false,
+    });
+    await user.save();
+    res.status(200).send(user);
+  } catch (error) {
+    return res.status(404).send(error.message);
+  }
+};
+
+getUserDetail = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userDetail = await User.findOne({ where: { id } });
+    if (!userDetail) return res.status(400).send("User Not Found");
+    return res.status(200).send(userDetail);
+  } catch (error) {
+    console.log(error);
+    return res.status(404).send(error);
+  }
+};
+
+getAllUsers = async (req, res) => {
+  try {
+    const allUsers = await User.findAll();
+    if (!allUsers) return res.status(400).send("User Not Found");
+    return res.status(200).send(allUsers);
+  } catch (error) {
+    console.log(error);
+    return res.status(404).send(error);
+  }
+};
+//LOGICAL ERASING
+deleteUser = async (req, res) => {
+  const { id } = req.params; // en realidad lo voy a recibir de req.userId cuando conecte el middleware
+  try {
+    const user = await User.findOne({
+      where: { id },
+    });
+    await user.update({ isBanned: true });
+    await user.save();
+    res.status(200).send("User Succesfully Banned");
+  } catch (error) {
+    return res.status(404).send(error.message);
+  }
+};
+
+module.exports = {
+  createNewUser,
+  updateUser,
+  getUserDetail,
+  getAllUsers,
+  deleteUser,
+};

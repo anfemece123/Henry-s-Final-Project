@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../Redux/Reducer/productDetails";
 import { useParams } from "react-router";
@@ -6,6 +8,7 @@ import Loading from "../Features/Loading";
 import { Link } from "react-router-dom";
 import NavBar from "../Features/NavBar";
 import Footer from "../Features/Footer";
+import { addProduct } from "../../Redux/Reducer/cartSlice";
 
 export default function Details() {
   const details = useSelector((state) => state.details);
@@ -13,10 +16,29 @@ export default function Details() {
   const error = useSelector((state) => state.details.error);
   const dispatch = useDispatch();
   const { id } = useParams();
+  const product = details.details;
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     dispatch(getProductDetails(id));
   }, [dispatch, id]);
+
+  const handleClick = () => {
+    dispatch(
+      addProduct({
+        ...product,
+        quantity,
+        price: details.details.price * quantity,
+      })
+    );
+  };
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
 
   // Falta stock
 
@@ -59,10 +81,18 @@ export default function Details() {
               <p>STOCK: {details.details.stock}</p>
               <br />
             </div>
+            <div className="font-noto-serif text-2xl m-auto">
+              <RemoveIcon onClick={() => handleQuantity("dec")} />
+              <p>{quantity}</p>
+              <AddIcon onClick={() => handleQuantity("inc")} />
+            </div>
           </div>
           <div className="text-center">
             {details.details.stock >= 1 && (
-              <button className="animate-pulse border border-slate-200 p-2 mb-3 rounded-lg hover:bg-green-400 hover:border-slate-800 hover:text-black">
+              <button
+                className="animate-pulse border border-slate-200 p-2 mb-3 rounded-lg hover:bg-green-400 hover:border-slate-800 hover:text-black"
+                onClick={handleClick}
+              >
                 Añadir al carrito
               </button>
             )}
