@@ -7,6 +7,7 @@ const cors = require("cors");
 const productRoutes = require("./routes/product");
 const userRoutes = require("./routes/user");
 const logInRoutes = require("./routes/logIn");
+const checkoutRoutes = require("./routes/payments.js");
 
 const server = express();
 
@@ -31,6 +32,7 @@ server.use((req, res, next) => {
 server.use("/product", productRoutes);
 server.use("/user", userRoutes);
 server.use("/logIn", logInRoutes);
+server.use("/checkout", checkoutRoutes);
 
 // Error catching endware.
 server.use((err, req, res, next) => {

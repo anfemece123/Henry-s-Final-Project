@@ -21,7 +21,7 @@ export const formRegister = (data) => async () => {
 export const logIn = (user, password) => {
   return function (dispatch) {
     return axios
-      .post(`enlacedelBack`, {
+      .post(`http://localhost:3001/logIn`, {
         user,
         password,
       })

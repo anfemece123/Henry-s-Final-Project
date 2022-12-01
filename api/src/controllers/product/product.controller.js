@@ -23,4 +23,165 @@ getAllProducts = async (req, res) => {
   }
 };
 
-module.exports = getAllProducts;
+let id = 19;
+
+createNewProducts = async (req, res) => {
+  const {
+    title,
+    brand,
+    category,
+    color,
+    season,
+    price,
+    isOnSale,
+    size,
+    gender,
+    stock,
+    image,
+  } = req.body;
+  if (
+    !title ||
+    !category ||
+    !color ||
+    !season ||
+    !price ||
+    !size ||
+    !gender ||
+    !image
+  ) {
+    return res.status(400).send("Missing Data");
+  }
+  try {
+    const [newProduct, created] = await Product.findOrCreate({
+      where: { title },
+      defaults: {
+        id,
+        title,
+        brand,
+        category,
+        color,
+        season,
+        price,
+        isOnSale,
+        size,
+        gender,
+        stock,
+        image,
+      },
+    });
+    created && id++;
+    return res.status(201).send([newProduct, created]);
+  } catch (error) {
+    console.log(error);
+    return res.status(404).send(error);
+  }
+};
+
+getDetail = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const productDetail = await Product.findByPk(id);
+    if (!productDetail) return res.status(400).send("Product Not Found");
+    return res.status(200).send(productDetail);
+  } catch (error) {
+    return res.status(404).send(error);
+  }
+};
+
+getByTitle = async (req, res) => {
+  const { title } = req.query;
+  if (!title) {
+    try {
+      const allProducts = await Product.findAll();
+      return res.status(200).send(allProducts);
+    } catch (error) {
+      return res.status(404).send(error.message);
+    }
+  }
+  try {
+    const allProducts = await Product.findAll();
+    let found = allProducts.filter((element) =>
+      element.title.toLowerCase().includes(title.toLowerCase())
+    );
+    if (!found.length) return res.status(400).send("Product Not Found");
+    return res.status(200).send(found);
+  } catch (error) {
+    return res.status(404).send(error.message);
+  }
+};
+
+updateProduct = async (req, res) => {
+  const { idProduct } = req.params;
+  const {
+    title,
+    brand,
+    category,
+    color,
+    season,
+    price,
+    isOnSale,
+    size,
+    gender,
+    stock,
+    image,
+  } = req.body;
+
+  if (
+    !title ||
+    !category ||
+    !color ||
+    !season ||
+    !price ||
+    !size ||
+    !gender ||
+    !image
+  ) {
+    return res.status(400).send("Missing Data");
+  }
+  try {
+    const product = await Product.findOne({
+      where: { id: idProduct },
+    });
+
+    product.set({
+      title,
+      brand,
+      category,
+      color,
+      season,
+      price,
+      isOnSale,
+      size,
+      gender,
+      stock,
+      image,
+    });
+
+    await product.save();
+    res.status(200).send("Product Successfully Updated");
+  } catch (error) {
+    return res.status(404).send(error.message);
+  }
+};
+
+deleteProduct = async (req, res) => {
+  const { idProduct } = req.params;
+  try {
+    const product = await Product.findOne({
+      where: { id: idProduct },
+    });
+    await product.destroy();
+    res.status(200).send("User Succesfully Removed");
+  } catch (error) {
+    return res.status(404).send(error.message);
+  }
+};
+
+module.exports = {
+  getAllProducts,
+  createNewProducts,
+  getDetail,
+  getByTitle,
+  updateProduct,
+  deleteProduct,
+};

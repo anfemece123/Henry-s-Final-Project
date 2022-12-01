@@ -12,9 +12,9 @@ createNewUser = async (req, res) => {
     phoneNumber,
     address,
     profileImage, //recibo imagen o letra inicial de su nombre y apellido
-    isAdmin, //x def false
+    isAdmin, //x def
   } = req.body;
-  // valido todos los datos recibidos para poder crear un usuario
+
   if (
     !first_name ||
     !last_name ||
@@ -41,8 +41,8 @@ createNewUser = async (req, res) => {
         passwordHashed,
         phoneNumber,
         address,
-        profileImage, //si no se envia nada, poner letra inicial de su nombre y apellido
-        isAdmin,
+        profileImage,
+        isAdmin: password === process.env.PASS_ADMIN_SECRET || false, //si me me envian el password correcto se setea como admin sino siempre false
         isBanned: false,
       });
       const newUser = await User.findOne({
@@ -58,6 +58,7 @@ createNewUser = async (req, res) => {
 };
 
 updateUser = async (req, res) => {
+  const { id } = req.params;
   const {
     first_name,
     last_name,
@@ -84,7 +85,7 @@ updateUser = async (req, res) => {
 
   try {
     const user = await User.findOne({
-      where: { email },
+      where: { id },
     });
 
     const passwordHashed = await bcrypt.hash(password, 10 /* saltRounds */);
@@ -101,10 +102,53 @@ updateUser = async (req, res) => {
       isBanned: false,
     });
     await user.save();
-    res.status(200).send(user);
+    res.status(200).send("User Successfully Updated");
   } catch (error) {
     return res.status(404).send(error.message);
   }
 };
 
-module.exports = { createNewUser, updateUser };
+getUserDetail = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userDetail = await User.findOne({ where: { id } });
+    if (!userDetail) return res.status(400).send("User Not Found");
+    return res.status(200).send(userDetail);
+  } catch (error) {
+    console.log(error);
+    return res.status(404).send(error);
+  }
+};
+
+getAllUsers = async (req, res) => {
+  try {
+    const allUsers = await User.findAll();
+    if (!allUsers) return res.status(400).send("User Not Found");
+    return res.status(200).send(allUsers);
+  } catch (error) {
+    console.log(error);
+    return res.status(404).send(error);
+  }
+};
+//LOGICAL ERASING
+deleteUser = async (req, res) => {
+  const { id } = req.params; // en realidad lo voy a recibir de req.userId cuando conecte el middleware
+  try {
+    const user = await User.findOne({
+      where: { id },
+    });
+    await user.update({ isBanned: true });
+    await user.save();
+    res.status(200).send("User Succesfully Banned");
+  } catch (error) {
+    return res.status(404).send(error.message);
+  }
+};
+
+module.exports = {
+  createNewUser,
+  updateUser,
+  getUserDetail,
+  getAllUsers,
+  deleteUser,
+};
