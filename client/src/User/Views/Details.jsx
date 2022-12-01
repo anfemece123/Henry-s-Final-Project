@@ -28,6 +28,7 @@ export default function Details() {
         ...product,
         quantity,
         price: details.details.price * quantity,
+        price2: details.details.price,
       })
     );
   };
