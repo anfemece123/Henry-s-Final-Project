@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeProduct } from "../../../Redux/Reducer/cartSlice";
@@ -29,20 +29,21 @@ export const Cart = () => {
   // };
 
   // console.log("info", cart);
-  const priceArr = infoCart.map((e) => e.price);
-  let sum = 0;
+  // const priceArr = infoCart.map((e) => e.price);
+  // console.log("priceArr", priceArr);
+  // let sum = 0;
 
-  for (let i = 1; i < priceArr.length; i++) {
-    sum += priceArr[i];
-  }
+  // for (let i = 0; i < priceArr.length; i++) {
+  //   sum += priceArr[i];
+  // }
 
-  console.log("sumaPrecios", sum);
+  // console.log("sumaPrecios", sum);
 
   const deleteItemShopList = (e) => {
     dispatch(
       removeProduct({
         remove: e,
-        price: sum,
+        price: infoCart.map((e) => e.price),
         quantity: cart.quantity,
       })
     );

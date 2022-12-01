@@ -25,11 +25,11 @@ router.get("/byCategory", getByCategory);
 router.get("/byGender", getByGender);
 router.get("/byPriceRange", getByPriceRange);
 router.get("/byColor", getByColor);
-router.get("/:idProduct", getDetail);
 router.put("/update/:idProduct", /* verifyTokenAndIsAdmin,  */ updateProduct);
 router.delete(
   "/delete/:idProduct",
   /* verifyTokenAndIsAdmin,  */ deleteProduct
 );
+router.get("/:id", getDetail);
 
 module.exports = router;

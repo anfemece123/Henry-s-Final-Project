@@ -17,12 +17,12 @@ const cartSlice = createSlice({
       const removeItem = state.products.filter(
         (i, index) => index !== action.payload.remove
       );
-
-      console.log("arrPRICE", action.payload.price);
-
       state.products = removeItem;
       state.quantity = state.products.length;
-      state.total = action.payload.price;
+      state.total = state.products.reduce(
+        (acumulador, actual) => acumulador + actual.price,
+        0
+      );
     },
   },
 });
