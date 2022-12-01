@@ -16,6 +16,7 @@ import Register from "../../Admin/Views/auth/Register";
 import Profile from "../../Admin/Views/Profile";
 import Auth from "../../Admin/layouts/Auth";
 import { Cart } from "../../User/Views/Cart/Cart";
+import CheckoutForm from "../../Stripe/checkoutForm";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,11 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Profile />,
+  },
+
+  {
+    path: "/pasarelaTest",
+    element: <CheckoutForm />,
   },
 ]);
 
