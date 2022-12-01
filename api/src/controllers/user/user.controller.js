@@ -12,9 +12,9 @@ createNewUser = async (req, res) => {
     phoneNumber,
     address,
     profileImage, //recibo imagen o letra inicial de su nombre y apellido
-    isAdmin, //x def false
+    isAdmin, //x def
   } = req.body;
-  // valido todos los datos recibidos para poder crear un usuario
+
   if (
     !first_name ||
     !last_name ||
@@ -41,8 +41,8 @@ createNewUser = async (req, res) => {
         passwordHashed,
         phoneNumber,
         address,
-        profileImage, //si no se envia nada, poner letra inicial de su nombre y apellido
-        isAdmin,
+        profileImage,
+        isAdmin: password === process.env.PASS_ADMIN_SECRET || false, //si me me envian el password correcto se setea como admin sino siempre false
         isBanned: false,
       });
       const newUser = await User.findOne({
@@ -58,6 +58,7 @@ createNewUser = async (req, res) => {
 };
 
 updateUser = async (req, res) => {
+  const { id } = req.params;
   const {
     first_name,
     last_name,
@@ -84,7 +85,7 @@ updateUser = async (req, res) => {
 
   try {
     const user = await User.findOne({
-      where: { email },
+      where: { id },
     });
 
     const passwordHashed = await bcrypt.hash(password, 10 /* saltRounds */);
@@ -101,7 +102,7 @@ updateUser = async (req, res) => {
       isBanned: false,
     });
     await user.save();
-    res.status(200).send(user);
+    res.status(200).send("User Successfully Updated");
   } catch (error) {
     return res.status(404).send(error.message);
   }

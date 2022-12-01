@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../Redux/Reducer/productDetails";
 import { useParams } from "react-router";
 import Loading from "../Features/Loading";
-import { Link } from "react-router-dom";
 import NavBar from "../Features/NavBar";
 import Footer from "../Features/Footer";
 import { addProduct } from "../../Redux/Reducer/cartSlice";
@@ -29,6 +28,7 @@ export default function Details() {
         ...product,
         quantity,
         price: details.details.price * quantity,
+        price2: details.details.price,
       })
     );
   };
