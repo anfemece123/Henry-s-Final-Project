@@ -46,20 +46,6 @@ export const Filtros = () => {
             <option value="green">Green</option>
           </select>
         </div>
-        {/* <div className="border-none font-serif text-2xl">
-        <select>
-          <option>Size</option>
-          <option value="2XS">2XS</option>
-          <option value="XS">XS</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-          <option value="2XL">2XL</option>
-          <option value="3XL">3XL</option>
-          <option value="4XL">4XL</option>
-        </select>
-      </div> */}
         <div>
           <select
             className="bg-transparent uppercase font-noto-serif"

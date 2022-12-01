@@ -32,7 +32,7 @@ server.use((req, res, next) => {
 server.use("/product", productRoutes);
 server.use("/user", userRoutes);
 server.use("/logIn", logInRoutes);
-server.use("/checkout", checkoutRoutes);
+server.use("/checkout", checkoutRoutes); //payments.js
 
 // Error catching endware.
 server.use((err, req, res, next) => {
