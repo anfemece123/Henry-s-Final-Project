@@ -45,6 +45,7 @@ export default function PaginatedItems({ itemsPerPage }) {
           pageCount={pageCount}
           previousLabel="< previous"
           renderOnZeroPageCount={null}
+          forcePage={1}
         />
       </div>
     </div>
