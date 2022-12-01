@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeProduct } from "../../../Redux/Reducer/cartSlice";
+import {
+  addQuantity,
+  clearCart,
+  removeProduct,
+  removeQuantity,
+} from "../../../Redux/Reducer/cartSlice";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
@@ -12,32 +17,12 @@ export const Cart = () => {
   const infoCart = useSelector((state) => state.cart.products);
 
   // const quantity = infoCart.map((el) => el.quantity);
-  console.log(
-    "quantity",
-    infoCart.map((e) => e.price)
-  );
+
   const cart = useSelector((state) => state.cart);
-  console.log("q", cart.quantity);
-  // const [quantitya, setQuantity] = useState(1);
 
-  // const handleQuantity = (type) => {
-  //   if (type === "dec") {
-  //     quantity > 1 && setQuantity(quantity - 1);
-  //   } else {
-  //     setQuantity(quantity + 1);
-  //   }
-  // };
+  const priceDetail = useSelector((state) => state.details.details.price);
 
-  // console.log("info", cart);
-  // const priceArr = infoCart.map((e) => e.price);
-  // console.log("priceArr", priceArr);
-  // let sum = 0;
-
-  // for (let i = 0; i < priceArr.length; i++) {
-  //   sum += priceArr[i];
-  // }
-
-  // console.log("sumaPrecios", sum);
+  console.log("precio del detalle en cart", priceDetail);
 
   const deleteItemShopList = (e) => {
     dispatch(
@@ -48,6 +33,9 @@ export const Cart = () => {
       })
     );
   };
+  // const deletItem = () => {
+  //   dispatch(addQuantity());
+  // };
 
   return (
     <div
@@ -74,12 +62,52 @@ export const Cart = () => {
                 </p>
               </div>
             </Link>
+            <button
+              onClick={() => {
+                dispatch(clearCart());
+              }}
+            >
+              clear cart
+            </button>
             <p class="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-black pt-3">
               Shopping Cart
             </p>
 
             {infoCart
               ? infoCart.map((element, index) => {
+                  // const [quantity, setQuantity] = useState(element.quantity);
+
+                  console.log("en componente", element.quantity);
+
+                  // const handleQuantity = (type) => {
+                  //   if (type === "dec") {
+                  //     setQuantity(quantity - 1);
+                  //   } else {
+                  //     setQuantity(quantity + 1);
+                  //   }
+                  // };
+
+                  const addItem = () => {
+                    dispatch(
+                      addQuantity({
+                        price: element.price,
+                        quantity: element.quantity,
+                        id: element.id,
+                        priceDetail: priceDetail,
+                      })
+                    );
+                  };
+                  const deletItem = () => {
+                    dispatch(
+                      removeQuantity({
+                        price: element.price,
+                        quantity: element.quantity,
+                        id: element.id,
+                        priceDetail: priceDetail,
+                      })
+                    );
+                  };
+
                   return (
                     <div class="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
                       <div class="md:w-4/12 2xl:w-1/4 w-full">
@@ -101,9 +129,11 @@ export const Cart = () => {
                             aria-label="Select quantity"
                             class="py-2 px-1 border border-gray-200 mr-6 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
                           >
-                            {/* <RemoveIcon /> */}
+                            <RemoveIcon
+                              onClick={() => deletItem(priceDetail)}
+                            />
                             <p>{element.quantity}</p>
-                            {/* <AddIcon /> */}
+                            <AddIcon onClick={() => addItem(priceDetail)} />
                           </div>
                         </div>
                         <p class="text-xs leading-3 text-gray-600 dark:text-black pt-2">
