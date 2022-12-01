@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
 import validate from "./validate";
+import swal from "sweetalert";
 
 import { useDispatch } from "react-redux";
 import { formCreate } from "../../../Redux/actions";
@@ -9,6 +10,23 @@ import { Link } from "react-router-dom";
 export const FormCreate = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
   const dispatch = useDispatch();
+
+  const alert = (e) => {
+    if (!formularioEnviado) {
+      return swal({
+        title: "Good Job!",
+        text: "Product created!",
+        icon: "success",
+      });
+    } else {
+      return swal({
+        title: "Something went wrong :'(",
+        text: "Try again later!",
+        icon: "warning",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800 antialiased px-4 py-6 flex flex-col justify-center sm:py-12">
       <div class="relative py-3 sm:max-w-xl mx-auto text-center">
@@ -387,12 +405,10 @@ export const FormCreate = () => {
                 <button
                   type="submit"
                   class="mt-4 bg-black text-white py-2 px-6 rounded-lg"
+                  onClick={alert}
                 >
                   Accept
                 </button>
-                {formularioEnviado && (
-                  <p className="text-green-500">Prenda creada con exito!!</p>
-                )}
               </form>
             )}
           </Formik>
