@@ -7,6 +7,7 @@ const {
   getDetail,
   getByTitle,
   updateProduct,
+  deleteProduct,
 } = require("../controllers/product/product.controller");
 const getByCategory = require("../controllers/product/product.byCategory.controller");
 const getByGender = require("../controllers/product/product.byGender.controller");
@@ -24,7 +25,11 @@ router.get("/byCategory", getByCategory);
 router.get("/byGender", getByGender);
 router.get("/byPriceRange", getByPriceRange);
 router.get("/byColor", getByColor);
-router.get("/:id", getDetail);
-router.put("/update", /* verifyTokenAndIsAdmin,  */ updateProduct);
+router.get("/:idProduct", getDetail);
+router.put("/update/:idProduct", /* verifyTokenAndIsAdmin,  */ updateProduct);
+router.delete(
+  "/delete/:idProduct",
+  /* verifyTokenAndIsAdmin,  */ deleteProduct
+);
 
 module.exports = router;

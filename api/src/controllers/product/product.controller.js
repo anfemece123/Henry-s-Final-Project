@@ -111,8 +111,8 @@ getByTitle = async (req, res) => {
 };
 
 updateProduct = async (req, res) => {
+  const { idProduct } = req.params;
   const {
-    id,
     title,
     brand,
     category,
@@ -140,7 +140,7 @@ updateProduct = async (req, res) => {
   }
   try {
     const product = await Product.findOne({
-      where: { id },
+      where: { id: idProduct },
     });
 
     product.set({
@@ -164,10 +164,24 @@ updateProduct = async (req, res) => {
   }
 };
 
+deleteProduct = async (req, res) => {
+  const { idProduct } = req.params;
+  try {
+    const product = await Product.findOne({
+      where: { id: idProduct },
+    });
+    await product.destroy();
+    res.status(200).send("User Succesfully Removed");
+  } catch (error) {
+    return res.status(404).send(error.message);
+  }
+};
+
 module.exports = {
   getAllProducts,
   createNewProducts,
   getDetail,
   getByTitle,
   updateProduct,
+  deleteProduct,
 };

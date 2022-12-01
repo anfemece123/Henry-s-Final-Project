@@ -58,6 +58,7 @@ createNewUser = async (req, res) => {
 };
 
 updateUser = async (req, res) => {
+  const { id } = req.params;
   const {
     first_name,
     last_name,
@@ -84,7 +85,7 @@ updateUser = async (req, res) => {
 
   try {
     const user = await User.findOne({
-      where: { email },
+      where: { id },
     });
 
     const passwordHashed = await bcrypt.hash(password, 10 /* saltRounds */);
