@@ -252,7 +252,7 @@ const products = [
     category: "t-shirts",
     color: "black",
     season: "summer",
-    stock: 0,
+    stock: 2,
     price: 9,
     size: "L",
     gender: "male",
@@ -284,7 +284,7 @@ const products = [
   },
   {
     id: 24,
-    title: "Jeans white",
+    title: "Jeans White",
     category: "jeans",
     color: "white",
     season: "spring",
