@@ -12,6 +12,7 @@ const cartSlice = createSlice({
       const checkRepeat = state.products.some(
         (e) => e.id === action.payload.id
       );
+      console.log("details", state.products);
       if (checkRepeat === false) {
         state.quantity += 1;
         state.products.push(action.payload);
@@ -63,7 +64,7 @@ const cartSlice = createSlice({
             ? {
                 ...item,
                 quantity: item.quantity + 1,
-                price: item.price + action.payload.priceDetail,
+                price: item.price + item.price2,
               }
             : item
         );
@@ -89,7 +90,7 @@ const cartSlice = createSlice({
             ? {
                 ...item,
                 quantity: item.quantity - 1,
-                price: item.price - action.payload.priceDetail,
+                price: item.price - item.price2,
               }
             : item
         );
