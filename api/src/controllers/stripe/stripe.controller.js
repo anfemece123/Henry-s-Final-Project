@@ -2,9 +2,7 @@ const { Stripe } = require("stripe");
 
 // Esto es TERRIBLE PRACTICA, cambiar a una variable de entorno
 
-const stripe = new Stripe(
-  "sk_test_51MA0JJA6JLprqSfEfCt47FCzMF4ridnO2zcGvM3qjYTGoUnHSh6MEJbUTOdGycwqA9BzQLiqcobwGQuJ9sFaznt3000zgxqYzu"
-);
+const stripe = new Stripe(process.env.STRIPE_SECRET);
 
 // 2 horas viendo pq me daba error, y en lugar de escribir Intents, escribi itents ☠
 
