@@ -34,7 +34,7 @@ export const Filtros = () => {
       <div className="flex flex-row justify-around">
         <div>
           <select
-            className="bg-transparent uppercase font-noto-serif"
+            className="uppercase font-noto-serif"
             onChange={filterByColor}
           >
             <option value="">Color</option>
@@ -46,28 +46,9 @@ export const Filtros = () => {
             <option value="green">Green</option>
           </select>
         </div>
-        {/* <div className="border-none font-serif text-2xl">
-        <select>
-          <option>Size</option>
-          <option value="2XS">2XS</option>
-          <option value="XS">XS</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-          <option value="2XL">2XL</option>
-          <option value="3XL">3XL</option>
-          <option value="4XL">4XL</option>
-        </select>
-      </div> */}
         <div>
-          <select
-            className="bg-transparent uppercase font-noto-serif"
-            onChange={filtroGender}
-          >
-            <option value="">Gender</option>
-            {/* <option value="Newest">Newest</option>
-            <option value="Discount">Discount</option> */}
+          <select className="uppercase font-noto-serif" onChange={filtroGender}>
+            <option value="all">Gender</option>
             <option value="female">Female</option>
             <option value="male">Male</option>
             <option value="other">Both Genders</option>
@@ -75,7 +56,7 @@ export const Filtros = () => {
         </div>
         <div>
           <select
-            className="bg-transparent uppercase font-noto-serif"
+            className="uppercase font-noto-serif"
             onChange={filterByPrice}
           >
             <option value="">Prices</option>
@@ -85,7 +66,7 @@ export const Filtros = () => {
         </div>
         <div>
           <select
-            className="uppercase bg-transparent font-noto-serif"
+            className="uppercase font-noto-serif"
             onChange={filterCategory}
           >
             <option value="">Category</option>

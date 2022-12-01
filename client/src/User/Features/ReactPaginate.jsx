@@ -17,32 +17,36 @@ export default function PaginatedItems({ itemsPerPage }) {
   };
 
   return (
-    <div>
-      {product
-        ? currentItems.map((element) => {
-            return (
-              <Card
-                key={element.id}
-                id={element.id}
-                title={element.title}
-                price={element.price}
-                size={element.size}
-                gender={element.gender}
-                stock={element.stock}
-                images={element.image}
-              />
-            );
-          })
-        : null}
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-      />
+    <div className="grid grid-cols-2">
+      <div className="col-span-2 flex flex-wrap justify-center gap-8 mt-5">
+        {currentItems
+          ? currentItems.map((element) => {
+              return (
+                <Card
+                  key={element.id}
+                  id={element.id}
+                  title={element.title}
+                  price={element.price}
+                  size={element.size}
+                  gender={element.gender}
+                  stock={element.stock}
+                  images={element.image}
+                />
+              );
+            })
+          : null}
+      </div>
+      <div>
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={6}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+        />
+      </div>
     </div>
   );
 }
