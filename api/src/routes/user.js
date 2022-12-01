@@ -12,7 +12,7 @@ const {
 const router = express.Router();
 
 router.post("/newUser", createNewUser);
-router.put("/update", /* verifyToken , */ updateUser); //only users
+router.put("/update/:id", /* verifyToken , */ updateUser); //only users
 router.get("/allUsers", /* verifyTokenAndIsAdmin , */ getAllUsers); ////only admin
 router.get("/:id", /* verifyToken , */ getUserDetail); // users and admin
 router.put("/delete/:id" /* verifyTokenAndIsAdmin , */, deleteUser); //only admin
