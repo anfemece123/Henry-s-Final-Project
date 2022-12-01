@@ -229,7 +229,7 @@ const products = [
     stock: 5,
     price: 9.5,
     size: "M",
-    gender: "man",
+    gender: "male",
     image:
       "https://keliclothing.fi/wp-content/uploads/2019/02/tpaita_pun_etu_4k.jpg",
   },
