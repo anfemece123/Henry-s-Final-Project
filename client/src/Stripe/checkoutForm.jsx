@@ -51,7 +51,7 @@ export default function checkoutForm() {
       <div className="col-span-3 items-center">
         <form onSubmit={handleSubmit}>
           <CardElement />
-          <p>{totalCart}</p>
+          <p> ${totalCart}</p>
           <button>Comprar</button>
         </form>
       </div>

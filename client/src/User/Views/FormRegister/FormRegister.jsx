@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
 import validate from "./validate";
-
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { formRegister } from "../../../Redux/actions";
 import { Link } from "react-router-dom";
@@ -10,23 +10,7 @@ import swal from "sweetalert";
 export const ForrmRegister = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
   const dispatch = useDispatch();
-
-  // Esta funcion verifica a la inversa para mostrar las alertas (?)
-  const alert = (e) => {
-    if (!formularioEnviado) {
-      return swal({
-        title: "Excellent!",
-        text: "You maded your account!",
-        icon: "success",
-      });
-    } else {
-      return swal({
-        title: "Something went wrong :'(",
-        text: "Try again later!",
-        icon: "warning",
-      });
-    }
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800 antialiased px-4 py-6 flex flex-col justify-center sm:py-12">
@@ -50,12 +34,15 @@ export const ForrmRegister = () => {
             }}
             onSubmit={(values, { resetForm }) => {
               dispatch(formRegister(values));
-              console.log(values);
-
+              // console.log(values);
               resetForm();
-
               setformularioEnviado(true);
-              setTimeout(() => setformularioEnviado(false), 5000);
+              swal({
+                title: "Excellent!",
+                text: "You maded your account!",
+                icon: "success",
+              });
+              navigate("/home");
             }}
             validate={(values) => validate(values)}
           >
@@ -66,7 +53,7 @@ export const ForrmRegister = () => {
               handleChange,
               handleBlur,
               touched,
-              setFieldValue,
+              // setFieldValue,
             }) => (
               <form onSubmit={handleSubmit}>
                 {console.log(values)}
@@ -203,7 +190,7 @@ export const ForrmRegister = () => {
                     </label>
                     <input
                       className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                      type="text"
+                      type="password"
                       id="confirmPassword"
                       name="confirmPassword"
                       placeholder="confirmPassword"
@@ -237,7 +224,7 @@ export const ForrmRegister = () => {
                     </div>
                   )}
                 </div>
-                <div>
+                {/* <div>
                   <label class="font-semibold"> isAdmin </label>
                   <div
                     class="grid w-[30rem] grid-cols-3 space-x-2 rounded-xl bg-gray-200 p-2"
@@ -282,11 +269,10 @@ export const ForrmRegister = () => {
                       </label>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <button
                   type="submit"
                   class="mt-4 bg-black text-white py-2 px-6 rounded-lg"
-                  onClick={alert}
                 >
                   Accept
                 </button>

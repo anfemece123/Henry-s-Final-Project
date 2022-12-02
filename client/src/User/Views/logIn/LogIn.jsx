@@ -40,7 +40,7 @@ export default function LogIn() {
           <div className="text-white text-center col-span-5 mt-5 font-noto-serif uppercase">
             <h3>Sing In to your account</h3>
           </div>
-          <div className="col-span-5 text-white text-center mt-20">
+          <div className="col-span-5 text-black text-center mt-20">
             <input
               className="text-center font-noto-serif w-80 rounded-lg h-8 bg-slate-700 focus:outline focus:outline-offset-2 focus:outline-blue-600"
               type="text"
@@ -50,7 +50,7 @@ export default function LogIn() {
               onChange={(e) => handleChange(e)}
             />
           </div>
-          <div className="col-span-5 text-white text-center mt-20">
+          <div className="col-span-5 text-black text-center mt-20">
             <input
               className="text-center font-noto-serif w-80 rounded-lg h-8 bg-slate-700 focus:outline focus:outline-offset-2 focus:outline-blue-600"
               type="password"
