@@ -48,6 +48,11 @@ logInUser = async (req, res) => {
 
     const loggedUser = {
       first_name: userAux.first_name,
+      last_name: userAux.last_name,
+      address: userAux.address,
+      email: userAux.email,
+      phoneNumber: userAux.phoneNumber,
+      address: userAux.address,
       profileImage: userAux.profileImage,
       isAdmin: userAux.isAdmin,
       token,

@@ -12,7 +12,6 @@ createNewUser = async (req, res) => {
     phoneNumber,
     address,
     profileImage, //recibo imagen o letra inicial de su nombre y apellido
-    isAdmin, //x def
   } = req.body;
 
   if (
