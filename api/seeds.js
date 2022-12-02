@@ -5,7 +5,7 @@ const products = [
     category: "t-shirts",
     color: "blue",
     season: "summer",
-    stock: 5,
+    stock: 0,
     price: 10,
     size: "L",
     gender: "other",
@@ -229,7 +229,7 @@ const products = [
     stock: 5,
     price: 9.5,
     size: "M",
-    gender: "man",
+    gender: "male",
     image:
       "https://keliclothing.fi/wp-content/uploads/2019/02/tpaita_pun_etu_4k.jpg",
   },
