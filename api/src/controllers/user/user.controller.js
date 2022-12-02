@@ -1,6 +1,7 @@
 const { User } = require("../../db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("../../../nodemailer.config");
 
 createNewUser = async (req, res) => {
   //Recibe los datos recolectados desde el formulario controlado por body de la ruta de registro de usuario
@@ -55,6 +56,8 @@ createNewUser = async (req, res) => {
         where: { email },
       });
       newUser.passwordHashed = password;
+      console.log(email);
+      nodemailer.sendConfirmationEmail(first_name, email, token);
       return res.status(201).send(newUser);
     }
     return res.status(400).send("User Already Exists");
