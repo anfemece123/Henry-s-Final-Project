@@ -1,5 +1,6 @@
 const { User } = require("../../db");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 createNewUser = async (req, res) => {
   //Recibe los datos recolectados desde el formulario controlado por body de la ruta de registro de usuario
@@ -32,6 +33,10 @@ createNewUser = async (req, res) => {
       where: { email },
     });
     if (userAux === null) {
+      const token = jwt.sign(
+        { email, password },
+        process.env.REGISTRATION_TOKEN_SECRET
+      );
       const passwordHashed = await bcrypt.hash(password, 10 /* saltRounds */);
       await User.create({
         first_name,
@@ -43,6 +48,8 @@ createNewUser = async (req, res) => {
         profileImage,
         isAdmin: password === process.env.PASS_ADMIN_SECRET || false, //si me me envian el password correcto se setea como admin sino siempre false
         isBanned: false,
+        status: "pending",
+        confirmationCode: token,
       });
       const newUser = await User.findOne({
         where: { email },
@@ -52,6 +59,7 @@ createNewUser = async (req, res) => {
     }
     return res.status(400).send("User Already Exists");
   } catch (error) {
+    console.error(error);
     return res.status(404).send(error);
   }
 };

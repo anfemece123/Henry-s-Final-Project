@@ -45,6 +45,7 @@ module.exports = (sequelize) => {
       },
       status: {
         type: DataTypes.ENUM("pending", "active"),
+        allowNull: true,
         default: "pending",
       },
       confirmationCode: {
