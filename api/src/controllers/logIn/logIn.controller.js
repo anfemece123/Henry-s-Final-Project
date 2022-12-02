@@ -7,6 +7,8 @@ logInUser = async (req, res) => {
   const { email, password } = req.body;
   // valido todos los datos recibidos
   if (!email || !password) {
+    console.log("email: ", email);
+    console.log("password: ", password);
     return res.status(400).send("Missing Data");
   }
   //aca ya tengo todos los datos
@@ -38,7 +40,7 @@ logInUser = async (req, res) => {
       id: userAux.id,
       email,
       password,
-      isAdmin,
+      isAdmin: userAux.isAdmin,
     };
     const token = jwt.sign(userForToken, TOKEN_SECRET, {
       expiresIn: 60 * 60 * 24 * 30, //que se tenga que loguear cada 30 dias
