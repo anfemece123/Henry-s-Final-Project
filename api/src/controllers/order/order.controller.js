@@ -2,14 +2,23 @@ const { Order } = require("../../db");
 
 createOrder = async (req, res) => {
   const { products, products_quantity, total, status } = req.body;
-
+  console.log("products: ", products);
+  console.log("products_quantity: ", products_quantity);
+  console.log("total: ", total);
+  console.log("status: ", status);
   if (!products || !products_quantity || !total || !status) {
     return res.status(400).send("Missing Data");
   }
   try {
-    const newOrder = await Order.create(newOrder);
+    const newOrder = await Order.create({
+      products,
+      products_quantity,
+      total,
+      status,
+    });
     return res.status(201).send("Order Succesfully Created");
   } catch (error) {
+    console.log(error);
     return res.status(404).send(error);
   }
 };

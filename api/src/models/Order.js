@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
     "Order",
     {
       products: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.JSON),
         allowNull: false, //si esta vacia, que ni venga
       },
       products_quantity: {
