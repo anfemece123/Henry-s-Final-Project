@@ -35,6 +35,11 @@ logInUser = async (req, res) => {
       return res
         .status(403 /* Forbidden */)
         .send("Your Account Is Banned, Contact With The Company");
+    if (userAux.status != "Active") {
+      return res.status(401).send({
+        message: "Pending Account. Please Verify Your Email!",
+      });
+    }
     //aca tengo email y password correctos
     const userForToken = {
       id: userAux.id,
