@@ -5,6 +5,7 @@ import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../Redux/Reducer/cartSlice";
+import NavBar from "../User/Features/NavBar";
 
 export default function checkoutForm() {
   const stripe = useStripe();
@@ -50,13 +51,16 @@ export default function checkoutForm() {
   };
 
   return (
-    <div className="container grid grid-cols-3 border border-red-900">
-      <div className="col-span-3 items-center">
-        <form onSubmit={handleSubmit}>
-          <CardElement />
-          <p> ${totalCart}</p>
-          <button>Comprar</button>
-        </form>
+    <div>
+      <NavBar />
+      <div className="container grid grid-cols-3 border border-red-900">
+        <div className="col-span-3 items-center">
+          <form onSubmit={handleSubmit}>
+            <CardElement />
+            <p> ${totalCart}</p>
+            <button>Comprar</button>
+          </form>
+        </div>
       </div>
     </div>
   );

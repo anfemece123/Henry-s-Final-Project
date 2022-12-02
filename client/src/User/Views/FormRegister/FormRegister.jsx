@@ -55,7 +55,7 @@ export const ForrmRegister = () => {
               handleChange,
               handleBlur,
               touched,
-              // setFieldValue,
+              setFieldValue,
             }) => (
               <form onSubmit={handleSubmit}>
                 {console.log(values)}
@@ -226,7 +226,7 @@ export const ForrmRegister = () => {
                     </div>
                   )}
                 </div>
-                {/* <div>
+                <div>
                   <label class="font-semibold"> isAdmin </label>
                   <div
                     class="grid w-[30rem] grid-cols-3 space-x-2 rounded-xl bg-gray-200 p-2"
@@ -271,7 +271,7 @@ export const ForrmRegister = () => {
                       </label>
                     </div>
                   </div>
-                </div> */}
+                </div>
                 <button
                   type="submit"
                   class="mt-4 bg-black text-white py-2 px-6 rounded-lg"
