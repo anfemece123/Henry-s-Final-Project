@@ -50,7 +50,7 @@ export default function Details() {
         <div className="col-span-5 ">
           <NavBar />
         </div>
-        <div className="col-span-2 w-[32rem] ml-5 mt-20 mb-20  shadow-2xl shadow-gray-600 hover:shadow-2xl hover:shadow-green-700">
+        <div className="col-span-2 w-[32rem] ml-5 mt-20 mb-20 shadow-2xl shadow-gray-600 hover:shadow-2xl hover:shadow-green-700">
           <img
             className="h-[32rem] m-auto"
             src={details.details.image}

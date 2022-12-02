@@ -5,10 +5,29 @@ import validate from "./validate";
 import { useDispatch } from "react-redux";
 import { formRegister } from "../../../Redux/actions";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
 export const ForrmRegister = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
   const dispatch = useDispatch();
+
+  // Esta funcion verifica a la inversa para mostrar las alertas (?)
+  const alert = (e) => {
+    if (!formularioEnviado) {
+      return swal({
+        title: "Excellent!",
+        text: "You maded your account!",
+        icon: "success",
+      });
+    } else {
+      return swal({
+        title: "Something went wrong :'(",
+        text: "Try again later!",
+        icon: "warning",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800 antialiased px-4 py-6 flex flex-col justify-center sm:py-12">
       <div class="relative py-3 sm:max-w-xl mx-auto text-center">
@@ -267,12 +286,10 @@ export const ForrmRegister = () => {
                 <button
                   type="submit"
                   class="mt-4 bg-black text-white py-2 px-6 rounded-lg"
+                  onClick={alert}
                 >
                   Accept
                 </button>
-                {formularioEnviado && (
-                  <p className="text-green-500">Usuario creado con exito!!</p>
-                )}
               </form>
             )}
           </Formik>

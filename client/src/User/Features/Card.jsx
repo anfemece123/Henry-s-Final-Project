@@ -11,14 +11,14 @@ export default function Card({
   images,
 }) {
   return (
-    <div className="container h-[28rem] w-[28rem] hover:shadow-2xl hover:shadow-slate-900  hover:bg-slate-200 rounded-lg">
+    <div className="w-[32rem] h-[32rem] hover:shadow-2xl hover:shadow-slate-700">
       <img
         src={images}
-        className="m-auto mt-2"
+        className="m-auto pt-2"
         style={{ width: "300px", height: "250px" }}
       />
       <div>
-        <div className="pt-5 font-noto-serif uppercase text-center text-3xl">
+        <div className="pt-5 font-noto-serif uppercase text-center text-3xl hover:animate-pulse hover:text-green-700">
           <Link to={`/detail/${id}`}>
             <h1>{title}</h1>
           </Link>
@@ -27,7 +27,7 @@ export default function Card({
       <div className="flex flex-row justify-center pl-2 pt-16 pb-2 gap-20">
         <div className="flex-row text-lg font-noto-serif">
           <div>
-            <span>Precio:$</span>
+            <span>Price:$</span>
             <span> {price}</span>
           </div>
           <div>
@@ -45,7 +45,10 @@ export default function Card({
             ) : (
               <div>
                 <span>Stock:</span>
-                <span className="text-gray-400"> No disponible</span>
+                <span className="text-red-400 animate-pulse">
+                  {" "}
+                  No disponible
+                </span>
               </div>
             )}
           </div>

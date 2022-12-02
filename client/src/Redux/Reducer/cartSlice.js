@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import swal from "sweetalert";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -18,23 +19,12 @@ const cartSlice = createSlice({
         state.products.push(action.payload);
         state.total += action.payload.price;
       } else {
-        alert("product in cart");
+        swal({
+          title: "Be carefull!",
+          text: "Product already in the cart!",
+          icon: "info",
+        });
       }
-      // let intemInCart = state.products.find(
-      //   (intem) => intem.id === action.payload.id
-      // );
-
-      // if (intemInCart) {
-      //   state.products = state.products.map((item) =>
-      //     item.id === action.payload.id
-      //       ? { ...item, quantity: item.quantity + 1 }
-      //       : item
-      //   );
-      // } else {
-      //   state.quantity += 1;
-      //   state.products.push(action.payload);
-      //   state.total += action.payload.price;
-      // }
     },
     removeProduct: (state, action) => {
       const removeItem = state.products.filter(

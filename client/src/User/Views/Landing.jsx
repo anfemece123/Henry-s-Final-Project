@@ -19,7 +19,7 @@ export default function Landing() {
           />
         </div>
         <div className="col-span-2 m-auto">
-          <div className="text-start text-5xl font-serif">
+          <div className="text-start text-5xl font-noto-serif">
             <h1>
               El estilo,
               <br />
@@ -27,7 +27,7 @@ export default function Landing() {
             </h1>
           </div>
           <div className="text-center mt-11">
-            <button className="font-mono text-2xl rounded-full bg-black text-white border border-slate-900 p-4">
+            <button className="font-noto-serif text-2xl rounded-full bg-black text-white border border-slate-900 p-4">
               <Link to="/home">VER CATALOGO</Link>
             </button>
           </div>

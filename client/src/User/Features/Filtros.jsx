@@ -34,7 +34,7 @@ export const Filtros = () => {
       <div className="flex flex-row justify-around">
         <div>
           <select
-            className="bg-transparent uppercase font-noto-serif"
+            className="uppercase font-noto-serif"
             onChange={filterByColor}
           >
             <option value="">Color</option>
@@ -47,13 +47,8 @@ export const Filtros = () => {
           </select>
         </div>
         <div>
-          <select
-            className="bg-transparent uppercase font-noto-serif"
-            onChange={filtroGender}
-          >
-            <option value="">Gender</option>
-            {/* <option value="Newest">Newest</option>
-            <option value="Discount">Discount</option> */}
+          <select className="uppercase font-noto-serif" onChange={filtroGender}>
+            <option value="all">Gender</option>
             <option value="female">Female</option>
             <option value="male">Male</option>
             <option value="other">Both Genders</option>
@@ -61,7 +56,7 @@ export const Filtros = () => {
         </div>
         <div>
           <select
-            className="bg-transparent uppercase font-noto-serif"
+            className="uppercase font-noto-serif"
             onChange={filterByPrice}
           >
             <option value="">Prices</option>
@@ -71,7 +66,7 @@ export const Filtros = () => {
         </div>
         <div>
           <select
-            className="uppercase bg-transparent font-noto-serif"
+            className="uppercase font-noto-serif"
             onChange={filterCategory}
           >
             <option value="">Category</option>
