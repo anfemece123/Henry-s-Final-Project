@@ -8,13 +8,13 @@ export default function LogIn() {
   const dispatch = useDispatch();
 
   let [input, setInput] = useState({
-    user: "",
+    email: "",
     password: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`Valor del usuario => ${input.user}`);
+    console.log(`Valor del usuario => ${input.email}`);
     console.log(`Valor del password => ${input.password}`);
     dispatch(logIn(input));
   };
@@ -44,9 +44,9 @@ export default function LogIn() {
             <input
               className="text-center font-noto-serif w-80 rounded-lg h-8 bg-slate-700 focus:outline focus:outline-offset-2 focus:outline-blue-600"
               type="text"
-              name="user"
-              value={input.user}
-              placeholder="Your user name"
+              name="email"
+              value={input.email}
+              placeholder="Your user email"
               onChange={(e) => handleChange(e)}
             />
           </div>

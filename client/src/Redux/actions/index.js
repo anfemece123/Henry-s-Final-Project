@@ -18,15 +18,16 @@ export const formRegister = (data) => async () => {
   });
 };
 
-export const logIn = (user, password) => {
+export const logIn = ({ email, password }) => {
   return function (dispatch) {
     return axios
       .post(`http://localhost:3001/logIn`, {
-        user,
+        email,
         password,
       })
       .then((response) => {
         const user = response.data;
+        window.localStorage.setItem("loggedUser", JSON.stringify(user));
         dispatch({
           type: "LOGIN",
           payload: user,

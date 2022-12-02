@@ -115,7 +115,6 @@ getUserDetail = async (req, res) => {
     if (!userDetail) return res.status(400).send("User Not Found");
     return res.status(200).send(userDetail);
   } catch (error) {
-    console.log(error);
     return res.status(404).send(error);
   }
 };
@@ -126,7 +125,6 @@ getAllUsers = async (req, res) => {
     if (!allUsers) return res.status(400).send("User Not Found");
     return res.status(200).send(allUsers);
   } catch (error) {
-    console.log(error);
     return res.status(404).send(error);
   }
 };

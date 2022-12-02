@@ -1,0 +1,7 @@
+POST http://localhost:3001/order/newOrder
+Content-Type: application/json
+Authorization: Bearer 
+
+{
+  
+}         
