@@ -45,7 +45,7 @@ export default function CardStats({
                     ? "fas fa-arrow-down"
                     : ""
                 }
-              ></i>{" "}
+              ></i>
               {statPercent}%
             </span>
             <span className="whitespace-nowrap">{statDescripiron}</span>

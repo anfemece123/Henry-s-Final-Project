@@ -92,6 +92,10 @@ const router = createBrowserRouter([
     path: "/pasarelaTest",
     element: <CheckoutForm />,
   },
+  {
+    path: "/Pruebas",
+    element: <Dashboard />,
+  },
 ]);
 
 export default router;
