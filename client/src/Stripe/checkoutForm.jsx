@@ -3,12 +3,14 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../Redux/Reducer/cartSlice";
 
 export default function checkoutForm() {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const totalCart = useSelector((state) => state.cart.total);
 
@@ -35,7 +37,7 @@ export default function checkoutForm() {
         icon: "success",
         button: "Ok",
       });
-      navigate("/home");
+      navigate("/login");
     } else {
       return swal({
         title: "Payment denied!",
@@ -44,6 +46,7 @@ export default function checkoutForm() {
         button: "Let me see",
       });
     }
+    dispatch(clearCart());
   };
 
   return (
