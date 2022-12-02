@@ -3,9 +3,12 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import NavBar from "../../Features/NavBar";
 import { logIn } from "../../../Redux/actions/index";
+import { useNavigate } from "react-router";
+import { setAuth } from "../../../Redux/Reducer/authSlice";
 
 export default function LogIn() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   let [input, setInput] = useState({
     email: "",
@@ -17,6 +20,7 @@ export default function LogIn() {
     console.log(`Valor del usuario => ${input.email}`);
     console.log(`Valor del password => ${input.password}`);
     dispatch(logIn(input));
+    navigate("/home");
   };
 
   const handleChange = (e) => {

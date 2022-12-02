@@ -20,10 +20,11 @@ export const Cart = () => {
   const infoCart = useSelector((state) => state.cart.products);
 
   const cart = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
 
   const priceDetail = useSelector((state) => state.details.details.price);
 
-  console.log("precio del detalle en cart", priceDetail);
+  console.log("auth", auth);
 
   const deleteItemShopList = (e) => {
     dispatch(
@@ -33,16 +34,6 @@ export const Cart = () => {
         quantity: cart.quantity,
       })
     );
-  };
-  const submitCheckout = () => {
-    if (infoCart.length < 1) {
-      return swal({
-        title: "Payment denied!",
-        text: "Please, check your credit card information!",
-        icon: "warning",
-        button: "Let me see",
-      });
-    }
   };
   // const deletItem = () => {
   //   dispatch(addQuantity());
