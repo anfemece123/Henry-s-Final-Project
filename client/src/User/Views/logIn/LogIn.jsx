@@ -3,9 +3,12 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import NavBar from "../../Features/NavBar";
 import { logIn } from "../../../Redux/actions/index";
+import { useNavigate } from "react-router";
+import { setAuth } from "../../../Redux/Reducer/authSlice";
 
 export default function LogIn() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   let [input, setInput] = useState({
     email: "",
@@ -17,6 +20,7 @@ export default function LogIn() {
     console.log(`Valor del usuario => ${input.email}`);
     console.log(`Valor del password => ${input.password}`);
     dispatch(logIn(input));
+    navigate("/home");
   };
 
   const handleChange = (e) => {
@@ -40,7 +44,7 @@ export default function LogIn() {
           <div className="text-white text-center col-span-5 mt-5 font-noto-serif uppercase">
             <h3>Sing In to your account</h3>
           </div>
-          <div className="col-span-5 text-white text-center mt-20">
+          <div className="col-span-5 text-black text-center mt-20">
             <input
               className="text-center font-noto-serif w-80 rounded-lg h-8 bg-slate-700 focus:outline focus:outline-offset-2 focus:outline-blue-600"
               type="text"
@@ -50,7 +54,7 @@ export default function LogIn() {
               onChange={(e) => handleChange(e)}
             />
           </div>
-          <div className="col-span-5 text-white text-center mt-20">
+          <div className="col-span-5 text-black text-center mt-20">
             <input
               className="text-center font-noto-serif w-80 rounded-lg h-8 bg-slate-700 focus:outline focus:outline-offset-2 focus:outline-blue-600"
               type="password"

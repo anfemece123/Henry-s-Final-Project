@@ -6,6 +6,7 @@ import swal from "sweetalert";
 import { useDispatch } from "react-redux";
 import { formCreate } from "../../../Redux/actions";
 import { Link } from "react-router-dom";
+import NavBar from "../../Features/NavBar";
 
 export const FormCreate = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
@@ -28,11 +29,12 @@ export const FormCreate = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 antialiased px-4 py-6 flex flex-col justify-center sm:py-12">
+    <div className="min-h-screen bg-gray-100 text-gray-800 antialiased  flex flex-col justify-center ">
+      <NavBar />
       <div class="relative py-3 sm:max-w-xl mx-auto text-center">
-        <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
+        {/* <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
           <Link to="/home">Inicio</Link>
-        </button>
+        </button> */}
         <span class="text-2xl font-light">Form Create</span>
         <div class="w-50 max-w-lg">
           <Formik

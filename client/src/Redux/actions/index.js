@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setAuth } from "../Reducer/authSlice";
 
 export const formCreate = (data) => async () => {
   console.log("data en actions", data);
@@ -27,11 +28,7 @@ export const logIn = ({ email, password }) => {
       })
       .then((response) => {
         const user = response.data;
-        window.localStorage.setItem("loggedUser", JSON.stringify(user));
-        dispatch({
-          type: "LOGIN",
-          payload: user,
-        });
+        dispatch(setAuth(user));
       })
       .catch((error) => {
         const messageError = error.response.data;

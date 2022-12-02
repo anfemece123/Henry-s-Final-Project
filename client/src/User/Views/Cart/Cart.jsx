@@ -11,18 +11,20 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import emptyCart from "../../../Images/empty_cart.png";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import swal from "sweetalert";
+import DeleteIcon from "@mui/icons-material/Delete";
+import NavBar from "../../Features/NavBar";
 
 export const Cart = () => {
   const dispatch = useDispatch();
   const infoCart = useSelector((state) => state.cart.products);
 
-  // const quantity = infoCart.map((el) => el.quantity);
-
   const cart = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
 
   const priceDetail = useSelector((state) => state.details.details.price);
 
-  console.log("precio del detalle en cart", priceDetail);
+  console.log("auth", auth);
 
   const deleteItemShopList = (e) => {
     dispatch(
@@ -42,6 +44,7 @@ export const Cart = () => {
       class="w-full h-full bg-white dark:bg-gray-900 bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed sticky-0"
       id="chec-div"
     >
+      <NavBar />
       <div
         class="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700"
         id="checkout"
@@ -67,11 +70,13 @@ export const Cart = () => {
               Shopping Cart
             </p>
             <button
+              className="text-xl leading-normal text-red-500 dark:text-red-500"
               onClick={() => {
                 dispatch(clearCart());
               }}
             >
-              clear cart
+              <DeleteIcon />
+              Clear cart
             </button>
 
             {infoCart.length > 0 ? (
@@ -207,12 +212,18 @@ export const Cart = () => {
                     ${cart.total}
                   </p>
                 </div>
-                <button
-                  // onclick="checkoutHandler1(true)"
-                  class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
-                >
-                  Checkout
-                </button>
+                {infoCart.length >= 1 && (
+                  <Link to="/pasarelaTest">
+                    <button
+                      // onclick={() => {
+                      //   submitCheckout();
+                      // }}
+                      class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
+                    >
+                      Checkout (${cart.total})
+                    </button>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
