@@ -15,6 +15,12 @@
 • http://localhost:3001/user/update/:id
 • http://localhost:3001/user/delete/:id
 
+• http://localhost:3001/order/newOrder
+• http://localhost:3001/order/:idOrder
+• http://localhost:3001/order/allOrders
+• http://localhost:3001/order/update/:idOrder
+• http://localhost:3001/order/delete/:idOrder
+
 • http://localhost:3001/logIn
 
 http://localhost:3000/admin/dashboard
