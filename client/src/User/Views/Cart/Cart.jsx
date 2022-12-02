@@ -207,12 +207,14 @@ export const Cart = () => {
                     ${cart.total}
                   </p>
                 </div>
-                <button
-                  // onclick="checkoutHandler1(true)"
-                  class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
-                >
-                  Checkout
-                </button>
+                <Link to="/pasarelaTest">
+                  <button
+                    // onclick="checkoutHandler1(true)"
+                    class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
+                  >
+                    Checkout
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
