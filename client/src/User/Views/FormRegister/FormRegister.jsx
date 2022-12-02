@@ -13,14 +13,14 @@ export const ForrmRegister = () => {
 
   // Esta funcion verifica a la inversa para mostrar las alertas (?)
   const alert = (e) => {
-    if (!formularioEnviado) {
-      return swal({
+    if (formularioEnviado) {
+      swal({
         title: "Excellent!",
         text: "You maded your account!",
         icon: "success",
       });
     } else {
-      return swal({
+      swal({
         title: "Something went wrong :'(",
         text: "Try again later!",
         icon: "warning",
