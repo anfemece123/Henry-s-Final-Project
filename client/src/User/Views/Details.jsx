@@ -5,9 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../Redux/Reducer/productDetails";
 import { useParams } from "react-router";
 import Loading from "../Features/Loading";
-import NavBar from "../Features/NavBar";
+import NavBar from "../Features/Navigation";
 import Footer from "../Features/Footer";
 import { addProduct } from "../../Redux/Reducer/cartSlice";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
+import Stack from "react-bootstrap/Stack";
 
 export default function Details() {
   const details = useSelector((state) => state.details);
@@ -45,63 +51,46 @@ export default function Details() {
   if (loading) return <Loading />;
   if (!loading && error) return <h1>{error}</h1>;
   return (
-    <div className=" min-h-screen bg-gray-200">
-      <div className="grid grid-cols-5 ">
-        <div className="col-span-5 ">
+    <Container fluid className="min-vh-100" lg={12}>
+      <Row>
+        <Col lg={12} md={12} xs={12}>
           <NavBar />
-        </div>
-        <div className="col-span-2 w-[32rem] ml-5 mt-20 mb-20 shadow-2xl shadow-gray-600 hover:shadow-2xl hover:shadow-green-700">
-          <img
-            className="h-[32rem] m-auto"
+        </Col>
+        <Col lg={6} md={6} xs={12}>
+          <Image
             src={details.details.image}
             alt={`pic-for${details.details.title}`}
+            fluid
+            style={{ maxHeight: "700px", minHeight: "700px" }}
           />
-        </div>
-        <div className="col-span-3 border border-slate-900 bg-gray-800 rounded-lg text-white shadow-2xl  shadow-gray-600  hover:shadow-2xl hover:shadow-green-700 m-auto w-[65rem]">
-          {/*no se si quedan mejor los detalles con esto en el div de arriba
-         de este comentario  => bg-slate-300 p-10 */}
-          <div className="flex gap-32 mt-10">
-            <div className="font-noto-serif text-3xl justify-center p-4">
-              <h1 className="capitalize">PRODUCT: {details.details.title}</h1>
-              <br />
-              <p>PRICE: ${details.details.price}</p>
-              <br />
-              <p>SIZE: {details.details.size}</p>
-              <br />
-              <p>CATEGORY: {details.details.category}</p>
-              <br />
-            </div>
-            <div className="font-noto-serif text-2xl m-auto">
-              <p className="capitalize">COLOR: {details.details.color}</p>
-              <br />
-              <p className="capitalize">SEASON: {details.details.season}</p>
-              <br />
-              <p className="capitalize">GENDER: {details.details.gender}</p>
-              <br />
-              <p>STOCK: {details.details.stock}</p>
-              <br />
-            </div>
-            <div className="font-noto-serif text-2xl m-auto">
-              <RemoveIcon onClick={() => handleQuantity("dec")} />
-              <p>{quantity}</p>
-              <AddIcon onClick={() => handleQuantity("inc")} />
-            </div>
-          </div>
-          <div className="text-center">
+        </Col>
+        <Col lg={2} md={3} xs={12} className="pt-5">
+          <Stack gap={5}>
+            <div>PRODUCT: {details.details.title}</div>
+            <div>PRICE: ${details.details.price}</div>
+            <div>SIZE: {details.details.size}</div>
+            <div>COLOR: {details.details.color}</div>
+            <div>SEASON: {details.details.season}</div>
+            <div>GENDER: {details.details.gender}</div>
+            <div>STOCK: {details.details.stock}</div>
+          </Stack>
+        </Col>
+        <Col lg={4} md={5} xs={9} className="pt-5 pb-5 d-flex gap-4 m-auto">
+          <RemoveIcon onClick={() => handleQuantity("dec")} />
+          <p>{quantity}</p>
+          <AddIcon onClick={() => handleQuantity("inc")} />
+          <div>
             {details.details.stock >= 1 && (
-              <button
-                className="animate-pulse border border-slate-200 p-2 mb-3 rounded-lg hover:bg-green-400 hover:border-slate-800 hover:text-black"
-                onClick={handleClick}
-              >
-                Añadir al carrito
-              </button>
+              <Button onClick={handleClick}>Añadir al carrito</Button>
             )}
           </div>
-        </div>
-        <div className="absolute inset-x-0 bottom-0">
-          <Footer />
-        </div>
-      </div>
-    </div>
+        </Col>
+        <Col md={12} xs={12}>
+          <div>
+            <Footer />
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }

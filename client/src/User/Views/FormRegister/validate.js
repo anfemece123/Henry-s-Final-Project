@@ -64,15 +64,15 @@ export default function validate(values) {
     errors.confirmPassword = "Please enter a confirm Password";
   }
 
-  //image
+  //image = Volver a rehacer, ahora se sube un archivo
 
-  if (!values.profileImage) {
-    errors.profileImage = "Please enter a image";
-  }
+  // if (!values.profileImage) {
+  //   errors.profileImage = "Please enter a image";
+  // }
 
-  if (!RegExpressionUrl.test(values.profileImage)) {
-    errors.profileImage = "wrong url";
-  }
+  // if (!RegExpressionUrl.test(values.profileImage)) {
+  //   errors.profileImage = "wrong url";
+  // }
 
   //isOnSale
   //   if (!values.isOnSale) {

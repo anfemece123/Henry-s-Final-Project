@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
-import Card from "../Features/Card";
+import Cards from "../Features/Cards";
 export default function PaginatedItems({ itemsPerPage }) {
   const [itemOffset, setItemOffset] = useState(0);
   const product = useSelector((state) => state.allProducts.allProducts);
@@ -17,12 +17,12 @@ export default function PaginatedItems({ itemsPerPage }) {
   };
 
   return (
-    <div className="grid grid-cols-2">
-      <div className="col-span-2 flex flex-wrap justify-center gap-8 mt-5">
+    <div>
+      <div className="d-flex justify-content-around">
         {currentItems
           ? currentItems.map((element) => {
               return (
-                <Card
+                <Cards
                   key={element.id}
                   id={element.id}
                   title={element.title}
@@ -36,16 +36,25 @@ export default function PaginatedItems({ itemsPerPage }) {
             })
           : null}
       </div>
-      <div>
+      <div className="mt-5">
         <ReactPaginate
-          breakLabel="..."
           nextLabel="next >"
           onPageChange={handlePageClick}
           pageRangeDisplayed={6}
           pageCount={pageCount}
           previousLabel="< previous"
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-item"
+          previousLinkClassName="page-link"
+          nextClassName="page-item"
+          nextLinkClassName="page-link"
+          breakLabel="..."
+          breakClassName="page-item"
+          breakLinkClassName="page-link"
+          containerClassName="pagination"
+          activeClassName="active"
           renderOnZeroPageCount={null}
-          forcePage={1}
         />
       </div>
     </div>

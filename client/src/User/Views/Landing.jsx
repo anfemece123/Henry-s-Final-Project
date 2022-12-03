@@ -1,41 +1,49 @@
-import React from "react";
-import NavBar from "../Features/NavBar";
-import girLanding from "../../Images/bg2.png";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+
 import Footer from "../Features/Footer";
+import Navigation from "../Features/Navigation";
+import style from "../../Assets/globalStyles.module.css";
+import CarouselLan from "../Features/CarouselLan";
+import { getAllProducts } from "../../Redux/Reducer/allProductSlice";
+import { useDispatch } from "react-redux";
+// Bootstrap imports
+
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+
+import Button from "react-bootstrap/Button";
 
 export default function Landing() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, []);
+
   return (
-    <div className="h-screen w-screen bg-gradient-to-r from-sky-500 to-indigo-500">
-      <div className="grid grid-cols-5">
-        <div className="col-span-5">
-          <NavBar />
-        </div>
-        <div className="col-span-3">
-          <img
-            src={girLanding}
-            className="m-auto"
-            style={{ height: "700px" }}
-          />
-        </div>
-        <div className="col-span-2 m-auto">
-          <div className="text-start text-5xl font-noto-serif">
-            <h1>
-              El estilo,
-              <br />
-              es la ropa de tu personalidad
-            </h1>
+    <Container fluid className={`${style.landingContainer}`}>
+      <Row>
+        <Navigation />
+      </Row>
+      <Row lg={2} md={2} xs={1} className="mt-5">
+        <Col>
+          <CarouselLan />
+        </Col>
+        <Col className="d-flex align-items-center justify-content-center text-dark">
+          <div>
+            <h1>La ropa, es el estilo de tu personalidad</h1>
+            <div className="pt-5">
+              <Button>Ver catalogo</Button>
+            </div>
           </div>
-          <div className="text-center mt-11">
-            <button className="font-noto-serif text-2xl rounded-full bg-black text-white border border-slate-900 p-4">
-              <Link to="/home">VER CATALOGO</Link>
-            </button>
-          </div>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 col-span-5 border border-slate-900">
+        </Col>
+      </Row>
+      <Row lg={1} md={1}>
+        <Col className="fixed-bottom">
           <Footer />
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }

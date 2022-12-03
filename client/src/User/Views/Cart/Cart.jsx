@@ -7,14 +7,14 @@ import {
   removeProduct,
   removeQuantity,
 } from "../../../Redux/Reducer/cartSlice";
+import Footer from "../../Features/Footer";
+import swal from "sweetalert";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import emptyCart from "../../../Images/empty_cart.png";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import swal from "sweetalert";
 import DeleteIcon from "@mui/icons-material/Delete";
-import NavBar from "../../Features/NavBar";
-
+import Button from "react-bootstrap/Button";
+import Navigation from "../../Features/Navigation";
 export const Cart = () => {
   const dispatch = useDispatch();
   const infoCart = useSelector((state) => state.cart.products);
@@ -35,200 +35,142 @@ export const Cart = () => {
       })
     );
   };
-  // const deletItem = () => {
-  //   dispatch(addQuantity());
-  // };
-
   return (
-    <div
-      class="w-full h-full bg-white dark:bg-gray-900 bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed sticky-0"
-      id="chec-div"
-    >
-      <NavBar />
-      <div
-        class="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700"
-        id="checkout"
-      >
-        <div class="flex items-end lg:flex-row flex-col justify-end" id="cart">
-          <div
-            class="lg:w-1/2 md:w-8/12 w-full lg:px-8 lg:py-14 md:px-6 px-4 md:py-8 py-4 bg-white dark:bg-gray-800 overflow-y-hidden overflow-x-hidden lg:h-screen h-auto"
-            id="scroll"
-          >
-            <Link to="/home">
-              <div
-                class="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer"
-                // onclick="checkoutHandler(false)"
-              >
-                <ArrowBackIcon />
-                <p class="text-sm pl-2 leading-none dark:hover:text-gray-200">
-                  Continue Shopping
-                </p>
-              </div>
-            </Link>
-
-            <p class="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-black pt-3">
-              Shopping Cart
+    <section className="pb-5 min-vh-100">
+      <Navigation />
+      <div className="container ">
+        <div className="row w-100">
+          <div className="col-lg-12 col-md-12 col-12">
+            <h3 className="display-5 mb-2 text-center">Shopping Cart</h3>
+            <p className="mb-5 text-center">
+              <i className="text-info font-weight-bold">{cart.quantity}</i>{" "}
+              items in your cart
             </p>
-            <button
-              className="text-xl leading-normal text-red-500 dark:text-red-500"
+            <table
+              id="shoppingCart"
+              className="table table-condensed table-responsive"
+            >
+              <thead>
+                <tr>
+                  <th style={{ width: "60%" }}>Product</th>
+                  <th style={{ width: "12%" }}>Price</th>
+                  <th style={{ width: "10%" }}>Quantity</th>
+                  <th style={{ width: "16%" }}></th>
+                </tr>
+              </thead>
+              <tbody>
+                {infoCart.length > 0 ? (
+                  infoCart.map((element, index) => {
+                    console.log("en componente", element.quantity);
+                    const addItem = () => {
+                      element.quantity > 0 &&
+                        dispatch(
+                          addQuantity({
+                            price: element.price,
+                            quantity: element.quantity,
+                            id: element.id,
+                            priceDetail: priceDetail,
+                          })
+                        );
+                    };
+                    const deletItem = () => {
+                      element.quantity > 1 &&
+                        dispatch(
+                          removeQuantity({
+                            price: element.price,
+                            quantity: element.quantity,
+                            id: element.id,
+                            priceDetail: priceDetail,
+                          })
+                        );
+                    };
+                    return (
+                      <tr>
+                        <td data-th="Product">
+                          <div className="row">
+                            <div className="col-md-3 text-left">
+                              <img
+                                src={element.image}
+                                alt=""
+                                className="img-fluid d-none d-md-block rounded mb-2 shadow "
+                              />
+                            </div>
+                            <div className="col-md-9 text-left mt-sm-2">
+                              <h4>{element.title}</h4>
+                              <p className="font-weight-light">
+                                {element.category}
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td data-th="Price">${element.price}</td>
+                        <td data-th="Quantity">
+                          <input
+                            type="number"
+                            className="form-control form-control-lg text-center"
+                            value={element.quantity}
+                          />
+                        </td>
+                        <td className="actions" data-th="">
+                          <div className="text-right">
+                            <button className="btn btn-white border-secondary bg-white btn-md mb-2">
+                              <AddIcon onClick={() => addItem()} />
+                            </button>
+                            <button className="btn btn-white border-secondary bg-white btn-md mb-2">
+                              <RemoveIcon onClick={() => deletItem()} />
+                            </button>
+                            <button
+                              className="btn btn-white border-secondary bg-white btn-md mb-2"
+                              onClick={() => {
+                                deleteItemShopList(index);
+                              }}
+                            >
+                              <DeleteIcon />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <div className="pl-20">
+                    <img src={emptyCart} />
+                  </div>
+                )}
+              </tbody>
+            </table>
+            <div className="float-right text-right">
+              <h4>Subtotal:</h4>
+              <h1>${cart.total}</h1>
+            </div>
+          </div>
+        </div>
+        <div className="row mt-4 d-flex align-items-center">
+          <div className="col-sm-6 order-md-2 text-right">
+            {infoCart.length >= 1 && (
+              <Button
+                href="/pasarelaTest"
+                className="btn btn-primary mb-4 btn-lg pl-5 pr-5 me-5"
+              >
+                Checkout
+              </Button>
+            )}
+            <Button
+              className="btn btn-primary mb-4 btn-lg pl-5 pr-5"
               onClick={() => {
                 dispatch(clearCart());
               }}
             >
-              <DeleteIcon />
-              Clear cart
-            </button>
-
-            {infoCart.length > 0 ? (
-              infoCart.map((element, index) => {
-                // const [quantity, setQuantity] = useState(element.quantity);
-
-                console.log("en componente", element.quantity);
-
-                // const handleQuantity = (type) => {
-                //   if (type === "dec") {
-                //     setQuantity(quantity - 1);
-                //   } else {
-                //     setQuantity(quantity + 1);
-                //   }
-                // };
-
-                const addItem = () => {
-                  element.quantity > 0 &&
-                    dispatch(
-                      addQuantity({
-                        price: element.price,
-                        quantity: element.quantity,
-                        id: element.id,
-                        priceDetail: priceDetail,
-                      })
-                    );
-                };
-                const deletItem = () => {
-                  element.quantity > 1 &&
-                    dispatch(
-                      removeQuantity({
-                        price: element.price,
-                        quantity: element.quantity,
-                        id: element.id,
-                        priceDetail: priceDetail,
-                      })
-                    );
-                };
-
-                return (
-                  <div class="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
-                    <div class="md:w-4/12 2xl:w-1/4 w-full">
-                      <img
-                        src={element.image}
-                        alt="Black Leather Bag"
-                        class="h-full object-center object-cover md:block hidden"
-                      />
-                    </div>
-                    <div class="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
-                      <p class="text-xs leading-3 text-gray-800 dark:text-black md:pt-0 pt-4">
-                        Category: {element.category}
-                      </p>
-                      <div class="flex items-center justify-between w-full pt-1">
-                        <p class="text-base font-black leading-none text-gray-800 dark:text-black">
-                          {element.title}
-                        </p>
-                        <div
-                          aria-label="Select quantity"
-                          class="py-2 px-1 border border-gray-200 mr-6 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
-                        >
-                          <RemoveIcon onClick={() => deletItem()} />
-                          <p>{element.quantity}</p>
-                          <AddIcon onClick={() => addItem()} />
-                        </div>
-                      </div>
-                      <p class="text-xs leading-3 text-gray-600 dark:text-black pt-2">
-                        Gender: {element.gender}
-                      </p>
-                      <p class="text-xs leading-3 text-gray-600 dark:text-black py-4">
-                        Color: {element.color}
-                      </p>
-                      <p class="w-96 text-xs leading-3 text-gray-600 dark:text-black">
-                        Size: {element.size}
-                      </p>
-                      <div class="flex items-center justify-between pt-5">
-                        <div class="flex itemms-center">
-                          <p class="text-xs leading-3 underline text-gray-800 dark:text-black cursor-pointer">
-                            Add to favorites
-                          </p>
-                          <button
-                            onClick={() => {
-                              deleteItemShopList(index);
-                            }}
-                          >
-                            <p class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
-                              Remove
-                            </p>
-                          </button>
-                        </div>
-                        <p class="text-base font-black leading-none text-gray-800 dark:text-black">
-                          ${element.price}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <div className="pl-20">
-                <img src={emptyCart} />
-              </div>
-            )}
+              Clear Cart
+            </Button>
           </div>
-          <div class="lg:w-96 md:w-8/12 w-full bg-gray-100 dark:bg-gray-900 h-full">
-            <div class="flex flex-col lg:h-screen h-auto lg:px-8 md:px-7 px-4 lg:py-20 md:py-10 py-6 justify-between overflow-y-auto">
-              <div>
-                <p class="lg:text-4xl text-3xl font-black leading-9 text-gray-800 dark:text-white">
-                  Summary
-                </p>
-                <div class="flex items-center justify-between pt-16">
-                  <p class="text-base leading-none text-gray-800 dark:text-white">
-                    Items
-                  </p>
-                  <p class="text-base leading-none text-gray-800 dark:text-white">
-                    {cart.quantity}
-                  </p>
-                </div>
-                <div class="flex items-center justify-between pt-5">
-                  <p class="text-base leading-none text-gray-800 dark:text-white">
-                    Subtotal
-                  </p>
-                  <p class="text-base leading-none text-gray-800 dark:text-white">
-                    ${cart.total}
-                  </p>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-center pb-6 justify-between lg:pt-5 pt-20">
-                  <p class="text-2xl leading-normal text-gray-800 dark:text-white">
-                    Total
-                  </p>
-                  <p class="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">
-                    ${cart.total}
-                  </p>
-                </div>
-                {infoCart.length >= 1 && (
-                  <Link to="/pasarelaTest">
-                    <button
-                      // onclick={() => {
-                      //   submitCheckout();
-                      // }}
-                      class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
-                    >
-                      Checkout (${cart.total})
-                    </button>
-                  </Link>
-                )}
-              </div>
-            </div>
+          <div className="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
+            <Link to="/home">
+              <i className="fas fa-arrow-left mr-2"></i> Continue Shopping
+            </Link>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
