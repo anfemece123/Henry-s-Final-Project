@@ -10,7 +10,9 @@ import HomeIcon from "@mui/icons-material/Home";
 import LoginIcon from "@mui/icons-material/Login";
 import MenuContainer from "../../Admin/container/MenuCotainer";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { logout, setAuth } from "../../Redux/Reducer/authSlice";
+import { logout } from "../../Redux/Reducer/authSlice";
+import { clearCart } from "../../Redux/Reducer/cartSlice";
+import { ContainerLogIn } from "./ContainerLogIn";
 
 export default function NavBar() {
   const cart = useSelector((state) => state.cart.quantity);
@@ -37,9 +39,10 @@ export default function NavBar() {
 
   // console.log("loggedUserJSON: ", user);
 
-  function logOutSubmit() {
-    dispatch(logout());
-  }
+  // function logOutSubmit() {
+  //   dispatch(clearCart());
+  //   dispatch(logout());
+  // }
   // const isAdmin = user.isAdmin;
 
   // console.log("loggedUserJSON: ", isAdmin);
@@ -57,15 +60,7 @@ export default function NavBar() {
           </Link>
 
           <SearchBar />
-
-          <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
-            <Link to="/formRegister">Register</Link>
-          </button>
-          <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
-            <Link to="/login">
-              <LoginIcon /> Log In
-            </Link>
-          </button>
+          <ContainerLogIn />
           <Link to="/cart">
             <IconButton aria-label="cart">
               <StyledBadge badgeContent={cart} color="secondary">
@@ -86,20 +81,15 @@ export default function NavBar() {
 
           <SearchBar />
 
-          <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
+          {/* <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
             <Link to="/formRegister">Register</Link>
-          </button>
-          <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
+          </button> */}
+          {/* <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
             <Link to="/login">
               <LoginIcon /> Log In
             </Link>
-          </button>
-          <button
-            onClick={logOutSubmit}
-            className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900"
-          >
-            <LoginIcon /> Log out
-          </button>
+          </button> */}
+          <ContainerLogIn />
           <Link to="/cart">
             <IconButton aria-label="cart">
               <StyledBadge badgeContent={cart} color="secondary">
