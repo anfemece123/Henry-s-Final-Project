@@ -1,5 +1,5 @@
 const express = require("express");
-/* const {verifyToken, verifyTokenAndIsAdmin } = require("../middlewares/verifyUser"); */
+//const {verifyToken, verifyTokenAndIsAdmin } = require("../middlewares/verifyUser");
 
 const {
   createOrder,
@@ -11,9 +11,9 @@ const {
 
 const router = express.Router();
 
-router.post("/newOrder", /* verifyToken , */ createOrder); //only users
-router.put("/update/:idOrder", /* verifyTokenAndIsAdmin , */ updateOrder); //only admin - to change order status
-router.get("/allOrders", /* verifyTokenAndIsAdmin , */ getAllOrders); //only admin
-router.get("/:idOrder", /* verifyToken , */ getOrderDetail); // users and admin
-router.put("/delete/:idOrder" /* verifyToken , */, deleteOrder); // users and admin
+router.post("/newOrder", createOrder); //only users verifyToken
+router.put("/update/:idOrder", updateOrder); //only admin-to change order status verifyTokenAndIsAdmin
+router.get("/allOrders", getAllOrders); //only admin verifyTokenAndIsAdmin
+router.get("/:idOrder", getOrderDetail); // users and admin verifyToken
+router.put("/delete/:idOrder", deleteOrder); // users and admin verifyToken
 module.exports = router;
