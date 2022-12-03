@@ -1,31 +1,29 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {
-  getGender,
-  getCategory,
-  getByPrice,
-  getByColor,
-} from "../../Redux/Reducer/allProductSlice";
+import { getByPrice, getByFilters } from "../../Redux/Reducer/allProductSlice";
 
 export const Filtros = () => {
   const dispatch = useDispatch();
 
-  function filtroGender(e) {
-    e.preventDefault();
-    dispatch(getGender(e.target.value));
-  }
+  const [filters, setFilters] = useState({
+    gender: "",
+    category: "",
+    color: "",
+  });
 
-  function filterCategory(e) {
-    e.preventDefault();
-    dispatch(getCategory(e.target.value));
+  useEffect(() => {
+    dispatch(getByFilters(filters));
+  }, [dispatch, filters]);
+
+  function filterHandler(e) {
+    const filterName = e.target.name;
+    const filterValue = e.target.value;
+    setFilters({ ...filters, [filterName]: filterValue });
+    dispatch(getByFilters(filters));
   }
   function filterByPrice(e) {
-    e.preventDefault();
     dispatch(getByPrice(e.target.value));
-  }
-  function filterByColor(e) {
-    e.preventDefault();
-    dispatch(getByColor(e.target.value));
   }
 
   return (
@@ -35,7 +33,8 @@ export const Filtros = () => {
         <div>
           <select
             className="uppercase font-noto-serif"
-            onChange={filterByColor}
+            onChange={filterHandler}
+            name="color"
           >
             <option value="">Color</option>
             <option value="white">White</option>
@@ -47,11 +46,29 @@ export const Filtros = () => {
           </select>
         </div>
         <div>
-          <select className="uppercase font-noto-serif" onChange={filtroGender}>
-            <option value="all">Gender</option>
+          <select
+            className="uppercase font-noto-serif"
+            onChange={filterHandler}
+            name="gender"
+          >
+            <option value="">Gender</option>
             <option value="female">Female</option>
             <option value="male">Male</option>
             <option value="other">Both Genders</option>
+          </select>
+        </div>
+        <div>
+          <select
+            className="uppercase font-noto-serif"
+            onChange={filterHandler}
+            name="category"
+          >
+            <option value="">Category</option>
+            <option value="shirts">Shirt</option>
+            <option value="t-shirts">T-shirt</option>
+            <option value="foot">Shoes</option>
+            <option value="jeans">jeans</option>
+            <option value="jacket">Jackets</option>
           </select>
         </div>
         <div>
@@ -61,20 +78,7 @@ export const Filtros = () => {
           >
             <option value="">Prices</option>
             <option value="ASC">Lowest price</option>
-            <option value="DESC">Hightest price</option>
-          </select>
-        </div>
-        <div>
-          <select
-            className="uppercase font-noto-serif"
-            onChange={filterCategory}
-          >
-            <option value="">Category</option>
-            <option value="shirts">Shirt</option>
-            <option value="t-shirts">T-shirt</option>
-            <option value="foot">Shoes</option>
-            <option value="jeans">jeans</option>
-            <option value="jacket">Jackets</option>
+            <option value="DESC">Highest price</option>
           </select>
         </div>
       </div>

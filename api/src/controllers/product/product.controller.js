@@ -189,7 +189,6 @@ getByFilters = async (req, res) => {
     const productsFiltered = await Product.findAll({
       where: consulta,
     });
-    console.log(productsFiltered);
     if (!productsFiltered.length)
       return res.status(400).send("Products Not Found");
     res.status(200).send(productsFiltered);
