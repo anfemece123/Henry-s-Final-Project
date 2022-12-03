@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import NavBar from "../../Features/NavBar";
 import { logIn } from "../../../Redux/actions/index";
 import { useNavigate } from "react-router";
-import { setAuth } from "../../../Redux/Reducer/authSlice";
+import swal from "sweetalert";
+import { errorRemove, setAuth } from "../../../Redux/Reducer/authSlice";
 
 export default function LogIn() {
   const dispatch = useDispatch();
@@ -14,14 +15,29 @@ export default function LogIn() {
     email: "",
     password: "",
   });
+  const errorAuth = useSelector((state) => state.auth.errorAuth);
+  console.log("errorAuth", errorAuth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`Valor del usuario => ${input.email}`);
-    console.log(`Valor del password => ${input.password}`);
     dispatch(logIn(input));
-    navigate("/home");
+    if (errorAuth) {
+      swal({
+        title: "Error!",
+        text: errorAuth,
+        icon: "error",
+        buttons: {
+          defeat: true,
+        },
+      });
+    } else {
+      // dispatch(logIn(input));
+      navigate("/home");
+    }
   };
+  useEffect(() => {
+    if (errorAuth?.length === 0) return;
+  }, [errorAuth]);
 
   const handleChange = (e) => {
     e.preventDefault();
