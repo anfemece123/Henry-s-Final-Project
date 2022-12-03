@@ -7,8 +7,6 @@ logInUser = async (req, res) => {
   const { email, password } = req.body;
   // valido todos los datos recibidos
   if (!email || !password) {
-    console.log("email: ", email);
-    console.log("password: ", password);
     return res.status(400).send("Missing Data");
   }
   //aca ya tengo todos los datos
@@ -35,7 +33,7 @@ logInUser = async (req, res) => {
       return res
         .status(403 /* Forbidden */)
         .send("Your Account Is Banned, Contact With The Company");
-    if (userAux.status != "Active") {
+    if (userAux.status != "active") {
       return res.status(401).send({
         message: "Pending Account. Please Verify Your Email!",
       });
@@ -64,7 +62,6 @@ logInUser = async (req, res) => {
     };
     return res.status(200).send(loggedUser);
   } catch (error) {
-    console.log(error);
     return res.status(404).send(error);
   }
 };

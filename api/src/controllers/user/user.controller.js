@@ -56,7 +56,6 @@ createNewUser = async (req, res) => {
         where: { email },
       });
       newUser.passwordHashed = password;
-      console.log(email);
       nodemailer.sendConfirmationEmail(first_name, email, token);
       return res.status(201).send(newUser);
     }
