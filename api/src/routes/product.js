@@ -16,7 +16,7 @@ const router = express.Router();
 router.get("/allProducts", getAllProducts);
 router.post("/createProduct", /* verifyTokenAndIsAdmin,  */ createNewProducts);
 router.get("/search", getByTitle);
-router.get("/filtered", getByFilters);
+router.post("/filtered", getByFilters);
 router.put("/update/:idProduct", /* verifyTokenAndIsAdmin,  */ updateProduct);
 router.delete(
   "/delete/:idProduct",

@@ -1,12 +1,7 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {
-  getGender,
-  getCategory,
-  getByPrice,
-  getByColor,
-} from "../../Redux/Reducer/allProductSlice";
+import { getByPrice, getByFilters } from "../../Redux/Reducer/allProductSlice";
 
 export const Filtros = () => {
   const dispatch = useDispatch();
@@ -17,11 +12,15 @@ export const Filtros = () => {
     color: "",
   });
 
+  useEffect(() => {
+    dispatch(getByFilters(filters));
+  }, [dispatch, filters]);
+
   function filterHandler(e) {
     const filterName = e.target.name;
     const filterValue = e.target.value;
     setFilters({ ...filters, [filterName]: filterValue });
-    /* dispatch(getGender(e.target.value)); */
+    dispatch(getByFilters(filters));
   }
   function filterByPrice(e) {
     dispatch(getByPrice(e.target.value));
@@ -52,7 +51,7 @@ export const Filtros = () => {
             onChange={filterHandler}
             name="gender"
           >
-            <option value="all">Gender</option>
+            <option value="">Gender</option>
             <option value="female">Female</option>
             <option value="male">Male</option>
             <option value="other">Both Genders</option>

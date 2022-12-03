@@ -29,7 +29,6 @@ export default function NavBar() {
   const auth = useSelector((state) => state.auth.auth);
   const admin = auth.isAdmin;
 
-  console.log("auth ", auth);
   // const loggedUserJSON = window.localStorage.getItem("loggedUser");
   // const user = JSON.parse(loggedUserJSON);
 
