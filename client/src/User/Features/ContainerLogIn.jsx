@@ -10,10 +10,6 @@ import ContainerMenuUser from "./ContainerMenuUser";
 export const ContainerLogIn = () => {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth.auth);
-  function logOutSubmit() {
-    dispatch(clearCart());
-    dispatch(logout());
-  }
 
   return (
     <div className="w-full h-fit items-center flex gap-4">
@@ -31,12 +27,12 @@ export const ContainerLogIn = () => {
       ) : (
         <div className="w-full h-fit items-center flex gap-4">
           <ContainerMenuUser />
-          <button
+          {/* <button
             onClick={logOutSubmit}
             className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900"
           >
             <LogoutIcon /> Log out
-          </button>
+          </button> */}
         </div>
       )}
     </div>
