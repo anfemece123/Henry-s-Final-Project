@@ -20,11 +20,9 @@ export const Cart = () => {
   const infoCart = useSelector((state) => state.cart.products);
 
   const cart = useSelector((state) => state.cart);
-  const auth = useSelector((state) => state.auth);
+  const auth = useSelector((state) => state.auth.auth);
 
   const priceDetail = useSelector((state) => state.details.details.price);
-
-  console.log("auth", auth);
 
   const deleteItemShopList = (e) => {
     dispatch(
@@ -35,9 +33,6 @@ export const Cart = () => {
       })
     );
   };
-  // const deletItem = () => {
-  //   dispatch(addQuantity());
-  // };
 
   return (
     <div
