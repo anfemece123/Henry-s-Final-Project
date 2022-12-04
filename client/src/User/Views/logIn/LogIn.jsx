@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "../../Features/NavBar";
 import { logIn } from "../../../Redux/actions/index";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { errorRemove } from "../../../Redux/Reducer/authSlice";
 
 export default function LogIn() {
   const dispatch = useDispatch();
@@ -14,47 +15,38 @@ export default function LogIn() {
     email: "",
     password: "",
   });
+  // useEffect(() => {
+  //   dispatch(errorRemove());
+  // }[]);
+  const user = useSelector((state) => state.auth.auth);
 
+  console.log("userLogin", user);
   const errorAuth = useSelector((state) => state.auth.errorAuth);
-  console.log("errorAuth", errorAuth);
+
+  useEffect(() => {
+    if (Object.keys(user).length >= 1) {
+      navigate("/home");
+    }
+  }, [user]);
+
+  useEffect(() => {
+    dispatch(errorRemove());
+
+    if (errorAuth.length === 0) {
+      return;
+    } else {
+      swal({
+        title: "Error!",
+        text: errorAuth,
+        icon: "error",
+        button: "ok",
+      });
+    }
+  }, [errorAuth]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(logIn(input));
-    if (errorAuth === "Pending Account. Please Verify Your Email!") {
-      swal("You need to verify your email address before proceeding.", {
-        buttons: {
-          cancel: "I know the way!",
-          catch: {
-            text: "Take me to my email!",
-            value: "redirect",
-          },
-        },
-      }).then((value) => {
-        switch (value) {
-          case "redirect":
-            swal({
-              title: "Gotcha!",
-              text: "You will be redirected",
-              button: "success",
-            });
-            break;
-          default:
-            swal("Verify your email then!!");
-        }
-      });
-    } else if (errorAuth === "Username Or Password Wrong") {
-      swal("Pay Attention!", "Incorrect username or password", "warning");
-    } else if (errorAuth === "Missing Data") {
-      swal("Pay Attention!", "Faltan campos prueba", "warning");
-    } else {
-      // swal(`Welcome back!${input.email}`, "success");
-    }
-    setInput({
-      ...input,
-      email: "",
-      passowrd: "",
-    });
   };
 
   const handleChange = (e) => {
