@@ -58,13 +58,13 @@ export default function LogIn() {
   };
 
   return (
-    <div className="bg-slate-800 min-h-screen min-w-screen flex">
+    <div className="bg-slate-300 min-h-screen min-w-screen flex">
       <div className="absolute w-screen">
         <NavBar />
       </div>
       <div className="bg-slate-900 border border-slate-900 h-[42rem] w-[40rem] rounded-lg m-auto shadow-2xl shadow-slate-300 hover:shadow-2xl hover:shadow-green-400">
         <div className="grid grid-cols-5">
-          <div className="text-white col-span-5 text-center mt-5 font-cursive-titles uppercase text-5xl">
+          <div className="text-white col-span-5 text-center mt-5 font-noto-serif uppercase text-5xl">
             <h1>Welcome back!</h1>
           </div>
           <div className="text-white text-center col-span-5 mt-5 font-noto-serif uppercase">

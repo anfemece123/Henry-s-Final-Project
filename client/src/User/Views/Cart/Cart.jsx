@@ -39,7 +39,20 @@ export const Cart = () => {
 
   const checkoutHandler = () => {
     if (Object.keys(auth) < 1) {
-      navigate("/login");
+      swal({
+        title: "You need to be logged in to continue",
+        text: "You can create a new account or log in with an existing one!",
+        icon: "warning",
+        buttons: ["Create Account", "Log In"],
+        dangerMode: true,
+      }).then((value) => {
+        if (value) {
+          navigate("/login");
+        } else {
+          swal("You can make your account here!");
+          navigate("/formRegister");
+        }
+      });
     } else {
       navigate("/pasarelaTest");
     }
@@ -47,32 +60,35 @@ export const Cart = () => {
 
   return (
     <div
-      class="w-full h-full bg-white dark:bg-gray-900 bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed sticky-0"
+      className="w-full h-full bg-white dark:bg-gray-900 bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed sticky-0"
       id="chec-div"
     >
       <NavBar />
       <div
-        class="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700"
+        className="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700"
         id="checkout"
       >
-        <div class="flex items-end lg:flex-row flex-col justify-end" id="cart">
+        <div
+          className="flex items-end lg:flex-row flex-col justify-end"
+          id="cart"
+        >
           <div
-            class="lg:w-1/2 md:w-8/12 w-full lg:px-8 lg:py-14 md:px-6 px-4 md:py-8 py-4 bg-white dark:bg-gray-800 overflow-y-hidden overflow-x-hidden lg:h-screen h-auto"
+            className="lg:w-1/2 md:w-8/12 w-full lg:px-8 lg:py-14 md:px-6 px-4 md:py-8 py-4 bg-white dark:bg-gray-800 overflow-y-hidden overflow-x-hidden lg:h-screen h-auto"
             id="scroll"
           >
             <Link to="/home">
               <div
-                class="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer"
+                className="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer"
                 // onclick="checkoutHandler(false)"
               >
                 <ArrowBackIcon />
-                <p class="text-sm pl-2 leading-none dark:hover:text-gray-200">
+                <p className="text-sm pl-2 leading-none dark:hover:text-gray-200">
                   Continue Shopping
                 </p>
               </div>
             </Link>
 
-            <p class="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-black pt-3">
+            <p className="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-black pt-3">
               Shopping Cart
             </p>
             <button
@@ -112,43 +128,43 @@ export const Cart = () => {
                 };
 
                 return (
-                  <div class="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
-                    <div class="md:w-4/12 2xl:w-1/4 w-full">
+                  <div className="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
+                    <div className="md:w-4/12 2xl:w-1/4 w-full">
                       <img
                         src={element.image}
                         alt="Black Leather Bag"
-                        class="h-full object-center object-cover md:block hidden"
+                        className="h-full object-center object-cover md:block hidden"
                       />
                     </div>
-                    <div class="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
-                      <p class="text-xs leading-3 text-gray-800 dark:text-black md:pt-0 pt-4">
+                    <div className="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
+                      <p className="text-xs leading-3 text-gray-800 dark:text-black md:pt-0 pt-4">
                         Category: {element.category}
                       </p>
-                      <div class="flex items-center justify-between w-full pt-1">
-                        <p class="text-base font-black leading-none text-gray-800 dark:text-black">
+                      <div className="flex items-center justify-between w-full pt-1">
+                        <p className="text-base font-black leading-none text-gray-800 dark:text-black">
                           {element.title}
                         </p>
                         <div
                           aria-label="Select quantity"
-                          class="py-2 px-1 border border-gray-200 mr-6 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
+                          className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
                         >
                           <RemoveIcon onClick={() => deletItem()} />
                           <p>{element.quantity}</p>
                           <AddIcon onClick={() => addItem()} />
                         </div>
                       </div>
-                      <p class="text-xs leading-3 text-gray-600 dark:text-black pt-2">
+                      <p className="text-xs leading-3 text-gray-600 dark:text-black pt-2">
                         Gender: {element.gender}
                       </p>
-                      <p class="text-xs leading-3 text-gray-600 dark:text-black py-4">
+                      <p className="text-xs leading-3 text-gray-600 dark:text-black py-4">
                         Color: {element.color}
                       </p>
-                      <p class="w-96 text-xs leading-3 text-gray-600 dark:text-black">
+                      <p className="w-96 text-xs leading-3 text-gray-600 dark:text-black">
                         Size: {element.size}
                       </p>
-                      <div class="flex items-center justify-between pt-5">
-                        <div class="flex itemms-center">
-                          <p class="text-xs leading-3 underline text-gray-800 dark:text-black cursor-pointer">
+                      <div className="flex items-center justify-between pt-5">
+                        <div className="flex itemms-center">
+                          <p className="text-xs leading-3 underline text-gray-800 dark:text-black cursor-pointer">
                             Add to favorites
                           </p>
                           <button
@@ -156,12 +172,12 @@ export const Cart = () => {
                               deleteItemShopList(index);
                             }}
                           >
-                            <p class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
+                            <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
                               Remove
                             </p>
                           </button>
                         </div>
-                        <p class="text-base font-black leading-none text-gray-800 dark:text-black">
+                        <p className="text-base font-black leading-none text-gray-800 dark:text-black">
                           ${element.price}
                         </p>
                       </div>
@@ -170,46 +186,46 @@ export const Cart = () => {
                 );
               })
             ) : (
-              <div className="pl-20">
+              <div classNameName="pl-20">
                 <img src={emptyCart} />
               </div>
             )}
           </div>
-          <div class="lg:w-96 md:w-8/12 w-full bg-gray-100 dark:bg-gray-900 h-full">
-            <div class="flex flex-col lg:h-screen h-auto lg:px-8 md:px-7 px-4 lg:py-20 md:py-10 py-6 justify-between overflow-y-auto">
+          <div className="lg:w-96 md:w-8/12 w-full bg-gray-100 dark:bg-gray-900 h-full">
+            <div className="flex flex-col lg:h-screen h-auto lg:px-8 md:px-7 px-4 lg:py-20 md:py-10 py-6 justify-between overflow-y-auto">
               <div>
-                <p class="lg:text-4xl text-3xl font-black leading-9 text-gray-800 dark:text-white">
+                <p className="lg:text-4xl text-3xl font-black leading-9 text-gray-800 dark:text-white">
                   Summary
                 </p>
-                <div class="flex items-center justify-between pt-16">
-                  <p class="text-base leading-none text-gray-800 dark:text-white">
+                <div className="flex items-center justify-between pt-16">
+                  <p className="text-base leading-none text-gray-800 dark:text-white">
                     Items
                   </p>
-                  <p class="text-base leading-none text-gray-800 dark:text-white">
+                  <p className="text-base leading-none text-gray-800 dark:text-white">
                     {cart.quantity}
                   </p>
                 </div>
-                <div class="flex items-center justify-between pt-5">
-                  <p class="text-base leading-none text-gray-800 dark:text-white">
+                <div className="flex items-center justify-between pt-5">
+                  <p className="text-base leading-none text-gray-800 dark:text-white">
                     Subtotal
                   </p>
-                  <p class="text-base leading-none text-gray-800 dark:text-white">
+                  <p className="text-base leading-none text-gray-800 dark:text-white">
                     ${cart.total}
                   </p>
                 </div>
               </div>
               <div>
-                <div class="flex items-center pb-6 justify-between lg:pt-5 pt-20">
-                  <p class="text-2xl leading-normal text-gray-800 dark:text-white">
+                <div className="flex items-center pb-6 justify-between lg:pt-5 pt-20">
+                  <p className="text-2xl leading-normal text-gray-800 dark:text-white">
                     Total
                   </p>
-                  <p class="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">
+                  <p className="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">
                     ${cart.total}
                   </p>
                 </div>
                 {infoCart.length >= 1 && (
                   <button
-                    class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
+                    className="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
                     onClick={checkoutHandler}
                   >
                     Checkout (${cart.total})
