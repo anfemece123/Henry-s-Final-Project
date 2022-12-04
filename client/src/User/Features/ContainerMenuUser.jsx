@@ -20,14 +20,17 @@ export default function ContainerMenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const name = useSelector((state) =>
-    state.auth.auth.first_name[0].toUpperCase()
+  const name = useSelector(
+    (state) =>
+      Object.keys(state.auth) >= 1 &&
+      state.auth.auth.first_name[0].toUpperCase()
   );
   const image = useSelector((state) => state.auth.auth.profileImage);
 

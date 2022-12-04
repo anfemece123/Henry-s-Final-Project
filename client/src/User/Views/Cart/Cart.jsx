@@ -87,17 +87,7 @@ export const Cart = () => {
 
             {infoCart.length > 0 ? (
               infoCart.map((element, index) => {
-                // const [quantity, setQuantity] = useState(element.quantity);
-
                 console.log("en componente", element.quantity);
-
-                // const handleQuantity = (type) => {
-                //   if (type === "dec") {
-                //     setQuantity(quantity - 1);
-                //   } else {
-                //     setQuantity(quantity + 1);
-                //   }
-                // };
 
                 const addItem = () => {
                   element.quantity > 0 &&

@@ -28,9 +28,9 @@ export const logIn = ({ email, password }) => {
         password,
       })
       .then((response) => {
-        const user = response.data;
-        console.log("en accion", user);
-        dispatch(setAuth(user));
+        const user = response;
+        console.log("en accion", user.statusText);
+        dispatch(setAuth(user.data));
       })
       .catch((error) => {
         const messageError = error.response.data;
