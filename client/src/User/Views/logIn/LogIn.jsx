@@ -1,26 +1,60 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import NavBar from "../../Features/NavBar";
 import { logIn } from "../../../Redux/actions/index";
-import { useNavigate } from "react-router";
-import { setAuth } from "../../../Redux/Reducer/authSlice";
+import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 export default function LogIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  let [input, setInput] = useState({
+  const [input, setInput] = useState({
     email: "",
     password: "",
   });
 
+  const errorAuth = useSelector((state) => state.auth.errorAuth);
+  console.log("errorAuth", errorAuth);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`Valor del usuario => ${input.email}`);
-    console.log(`Valor del password => ${input.password}`);
     dispatch(logIn(input));
-    navigate("/home");
+    if (errorAuth === "Pending Account. Please Verify Your Email!") {
+      swal("You need to verify your email address before proceeding.", {
+        buttons: {
+          cancel: "I know the way!",
+          catch: {
+            text: "Take me to my email!",
+            value: "redirect",
+          },
+        },
+      }).then((value) => {
+        switch (value) {
+          case "redirect":
+            swal({
+              title: "Gotcha!",
+              text: "You will be redirected",
+              button: "success",
+            });
+            break;
+          default:
+            swal("Verify your email then!!");
+        }
+      });
+    } else if (errorAuth === "Username Or Password Wrong") {
+      swal("Pay Attention!", "Incorrect username or password", "warning");
+    } else if (errorAuth === "Missing Data") {
+      swal("Pay Attention!", "Faltan campos prueba", "warning");
+    } else {
+      // swal(`Welcome back!${input.email}`, "success");
+    }
+    setInput({
+      ...input,
+      email: "",
+      passowrd: "",
+    });
   };
 
   const handleChange = (e) => {
@@ -89,14 +123,14 @@ export default function LogIn() {
           <div className="text-white mt-10 col-span-5 m-10">
             <hr />
           </div>
-          <div className="col-span-5 text-white flex justify-center gap-10">
+          {/* <div className="col-span-5 text-white flex justify-center gap-10">
             <div className="transition ease-in-out delay-150 bg-slate-800 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-2xl w-48 h-9 flex justify-center">
               <button>Log in with Google</button>
             </div>
             <div className="transition ease-in-out delay-150 bg-slate-800 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-2xl w-48 h-9 flex justify-center">
               <button>Log in with LinkedIn</button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

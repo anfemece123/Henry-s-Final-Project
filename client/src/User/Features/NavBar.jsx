@@ -29,23 +29,6 @@ export default function NavBar() {
   const auth = useSelector((state) => state.auth.auth);
   const admin = auth.isAdmin;
 
-  // const loggedUserJSON = window.localStorage.getItem("loggedUser");
-  // const user = JSON.parse(loggedUserJSON);
-
-  // useEffect(() => {
-  //   dispatch(setAuth({ user: user }));
-  // }, [dispatch]);
-
-  // console.log("loggedUserJSON: ", user);
-
-  // function logOutSubmit() {
-  //   dispatch(clearCart());
-  //   dispatch(logout());
-  // }
-  // const isAdmin = user.isAdmin;
-
-  // console.log("loggedUserJSON: ", isAdmin);
-
   return (
     <div className="w-full bg-gray-900">
       {auth.isAdmin === true ? (

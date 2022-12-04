@@ -18,6 +18,7 @@ const authSlice = createSlice({
     },
 
     setErrorAuth: (state, action) => {
+      // console.log("errores en auth", state.errorAuth);
       state.errorAuth = action.payload;
     },
 

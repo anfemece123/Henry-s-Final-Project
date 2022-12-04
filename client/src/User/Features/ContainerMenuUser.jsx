@@ -11,20 +11,33 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../../Redux/Reducer/cartSlice";
+import { logout } from "../../Redux/Reducer/authSlice";
+import { Link } from "react-router-dom";
 
 export default function ContainerMenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const dispatch = useDispatch();
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const user = useSelector((state) =>
-    state.auth.auth.first_name[0].toUpperCase()
+  const name = useSelector(
+    (state) =>
+      Object.keys(state.auth) >= 1 &&
+      state.auth.auth.first_name[0].toUpperCase()
   );
+  const image = useSelector((state) => state.auth.auth.profileImage);
+
+  function logOutSubmit() {
+    dispatch(clearCart());
+    dispatch(logout());
+  }
 
   return (
     <React.Fragment>
@@ -38,7 +51,7 @@ export default function ContainerMenuUser() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>{user}</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>{name}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -77,30 +90,34 @@ export default function ContainerMenuUser() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem>
+        <Link to="/profile">
+          <MenuItem>
+            <Avatar alt="Remy Sharp" src={image} /> Profile
+          </MenuItem>
+        </Link>
+        {/* <MenuItem>
           <Avatar /> My account
-        </MenuItem>
+        </MenuItem> */}
         <Divider />
-        <MenuItem>
+        {/* <MenuItem>
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
           Add another account
-        </MenuItem>
-        <MenuItem>
+        </MenuItem> */}
+        {/* <MenuItem>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           Settings
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
+          <button onClick={logOutSubmit}>
+            <ListItemIcon>
+              <Logout fontSize="small" />
+            </ListItemIcon>
+            Logout
+          </button>
         </MenuItem>
       </Menu>
     </React.Fragment>
