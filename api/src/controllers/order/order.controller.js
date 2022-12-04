@@ -1,5 +1,7 @@
 const { Order } = require("../../db");
 const { Product } = require("../../db");
+const { User } = require("../../db");
+const nodemailer = require("../../../nodemailer.config");
 
 let id = 1;
 createOrder = async (req, res) => {
@@ -17,6 +19,7 @@ createOrder = async (req, res) => {
       status,
     });
     await newOrder.setUser(userId);
+
     //actualizo el stock
     for (const element of products) {
       try {
@@ -29,6 +32,8 @@ createOrder = async (req, res) => {
         return res.status(404).send(error.message);
       }
     }
+    const user = await User.findOne({ where: { id: userId } });
+    nodemailer.sendPurchaseConfirmation(user.first_name, user.email, newOrder);
     res.status(201).send("Order Succesfully Created");
     id++;
     return;
