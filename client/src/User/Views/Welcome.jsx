@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const Welcome = (props) => {
+const Welcome = () => {
   const URL = useParams().confirmationCode;
   console.log("el path es: ", URL);
   const verifyUser = (URL) => {
