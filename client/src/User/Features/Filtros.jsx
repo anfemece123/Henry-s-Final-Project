@@ -1,11 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getByPrice, getByFilters } from "../../Redux/Reducer/allProductSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { sortByPrice, getByFilters } from "../../Redux/Reducer/allProductSlice";
 
 export const Filtros = () => {
   const dispatch = useDispatch();
-
+  const products = [...useSelector((state) => state.allProducts.allProducts)];
+  console.log(products);
   const [filters, setFilters] = useState({
     gender: "",
     category: "",
@@ -22,8 +23,13 @@ export const Filtros = () => {
     setFilters({ ...filters, [filterName]: filterValue });
     dispatch(getByFilters(filters));
   }
-  function filterByPrice(e) {
-    dispatch(getByPrice(e.target.value));
+  function sortingHandler(e) {
+    if (e.target.value === "asc") {
+      const sortedProducts = products?.sort((a, b) => a.price - b.price);
+      return dispatch(sortByPrice(sortedProducts));
+    }
+    const sortedProducts = products?.sort((a, b) => b.price - a.price);
+    return dispatch(sortByPrice(sortedProducts));
   }
 
   return (
@@ -74,11 +80,11 @@ export const Filtros = () => {
         <div>
           <select
             className="uppercase font-noto-serif"
-            onChange={filterByPrice}
+            onChange={sortingHandler}
           >
             <option value="">Prices</option>
-            <option value="ASC">Lowest price</option>
-            <option value="DESC">Highest price</option>
+            <option value="asc">Lowest price</option>
+            <option value="desc">Highest price</option>
           </select>
         </div>
       </div>
