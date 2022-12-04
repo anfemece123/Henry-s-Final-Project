@@ -25,3 +25,24 @@ module.exports.sendConfirmationEmail = (name, email, confirmationCode) => {
     })
     .catch((err) => console.log(err));
 };
+
+module.exports.sendPurchaseConfirmation = (name, email, newOrder) => {
+  transport
+    .sendMail({
+      from: user,
+      to: email,
+      subject: "Purchase Information",
+      html: `<h2>Hello ${name}</h2>
+          <p>Thank you for your purchase.</p>
+          <h3>Purchase Information:</h3>
+          <div>
+          <p>Nº order: ${newOrder.id}</p>
+          <p>Products</p>
+          <p>${newOrder.products}</p>
+          <p>Quantity of Products: ${newOrder.products_quantity}</p>
+          <p>Total: ${newOrder.total}</p>
+          <p>Status: ${newOrder.status}</p>
+          </div>`,
+    })
+    .catch((err) => console.log(err));
+};
