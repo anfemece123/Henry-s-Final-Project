@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import LoginIcon from "@mui/icons-material/Login";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { clearCart } from "../../Redux/Reducer/cartSlice";
-import { logout } from "../../Redux/Reducer/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import ContainerMenuUser from "./ContainerMenuUser";
 
