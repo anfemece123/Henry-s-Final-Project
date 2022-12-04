@@ -1,6 +1,9 @@
 POST http://localhost:3001/order/newOrder
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkYW50ZS5ua2FkZGFyaWFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTExMTEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjcwMTEzOTM0LCJleHAiOjE2NzI3MDU5MzR9.YbiBzsFwhiJDHVZGcBF-_VfV-VA3Ax1wXvq0y-9nvsM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkYW50ZS5ua2FkZGFyaWFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTExMTEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjcwMTE2Mjc5LCJleHAiOjE2NzI3MDgyNzl9.zfCbi4tztgoBJgaIMa_nLgULyTIepC7RqgwO0R2nkks
+
+
+
  
 {  
 	"products":[
