@@ -1,4 +1,5 @@
 //funciones helpers
+const { Product } = require("./db");
 
 splitPriceFromRange = (string) => {
   const arrAux = string.split("-");
