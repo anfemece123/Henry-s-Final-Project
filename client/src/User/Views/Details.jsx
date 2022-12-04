@@ -40,8 +40,6 @@ export default function Details() {
     }
   };
 
-  // Falta stock
-
   if (loading) return <Loading />;
   if (!loading && error) return <h1>{error}</h1>;
   return (

@@ -6,6 +6,7 @@ import {
   clearCart,
   removeProduct,
   removeQuantity,
+  setQuantity,
 } from "../../../Redux/Reducer/cartSlice";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -23,7 +24,6 @@ export const Cart = () => {
 
   const cart = useSelector((state) => state.cart);
   const auth = useSelector((state) => state.auth.auth);
-  console.log(auth);
 
   const priceDetail = useSelector((state) => state.details.details.price);
 
@@ -87,10 +87,9 @@ export const Cart = () => {
 
             {infoCart.length > 0 ? (
               infoCart.map((element, index) => {
-                console.log("en componente", element.quantity);
-
                 const addItem = () => {
-                  element.quantity > 0 &&
+                  element.quantity < element.stock &&
+                    element.quantity > 0 &&
                     dispatch(
                       addQuantity({
                         price: element.price,

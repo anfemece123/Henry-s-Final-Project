@@ -39,7 +39,7 @@ export const sortByPrice = createAsyncThunk(
   "sortByPrice/sortByPrice",
   (product) => {
     return product;
-  } //ASC
+  }
 );
 
 const productsSlice = createSlice({
