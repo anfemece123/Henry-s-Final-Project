@@ -34,7 +34,6 @@ export default function checkoutForm() {
           amount: totalCart * 100,
         }
       );
-      /* console.log(data); */
       //creando la orden en el back-end
       const products = cart.products;
       const products_quantity = cart.quantity;

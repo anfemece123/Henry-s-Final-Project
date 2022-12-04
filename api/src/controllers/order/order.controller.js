@@ -1,5 +1,5 @@
 const { Order } = require("../../db");
-const { User } = require("../../db");
+const { Product } = require("../../db");
 
 let id = 1;
 createOrder = async (req, res) => {
@@ -17,12 +17,23 @@ createOrder = async (req, res) => {
       status,
     });
     await newOrder.setUser(userId);
+    //actualizo el stock
+    for (const element of products) {
+      try {
+        const { id } = element;
+        const product = await Product.findOne({ where: { id } });
+        const stockUpdated = product.stock - element.quantity;
+        await product.update({ stock: stockUpdated });
+        await product.save();
+      } catch (error) {
+        return res.status(404).send(error.message);
+      }
+    }
     res.status(201).send("Order Succesfully Created");
     id++;
     return;
   } catch (error) {
-    console.log(error);
-    return res.status(404).send(error);
+    return res.status(404).send(error.message);
   }
 };
 
