@@ -45,7 +45,7 @@ export default function LogIn() {
       });
     } else if (errorAuth === "Username Or Password Wrong") {
       swal("Pay Attention!", "Incorrect username or password", "warning");
-    } else if (errorAuth === "Missin Data") {
+    } else if (errorAuth === "Missing Data") {
       swal("Pay Attention!", "Faltan campos prueba", "warning");
     } else {
       // swal(`Welcome back!${input.email}`, "success");

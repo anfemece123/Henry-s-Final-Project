@@ -6,7 +6,6 @@ import { sortByPrice, getByFilters } from "../../Redux/Reducer/allProductSlice";
 export const Filtros = () => {
   const dispatch = useDispatch();
   const products = [...useSelector((state) => state.allProducts.allProducts)];
-  console.log(products);
   const [filters, setFilters] = useState({
     gender: "",
     category: "",
