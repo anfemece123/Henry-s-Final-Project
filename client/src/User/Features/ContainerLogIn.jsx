@@ -5,7 +5,11 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { clearCart } from "../../Redux/Reducer/cartSlice";
 import { logout } from "../../Redux/Reducer/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+<<<<<<< HEAD
 import ContainerMenuUser from "./ContainerMenuUser.jsx";
+=======
+import ContainerMenuUser from "./ContainerMenuUser";
+>>>>>>> 76067c91cfd75bc5ed2bc87e34870884f37afd5e
 
 export const ContainerLogIn = () => {
   const dispatch = useDispatch();
@@ -38,5 +42,8 @@ export const ContainerLogIn = () => {
     </div>
   );
 };
+<<<<<<< HEAD
 
 export default ContainerLogIn;
+=======
+>>>>>>> 76067c91cfd75bc5ed2bc87e34870884f37afd5e

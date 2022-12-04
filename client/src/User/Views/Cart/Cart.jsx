@@ -20,11 +20,9 @@ export const Cart = () => {
   const infoCart = useSelector((state) => state.cart.products);
 
   const cart = useSelector((state) => state.cart);
-  const auth = useSelector((state) => state.auth);
+  const auth = useSelector((state) => state.auth.auth);
 
   const priceDetail = useSelector((state) => state.details.details.price);
-
-  console.log("auth", auth);
 
   const deleteItemShopList = (e) => {
     dispatch(
@@ -35,6 +33,10 @@ export const Cart = () => {
       })
     );
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 76067c91cfd75bc5ed2bc87e34870884f37afd5e
   return (
     <section className="pb-5 min-vh-100">
       <Navigation />

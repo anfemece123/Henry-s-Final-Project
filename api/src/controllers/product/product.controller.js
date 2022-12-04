@@ -177,6 +177,27 @@ deleteProduct = async (req, res) => {
   }
 };
 
+getByFilters = async (req, res) => {
+  //quiero filtrar por category, color, gender y ordenar por precio ASC o DES
+  //recibo los filtros por body
+  const { category, color, gender } = req.body;
+  const consulta = {};
+  if (category) consulta.category = category;
+  if (color) consulta.color = color;
+  if (gender) consulta.gender = gender;
+  try {
+    const productsFiltered = await Product.findAll({
+      where: consulta,
+    });
+    if (!productsFiltered.length)
+      return res.status(400).send("Products Not Found");
+    res.status(200).send(productsFiltered);
+  } catch (error) {
+    console.log("error: ", error);
+    return res.status(404).send(error.message);
+  }
+};
+
 module.exports = {
   getAllProducts,
   createNewProducts,
@@ -184,4 +205,5 @@ module.exports = {
   getByTitle,
   updateProduct,
   deleteProduct,
+  getByFilters,
 };

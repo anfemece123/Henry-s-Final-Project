@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -16,6 +17,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { logIn } from "../../../Redux/actions/index";
 import { useNavigate } from "react-router";
+=======
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import NavBar from "../../Features/NavBar";
+import { logIn } from "../../../Redux/actions/index";
+import { useNavigate } from "react-router";
+import swal from "sweetalert";
+>>>>>>> 76067c91cfd75bc5ed2bc87e34870884f37afd5e
 import { errorRemove, setAuth } from "../../../Redux/Reducer/authSlice";
 
 export default function LogIn() {
@@ -42,6 +52,10 @@ export default function LogIn() {
         },
       });
     } else {
+<<<<<<< HEAD
+=======
+      // dispatch(logIn(input));
+>>>>>>> 76067c91cfd75bc5ed2bc87e34870884f37afd5e
       navigate("/home");
     }
   };

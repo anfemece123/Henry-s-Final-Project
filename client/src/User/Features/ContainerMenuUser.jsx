@@ -92,7 +92,26 @@ export default function ContainerMenuUser() {
             <Avatar alt="Remy Sharp" src={image} /> Profile
           </MenuItem>
         </Link>
+<<<<<<< HEAD
         <Divider />
+=======
+        {/* <MenuItem>
+          <Avatar /> My account
+        </MenuItem> */}
+        <Divider />
+        {/* <MenuItem>
+          <ListItemIcon>
+            <PersonAdd fontSize="small" />
+          </ListItemIcon>
+          Add another account
+        </MenuItem> */}
+        {/* <MenuItem>
+          <ListItemIcon>
+            <Settings fontSize="small" />
+          </ListItemIcon>
+          Settings
+        </MenuItem> */}
+>>>>>>> 76067c91cfd75bc5ed2bc87e34870884f37afd5e
         <MenuItem>
           <button onClick={logOutSubmit}>
             <ListItemIcon>

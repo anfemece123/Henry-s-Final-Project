@@ -43,6 +43,15 @@ module.exports = (sequelize) => {
         allowNull: false,
         default: false,
       },
+      status: {
+        type: DataTypes.ENUM("pending", "active"),
+        allowNull: true,
+        default: "pending",
+      },
+      confirmationCode: {
+        type: DataTypes.STRING,
+        unique: true,
+      },
     },
     {
       timestamps: true,

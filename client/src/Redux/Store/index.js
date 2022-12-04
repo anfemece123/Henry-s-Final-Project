@@ -9,7 +9,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import thunk from "redux-thunk";
 import { persistStore } from "redux-persist";
-import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
+// import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 
 /*
   Aca se ubican los estados globales, donde les damos acceso a todos los componentes que esten por debajo del store

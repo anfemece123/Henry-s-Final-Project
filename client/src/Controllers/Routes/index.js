@@ -8,6 +8,7 @@ import LogIn from "../../User/Views/logIn/LogIn";
 import { ForrmRegister } from "../../User/Views/FormRegister/FormRegister";
 import { Cart } from "../../User/Views/Cart/Cart";
 import CheckoutForm from "../../Stripe/checkoutForm";
+import Welcome from "../../User/Views/Welcome";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
   {
     path: "/pasarelaTest",
     element: <CheckoutForm />,
+  },
+
+  {
+    path: "/confirm/:confirmationCode",
+    element: <Welcome />,
   },
 ]);
 
