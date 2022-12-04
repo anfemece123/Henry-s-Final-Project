@@ -26,6 +26,7 @@ export const Cart = () => {
   console.log(auth);
 
   const priceDetail = useSelector((state) => state.details.details.price);
+  const stock = useSelector((state) => state.details.details.stock);
 
   const deleteItemShopList = (e) => {
     dispatch(
@@ -100,6 +101,8 @@ export const Cart = () => {
                 // };
 
                 const addItem = () => {
+                  element.quantity < details.details.stock &&
+                    setQuantity(quantity + 1);
                   element.quantity > 0 &&
                     dispatch(
                       addQuantity({

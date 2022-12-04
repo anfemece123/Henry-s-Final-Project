@@ -36,11 +36,9 @@ export default function Details() {
     if (type === "dec") {
       quantity > 1 && setQuantity(quantity - 1);
     } else {
-      setQuantity(quantity + 1);
+      quantity < details.details.stock && setQuantity(quantity + 1);
     }
   };
-
-  // Falta stock
 
   if (loading) return <Loading />;
   if (!loading && error) return <h1>{error}</h1>;
