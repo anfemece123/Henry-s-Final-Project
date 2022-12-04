@@ -1,0 +1,13 @@
+POST http://localhost:3001/user/newUser
+Content-Type: application/json
+
+{
+  "first_name": "Rocio",
+  "last_name": "Perez",
+  "email":"dante.nkaddarian@gmail.com",
+  "password": "11111",
+  "phoneNumber": "1134965291",
+  "address": "Calle Falsa 123",
+  "profileImage": "https://dam.muyinteresante.com.mx/wp-content/uploads/2018/05/fotos-de-perfil-son-mejor-elegidas-por-personas-extranas-afirma-estudio.jpg",
+	"isAdmin": false
+}

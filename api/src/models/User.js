@@ -4,6 +4,11 @@ module.exports = (sequelize) => {
   sequelize.define(
     "User",
     {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoincrement: true,
+      },
       first_name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -45,11 +50,12 @@ module.exports = (sequelize) => {
       },
       status: {
         type: DataTypes.ENUM("pending", "active"),
-        allowNull: true,
+        allowNull: false,
         default: "pending",
       },
       confirmationCode: {
         type: DataTypes.STRING,
+        allowNull: false,
         unique: true,
       },
     },

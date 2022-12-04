@@ -7,6 +7,7 @@ const cartSlice = createSlice({
     products: [],
     quantity: 0,
     total: 0,
+    status: "",
   },
   reducers: {
     addProduct: (state, action) => {
@@ -18,6 +19,7 @@ const cartSlice = createSlice({
         state.quantity += 1;
         state.products.push(action.payload);
         state.total += action.payload.price;
+        state.status = "pending";
       } else {
         swal({
           title: "Be carefull!",
@@ -41,6 +43,7 @@ const cartSlice = createSlice({
       state.products = [];
       state.quantity = 0;
       state.total = 0;
+      state.status = "";
     },
 
     addQuantity: (state, action) => {

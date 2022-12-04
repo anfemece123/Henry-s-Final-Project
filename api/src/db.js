@@ -35,7 +35,7 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Product, User, Order } = sequelize.models;
+const { Order, Product, User } = sequelize.models;
 
 // Aca vendrian las relaciones
 
@@ -43,7 +43,7 @@ User.belongsToMany(Product, { through: "Product_User" });
 Product.belongsToMany(User, { through: "Product_User" });
 
 User.hasMany(Order);
-Order.belongsTo(User);
+Order.belongsToMany(User);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product} = require('./db.js');
