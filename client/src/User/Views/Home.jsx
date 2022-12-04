@@ -9,7 +9,6 @@ import { ErrorSearch } from "../Features/ErrorSearch";
 import { Filtros } from "../Features/Filtros";
 import { getAllProducts } from "../../Redux/Reducer/allProductSlice";
 import PaginatedItems from "../Features/ReactPaginate";
-import { ContainerLogIn } from "../Features/ContainerLogIn";
 
 export default function Home() {
   const product = useSelector((state) => state.allProducts);

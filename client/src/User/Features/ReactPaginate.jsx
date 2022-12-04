@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
 import Card from "../Features/Card";
+import Pagination from "@mui/material/Pagination";
+
 export default function PaginatedItems({ itemsPerPage }) {
   const [itemOffset, setItemOffset] = useState(0);
   const product = useSelector((state) => state.allProducts.allProducts);
@@ -14,6 +16,7 @@ export default function PaginatedItems({ itemsPerPage }) {
     const newOffset = (event.selected * itemsPerPage) % product.length;
 
     setItemOffset(newOffset);
+    setPage(event.selected);
   };
 
   return (
@@ -44,8 +47,15 @@ export default function PaginatedItems({ itemsPerPage }) {
           pageRangeDisplayed={6}
           pageCount={pageCount}
           previousLabel="< previous"
-          renderOnZeroPageCount={null}
-          forcePage={1}
+          pageLinkClassName=""
+          previousClassName="page-item"
+          previousLinkClassName="page-link"
+          nextClassName="page-item"
+          nextLinkClassName="page-link"
+          breakClassName="page-item"
+          breakLinkClassName="page-link"
+          containerClassName="pagination"
+          activeClassName="active"
         />
       </div>
     </div>

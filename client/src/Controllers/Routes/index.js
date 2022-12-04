@@ -18,6 +18,8 @@ import Auth from "../../Admin/layouts/Auth";
 import { Cart } from "../../User/Views/Cart/Cart";
 import CheckoutForm from "../../Stripe/checkoutForm";
 import Welcome from "../../User/Views/Welcome";
+import CardPageVisits from "../../Admin/Features/Cards/CardPageVisits";
+import CardSocialTraffic from "../../Admin/Features/Cards/CardSocialTraffic";
 
 const router = createBrowserRouter([
   {
@@ -97,6 +99,10 @@ const router = createBrowserRouter([
   {
     path: "/confirm/:confirmationCode",
     element: <Welcome />,
+  },
+  {
+    path: "/pruebas",
+    element: <CardSocialTraffic />,
   },
 ]);
 
