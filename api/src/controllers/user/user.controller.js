@@ -1,4 +1,5 @@
 const { User } = require("../../db");
+const { Order } = require("../../db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("../../../nodemailer.config");
@@ -133,7 +134,7 @@ getUserDetail = async (req, res) => {
 
 getAllUsers = async (req, res) => {
   try {
-    const allUsers = await User.findAll();
+    const allUsers = await User.findAll({ include: Order });
     if (!allUsers) return res.status(400).send("User Not Found");
     return res.status(200).send(allUsers);
   } catch (error) {
