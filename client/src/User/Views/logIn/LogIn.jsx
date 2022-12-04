@@ -21,19 +21,6 @@ export default function LogIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(logIn(input));
-    if (errorAuth) {
-      swal({
-        title: "Error!",
-        text: errorAuth,
-        icon: "error",
-        buttons: {
-          defeat: true,
-        },
-      });
-    } else {
-      // dispatch(logIn(input));
-      navigate("/home");
-    }
   };
   useEffect(() => {
     if (errorAuth?.length === 0) return;
