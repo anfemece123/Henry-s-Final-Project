@@ -1,7 +1,36 @@
 POST http://localhost:3001/order/newOrder
 Content-Type: application/json
-Authorization: Bearer 
-
-{
-  
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkYW50ZS5ua2FkZGFyaWFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTExMTEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjcwMTEzOTM0LCJleHAiOjE2NzI3MDU5MzR9.YbiBzsFwhiJDHVZGcBF-_VfV-VA3Ax1wXvq0y-9nvsM
+ 
+{  
+	"products":[
+		{
+    "id": 21,
+    "title": "perfect black sports t-shirt",
+    "category": "t-shirts",
+    "color": "black",
+    "season": "summer",
+    "stock": 2,
+    "price": 9,
+    "size": "L",
+    "gender": "male",
+    "image": "https://i.ebayimg.com/images/g/6LsAAOSwuWpdwZeM/s-l500.jpg"
+  },
+	{
+    "id": "20",
+    "title": "awesome green wool t-shirt",
+    "category": "t-shirts",
+    "color": "green",
+    "season": "summer",
+    "stock": "2",
+    "price": "12",
+    "size": "S",
+    "gender": "female",
+    "image":
+      "https://web.lasting.eu/39934-thickbox_default/lasting-damska-merino-mikina-beva-zelena.jpg"
+  }
+],
+	"products_quantity": 10,
+	"total": 500,
+	"status":"pending"
 }         

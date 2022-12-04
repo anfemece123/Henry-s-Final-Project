@@ -12,8 +12,11 @@ export default function checkoutForm() {
   const elements = useElements();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+  const token = useSelector((state) => state.auth.auth.token);
 
   const totalCart = useSelector((state) => state.cart.total);
+  console.log("array de productos", cart.products);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,14 +34,38 @@ export default function checkoutForm() {
           amount: totalCart * 100,
         }
       );
-      console.log(data);
+      /* console.log(data); */
+      //creando la orden en el back-end
+      const products = cart.products;
+      const products_quantity = cart.quantity;
+      const total = cart.total;
+      const status = cart.status;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      axios
+        .post(
+          `http://localhost:3001/order/newOrder`,
+          {
+            products,
+            products_quantity,
+            total,
+            status,
+          },
+          config
+        )
+        .then((response) => console.log(response.data))
+        .catch((error) => console.log(error.message));
+
       swal({
         title: "Payment succeful",
         text: "Thanks your for your bought!",
         icon: "success",
         button: "Ok",
       });
-      navigate("/login");
+      navigate("/home");
     } else {
       return swal({
         title: "Payment denied!",

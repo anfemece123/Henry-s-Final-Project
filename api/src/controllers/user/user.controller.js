@@ -2,7 +2,7 @@ const { User } = require("../../db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("../../../nodemailer.config");
-
+let id = 1;
 createNewUser = async (req, res) => {
   //Recibe los datos recolectados desde el formulario controlado por body de la ruta de registro de usuario
   //Crea un usuario en la base de datos, esta relacionado con las actividades creadas por el mismo.
@@ -40,6 +40,7 @@ createNewUser = async (req, res) => {
       );
       const passwordHashed = await bcrypt.hash(password, 10 /* saltRounds */);
       await User.create({
+        id,
         first_name,
         last_name,
         email,
@@ -57,7 +58,9 @@ createNewUser = async (req, res) => {
       });
       newUser.passwordHashed = password;
       nodemailer.sendConfirmationEmail(first_name, email, token);
-      return res.status(201).send(newUser);
+      res.status(201).send(newUser);
+      id++;
+      return;
     }
     return res.status(400).send("User Already Exists");
   } catch (error) {

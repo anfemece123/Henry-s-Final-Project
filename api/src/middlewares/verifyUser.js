@@ -1,5 +1,8 @@
-//only to verify user tokens
+const jwt = require("jsonwebtoken");
+
+//to verify only user tokens
 const verifyToken = (req, res, next) => {
+  console.log("verificando usuario");
   const authorization = req.get("authorization"); //.get() metodo de express para obtener el header
   if (!authorization) res.status(401).send("Unauthorized User");
   let token = null;

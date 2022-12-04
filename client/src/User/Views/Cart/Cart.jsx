@@ -14,13 +14,16 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import swal from "sweetalert";
 import DeleteIcon from "@mui/icons-material/Delete";
 import NavBar from "../../Features/NavBar";
+import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
   const dispatch = useDispatch();
   const infoCart = useSelector((state) => state.cart.products);
+  const navigate = useNavigate();
 
   const cart = useSelector((state) => state.cart);
   const auth = useSelector((state) => state.auth.auth);
+  console.log(auth);
 
   const priceDetail = useSelector((state) => state.details.details.price);
 
@@ -32,6 +35,14 @@ export const Cart = () => {
         quantity: cart.quantity,
       })
     );
+  };
+
+  const checkoutHandler = () => {
+    if (Object.keys(auth) < 1) {
+      navigate("/login");
+    } else {
+      navigate("/pasarelaTest");
+    }
   };
 
   return (
@@ -208,16 +219,12 @@ export const Cart = () => {
                   </p>
                 </div>
                 {infoCart.length >= 1 && (
-                  <Link to="/pasarelaTest">
-                    <button
-                      // onclick={() => {
-                      //   submitCheckout();
-                      // }}
-                      class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
-                    >
-                      Checkout (${cart.total})
-                    </button>
-                  </Link>
+                  <button
+                    class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
+                    onClick={checkoutHandler}
+                  >
+                    Checkout (${cart.total})
+                  </button>
                 )}
               </div>
             </div>

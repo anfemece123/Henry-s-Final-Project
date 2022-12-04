@@ -4,6 +4,11 @@ module.exports = (sequelize) => {
   sequelize.define(
     "Order",
     {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoincrement: true,
+      },
       products: {
         type: DataTypes.ARRAY(DataTypes.JSON),
         allowNull: false, //si esta vacia, que ni venga
