@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../Redux/Reducer/cartSlice";
 import NavBar from "../User/Features/NavBar";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import CheckoutStructure from "./CheckoutStructure";
+import { Stack } from "@mui/material";
 
 export default function checkoutForm() {
   const stripe = useStripe();
@@ -14,6 +18,7 @@ export default function checkoutForm() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const token = useSelector((state) => state.auth.auth.token);
+  const auth = useSelector((state) => state.auth.auth);
 
   const totalCart = useSelector((state) => state.cart.total);
   console.log("array de productos", cart.products);
@@ -79,15 +84,31 @@ export default function checkoutForm() {
   return (
     <div>
       <NavBar />
-      <div className="container grid grid-cols-3 border border-red-900">
-        <div className="col-span-3 items-center">
+      <Container className="border border-red-900">
+        {/* <div className="col-span-3 items-center">
           <form onSubmit={handleSubmit}>
             <CardElement />
             <p> ${totalCart}</p>
-            <button>Comprar</button>
+            
           </form>
-        </div>
-      </div>
+        </div> */}
+        <Stack spacing={3}>
+          <CheckoutStructure
+            first_name={auth.first_name}
+            address={auth.address}
+            phoneNumber={auth.phoneNumber}
+            profileImage={auth.profileImage}
+            last_name={auth.last_name}
+            email={auth.email}
+          />
+          <form onSubmit={handleSubmit} className="text-center">
+            <CardElement />
+            <Button type="submit" variant="contained">
+              Comprar
+            </Button>
+          </form>
+        </Stack>
+      </Container>
     </div>
   );
 }

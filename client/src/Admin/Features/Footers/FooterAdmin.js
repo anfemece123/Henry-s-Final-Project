@@ -13,9 +13,7 @@ export default function FooterAdmin() {
                 <a
                   href=""
                   className="text-blueGray-500 hover:text-blueGray-700 text-sm font-semibold py-1"
-                >
-                  Creative Tim
-                </a>
+                ></a>
               </div>
             </div>
             <div className="w-full md:w-8/12 px-4">
@@ -24,9 +22,7 @@ export default function FooterAdmin() {
                   <a
                     href=""
                     className="text-blueGray-600 hover:text-blueGray-800 text-sm font-semibold block py-1 px-3"
-                  >
-                    Creative Tim
-                  </a>
+                  ></a>
                 </li>
                 <li>
                   <a

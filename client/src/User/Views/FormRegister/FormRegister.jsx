@@ -41,7 +41,7 @@ export const ForrmRegister = () => {
               setformularioEnviado(true);
               swal({
                 title: "Excellent!",
-                text: "You maded your account!",
+                text: "Remember to verify it! Check your email",
                 icon: "success",
               });
               navigate("/login");

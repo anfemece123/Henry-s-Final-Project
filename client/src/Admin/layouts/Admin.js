@@ -29,7 +29,6 @@ export default function Admin() {
             <Route path="maps" element={<Maps />} />
             <Route path="settings" element={<Settings />} />
             <Route path="tables" element={<Tables />} />
-            {/* <redirect from="/admin" to="/admin/dashboard" /> */}
           </Routes>
           <FooterAdmin />
         </div>
