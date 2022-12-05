@@ -18,6 +18,7 @@ import Auth from "../../Admin/layouts/Auth";
 import { Cart } from "../../User/Views/Cart/Cart";
 import CheckoutForm from "../../Stripe/checkoutForm";
 import Welcome from "../../User/Views/Welcome";
+import MapExample from "../../Admin/Features/Maps/MapExample";
 
 const router = createBrowserRouter([
   {
