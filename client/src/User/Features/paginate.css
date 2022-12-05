@@ -1,6 +1,6 @@
 .item {
   align-items: center;
-  color: #fff;
+  color: black;
   cursor: pointer;
   display: flex;
   font-size: 14px;
@@ -14,7 +14,7 @@
 }
 
 .active {
-  border: solid 1px #808e9b;
+  border: solid 1px #1763ab;
   border-radius: 40px;
   color: #808e9b;
 }
@@ -30,7 +30,7 @@
 
 .pagination {
   align-items: center;
-  background-color: #0fbcf9;
+  background-color: transparent;
   display: flex;
   flex-direction: row;
   height: 60px;
