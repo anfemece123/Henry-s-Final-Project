@@ -28,10 +28,8 @@ export default function ContainerMenuUser() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const name = useSelector(
-    (state) =>
-      Object.keys(state.auth) >= 1 &&
-      state.auth.auth.first_name[0].toUpperCase()
+  const name = useSelector((state) =>
+    state.auth.auth.first_name[0].toUpperCase()
   );
   const image = useSelector((state) => state.auth.auth.profileImage);
 
@@ -53,7 +51,7 @@ export default function ContainerMenuUser() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>{name}</Avatar>
+            <Avatar alt="Remy Sharp" src={image} />
           </IconButton>
         </Tooltip>
       </Box>
@@ -94,7 +92,8 @@ export default function ContainerMenuUser() {
       >
         <Link to="/profile">
           <MenuItem>
-            <Avatar alt="Remy Sharp" src={image} /> Profile
+            <Avatar sx={{ width: 32, height: 32 }}>{name}</Avatar>
+            Profile
           </MenuItem>
         </Link>
         {/* <MenuItem>

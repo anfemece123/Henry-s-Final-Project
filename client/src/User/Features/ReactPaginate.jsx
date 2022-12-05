@@ -18,7 +18,6 @@ export default function PaginatedItems({ itemsPerPage }) {
     const newOffset = (event.selected * itemsPerPage) % product.length;
 
     setItemOffset(newOffset);
-    setPage(event.selected);
   };
 
   return (

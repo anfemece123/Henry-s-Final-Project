@@ -101,7 +101,7 @@ const products = [
   {
     id: 9,
     title: "jacket black",
-    category: "jacket",
+    category: "jackets",
     color: "black",
     season: "winter",
     stock: 2,
@@ -114,7 +114,7 @@ const products = [
   {
     id: 10,
     title: "jacket red",
-    category: "jacket",
+    category: "jackets",
     color: "red",
     season: "winter",
     price: 50.5,
@@ -126,7 +126,7 @@ const products = [
   {
     id: 11,
     title: "jacket yellow",
-    category: "jacket",
+    category: "jackets",
     color: "yellow",
     season: "winter",
     price: 50.5,
@@ -138,7 +138,7 @@ const products = [
   {
     id: 12,
     title: "jacket white",
-    category: "jacket",
+    category: "jackets",
     color: "white",
     season: "winter",
     stock: 3,
@@ -298,6 +298,39 @@ const products = [
     gender: "male",
     image:
       "https://cdn.shopify.com/s/files/1/0186/1574/products/JE037660_WT01_2000x.jpg?v=1662163687",
+  },
+  {
+    id: 25,
+    title: "Leather King Women's Jacket",
+    category: "Jackets",
+    color: "black",
+    season: "autumn",
+    price: 80,
+    size: "M",
+    gender: "female",
+    image: "https://m.media-amazon.com/images/I/71new-NVynL._AC_UX569_.jpg",
+  },
+  {
+    id: 26,
+    title: "Ladies Long Sleeve Value Denim Shirts",
+    category: "Jackets",
+    color: "blue",
+    season: "spring",
+    price: 35,
+    size: "M",
+    gender: "female",
+    image: "https://m.media-amazon.com/images/I/61Iw0aFJnDS._AC_UX522_.jpg",
+  },
+  {
+    id: 27,
+    title: "Crocs Unisex-Adult",
+    category: "shoes",
+    color: "white",
+    season: "winter",
+    price: 45,
+    size: "L",
+    gender: "other",
+    image: "https://m.media-amazon.com/images/I/61D4bBjcM6L._AC_UX575_.jpg",
   },
 ];
 module.exports = products;

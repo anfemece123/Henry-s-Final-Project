@@ -236,7 +236,7 @@ export const ForrmRegister = () => {
                 </div>
 
                 <div>
-                  <p aria-disabled>{(values.profileImage = image)}</p>
+                  <p hidden>{(values.profileImage = image)}</p>
 
                   <label class="block font-semibold"> Image</label>
                   <input
