@@ -154,6 +154,9 @@ export const Cart = () => {
                         </div>
                       </div>
                       <p className="text-xs leading-3 text-gray-600 dark:text-black pt-2">
+                        Unit price: ${element.price2}
+                      </p>
+                      <p className="text-xs leading-3 text-gray-600 dark:text-black pt-2">
                         Gender: {element.gender}
                       </p>
                       <p className="text-xs leading-3 text-gray-600 dark:text-black py-4">
@@ -178,7 +181,7 @@ export const Cart = () => {
                           </button>
                         </div>
                         <p className="text-base font-black leading-none text-gray-800 dark:text-black">
-                          ${element.price}
+                          Total price ${element.price}
                         </p>
                       </div>
                     </div>

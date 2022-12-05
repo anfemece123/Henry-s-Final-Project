@@ -2,7 +2,7 @@ import React from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import swal from "sweetalert";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../Redux/Reducer/cartSlice";
 import NavBar from "../User/Features/NavBar";
@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import CheckoutStructure from "./CheckoutStructure";
 import { Stack } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function checkoutForm() {
   const stripe = useStripe();
@@ -84,6 +85,17 @@ export default function checkoutForm() {
   return (
     <div>
       <NavBar />
+      <Link to="/cart">
+        <div
+          className="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer"
+          // onclick="checkoutHandler(false)"
+        >
+          <ArrowBackIcon />
+          <p className="text-sm pl-2 leading-none dark:hover:text-gray-200">
+            back to cart
+          </p>
+        </div>
+      </Link>
       <Container className="border border-red-900">
         {/* <div className="col-span-3 items-center">
           <form onSubmit={handleSubmit}>

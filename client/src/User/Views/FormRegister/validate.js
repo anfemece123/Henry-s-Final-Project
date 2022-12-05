@@ -66,13 +66,13 @@ export default function validate(values) {
 
   //image
 
-  if (!values.profileImage) {
-    errors.profileImage = "Please enter a image";
-  }
+  // if (!values.profileImage) {
+  //   errors.profileImage = "Please enter a image";
+  // }
 
-  if (!RegExpressionUrl.test(values.profileImage)) {
-    errors.profileImage = "wrong url";
-  }
+  // if (!RegExpressionUrl.test(values.profileImage)) {
+  //   errors.profileImage = "wrong url";
+  // }
 
   //isOnSale
   //   if (!values.isOnSale) {
