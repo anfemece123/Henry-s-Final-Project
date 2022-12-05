@@ -1,4 +1,16 @@
-import React, { useEffect } from "react";
+import { React, useEffect } from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "../../Features/NavBar";
@@ -8,6 +20,25 @@ import swal from "sweetalert";
 import { Link } from "react-router-dom";
 import { errorRemove } from "../../../Redux/Reducer/authSlice";
 
+function Copyright(props) {
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" to="/home">
+        TIENDANUESTR@
+      </Link>
+      {new Date().getFullYear()}
+    </Typography>
+  );
+}
+
+const theme = createTheme();
+
 export default function LogIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,9 +47,7 @@ export default function LogIn() {
     email: "",
     password: "",
   });
-  // useEffect(() => {
-  //   dispatch(errorRemove());
-  // }[]);
+
   const user = useSelector((state) => state.auth.auth);
 
   console.log("userLogin", user);
@@ -59,77 +88,78 @@ export default function LogIn() {
   };
 
   return (
-    <div className="bg-slate-300 min-h-screen min-w-screen flex">
-      <div className="absolute w-screen">
-        <NavBar />
-      </div>
-      <div className="bg-slate-900 border border-slate-900 h-[42rem] w-[40rem] rounded-lg m-auto shadow-2xl shadow-slate-300 hover:shadow-2xl hover:shadow-green-400">
-        <div className="grid grid-cols-5">
-          <div className="text-white col-span-5 text-center mt-5 font-noto-serif uppercase text-5xl">
-            <h1>Welcome back!</h1>
-          </div>
-          <div className="text-white text-center col-span-5 mt-5 font-noto-serif uppercase">
-            <h3>Sing In to your account</h3>
-          </div>
-          <div className="col-span-5 text-black text-center mt-20">
-            <input
-              className="text-center font-noto-serif w-80 rounded-lg h-8 bg-slate-700 focus:outline focus:outline-offset-2 focus:outline-blue-600"
-              type="text"
+    <ThemeProvider theme={theme}>
+      <NavBar />
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box component="form" noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
               name="email"
               value={input.email}
-              placeholder="Your user email"
-              onChange={(e) => handleChange(e)}
+              autoComplete="Your user email"
+              autoFocus
+              onChange={handleChange}
             />
-          </div>
-          <div className="col-span-5 text-black text-center mt-20">
-            <input
-              className="text-center font-noto-serif w-80 rounded-lg h-8 bg-slate-700 focus:outline focus:outline-offset-2 focus:outline-blue-600"
-              type="password"
-              value={input.password}
+            <TextField
+              margin="normal"
+              required
+              fullWidth
               name="password"
-              placeholder="Your password"
-              onChange={(e) => handleChange(e)}
+              value={input.password}
+              label="Password"
+              type="password"
+              id="password"
+              onChange={handleChange}
+              autoComplete="current-password"
             />
-          </div>
-          <div className="col-span-5 text-white ml-20 mt-10 font-noto-serif text-lg">
-            <div className="flex items-center justify-around">
-              <div className="flex items-center gap-4">
-                <input type="checkbox" className="w-5 h-5 accent-blue-600" />
-                <label>Remember me</label>
-              </div>
-              <div>
-                <a
-                  href="#"
-                  className="font-medium text-primary-600 hover:underline text-blue-600"
-                >
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              onClick={handleSubmit}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
                   Forgot password?
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-5 text-white font-noto-serif text-2xl m-auto text-center">
-            <div className="mt-20 flex justify-center border border-slate-700 rounded-full w-80 h-10 transition ease-in-out delay-150 bg-slate-700 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
-              <button onClick={handleSubmit}>LET ME IN!</button>
-            </div>
-          </div>
-
-          <div className="text-white mt-10 col-span-5 m-10">
-            <hr />
-          </div>
-          <div className="col-span-5 text-white flex justify-center gap-10">
-            <div className="transition ease-in-out delay-150 bg-slate-800 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-2xl w-48 h-9 flex justify-center">
-              <button>
-                <Link to="/formRegister">Create account</Link>
-              </button>
-            </div>
-            <div className="transition ease-in-out delay-150 bg-slate-800 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-2xl w-48 h-9 flex justify-center">
-              <button>
-                <Link to="/home">Keep exploring</Link>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2" to="/formRegister">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
   );
 }

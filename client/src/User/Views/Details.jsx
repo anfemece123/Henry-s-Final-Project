@@ -8,6 +8,9 @@ import Loading from "../Features/Loading";
 import NavBar from "../Features/NavBar";
 import Footer from "../Features/Footer";
 import { addProduct } from "../../Redux/Reducer/cartSlice";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
+import { AlertTitle } from "@mui/material";
 
 export default function Details() {
   const details = useSelector((state) => state.details);
@@ -17,6 +20,7 @@ export default function Details() {
   const { id } = useParams();
   const product = details.details;
   const [quantity, setQuantity] = useState(1);
+  const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     dispatch(getProductDetails(id));
@@ -31,7 +35,17 @@ export default function Details() {
         price2: details.details.price,
       })
     );
+    // Hacer que no se muestre cuando la alerta de que ya esta el producto 🤔
+    setOpen(true);
   };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
   const handleQuantity = (type) => {
     if (type === "dec") {
       quantity > 1 && setQuantity(quantity - 1);
@@ -94,6 +108,19 @@ export default function Details() {
                 Añadir al carrito
               </button>
             )}
+          </div>
+
+          <div>
+            <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity="success"
+                sx={{ width: "100%" }}
+              >
+                <AlertTitle>Added to cart successfully!</AlertTitle>
+                Remember to log in to complete your bough!
+              </Alert>
+            </Snackbar>
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0">
