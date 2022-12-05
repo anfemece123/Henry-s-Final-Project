@@ -11,6 +11,8 @@ import { addProduct } from "../../Redux/Reducer/cartSlice";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import { AlertTitle } from "@mui/material";
+import { Link } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function Details() {
   const details = useSelector((state) => state.details);
@@ -61,6 +63,17 @@ export default function Details() {
       <div className="grid grid-cols-5 ">
         <div className="col-span-5 ">
           <NavBar />
+          <Link to="/home">
+            <div
+              className="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer"
+              // onclick="checkoutHandler(false)"
+            >
+              <ArrowBackIcon />
+              <p className="text-sm pl-2 leading-none dark:hover:text-gray-200">
+                Continue Shopping
+              </p>
+            </div>
+          </Link>
         </div>
         <div className="col-span-2 w-[32rem] ml-5 mt-20 mb-20 shadow-2xl shadow-gray-600 hover:shadow-2xl hover:shadow-green-700">
           <img
@@ -90,7 +103,7 @@ export default function Details() {
               <br />
               <p className="capitalize">GENDER: {details.details.gender}</p>
               <br />
-              <p>STOCK: {details.details.stock}</p>
+              <p>STOCK: {details.details.stock - quantity}</p>
               <br />
             </div>
             <div className="font-noto-serif text-2xl m-auto">
@@ -105,7 +118,7 @@ export default function Details() {
                 className="animate-pulse border border-slate-200 p-2 mb-3 rounded-lg hover:bg-green-400 hover:border-slate-800 hover:text-black"
                 onClick={handleClick}
               >
-                Añadir al carrito
+                add to cart (${details.details.price * quantity} )
               </button>
             )}
           </div>

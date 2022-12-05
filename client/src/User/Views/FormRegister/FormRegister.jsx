@@ -12,6 +12,32 @@ export const ForrmRegister = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  //  const [image, setimage] = useState(second);
+  const [image, setImage] = useState("");
+
+  console.log("image", image);
+  const [loading, setLoading] = useState(false);
+
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    console.log("FILES", files);
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "ecommerce");
+    setLoading(true);
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dyfjoi0td/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    const file = await res.json();
+    // console.log(res);
+    setImage(file.secure_url);
+    console.log(file.secure_url);
+    setLoading(false);
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800 antialiased  flex flex-col justify-center ">
@@ -35,6 +61,7 @@ export const ForrmRegister = () => {
               isAdmin: Boolean,
             }}
             onSubmit={(values, { resetForm }) => {
+              // submitImage();
               dispatch(formRegister(values));
               // console.log(values);
               resetForm();
@@ -209,22 +236,37 @@ export const ForrmRegister = () => {
                 </div>
 
                 <div>
+                  <p aria-disabled>{(values.profileImage = image)}</p>
+
                   <label class="block font-semibold"> Image</label>
                   <input
-                    className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                    type="url"
+                    // className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
+                    type="file"
                     id="profileImage"
                     name="profileImage"
-                    placeholder="profileImage"
-                    value={values.profileImage}
-                    onChange={handleChange}
+                    // placeholder="profileImage"
+                    // value={values.profileImage}
+                    // onChange={(e) => setImage(e.target.files[0])}
+                    onChange={uploadImage}
+                    // onChange={(e) =>
+                    //   setFieldValue("profileImage", e.target.files[0])
+                    // }
                     onBlur={handleBlur}
                   />
-                  {touched.profileImage && errors.profileImage && (
+
+                  {/* {values.profileImage && (
+                    <PreviewImage file={values.profileImage} />
+                  )} */}
+                  {loading ? (
+                    <h3>loading...</h3>
+                  ) : (
+                    <img src={image} style={{ whith: "200px" }} />
+                  )}
+                  {/* {touched.profileImage && errors.profileImage && (
                     <div className="text-red-700 underline decoration-pink-500">
                       {errors.profileImage}
                     </div>
-                  )}
+                  )} */}
                 </div>
                 {/* <div>
                   <label class="font-semibold"> isAdmin </label>
