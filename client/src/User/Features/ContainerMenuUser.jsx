@@ -14,12 +14,13 @@ import Logout from "@mui/icons-material/Logout";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../Redux/Reducer/cartSlice";
 import { logout } from "../../Redux/Reducer/authSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ContainerMenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -37,6 +38,7 @@ export default function ContainerMenuUser() {
   function logOutSubmit() {
     dispatch(clearCart());
     dispatch(logout());
+    navigate("/home");
   }
 
   return (
