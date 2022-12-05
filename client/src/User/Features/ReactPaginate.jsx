@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
 import Card from "../Features/Card";
-import Pagination from "@mui/material/Pagination";
+import "./paginate.css";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function PaginatedItems({ itemsPerPage }) {
   const [itemOffset, setItemOffset] = useState(0);
@@ -39,23 +41,32 @@ export default function PaginatedItems({ itemsPerPage }) {
             })
           : null}
       </div>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: 20,
+          boxSizing: "border-box",
+          width: "100%",
+          height: "100%",
+        }}
+      >
         <ReactPaginate
-          breakLabel="..."
-          nextLabel="next >"
           onPageChange={handlePageClick}
           pageRangeDisplayed={6}
           pageCount={pageCount}
-          previousLabel="< previous"
-          pageLinkClassName=""
-          previousClassName="page-item"
-          previousLinkClassName="page-link"
-          nextClassName="page-item"
-          nextLinkClassName="page-link"
-          breakClassName="page-item"
-          breakLinkClassName="page-link"
-          containerClassName="pagination"
-          activeClassName="active"
+          activeClassName={"item active "}
+          breakClassName={"item break-me "}
+          breakLabel={"..."}
+          containerClassName={"pagination"}
+          disabledClassName={"disabled-page"}
+          marginPagesDisplayed={2}
+          nextClassName={"item next "}
+          pageClassName={"item pagination-page "}
+          previousClassName={"item previous"}
+          nextLabel={<ArrowForwardIcon style={{ fontSize: 18, width: 150 }} />}
+          previousLabel={<ArrowBackIcon style={{ fontSize: 18, width: 150 }} />}
         />
       </div>
     </div>

@@ -5,6 +5,7 @@ import NavBar from "../../Features/NavBar";
 import { logIn } from "../../../Redux/actions/index";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { Link } from "react-router-dom";
 import { errorRemove } from "../../../Redux/Reducer/authSlice";
 
 export default function LogIn() {
@@ -115,14 +116,18 @@ export default function LogIn() {
           <div className="text-white mt-10 col-span-5 m-10">
             <hr />
           </div>
-          {/* <div className="col-span-5 text-white flex justify-center gap-10">
+          <div className="col-span-5 text-white flex justify-center gap-10">
             <div className="transition ease-in-out delay-150 bg-slate-800 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-2xl w-48 h-9 flex justify-center">
-              <button>Log in with Google</button>
+              <button>
+                <Link to="/formRegister">Create account</Link>
+              </button>
             </div>
             <div className="transition ease-in-out delay-150 bg-slate-800 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-2xl w-48 h-9 flex justify-center">
-              <button>Log in with LinkedIn</button>
+              <button>
+                <Link to="/home">Keep exploring</Link>
+              </button>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
