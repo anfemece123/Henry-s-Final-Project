@@ -27,6 +27,29 @@ export const FormCreate = () => {
       });
     }
   };
+  const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    console.log("FILES", files);
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "ecommerce");
+    setLoading(true);
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dyfjoi0td/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    const file = await res.json();
+    // console.log(res);
+    setImage(file.secure_url);
+    console.log(file.secure_url);
+    setLoading(false);
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800 antialiased  flex flex-col justify-center ">
@@ -348,21 +371,21 @@ export const FormCreate = () => {
                   </div>
                 </div>
                 <div>
+                  <p hidden>{(values.image = image)}</p>
+
                   <label class="block font-semibold"> Image</label>
                   <input
-                    className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                    type="url"
+                    type="file"
                     id="image"
                     name="image"
-                    placeholder="image"
-                    value={values.image}
-                    onChange={handleChange}
+                    onChange={uploadImage}
                     onBlur={handleBlur}
                   />
-                  {touched.image && errors.image && (
-                    <div className="text-red-700 underline decoration-pink-500">
-                      {errors.image}
-                    </div>
+
+                  {loading ? (
+                    <img src="https://tradinglatam.com/wp-content/uploads/2019/04/loading-gif-png-4.gif" />
+                  ) : (
+                    <img src={image} width="230px" />
                   )}
                 </div>
                 <div>

@@ -29,6 +29,7 @@ export default function ContainerMenuUser() {
     setAnchorEl(null);
   };
   const name = useSelector((state) =>
+    // Object.keys(state.auth) >= 1 &&
     state.auth.auth.first_name[0].toUpperCase()
   );
   const image = useSelector((state) => state.auth.auth.profileImage);
