@@ -1,8 +1,8 @@
-POST http://localhost:3001/cart/newCart
+PUT http://localhost:3001/cart/update
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkYW50ZS5ua2FkZGFyaWFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTExMTEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjcwMzYyNDA0LCJleHAiOjE2NzI5NTQ0MDR9.o8HUrQWrYFhFg7Z-y2s53nC_Cmzqs6J47Q5oZnranx0
 
 {  
+    "id": 1,
 	"products":[
 		{
     "id": 21,
@@ -10,7 +10,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiO
     "category": "t-shirts",
     "color": "black",
     "season": "summer",
-    "stock": 2,
+    "stock": 1,
     "price": 9,
     "size": "L",
     "gender": "male",
@@ -25,7 +25,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiO
     "stock": 2,
     "price": 12,
     "size": "S",
-    "gender": "female",
+    "gender": "male",
     "image":
       "https://web.lasting.eu/39934-thickbox_default/lasting-damska-merino-mikina-beva-zelena.jpg"
   }

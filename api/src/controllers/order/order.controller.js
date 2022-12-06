@@ -51,15 +51,15 @@ updateOrder = async (req, res) => {
   }
   try {
     const order = await Order.findOne({
-      where: { idOrder },
+      where: { id: idOrder },
     });
-    user.set({
+    order.set({
       products,
       products_quantity,
       total,
       status,
     });
-    await user.save();
+    await order.save();
     res.status(200).send("Order Successfully Updated");
   } catch (error) {
     return res.status(404).send(error.message);

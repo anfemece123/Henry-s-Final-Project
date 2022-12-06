@@ -46,7 +46,7 @@ Product.belongsToMany(User, { through: "Product_User" }); */
 User.hasMany(Order);
 Order.belongsTo(User);
 
-User.hasMany(Cart);
+User.hasOne(Cart);
 Cart.belongsTo(User);
 
 module.exports = {
