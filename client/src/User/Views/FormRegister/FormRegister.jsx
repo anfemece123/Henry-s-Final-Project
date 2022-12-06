@@ -12,10 +12,7 @@ export const ForrmRegister = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //  const [image, setimage] = useState(second);
   const [image, setImage] = useState("");
-
-  console.log("image", image);
   const [loading, setLoading] = useState(false);
 
   const uploadImage = async (e) => {
@@ -240,80 +237,20 @@ export const ForrmRegister = () => {
 
                   <label class="block font-semibold"> Image</label>
                   <input
-                    // className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
                     type="file"
                     id="profileImage"
                     name="profileImage"
-                    // placeholder="profileImage"
-                    // value={values.profileImage}
-                    // onChange={(e) => setImage(e.target.files[0])}
                     onChange={uploadImage}
-                    // onChange={(e) =>
-                    //   setFieldValue("profileImage", e.target.files[0])
-                    // }
                     onBlur={handleBlur}
                   />
 
-                  {/* {values.profileImage && (
-                    <PreviewImage file={values.profileImage} />
-                  )} */}
                   {loading ? (
-                    <h3>loading...</h3>
+                    <img src="https://tradinglatam.com/wp-content/uploads/2019/04/loading-gif-png-4.gif" />
                   ) : (
-                    <img src={image} style={{ whith: "200px" }} />
+                    <img src={image} width="230px" />
                   )}
-                  {/* {touched.profileImage && errors.profileImage && (
-                    <div className="text-red-700 underline decoration-pink-500">
-                      {errors.profileImage}
-                    </div>
-                  )} */}
                 </div>
-                {/* <div>
-                  <label class="font-semibold"> isAdmin </label>
-                  <div
-                    class="grid w-[30rem] grid-cols-3 space-x-2 rounded-xl bg-gray-200 p-2"
-                    x-data="app"
-                  >
-                    <div>
-                      <input
-                        class="peer hidden"
-                        type="radio"
-                        id="1"
-                        name="option"
-                        value={true}
-                        checked={values.isAdmin === true}
-                        onChange={() => setFieldValue("isAdmin", true)}
-                        onBlur={handleBlur}
-                      />
 
-                      <label
-                        for="1"
-                        class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
-                      >
-                        yes
-                      </label>
-                    </div>
-                    <div>
-                      <input
-                        class="peer hidden"
-                        type="radio"
-                        id="2"
-                        name="option"
-                        // value={false}
-                        checked={values.isAdmin === false}
-                        onChange={() => setFieldValue("isAdmin", false)}
-                        onBlur={handleBlur}
-                      />
-
-                      <label
-                        for="2"
-                        class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-red-600 peer-checked:font-bold peer-checked:text-white"
-                      >
-                        No
-                      </label>
-                    </div>
-                  </div>
-                </div> */}
                 <button
                   type="submit"
                   class="mt-4 bg-black text-white py-2 px-6 rounded-lg"
