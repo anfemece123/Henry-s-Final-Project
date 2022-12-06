@@ -3,43 +3,29 @@ const { Product } = require("../../db");
 const { User } = require("../../db");
 
 let id = 1;
+
+//el usuario se desloguea y no confirma compra, por lo tanto se le crea un carrito
 createCart = async (req, res) => {
-  console.log("la ruta /cart funciona");
-  /* const { products, products_quantity, total, status } = req.body;
+  const { products, products_quantity, total } = req.body;
   const userId = req.UserId;
-  if (!products || !products_quantity || !total || !status) {
+  if (!products || !products_quantity || !total) {
     return res.status(400).send("Missing Data");
   }
   try {
-    const newOrder = await Order.create({
+    const newCart = await Cart.create({
       id,
       products,
       products_quantity,
       total,
-      status,
     });
-    await newOrder.setUser(userId);
-
-    //actualizo el stock
-    for (const element of products) {
-      try {
-        const { id } = element;
-        const product = await Product.findOne({ where: { id } });
-        const stockUpdated = product.stock - element.quantity;
-        await product.update({ stock: stockUpdated });
-        await product.save();
-      } catch (error) {
-        return res.status(404).send(error.message);
-      }
-    }
-    const user = await User.findOne({ where: { id: userId } });
-    nodemailer.sendPurchaseConfirmation(user.first_name, user.email, newOrder);
-    res.status(201).send("Order Succesfully Created");
+    await newCart.setUser(userId);
+    res.status(201).send("Cart Succesfully Created");
     id++;
     return;
   } catch (error) {
+    console.log(error);
     return res.status(404).send(error.message);
-  } */
+  }
 };
 
 module.exports = {

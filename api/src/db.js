@@ -39,8 +39,9 @@ const { Order, Product, User, Cart } = sequelize.models;
 
 // Aca vendrian las relaciones
 
-User.belongsToMany(Product, { through: "Product_User" });
-Product.belongsToMany(User, { through: "Product_User" });
+//si ponemos productos favoritos, lo usamos
+/* User.belongsToMany(Product, { through: "Product_User" });
+Product.belongsToMany(User, { through: "Product_User" }); */
 
 User.hasMany(Order);
 Order.belongsTo(User);

@@ -1,6 +1,6 @@
 POST http://localhost:3001/cart/newCart
 Content-Type: application/json
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkYW50ZS5ua2FkZGFyaWFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTExMTEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjcwMzUzNzY2LCJleHAiOjE2NzI5NDU3NjZ9.YqVFVWq9eM4SkKqzETS4G18-Wg0WHOeuErKql3q2fMM
 
 
 
@@ -34,6 +34,5 @@ Authorization: Bearer
   }
 ],
 	"products_quantity": 10,
-	"total": 500,
-	"status":"pending"
+	"total": 500
 }         
