@@ -19,6 +19,9 @@
 • http://localhost:3001/order/update/:idOrder
 • http://localhost:3001/order/delete/:idOrder
 
+• http://localhost:3001/cart/newCart
+• http://localhost:3001/cart/delete/:idCart
+
 • http://localhost:3001/logIn
 
 http://localhost:3000/admin/dashboard
