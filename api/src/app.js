@@ -10,6 +10,7 @@ const logInRoutes = require("./routes/logIn");
 const orderRoutes = require("./routes/order");
 const checkoutRoutes = require("./routes/payments.js");
 const authRoutes = require("./routes/auth");
+const cartRoutes = require("./routes/cart");
 
 const server = express();
 
@@ -36,6 +37,7 @@ server.use("/user", userRoutes);
 server.use("/logIn", logInRoutes);
 server.use("/auth", authRoutes);
 server.use("/order", orderRoutes);
+server.use("/cart", cartRoutes);
 server.use("/checkout", checkoutRoutes); //payments.js
 
 // Error catching endware.
