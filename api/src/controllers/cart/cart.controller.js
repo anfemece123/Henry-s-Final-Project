@@ -23,15 +23,29 @@ createCart = async (req, res) => {
     id++;
     return;
   } catch (error) {
-    console.log(error);
+    return res.status(404).send(error.message);
+  }
+};
+
+//cuando el usuario efectua la compra, el cart se tiene que borrar porque pasa a ser una order
+deleteCart = async (req, res) => {
+  const { idCart } = req.params;
+  try {
+    const cart = await Cart.findOne({
+      where: { id: idCart },
+    });
+    await cart.destroy();
+    res.status(200).send("Cart Succesfully Removed");
+  } catch (error) {
     return res.status(404).send(error.message);
   }
 };
 
 module.exports = {
   createCart,
+  deleteCart,
   /* getAllCarts,
   updateCart,
-  deleteCart,
+  
   getCartDetail, */
 };

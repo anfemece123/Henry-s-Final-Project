@@ -88,7 +88,7 @@ getAllOrders = async (req, res) => {
 };
 //LOGICAL ERASING
 deleteOrder = async (req, res) => {
-  const { idOrder } = req.params; // en realidad lo voy a recibir de req.userId cuando conecte el middleware
+  const { idOrder } = req.params;
   try {
     const order = await Order.findOne({
       where: { idOrder },

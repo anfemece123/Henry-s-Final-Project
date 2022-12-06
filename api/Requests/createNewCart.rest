@@ -1,10 +1,6 @@
 POST http://localhost:3001/cart/newCart
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkYW50ZS5ua2FkZGFyaWFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTExMTEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjcwMzUzNzY2LCJleHAiOjE2NzI5NDU3NjZ9.YqVFVWq9eM4SkKqzETS4G18-Wg0WHOeuErKql3q2fMM
 
-
-
- 
 {  
 	"products":[
 		{
@@ -20,13 +16,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiO
     "image": "https://i.ebayimg.com/images/g/6LsAAOSwuWpdwZeM/s-l500.jpg"
   },
 	{
-    "id": "20",
+    "id": 20,
     "title": "awesome green wool t-shirt",
     "category": "t-shirts",
     "color": "green",
     "season": "summer",
-    "stock": "2",
-    "price": "12",
+    "stock": 2,
+    "price": 12,
     "size": "S",
     "gender": "female",
     "image":
