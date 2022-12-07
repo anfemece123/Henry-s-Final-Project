@@ -4,11 +4,7 @@ const { Product } = require("../../db");
 const Test = require("../../../seeds.js");
 
 getAllProducts = async (req, res) => {
-  const { size, page } = req.query;
-  console.log(page);
   const allProducts = await Product.findAll({
-    limit: size,
-    offset: page * size,
     where: {},
   });
 
@@ -23,8 +19,6 @@ getAllProducts = async (req, res) => {
   }
   try {
     const allProducts = await Product.findAll({
-      limit: size,
-      offset: page * size,
       where: {},
     });
     res.status(200).send(allProducts);
@@ -191,7 +185,6 @@ deleteProduct = async (req, res) => {
 getByFilters = async (req, res) => {
   //quiero filtrar por category, color, gender y ordenar por precio ASC o DES
   //recibo los filtros por body
-  const { size, page } = req.query;
   const { category, color, gender } = req.body;
   const consulta = {};
   if (category) consulta.category = category;
@@ -199,8 +192,6 @@ getByFilters = async (req, res) => {
   if (gender) consulta.gender = gender;
   try {
     const productsFiltered = await Product.findAll({
-      limit: size,
-      offset: page * size,
       where: consulta,
     });
     if (!productsFiltered.length)

@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import NavBar from "../Features/NavBar";
@@ -12,21 +12,33 @@ import Card from "../Features/Card";
 import Typography from "@mui/material/Typography";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import Paginado from "../Features/Paginado";
 
 export default function Home() {
   const product = useSelector((state) => state.allProducts);
   const dispatch = useDispatch();
-  const [page, setPage] = React.useState(1);
+  const productPaginado = useSelector((state) => state.allProducts.allProducts);
 
-  // Ese 27 reemplazar por el id que me llega del back(productos totales)
-  const pageCount = Math.ceil(27 / 6 - 1);
+  // Paginado
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage, setProductsPerPage] = useState(6);
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const [orden, setOrden] = useState("");
+  const currentProduct = productPaginado.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
-  const handleChange = (event, value) => {
-    setPage(value);
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
+
+  // Paginado
+
   useEffect(() => {
-    dispatch(getAllProducts(page));
-  }, [dispatch, page]);
+    dispatch(getAllProducts());
+  }, [dispatch]);
 
   return (
     <div className="grid grid-cols-4 min-w-screen min-h-screen">
@@ -36,13 +48,13 @@ export default function Home() {
       <div className="col-span-4 text-center text-slate-700 font-cursive-titles text-5xl mt-5">
         <h1>Products</h1>
       </div>
-      <Filtros page={page} />
+      <Filtros orden={orden} setCurrentPage={setCurrentPage} />
       <div className="col-span-4">
         {product.loading && <Loading />}
         {product.error && <ErrorSearch />}
 
-        {product
-          ? product.allProducts.map((element) => {
+        {currentProduct
+          ? currentProduct.map((element) => {
               return (
                 <Card
                   key={element.id}
@@ -58,12 +70,11 @@ export default function Home() {
             })
           : null}
         <Stack spacing={2}>
-          <Typography>Page: {page}</Typography>
-          <Pagination
-            color="secondary"
-            count={pageCount}
-            page={page}
-            onChange={handleChange}
+          <Typography>Page:</Typography>
+          <Paginado
+            productsPerPage={productsPerPage}
+            productPaginado={productPaginado.length}
+            paginado={paginado}
           />
         </Stack>
       </div>
