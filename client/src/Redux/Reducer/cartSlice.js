@@ -1,25 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 import swal from "sweetalert";
 
+const initialState = {
+  products: [],
+  quantity: 0,
+  total: 0,
+};
+
 const cartSlice = createSlice({
   name: "cart",
-  initialState: {
-    products: [],
-    quantity: 0,
-    total: 0,
-    status: "",
-  },
+  initialState,
   reducers: {
     addProduct: (state, action) => {
       const checkRepeat = state.products.some(
         (e) => e.id === action.payload.id
       );
-      console.log("details", state.products);
       if (checkRepeat === false) {
         state.quantity += 1;
         state.products.push(action.payload);
         state.total += action.payload.price;
-        state.status = "pending";
       } else {
         swal({
           title: "Be carefull!",
@@ -43,7 +42,6 @@ const cartSlice = createSlice({
       state.products = [];
       state.quantity = 0;
       state.total = 0;
-      state.status = "";
     },
 
     addQuantity: (state, action) => {

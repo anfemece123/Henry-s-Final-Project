@@ -1,0 +1,2 @@
+DELETE  http://localhost:3001/cart/delete/1
+Content-Type: application/json

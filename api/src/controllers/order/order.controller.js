@@ -5,9 +5,9 @@ const nodemailer = require("../../../nodemailer.config");
 
 let id = 1;
 createOrder = async (req, res) => {
-  const { products, products_quantity, total, status } = req.body;
+  const { products, products_quantity, total } = req.body;
   const userId = req.UserId;
-  if (!products || !products_quantity || !total || !status) {
+  if (!products || !products_quantity || !total) {
     return res.status(400).send("Missing Data");
   }
   try {
@@ -16,7 +16,7 @@ createOrder = async (req, res) => {
       products,
       products_quantity,
       total,
-      status,
+      status: "pending",
     });
     await newOrder.setUser(userId);
 
@@ -51,15 +51,15 @@ updateOrder = async (req, res) => {
   }
   try {
     const order = await Order.findOne({
-      where: { idOrder },
+      where: { id: idOrder },
     });
-    user.set({
+    order.set({
       products,
       products_quantity,
       total,
       status,
     });
-    await user.save();
+    await order.save();
     res.status(200).send("Order Successfully Updated");
   } catch (error) {
     return res.status(404).send(error.message);
@@ -88,7 +88,7 @@ getAllOrders = async (req, res) => {
 };
 //LOGICAL ERASING
 deleteOrder = async (req, res) => {
-  const { idOrder } = req.params; // en realidad lo voy a recibir de req.userId cuando conecte el middleware
+  const { idOrder } = req.params;
   try {
     const order = await Order.findOne({
       where: { idOrder },

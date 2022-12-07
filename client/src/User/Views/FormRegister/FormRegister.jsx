@@ -12,10 +12,7 @@ export const ForrmRegister = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //  const [image, setimage] = useState(second);
   const [image, setImage] = useState("");
-
-  console.log("image", image);
   const [loading, setLoading] = useState(false);
 
   const uploadImage = async (e) => {
@@ -229,7 +226,8 @@ export const ForrmRegister = () => {
                 </div>
 
                 <div>
-                  <p aria-disabled>{(values.profileImage = image)}</p>
+                  <p hidden>{(values.profileImage = image)}</p>
+
                   <label class="block font-semibold"> Image</label>
                   <input
                     type="file"
@@ -239,9 +237,9 @@ export const ForrmRegister = () => {
                     onBlur={handleBlur}
                   />
                   {loading ? (
-                    <h3>loading...</h3>
+                    <img src="https://tradinglatam.com/wp-content/uploads/2019/04/loading-gif-png-4.gif" />
                   ) : (
-                    <img src={image} style={{ whith: "200px" }} />
+                    <img src={image} width="230px" />
                   )}
                 </div>
                 <button

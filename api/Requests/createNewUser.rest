@@ -2,12 +2,12 @@ POST http://localhost:3001/user/newUser
 Content-Type: application/json
 
 {
-  "first_name": "Rocio",
-  "last_name": "Perez",
+  "first_name": "Dante",
+  "last_name": "Kaddarian",
   "email":"dante.nkaddarian@gmail.com",
   "password": "11111",
   "phoneNumber": "1134965291",
   "address": "Calle Falsa 123",
-  "profileImage": "https://dam.muyinteresante.com.mx/wp-content/uploads/2018/05/fotos-de-perfil-son-mejor-elegidas-por-personas-extranas-afirma-estudio.jpg",
+  "profileImage": "https://ca.slack-edge.com/TPRS7H4PN-U03T82CPFME-cc81c7b5ab10-512",
 	"isAdmin": false
 }
