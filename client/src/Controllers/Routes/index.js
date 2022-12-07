@@ -99,6 +99,10 @@ const router = createBrowserRouter([
     path: "/confirm/:confirmationCode",
     element: <Welcome />,
   },
+  {
+    path: "/pruebas",
+    element: <Settings />,
+  },
 ]);
 
 export default router;

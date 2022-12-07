@@ -10,10 +10,10 @@ const initialState = {
 
 export const getAllProducts = createAsyncThunk(
   "getAllProducts/getAllProducts",
-  async () => {
-    return await fetch(`http://localhost:3001/product/allProducts`).then(
-      (response) => response.json()
-    );
+  async (page) => {
+    return await fetch(
+      `http://localhost:3001/product/allProducts?page=${page}&size=6`
+    ).then((response) => response.json());
   }
 );
 
@@ -28,9 +28,11 @@ export const getByName = createAsyncThunk(
 
 export const getByFilters = createAsyncThunk(
   "getGender/getGender",
-  async (filters) => {
+  async (filters, page) => {
+    console.log(page);
+    console.log(JSON.stringify(page));
     return await axios
-      .post(`http://localhost:3001/product/filtered`, filters)
+      .post(`http://localhost:3001/product/filtered?page=1&size=6`, filters)
       .then((respuesta) => respuesta.data);
   }
 );

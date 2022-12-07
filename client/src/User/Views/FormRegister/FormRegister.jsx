@@ -33,7 +33,6 @@ export const ForrmRegister = () => {
       }
     );
     const file = await res.json();
-    // console.log(res);
     setImage(file.secure_url);
     console.log(file.secure_url);
     setLoading(false);
@@ -43,9 +42,6 @@ export const ForrmRegister = () => {
     <div className="min-h-screen bg-gray-100 text-gray-800 antialiased  flex flex-col justify-center ">
       <NavBar />
       <div class="relative py-3 sm:max-w-xl mx-auto text-center">
-        {/* <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
-          <Link to="/home">Inicio</Link>
-        </button> */}
         <span class="text-2xl font-light">Form Register</span>
         <div class="w-50 max-w-lg">
           <Formik
@@ -61,9 +57,7 @@ export const ForrmRegister = () => {
               isAdmin: Boolean,
             }}
             onSubmit={(values, { resetForm }) => {
-              // submitImage();
               dispatch(formRegister(values));
-              // console.log(values);
               resetForm();
               setformularioEnviado(true);
               swal({
@@ -82,7 +76,6 @@ export const ForrmRegister = () => {
               handleChange,
               handleBlur,
               touched,
-              // setFieldValue,
             }) => (
               <form onSubmit={handleSubmit}>
                 {console.log(values)}
@@ -237,83 +230,20 @@ export const ForrmRegister = () => {
 
                 <div>
                   <p aria-disabled>{(values.profileImage = image)}</p>
-
                   <label class="block font-semibold"> Image</label>
                   <input
-                    // className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
                     type="file"
                     id="profileImage"
                     name="profileImage"
-                    // placeholder="profileImage"
-                    // value={values.profileImage}
-                    // onChange={(e) => setImage(e.target.files[0])}
                     onChange={uploadImage}
-                    // onChange={(e) =>
-                    //   setFieldValue("profileImage", e.target.files[0])
-                    // }
                     onBlur={handleBlur}
                   />
-
-                  {/* {values.profileImage && (
-                    <PreviewImage file={values.profileImage} />
-                  )} */}
                   {loading ? (
                     <h3>loading...</h3>
                   ) : (
                     <img src={image} style={{ whith: "200px" }} />
                   )}
-                  {/* {touched.profileImage && errors.profileImage && (
-                    <div className="text-red-700 underline decoration-pink-500">
-                      {errors.profileImage}
-                    </div>
-                  )} */}
                 </div>
-                {/* <div>
-                  <label class="font-semibold"> isAdmin </label>
-                  <div
-                    class="grid w-[30rem] grid-cols-3 space-x-2 rounded-xl bg-gray-200 p-2"
-                    x-data="app"
-                  >
-                    <div>
-                      <input
-                        class="peer hidden"
-                        type="radio"
-                        id="1"
-                        name="option"
-                        value={true}
-                        checked={values.isAdmin === true}
-                        onChange={() => setFieldValue("isAdmin", true)}
-                        onBlur={handleBlur}
-                      />
-
-                      <label
-                        for="1"
-                        class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
-                      >
-                        yes
-                      </label>
-                    </div>
-                    <div>
-                      <input
-                        class="peer hidden"
-                        type="radio"
-                        id="2"
-                        name="option"
-                        // value={false}
-                        checked={values.isAdmin === false}
-                        onChange={() => setFieldValue("isAdmin", false)}
-                        onBlur={handleBlur}
-                      />
-
-                      <label
-                        for="2"
-                        class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-red-600 peer-checked:font-bold peer-checked:text-white"
-                      >
-                        No
-                      </label>
-                    </div>
-                  </div>
-                </div> */}
                 <button
                   type="submit"
                   class="mt-4 bg-black text-white py-2 px-6 rounded-lg"

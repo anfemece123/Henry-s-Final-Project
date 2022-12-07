@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sortByPrice, getByFilters } from "../../Redux/Reducer/allProductSlice";
 
-export const Filtros = () => {
+export const Filtros = ({ page }) => {
   const dispatch = useDispatch();
   const products = [...useSelector((state) => state.allProducts.allProducts)];
   const [filters, setFilters] = useState({
@@ -13,8 +13,14 @@ export const Filtros = () => {
   });
 
   useEffect(() => {
-    dispatch(getByFilters(filters));
-  }, [dispatch, filters]);
+    if (
+      filters.gender !== "" &&
+      filters.category !== "" &&
+      filters.color !== ""
+    )
+      console.log(page);
+    dispatch(getByFilters(filters, page));
+  }, [dispatch, filters, page]);
 
   function filterHandler(e) {
     const filterName = e.target.name;

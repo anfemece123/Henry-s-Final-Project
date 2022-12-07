@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = {
   allUsers: [],
@@ -13,6 +14,19 @@ export const getAllusers = createAsyncThunk(
     return await fetch(`http://localhost:3001/user/allUsers`).then((response) =>
       response.json()
     );
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  "updateUser/updateUser",
+  async (id, input) => {
+    console.log(id);
+    return axios
+      .post(`http://localhost:3001/user/update/${id}`, input)
+      .then((response) => {
+        const respuesta = response;
+        console.log(`put user response => ${respuesta}`);
+      });
   }
 );
 
