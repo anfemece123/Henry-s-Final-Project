@@ -6,16 +6,20 @@ let id = 1;
 
 //el usuario se desloguea y no confirma compra, por lo tanto se le crea un cart
 createCart = async (req, res) => {
-  const { products, products_quantity, total } = req.body;
-  const userId = req.UserId;
-  if (!products || !products_quantity || !total) {
+  const { products, quantity, total } = req.body;
+  const { userId } = req.params;
+  console.log("userId:", userId);
+  if (!products || !quantity || !total) {
     return res.status(400).send("Missing Data");
   }
+  console.log("products", products);
+  console.log("quantity", quantity);
+  console.log("total", total);
   try {
     const newCart = await Cart.create({
       id,
       products,
-      products_quantity,
+      products_quantity: quantity,
       total,
     });
     await newCart.setUser(userId);
@@ -23,6 +27,7 @@ createCart = async (req, res) => {
     id++;
     return;
   } catch (error) {
+    console.log(error);
     return res.status(404).send(error.message);
   }
 };
@@ -46,7 +51,6 @@ deleteCart = async (req, res) => {
 //pero se tiene que actualizar
 updateCart = async (req, res) => {
   const { id, products, products_quantity, total } = req.body;
-  console.log(id);
 
   if (!products || !products_quantity || !total) {
     return res.status(400).send("Missing Data");
@@ -63,7 +67,6 @@ updateCart = async (req, res) => {
     await cart.save();
     res.status(200).send("Cart Successfully Updated");
   } catch (error) {
-    console.log(error);
     return res.status(404).send(error.message);
   }
 };

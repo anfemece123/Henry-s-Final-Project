@@ -15,12 +15,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../../Redux/Reducer/cartSlice";
 import { logout } from "../../Redux/Reducer/authSlice";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function ContainerMenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const name = useSelector((state) =>
+    // Object.keys(state.auth) >= 1 &&
+    state.auth.auth.first_name[0].toUpperCase()
+  );
+  const image = useSelector((state) => state.auth.auth.profileImage);
+
+  const cart = useSelector((state) => state.cart);
+
+  const userId = useSelector((state) => state.auth.auth.id);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -28,13 +40,15 @@ export default function ContainerMenuUser() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const name = useSelector((state) =>
-    // Object.keys(state.auth) >= 1 &&
-    state.auth.auth.first_name[0].toUpperCase()
-  );
-  const image = useSelector((state) => state.auth.auth.profileImage);
 
   function logOutSubmit() {
+    //si esta logueado y tiene carrito , mando el carrito al back
+    if (userId && Object.keys(cart)) {
+    }
+    axios
+      .post(`http://localhost:3001/cart/newCart/${userId}`, cart)
+      .then((response) => console.log(response.data))
+      .catch((error) => console.log(error));
     dispatch(clearCart());
     dispatch(logout());
     navigate("/home");
