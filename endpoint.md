@@ -21,6 +21,7 @@
 
 • http://localhost:3001/cart/newCart
 • http://localhost:3001/cart/delete/:idCart
+• http://localhost:3001/cart/update
 
 • http://localhost:3001/logIn
 

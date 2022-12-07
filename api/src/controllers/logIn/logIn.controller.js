@@ -38,7 +38,6 @@ logInUser = async (req, res) => {
     }
     //aca tengo email y password correctos
     const userForToken = {
-      id: userAux.id,
       email,
       password,
       isAdmin: userAux.isAdmin,
@@ -48,6 +47,7 @@ logInUser = async (req, res) => {
     });
 
     const loggedUser = {
+      id: userAux.id,
       first_name: userAux.first_name,
       last_name: userAux.last_name,
       address: userAux.address,

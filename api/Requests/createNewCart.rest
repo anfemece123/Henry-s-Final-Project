@@ -1,6 +1,6 @@
-POST http://localhost:3001/cart/newCart
+POST http://localhost:3001/cart/newCart/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkYW50ZS5ua2FkZGFyaWFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTExMTEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjcwMzYyNDA0LCJleHAiOjE2NzI5NTQ0MDR9.o8HUrQWrYFhFg7Z-y2s53nC_Cmzqs6J47Q5oZnranx0
+Authorization: Bearer
 
 {  
 	"products":[
