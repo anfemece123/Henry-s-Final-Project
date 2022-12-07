@@ -38,6 +38,7 @@ logInUser = async (req, res) => {
     }
     //aca tengo email y password correctos
     const userForToken = {
+      id: userAux.id,
       email,
       password,
       isAdmin: userAux.isAdmin,

@@ -1,6 +1,6 @@
 POST http://localhost:3001/order/newOrder
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkYW50ZS5ua2FkZGFyaWFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTExMTEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjcwMTE2Mjc5LCJleHAiOjE2NzI3MDgyNzl9.zfCbi4tztgoBJgaIMa_nLgULyTIepC7RqgwO0R2nkks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkYW50ZS5ua2FkZGFyaWFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTExMTEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjcwNDM2OTM3LCJleHAiOjE2NzMwMjg5Mzd9.HZItCY4XgYoAbDcU3qKdBZMf-e8rNDoMkOrINKrNgk8
 
 
 
@@ -20,13 +20,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiO
     "image": "https://i.ebayimg.com/images/g/6LsAAOSwuWpdwZeM/s-l500.jpg"
   },
 	{
-    "id": "20",
+    "id": 20,
     "title": "awesome green wool t-shirt",
     "category": "t-shirts",
     "color": "green",
     "season": "summer",
-    "stock": "2",
-    "price": "12",
+    "stock": 1,
+    "price": 12,
     "size": "S",
     "gender": "female",
     "image":

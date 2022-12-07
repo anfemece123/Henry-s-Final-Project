@@ -7,8 +7,8 @@ let id = 1;
 //el usuario se desloguea y no confirma compra, por lo tanto se le crea un cart
 createCart = async (req, res) => {
   const { products, quantity, total } = req.body;
-  const { userId } = req.params;
-  console.log("userId:", userId);
+  const { idUser } = req.params;
+  console.log("idUser:", idUser);
   if (!products || !quantity || !total) {
     return res.status(400).send("Missing Data");
   }
@@ -22,7 +22,7 @@ createCart = async (req, res) => {
       products_quantity: quantity,
       total,
     });
-    await newCart.setUser(userId);
+    await newCart.setUser(idUser);
     res.status(201).send("Cart Succesfully Created");
     id++;
     return;
