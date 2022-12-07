@@ -9,8 +9,6 @@ import { ErrorSearch } from "../Features/ErrorSearch";
 import { Filtros } from "../Features/Filtros";
 import { getAllProducts } from "../../Redux/Reducer/allProductSlice";
 import Card from "../Features/Card";
-import Typography from "@mui/material/Typography";
-import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Paginado from "../Features/Paginado";
 
