@@ -13,6 +13,8 @@ import Alert from "@mui/material/Alert";
 import { AlertTitle } from "@mui/material";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import RatingSystem from "./Rating/RatingSystem";
+import CommentSystem from "./Rating/CommentSystem";
 
 export default function Details() {
   const details = useSelector((state) => state.details);
@@ -134,6 +136,12 @@ export default function Details() {
                 Remember to log in to complete your bough!
               </Alert>
             </Snackbar>
+          </div>
+          <div>
+            <RatingSystem />
+          </div>
+          <div>
+            <CommentSystem />
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0">
