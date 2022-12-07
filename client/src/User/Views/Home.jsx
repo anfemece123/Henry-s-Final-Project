@@ -70,7 +70,6 @@ export default function Home() {
             })
           : null}
         <Stack spacing={2}>
-          <Typography>Page:</Typography>
           <Paginado
             productsPerPage={productsPerPage}
             productPaginado={productPaginado.length}
