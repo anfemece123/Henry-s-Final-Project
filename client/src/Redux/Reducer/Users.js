@@ -22,7 +22,7 @@ export const updateUser = createAsyncThunk(
   async (id, input) => {
     console.log(id);
     return axios
-      .post(`http://localhost:3001/user/update/${id}`, input)
+      .put(`http://localhost:3001/user/update/${id}`, input)
       .then((response) => {
         const respuesta = response;
         console.log(`put user response => ${respuesta}`);
