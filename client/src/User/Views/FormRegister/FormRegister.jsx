@@ -227,7 +227,6 @@ export const ForrmRegister = () => {
 
                 <div>
                   <p hidden>{(values.profileImage = image)}</p>
-
                   <label class="block font-semibold"> Image</label>
                   <input
                     type="file"

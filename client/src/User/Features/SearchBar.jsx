@@ -10,9 +10,9 @@ export default function SearchBar() {
   const products = useSelector((state) => state.allProducts.allProducts);
   const dispatch = useDispatch();
   const inputRef = useRef("");
-  const top100Films = [];
+  const productsAutocomplete = [];
   products.map((element) => {
-    return top100Films.push(element.title);
+    return productsAutocomplete.push(element.title);
   });
 
   const filterUsers = () => {
@@ -22,7 +22,7 @@ export default function SearchBar() {
     <Autocomplete
       disablePortal
       id="combo-box-demo"
-      options={top100Films}
+      options={productsAutocomplete}
       onChange={filterUsers}
       ref={inputRef}
       sx={{ width: 300 }}
