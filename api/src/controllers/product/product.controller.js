@@ -4,7 +4,10 @@ const { Product } = require("../../db");
 const Test = require("../../../seeds.js");
 
 getAllProducts = async (req, res) => {
-  const allProducts = await Product.findAll();
+  const allProducts = await Product.findAll({
+    where: {},
+  });
+
   if (!allProducts.length) {
     try {
       const allProductsFromDb = await Product.bulkCreate(Test);
@@ -15,7 +18,9 @@ getAllProducts = async (req, res) => {
     }
   }
   try {
-    const allProducts = await Product.findAll();
+    const allProducts = await Product.findAll({
+      where: {},
+    });
     res.status(200).send(allProducts);
   } catch (error) {
     console.log(error);

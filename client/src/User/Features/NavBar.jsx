@@ -27,6 +27,7 @@ export default function NavBar() {
     },
   }));
   const auth = useSelector((state) => state.auth.auth);
+  const admin = auth.isAdmin;
 
   return (
     <div className="w-full bg-gray-900">

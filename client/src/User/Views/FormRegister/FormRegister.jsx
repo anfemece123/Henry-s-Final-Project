@@ -30,7 +30,6 @@ export const ForrmRegister = () => {
       }
     );
     const file = await res.json();
-    // console.log(res);
     setImage(file.secure_url);
     console.log(file.secure_url);
     setLoading(false);
@@ -40,9 +39,6 @@ export const ForrmRegister = () => {
     <div className="min-h-screen bg-gray-100 text-gray-800 antialiased  flex flex-col justify-center ">
       <NavBar />
       <div class="relative py-3 sm:max-w-xl mx-auto text-center">
-        {/* <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
-          <Link to="/home">Inicio</Link>
-        </button> */}
         <span class="text-2xl font-light">Form Register</span>
         <div class="w-50 max-w-lg">
           <Formik
@@ -58,9 +54,7 @@ export const ForrmRegister = () => {
               isAdmin: Boolean,
             }}
             onSubmit={(values, { resetForm }) => {
-              // submitImage();
               dispatch(formRegister(values));
-              // console.log(values);
               resetForm();
               setformularioEnviado(true);
               swal({
@@ -79,7 +73,6 @@ export const ForrmRegister = () => {
               handleChange,
               handleBlur,
               touched,
-              // setFieldValue,
             }) => (
               <form onSubmit={handleSubmit}>
                 {console.log(values)}
@@ -234,7 +227,6 @@ export const ForrmRegister = () => {
 
                 <div>
                   <p hidden>{(values.profileImage = image)}</p>
-
                   <label class="block font-semibold"> Image</label>
                   <input
                     type="file"
@@ -243,14 +235,12 @@ export const ForrmRegister = () => {
                     onChange={uploadImage}
                     onBlur={handleBlur}
                   />
-
                   {loading ? (
                     <img src="https://tradinglatam.com/wp-content/uploads/2019/04/loading-gif-png-4.gif" />
                   ) : (
                     <img src={image} width="230px" />
                   )}
                 </div>
-
                 <button
                   type="submit"
                   class="mt-4 bg-black text-white py-2 px-6 rounded-lg"

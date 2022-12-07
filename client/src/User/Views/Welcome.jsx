@@ -24,15 +24,7 @@ const Welcome = () => {
   }
 
   return (
-    // <div className="container">
-    //   <header className="jumbotron">
-    //     <h3>
-    //       <strong>Account confirmed!</strong>
-    //     </h3>
-    //   </header>
-    //   <Link >Please Login</Link>
-    // </div>
-    <div className="text-center flex min-h-screen min-w-full bg-slate-400">
+    <div className="text-center flex min-h-screen min-w-full bg-slate-200">
       <div className="m-auto">
         <Card sx={{ maxWidth: 800 }}>
           <CardActionArea>
