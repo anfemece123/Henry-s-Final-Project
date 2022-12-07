@@ -22,6 +22,7 @@
     "formik": "^2.2.9",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
+    "jwt-decode": "^3.1.2",
     "postcss": "8.2.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
