@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 import swal from "sweetalert";
 
 const initialState = {
@@ -7,10 +8,25 @@ const initialState = {
   total: 0,
 };
 
+export const clearCart = createAsyncThunk(
+  "clearCart/clearCart",
+  async (idUser) => {
+    return await axios
+      .delete(`http://localhost:3001/cart/delete/${idUser}`)
+      .then((respuesta) => console.log(respuesta))
+      .catch((respuesta) => console.log(respuesta));
+  }
+);
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    restoreCart: (state, action) => {
+      state.quantity = action.payload.products_quantity;
+      state.products = action.payload.products;
+      state.total = action.payload.total;
+    },
     addProduct: (state, action) => {
       const checkRepeat = state.products.some(
         (e) => e.id === action.payload.id
@@ -38,12 +54,7 @@ const cartSlice = createSlice({
         0
       );
     },
-    clearCart: (state, action) => {
-      state.products = [];
-      state.quantity = 0;
-      state.total = 0;
-    },
-
+    clearCart: (state, action) => {},
     addQuantity: (state, action) => {
       const find1 = state.products.find(
         (element) => element.id === action.payload.id
@@ -92,13 +103,24 @@ const cartSlice = createSlice({
       }
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(clearCart.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(clearCart.fulfilled, (state, action) => {
+      state.products = [];
+      state.quantity = 0;
+      state.total = 0;
+    });
+  },
 });
 
 export const {
   addProduct,
   removeProduct,
-  clearCart,
   addQuantity,
   removeQuantity,
+  restoreCart,
 } = cartSlice.actions;
+
 export default cartSlice.reducer;

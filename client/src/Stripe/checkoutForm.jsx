@@ -79,7 +79,8 @@ export default function checkoutForm() {
         button: "Let me see",
       });
     }
-    dispatch(clearCart());
+    const idUser = auth.id;
+    dispatch(clearCart(idUser));
   };
 
   return (

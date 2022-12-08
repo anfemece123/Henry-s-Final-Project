@@ -1,5 +1,6 @@
 import axios from "axios";
 import { setAuth, setErrorAuth } from "../Reducer/authSlice";
+import { restoreCart } from "../Reducer/cartSlice";
 
 export const formCreate = (data) => async () => {
   console.log("data en actions", data);
@@ -20,7 +21,6 @@ export const formRegister = (data) => async () => {
 };
 
 export const logIn = ({ email, password }) => {
-  console.log("cuenta", { email, password });
   return function (dispatch) {
     return axios
       .post(`http://localhost:3001/logIn`, {
@@ -29,8 +29,9 @@ export const logIn = ({ email, password }) => {
       })
       .then((response) => {
         const user = response;
-        console.log("en accion", user.statusText);
-        dispatch(setAuth(user.data));
+        dispatch(setAuth(user.data[0]));
+        console.log("cart:", user.data[1]);
+        user.data[1] && dispatch(restoreCart(user.data[1])); //viene el carrito y lo muestro en vez de mostrarlo vacio
       })
       .catch((error) => {
         const messageError = error.response.data;

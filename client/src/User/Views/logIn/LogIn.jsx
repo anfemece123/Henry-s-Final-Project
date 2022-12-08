@@ -52,7 +52,6 @@ export default function LogIn() {
 
   const user = useSelector((state) => state.auth.auth);
 
-  console.log("userLogin", user);
   const errorAuth = useSelector((state) => state.auth.errorAuth);
 
   useEffect(() => {
@@ -183,7 +182,7 @@ export default function LogIn() {
             <Button
               type="submit"
               id="signOut"
-              onCLick={(e) => handleSingOut(e)}
+              onClick={(e) => handleSingOut(e)}
             >
               Sing Out
             </Button>
