@@ -25,11 +25,8 @@ createOrder = async (req, res) => {
     for (const element of products) {
       try {
         const { id } = element;
-        console.log("id del producto actual:", id);
         const product = await Product.findOne({ where: { id } });
-        console.log("producto en db:", product);
         const stockUpdated = product.stock - element.quantity;
-        console.log("stockUpdated:", stockUpdated);
         await product.update({ stock: stockUpdated });
         await product.save();
       } catch (error) {
@@ -42,7 +39,6 @@ createOrder = async (req, res) => {
     id++;
     return;
   } catch (error) {
-    console.log(error);
     return res.status(404).send(error.message);
   }
 };
