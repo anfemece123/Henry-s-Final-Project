@@ -183,7 +183,7 @@ export default function LogIn() {
             <Button
               type="submit"
               id="signOut"
-              onCLick={(e) => handleSingOut(e)}
+              onClick={(e) => handleSingOut(e)}
             >
               Sing Out
             </Button>
