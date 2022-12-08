@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { formCreate } from "../../../Redux/actions";
 import { Link } from "react-router-dom";
 import Navbar from "../../Features/Navbars/AdminNavbar";
+import { updateProduct } from "../../../Redux/Reducer/allProductSlice";
 
 export const FormEditProduct = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
@@ -25,8 +26,6 @@ export const FormEditProduct = () => {
     stock: productId.stock,
     image: productId.image,
   });
-  console.log("edit", edit);
-  console.log("en formulario=>", productId.title);
 
   const alert = (e) => {
     if (!formularioEnviado) {
@@ -79,8 +78,9 @@ export const FormEditProduct = () => {
           <Formik
             initialValues={edit}
             onSubmit={(values, { resetForm }) => {
-              dispatch(formCreate(values));
-              console.log(values);
+              dispatch(updateProduct(productId.id, values));
+              console.log("values", values);
+              console.log("id", productId.id);
 
               resetForm();
 
@@ -99,7 +99,6 @@ export const FormEditProduct = () => {
               setFieldValue,
             }) => (
               <form onSubmit={handleSubmit}>
-                {console.log(values)}
                 <div className="w-full px-3">
                   {/* <label class="block font-semibold">id</label>
                   <input
@@ -363,7 +362,8 @@ export const FormEditProduct = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     >
-                      <option> ------ </option>
+                      <option> ---- </option>
+                      <option> other </option>
                       <option>female</option>
                       <option>male</option>
                     </select>
@@ -432,7 +432,7 @@ export const FormEditProduct = () => {
               )} */}
                 {/* </div> */}
                 <button
-                  type="submit"
+                  // type="submit"
                   class="mt-4 bg-black text-white py-2 px-6 rounded-lg"
                   onClick={alert}
                 >

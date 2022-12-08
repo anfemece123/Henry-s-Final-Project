@@ -53,16 +53,41 @@ export const getById = createAsyncThunk("getById/getById", async (id) => {
     respuesta.json()
   );
 });
+export const updateProduct = createAsyncThunk(
+  "updateProduct/updateProduct",
+  async (id, value) => {
+    return await axios.put(`http://localhost:3001/product/update/${id}`, value);
+  }
+);
+
+// export const updateProduct = createAsyncThunk(
+//   "updateProduct/updateProduct",
+//   async (id, value) => {
+//     console.log("value", value);
+//     return axios
+//       .put(`http://localhost:3001/product/update/${id}`, value)
+//       .then((response) => {
+//         const respuesta = response;
+//         console.log(`put user response => ${respuesta}`);
+//       });
+//   }
+// );
 
 const productsSlice = createSlice({
   name: "products",
   initialState,
   extraReducers: (builder) => {
+    //?productEdit
+    // builder.addCase(updateProduct.fulfilled, (state, action) => {
+    //   state.loading = false;
+    //   state.allProducts = action.payload;
+    //   state.error = "";
+    // });
+    //?productById
     builder.addCase(getById.fulfilled, (state, action) => {
       state.loading = false;
       state.productId = action.payload;
       state.error = "";
-      console.log("productId", state.productId);
     });
     //?DeleteProduct
     builder.addCase(deleteProId.fulfilled, (state, action) => {
