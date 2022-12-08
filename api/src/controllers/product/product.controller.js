@@ -152,7 +152,7 @@ deleteProduct = async (req, res) => {
       where: { id: idProduct },
     });
     await product.destroy();
-    res.status(200).send("User Succesfully Removed");
+    res.status(200).send(idProduct);
   } catch (error) {
     return res.status(404).send(error.message);
   }
