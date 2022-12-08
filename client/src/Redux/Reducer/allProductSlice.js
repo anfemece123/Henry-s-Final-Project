@@ -41,11 +41,30 @@ export const sortByPrice = createAsyncThunk(
     return product;
   }
 );
+export const deleteProId = createAsyncThunk(
+  "deleteProId/deleteProId",
+  async (id) => {
+    return await axios.delete(`http://localhost:3001/product/delete/${id}`);
+  }
+);
 
 const productsSlice = createSlice({
   name: "products",
   initialState,
   extraReducers: (builder) => {
+    // builder.addCase(deleteProId.pending, (state) => {
+    //   state.loading = true;
+    // });
+
+    builder.addCase(deleteProId.fulfilled, (state, action) => {
+      const delProduct = state.allProducts.filter(
+        (e) => e.id !== action.payload.data
+      );
+      // console.log(action.payload.data);
+      state.loading = false;
+      state.allProducts = [...delProduct];
+      state.error = "";
+    });
     //?getAllProducts
     builder.addCase(getAllProducts.pending, (state) => {
       state.loading = true;
