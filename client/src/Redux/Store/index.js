@@ -5,6 +5,7 @@ import cartSlice from "../Reducer/cartSlice";
 import authSlice from "../Reducer/authSlice";
 import usersSlice from "../Reducer/Users";
 import ordersSlice from "../Reducer/OrderSlice";
+import reviewSlice from "../Reducer/RatingSlice";
 
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "@reduxjs/toolkit";
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   auth: authSlice,
   users: usersSlice,
   orders: ordersSlice,
+  reviews: reviewSlice,
 });
 
 const persistReducers = persistReducer(persistConfig, rootReducer);
