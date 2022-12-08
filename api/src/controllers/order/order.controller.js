@@ -7,6 +7,7 @@ let id = 1;
 createOrder = async (req, res) => {
   const { products, products_quantity, total } = req.body;
   const userId = req.UserId;
+  console.log("products:", products);
   if (!products || !products_quantity || !total) {
     return res.status(400).send("Missing Data");
   }
@@ -24,8 +25,11 @@ createOrder = async (req, res) => {
     for (const element of products) {
       try {
         const { id } = element;
+        console.log("id del producto actual:", id);
         const product = await Product.findOne({ where: { id } });
+        console.log("producto en db:", product);
         const stockUpdated = product.stock - element.quantity;
+        console.log("stockUpdated:", stockUpdated);
         await product.update({ stock: stockUpdated });
         await product.save();
       } catch (error) {
@@ -38,6 +42,7 @@ createOrder = async (req, res) => {
     id++;
     return;
   } catch (error) {
+    console.log(error);
     return res.status(404).send(error.message);
   }
 };

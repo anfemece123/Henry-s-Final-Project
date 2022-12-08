@@ -1,10 +1,12 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { User } = require("../../db");
+const { Cart } = require("../../db");
 const { TOKEN_SECRET } = process.env;
 
 logInUser = async (req, res) => {
   const { email, password } = req.body;
+  console.log("email:", email, "password:", password);
   // valido todos los datos recibidos
   if (!email || !password) {
     return res.status(400).send("Missing Data");
@@ -38,6 +40,7 @@ logInUser = async (req, res) => {
     }
     //aca tengo email y password correctos
     const userForToken = {
+      id: userAux.id,
       email,
       password,
       isAdmin: userAux.isAdmin,
@@ -45,7 +48,6 @@ logInUser = async (req, res) => {
     const token = jwt.sign(userForToken, TOKEN_SECRET, {
       expiresIn: 60 * 60 * 24 * 30, //que se tenga que loguear cada 30 dias
     });
-
     const loggedUser = {
       id: userAux.id,
       first_name: userAux.first_name,
@@ -58,8 +60,13 @@ logInUser = async (req, res) => {
       isAdmin: userAux.isAdmin,
       token,
     };
-    return res.status(200).send(loggedUser);
+    const UserId = userAux.id;
+    const cart = await Cart.findOne({ where: { UserId } });
+    if (cart) console.log("cart:", cart.dataValues);
+
+    return res.status(200).send([loggedUser, cart]);
   } catch (error) {
+    console.log(error);
     return res.status(404).send(error);
   }
 };

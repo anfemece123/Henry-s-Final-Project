@@ -24,9 +24,10 @@ export default function ContainerMenuUser() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const name = useSelector((state) =>
-    // Object.keys(state.auth) >= 1 &&
-    state.auth.auth.first_name[0].toUpperCase()
+  const name = useSelector(
+    (state) =>
+      Object.keys(state.auth) >= 1 &&
+      state.auth.auth.first_name[0].toUpperCase()
   );
   const image = useSelector((state) => state.auth.auth.profileImage);
 
@@ -44,11 +45,11 @@ export default function ContainerMenuUser() {
   function logOutSubmit() {
     //si esta logueado y tiene carrito , mando el carrito al back
     if (userId && Object.keys(cart)) {
+      axios
+        .post(`http://localhost:3001/cart/newCart/${userId}`, cart)
+        .then((response) => console.log(response.data))
+        .catch((error) => console.log(error));
     }
-    axios
-      .post(`http://localhost:3001/cart/newCart/${userId}`, cart)
-      .then((response) => console.log(response.data))
-      .catch((error) => console.log(error));
     dispatch(clearCart());
     dispatch(logout());
     navigate("/home");

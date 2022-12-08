@@ -17,7 +17,7 @@ const router = express.Router();
 
 router.post("/newCart/:idUser", createCart);
 router.put("/update", updateCart); //no es necesario pasarle un id porque cuando se loguea, le lleva la cart correcta
-router.delete("/delete/:idCart", deleteCart);
+router.delete("/delete/:idUser", deleteCart);
 
 /* router.get("/allCarts", getAllCarts); //only admin verifyTokenAndIsAdmin*/
 

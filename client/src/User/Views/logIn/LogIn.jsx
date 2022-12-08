@@ -53,7 +53,6 @@ export default function LogIn() {
 
   const user = useSelector((state) => state.auth.auth);
 
-  console.log("userLogin", user);
   const errorAuth = useSelector((state) => state.auth.errorAuth);
 
   useEffect(() => {
@@ -183,7 +182,20 @@ export default function LogIn() {
               Sign In
             </Button>
             {/* TODO LO DE GOOGLE TEMPORAL */}
-
+            <div id="signInDiv"></div>
+            <Button
+              type="submit"
+              id="signOut"
+              onClick={(e) => handleSingOut(e)}
+            >
+              Sing Out
+            </Button>
+            {user && (
+              <div>
+                <img src={googleUser.picture} alt={googleUser.name} />
+                <h3>{googleUser.name}</h3>
+              </div>
+            )}
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

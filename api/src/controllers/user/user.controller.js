@@ -73,50 +73,52 @@ createNewUser = async (req, res) => {
 
 updateUser = async (req, res) => {
   const { id } = req.params;
-  const {
-    first_name,
-    last_name,
-    email,
-    password,
-    phoneNumber,
-    address,
-    profileImage,
-    isAdmin,
-  } = req.body;
+  const fieldsToChange = req.body;
+  const fieldsToUpdate = { ...fieldsToChange };
 
-  if (
-    !first_name ||
-    !last_name ||
-    !email ||
-    !password ||
-    !phoneNumber ||
-    !address ||
-    !profileImage ||
-    !isAdmin
-  ) {
+  if (!Object.entries(fieldsToUpdate).length)
     return res.status(400).send("Missing Data");
-  }
 
+  if (Object.entries(fieldsToUpdate).length === 1) {
+    try {
+      const user = await User.findOne({
+        where: { id },
+      });
+      if (fieldsToUpdate.hasOwnProperty("password")) {
+        const passwordHashed = await bcrypt.hash(
+          fieldsToUpdate.password,
+          10 /* saltRounds */
+        );
+        await user.update({ passwordHashed });
+        await user.save();
+      } else {
+        await user.update(fieldsToUpdate);
+        await user.save();
+      }
+      res.status(200).send("User Successfully Updated");
+    } catch (error) {
+      return res.status(404).send(error.message);
+    }
+  }
   try {
     const user = await User.findOne({
       where: { id },
     });
-
-    const passwordHashed = await bcrypt.hash(password, 10 /* saltRounds */);
-
-    user.set({
-      first_name,
-      last_name,
-      email,
-      passwordHashed,
-      phoneNumber,
-      address,
-      profileImage,
-      isAdmin,
-      isBanned: false,
-    });
-    await user.save();
-    res.status(200).send("User Successfully Updated");
+    if (fieldsToUpdate.hasOwnProperty("password")) {
+      const passwordHashed = await bcrypt.hash(
+        fieldsToUpdate.password,
+        10 /* saltRounds */
+      );
+      fieldsToUpdate["passwordHashed"] = fieldsToUpdate["password"];
+      fieldsToUpdate["passwordHashed"] = passwordHashed;
+      await user.set(fieldsToUpdate);
+      await user.save();
+      res.status(200).send("User Successfully Updated");
+    } else {
+      await user.set(fieldsToUpdate);
+      await user.save();
+      res.status(200).send();
+    }
   } catch (error) {
     return res.status(404).send(error.message);
   }

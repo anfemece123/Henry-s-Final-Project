@@ -1,5 +1,5 @@
 • http://localhost:3001/product/allProducts
-• http://localhost:3001/product/:id/
+• http://localhost:3001/product/:id
 • http://localhost:3001/product/createProduct
 • http://localhost:3001/product/search?name=
 • http://localhost:3001/product/byPriceRange?priceRange= tiene que tener esta forma priceRange=10-100

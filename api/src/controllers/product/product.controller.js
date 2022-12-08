@@ -117,51 +117,27 @@ getByTitle = async (req, res) => {
 
 updateProduct = async (req, res) => {
   const { idProduct } = req.params;
-  const {
-    title,
-    brand,
-    category,
-    color,
-    season,
-    price,
-    isOnSale,
-    size,
-    gender,
-    stock,
-    image,
-  } = req.body;
+  const fieldsToChange = req.body;
+  const fieldsToUpdate = { ...fieldsToChange };
 
-  if (
-    !title ||
-    !category ||
-    !color ||
-    !season ||
-    !price ||
-    !size ||
-    !gender ||
-    !image
-  ) {
+  if (!Object.entries(fieldsToUpdate).length)
     return res.status(400).send("Missing Data");
+
+  if (Object.entries(fieldsToUpdate).length === 1) {
+    try {
+      const product = await Product.findOne({
+        where: { id: idProduct },
+      });
+      await product.update(fieldsToUpdate);
+      await product.save();
+      res.status(200).send("Product Successfully Updated");
+    } catch (error) {}
   }
   try {
     const product = await Product.findOne({
       where: { id: idProduct },
     });
-
-    product.set({
-      title,
-      brand,
-      category,
-      color,
-      season,
-      price,
-      isOnSale,
-      size,
-      gender,
-      stock,
-      image,
-    });
-
+    product.set(fieldsToUpdate);
     await product.save();
     res.status(200).send("Product Successfully Updated");
   } catch (error) {
