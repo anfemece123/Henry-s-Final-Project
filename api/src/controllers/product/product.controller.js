@@ -119,7 +119,6 @@ updateProduct = async (req, res) => {
   const { idProduct } = req.params;
   const fieldsToChange = req.body;
   const fieldsToUpdate = { ...fieldsToChange };
-  console.log(Object.keys(fieldsToUpdate) === 0);
 
   if (!Object.entries(fieldsToUpdate).length)
     return res.status(400).send("Missing Data");
