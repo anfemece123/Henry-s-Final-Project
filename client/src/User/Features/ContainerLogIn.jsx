@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import ContainerMenuUser from "./ContainerMenuUser";
 
 export const ContainerLogIn = () => {
-  const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth.auth);
 
   return (
