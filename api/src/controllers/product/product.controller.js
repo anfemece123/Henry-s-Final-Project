@@ -19,7 +19,7 @@ getAllProducts = async (req, res) => {
   }
   try {
     const allProducts = await Product.findAll({
-      where: {},
+      include: { all: true },
     });
     res.status(200).send(allProducts);
   } catch (error) {

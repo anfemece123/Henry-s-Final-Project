@@ -23,6 +23,8 @@
 • http://localhost:3001/cart/delete/:idCart
 • http://localhost:3001/cart/update
 
+• http://localhost:3001/review/newReview/:productId
+
 • http://localhost:3001/logIn
 
 http://localhost:3000/admin/dashboard
