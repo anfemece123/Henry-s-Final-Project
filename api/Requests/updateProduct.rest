@@ -1,0 +1,7 @@
+PUT http://localhost:3001/product/update/1
+Content-Type: application/json
+
+{
+ "brand": "Nike",
+"isOnSale": true,
+}
