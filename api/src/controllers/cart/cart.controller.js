@@ -16,6 +16,10 @@ createCart = async (req, res) => {
   console.log("quantity", quantity);
   console.log("total", total);
   try {
+    const cart = await Cart.findOne({ where: { UserId: idUser } });
+    console.log(cart);
+    cart && (await cart.destroy());
+
     const newCart = await Cart.create({
       id,
       products,
@@ -34,12 +38,11 @@ createCart = async (req, res) => {
 
 //cuando el usuario efectua la compra, el cart se tiene que borrar porque pasa a ser una order
 deleteCart = async (req, res) => {
-  const { idCart } = req.params;
+  const { idUser } = req.params;
   try {
-    const cart = await Cart.findOne({
-      where: { id: idCart },
-    });
-    await cart.destroy();
+    const cart = await Cart.findOne({ where: { UserId: idUser } });
+    console.log(cart);
+    cart && (await cart.destroy());
     res.status(200).send("Cart Succesfully Removed");
   } catch (error) {
     return res.status(404).send(error.message);

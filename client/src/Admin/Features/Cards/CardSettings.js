@@ -13,10 +13,10 @@ export default function CardSettings() {
     email: "",
     last_name: "",
     address: "",
-    // city: "",
-    // country: "",
-    // postal_code: "",
-    // about_me: "",
+    password: "",
+    phoneNumber: "",
+    profileImage: "",
+    isAdmin: true,
   });
 
   const handleChange = (e) => {
@@ -31,7 +31,8 @@ export default function CardSettings() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateUser(id, input));
-    console.log(`Informacion que envio al back => ${(id, input)}`);
+    console.log(`ID que envio al back => ${id}`);
+    console.log(`Info que envio al back => ${input}`);
   };
 
   return (
@@ -121,6 +122,23 @@ export default function CardSettings() {
                   />
                 </div>
               </div>
+              <div className="w-full lg:w-6/12 px-4">
+                <div className="relative w-full mb-3">
+                  <label
+                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                    htmlFor="grid-password"
+                  >
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    value={input.password}
+                    name="password"
+                    onChange={(e) => handleChange(e)}
+                  />
+                </div>
+              </div>
             </div>
 
             <hr className="mt-6 border-b-1 border-blueGray-300" />
@@ -142,7 +160,6 @@ export default function CardSettings() {
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     name="address"
                     input={input.address}
-                    defaultValue={admin.address}
                     onChange={(e) => handleChange(e)}
                   />
                 </div>
@@ -168,12 +185,14 @@ export default function CardSettings() {
                     className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                     htmlFor="grid-password"
                   >
-                    Country
+                    Phone Number
                   </label>
                   <input
                     type="text"
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    defaultValue="Your Country"
+                    value={input.phoneNumber}
+                    name="phoneNumber"
+                    onChange={(e) => handleChange(e)}
                   />
                 </div>
               </div>
@@ -190,6 +209,24 @@ export default function CardSettings() {
                     disabled
                     className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     defaultValue={admin.id}
+                  />
+                </div>
+              </div>{" "}
+              <div className="w-full lg:w-4/12 px-4">
+                <div className="relative w-full mb-3">
+                  <label
+                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                    htmlFor="grid-password"
+                  >
+                    IS ADMIN?
+                  </label>
+                  <input
+                    type="text"
+                    disabled
+                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    defaultValue={admin.isAdmin}
+                    value={input.isAdmin}
+                    onChange={(e) => handleChange(e)}
                   />
                 </div>
               </div>
@@ -216,7 +253,9 @@ export default function CardSettings() {
                     rows="4"
                   ></textarea>
                 </div>
-                <button onSubmit={(e) => handleSubmit(e)}>Enviar</button>
+                <button type="submit" onSubmit={(e) => handleSubmit(e)}>
+                  Enviar
+                </button>
               </div>
             </div>
           </form>

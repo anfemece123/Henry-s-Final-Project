@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
 import { errorRemove } from "../../../Redux/Reducer/authSlice";
+import jwt_decode from "jwt-decode";
 
 function Copyright(props) {
   return (
@@ -42,6 +43,7 @@ const theme = createTheme();
 export default function LogIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [googleUser, setGoogleUser] = useState({});
 
   const [input, setInput] = useState({
     email: "",
@@ -50,7 +52,6 @@ export default function LogIn() {
 
   const user = useSelector((state) => state.auth.auth);
 
-  console.log("userLogin", user);
   const errorAuth = useSelector((state) => state.auth.errorAuth);
 
   useEffect(() => {
@@ -59,7 +60,39 @@ export default function LogIn() {
     }
   }, [user]);
 
+  // Todo lo de google hasta el siguiente comment
+
+  function handleCallBack(response) {
+    console.log("Enconded JWT ID token:" + response.credential); // Este toquen es el que debemos de manejar para autentificarlo
+    var userObject = jwt_decode(response.credential);
+    console.log(userObject); // credenciales decodificadas para tomar la info que necesitemos
+    setGoogleUser(userObject);
+    console.log(`Prueba verificando guardado en estado => ${googleUser}`);
+    // Decidir a donde queremos enviar esta informacion para utilizarla y hacer la verificacion/autentificacion
+    document.getElementById("signInDiv").hidden = true;
+  }
+
+  const handleSingOut = (e) => {
+    setGoogleUser({});
+    document.getElementById("signInDiv").hidden = false;
+  };
+
   useEffect(() => {
+    // Variables globales de google (vienen del script que estan en el html)
+    google.accounts.id.initialize({
+      client_id:
+        "367427673923-91opfd7qm11akhltnu97v0emf9e06tj1.apps.googleusercontent.com",
+      callback: handleCallBack,
+    });
+
+    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+      theme: "outline",
+      size: "large",
+    });
+
+    google.accounts.id.prompt(); // Esto hace que te "popee" el cartelito de elegir cuenta al loguearte
+
+    // hasta aca llega google
     dispatch(errorRemove());
 
     if (errorAuth.length === 0) {
@@ -144,6 +177,21 @@ export default function LogIn() {
             >
               Sign In
             </Button>
+            {/* TODO LO DE GOOGLE TEMPORAL */}
+            <div id="signInDiv"></div>
+            <Button
+              type="submit"
+              id="signOut"
+              onClick={(e) => handleSingOut(e)}
+            >
+              Sing Out
+            </Button>
+            {user && (
+              <div>
+                <img src={googleUser.picture} alt={googleUser.name} />
+                <h3>{googleUser.name}</h3>
+              </div>
+            )}
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
