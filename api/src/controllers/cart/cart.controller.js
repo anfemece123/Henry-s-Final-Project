@@ -8,13 +8,9 @@ let id = 1;
 createCart = async (req, res) => {
   const { products, quantity, total } = req.body;
   const { idUser } = req.params;
-  console.log("idUser:", idUser);
   if (!products || !quantity || !total) {
     return res.status(400).send("Missing Data");
   }
-  console.log("products", products);
-  console.log("quantity", quantity);
-  console.log("total", total);
   try {
     const cart = await Cart.findOne({ where: { UserId: idUser } });
     console.log(cart);
@@ -31,7 +27,6 @@ createCart = async (req, res) => {
     id++;
     return;
   } catch (error) {
-    console.log(error);
     return res.status(404).send(error.message);
   }
 };
@@ -41,7 +36,6 @@ deleteCart = async (req, res) => {
   const { idUser } = req.params;
   try {
     const cart = await Cart.findOne({ where: { UserId: idUser } });
-    console.log(cart);
     cart && (await cart.destroy());
     res.status(200).send("Cart Succesfully Removed");
   } catch (error) {
@@ -54,7 +48,6 @@ deleteCart = async (req, res) => {
 //pero se tiene que actualizar
 updateCart = async (req, res) => {
   const { id, products, products_quantity, total } = req.body;
-
   if (!products || !products_quantity || !total) {
     return res.status(400).send("Missing Data");
   }

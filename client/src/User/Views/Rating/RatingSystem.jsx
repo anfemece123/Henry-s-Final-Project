@@ -15,7 +15,7 @@ import Check from "@mui/icons-material/Check";
 import Rating from "@mui/material/Rating";
 
 import { useDispatch } from "react-redux";
-import { getProductReview } from "../../../Redux/Reducer/RatingSlice";
+import { createProductReview } from "../../../Redux/Reducer/RatingSlice";
 import Typography from "@mui/material/Typography";
 
 export default function RatingSystem() {
@@ -36,7 +36,7 @@ export default function RatingSystem() {
   };
 
   const handleClick = (e) => {
-    return dispatch(getProductReview(input, value));
+    return dispatch(createProductReview({ UserId, input, value }, idProduct)); // el id del product falta y tambien el UserId
   };
 
   return (
@@ -55,7 +55,7 @@ export default function RatingSystem() {
           }}
         />
       </Box>
-      <FormLabel>Tu review</FormLabel>
+      <FormLabel>Your review here</FormLabel>
       <Textarea
         placeholder="Type something here…"
         minRows={3}
@@ -116,7 +116,7 @@ export default function RatingSystem() {
               <FormatItalic />
             </IconButton>
             <Button onClick={handleClick} sx={{ ml: "auto" }}>
-              Enviar
+              SUBMIT
             </Button>
           </Box>
         }

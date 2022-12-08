@@ -9,9 +9,9 @@ const initialState = {
   error: "",
 };
 
-export const getProductReview = createAsyncThunk(
-  "getProductReview/getProductReview",
-  async (reviews, id) => {
+export const createProductReview = createAsyncThunk(
+  "createProductReview/createProductReview",
+  async (review, idProduct, idUser) => {
     return await axios
       .post(`ruta donde tengo que enviarlo`)
       .then((response) =>
@@ -24,15 +24,15 @@ const reviewSlice = createSlice({
   name: "review",
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(getProductReview.pending, (state) => {
+    builder.addCase(createProductReview.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(getProductReview.fulfilled, (state, action) => {
+    builder.addCase(createProductReview.fulfilled, (state, action) => {
       state.loading = false;
       state.allReview = action.payload;
       state.error = "";
     });
-    builder.addCase(getProductReview.rejected, (state, action) => {
+    builder.addCase(createProductReview.rejected, (state, action) => {
       state.loading = false;
       state.allReview = [];
       state.error = action.error.message;
