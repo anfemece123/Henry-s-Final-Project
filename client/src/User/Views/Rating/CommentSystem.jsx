@@ -12,17 +12,57 @@ import FormatBold from "@mui/icons-material/FormatBold";
 import FormatItalic from "@mui/icons-material/FormatItalic";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import Check from "@mui/icons-material/Check";
+import Rating from "@mui/material/Rating";
+
+import { useDispatch } from "react-redux";
+import { getProductReview } from "../../../Redux/Reducer/RatingSlice";
+import Typography from "@mui/material/Typography";
 
 export default function CommentSystem() {
   const [italic, setItalic] = React.useState(false);
   const [fontWeight, setFontWeight] = React.useState("normal");
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const dispatch = useDispatch();
+  const [value, setValue] = React.useState(2);
+  const [input, setInput] = React.useState("");
+
+  const handleChange = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+    console.log(value);
+    console.log(input);
+  };
+
+  const handleClick = (e) => {
+    return dispatch(getProductReview(input, value));
+  };
+
   return (
     <FormControl>
+      <Box
+        sx={{
+          "& > legend": { mt: 2 },
+        }}
+      >
+        <Typography component="legend">Please review the product</Typography>
+        <Rating
+          name="simple-controlled"
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+        />
+      </Box>
       <FormLabel>Tu review</FormLabel>
       <Textarea
         placeholder="Type something here…"
         minRows={3}
+        // Capturar valor de este campo
+        valur={input}
+        name="input"
+        onChange={handleChange}
         endDecorator={
           <Box
             sx={{
@@ -75,7 +115,9 @@ export default function CommentSystem() {
             >
               <FormatItalic />
             </IconButton>
-            <Button sx={{ ml: "auto" }}>Enviar</Button>
+            <Button onClick={handleClick} sx={{ ml: "auto" }}>
+              Enviar
+            </Button>
           </Box>
         }
         sx={{
