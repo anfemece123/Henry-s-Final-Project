@@ -6,15 +6,19 @@ import EditIcon from "@mui/icons-material/Edit";
 import {
   deleteProId,
   getAllProducts,
+  getById,
 } from "../../../Redux/Reducer/allProductSlice";
 
 // components
 
 import TableDropdown from "../Dropdowns/TableDropdown";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function CardTable({ color }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const products = useSelector((state) => state.allProducts.allProducts);
+
   // const [productId, setProductId] = useState(null);
   useEffect(() => {
     // dispatch(deleteProId());
@@ -34,6 +38,25 @@ export default function CardTable({ color }) {
         swal("Poof! Your product has been deleted!", {
           icon: "success",
         });
+      } else {
+        swal("Your product is safe!");
+      }
+    });
+  }
+  function editBotoAlert(e) {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this product!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        navigate("/formEditProduct");
+
+        // swal("Poof! Your product has been deleted!", {
+        //   icon: "success",
+        // });
       } else {
         swal("Your product is safe!");
       }
@@ -187,8 +210,17 @@ export default function CardTable({ color }) {
                           >
                             <DeleteIcon />
                           </button>
-                          <button>
-                            <EditIcon />
+
+                          <button
+                            onClick={() => {
+                              {
+                                editBotoAlert(element.id);
+                              }
+                            }}
+                          >
+                            <EditIcon
+                              onClick={() => dispatch(getById(element.id))}
+                            />
                           </button>
                         </td>
                       </tr>

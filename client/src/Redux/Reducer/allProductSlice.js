@@ -4,6 +4,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   allProducts: [],
   allProductsFiltered: [],
+  productId: {},
   loading: false,
   error: false,
 };
@@ -47,15 +48,23 @@ export const deleteProId = createAsyncThunk(
     return await axios.delete(`http://localhost:3001/product/delete/${id}`);
   }
 );
+export const getById = createAsyncThunk("getById/getById", async (id) => {
+  return await fetch(`http://localhost:3001/product/${id}`).then((respuesta) =>
+    respuesta.json()
+  );
+});
 
 const productsSlice = createSlice({
   name: "products",
   initialState,
   extraReducers: (builder) => {
-    // builder.addCase(deleteProId.pending, (state) => {
-    //   state.loading = true;
-    // });
-
+    builder.addCase(getById.fulfilled, (state, action) => {
+      state.loading = false;
+      state.productId = action.payload;
+      state.error = "";
+      console.log("productId", state.productId);
+    });
+    //?DeleteProduct
     builder.addCase(deleteProId.fulfilled, (state, action) => {
       const delProduct = state.allProducts.filter(
         (e) => e.id !== action.payload.data
