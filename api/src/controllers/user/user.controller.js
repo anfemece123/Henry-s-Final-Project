@@ -89,10 +89,12 @@ updateUser = async (req, res) => {
           fieldsToUpdate.password,
           10 /* saltRounds */
         );
+        await user.update({ passwordHashed });
+        await user.save();
       } else {
-        await user.update({ fieldsToUpdate });
+        await user.update(fieldsToUpdate);
+        await user.save();
       }
-      await user.save();
       res.status(200).send("User Successfully Updated");
     } catch (error) {
       return res.status(404).send(error.message);

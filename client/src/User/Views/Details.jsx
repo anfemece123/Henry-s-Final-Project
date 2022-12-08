@@ -13,6 +13,8 @@ import Alert from "@mui/material/Alert";
 import { AlertTitle } from "@mui/material";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+// import RatingSystem from "./Rating/RatingSystem";
+import RatingSystem from "./Rating/RatingSystem";
 
 export default function Details() {
   const details = useSelector((state) => state.details);
@@ -37,7 +39,7 @@ export default function Details() {
         price2: details.details.price,
       })
     );
-    // Hacer que no se muestre cuando la alerta de que ya esta el producto 🤔
+    // Hacer que no se muestre cuando la alerta de que ya esta el producto salga 🤔
     setOpen(true);
   };
 
@@ -134,6 +136,10 @@ export default function Details() {
                 Remember to log in to complete your bough!
               </Alert>
             </Snackbar>
+          </div>
+
+          <div>
+            <RatingSystem />
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0">
