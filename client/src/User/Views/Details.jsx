@@ -14,7 +14,7 @@ import { AlertTitle } from "@mui/material";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 // import RatingSystem from "./Rating/RatingSystem";
-import CommentSystem from "./Rating/CommentSystem";
+import RatingSystem from "./Rating/RatingSystem";
 
 export default function Details() {
   const details = useSelector((state) => state.details);
@@ -137,9 +137,9 @@ export default function Details() {
               </Alert>
             </Snackbar>
           </div>
-          <div>{/* <RatingSystem /> */}</div>
+
           <div>
-            <CommentSystem />
+            <RatingSystem />
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0">
