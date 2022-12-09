@@ -14,29 +14,29 @@ import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import Check from "@mui/icons-material/Check";
 import Rating from "@mui/material/Rating";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createProductReview } from "../../../Redux/Reducer/RatingSlice";
 import Typography from "@mui/material/Typography";
 
-export default function RatingSystem() {
+export default function RatingSystem({ productId }) {
+  const dispatch = useDispatch();
   const [italic, setItalic] = React.useState(false);
   const [fontWeight, setFontWeight] = React.useState("normal");
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const dispatch = useDispatch();
-  const [value, setValue] = React.useState(2);
-  const [input, setInput] = React.useState("");
+  const [calification, setCalification] = React.useState(2);
+  const [comment, setComment] = React.useState("");
+  const token = useSelector((state) => state.auth.auth.token);
 
   const handleChange = (e) => {
-    setInput({
-      ...input,
+    setComment({
+      ...comment,
       [e.target.name]: e.target.value,
     });
-    console.log(value);
-    console.log(input);
   };
 
   const handleClick = (e) => {
-    return dispatch(createProductReview({ UserId, input, value }, idProduct)); // el id del product falta y tambien el UserId
+    const reviewData = { calification, ...comment, productId, token };
+    dispatch(createProductReview(reviewData));
   };
 
   return (
@@ -49,9 +49,9 @@ export default function RatingSystem() {
         <Typography component="legend">Please review the product</Typography>
         <Rating
           name="simple-controlled"
-          value={value}
+          value={calification}
           onChange={(event, newValue) => {
-            setValue(newValue);
+            setCalification(newValue);
           }}
         />
       </Box>
@@ -60,8 +60,8 @@ export default function RatingSystem() {
         placeholder="Type something here…"
         minRows={3}
         // Capturar valor de este campo
-        valur={input}
-        name="input"
+        valur={comment}
+        name="comment"
         onChange={handleChange}
         endDecorator={
           <Box

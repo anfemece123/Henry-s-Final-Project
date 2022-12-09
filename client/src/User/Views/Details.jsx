@@ -25,6 +25,7 @@ export default function Details() {
   const product = details.details;
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = React.useState(false);
+  const productId = details.details.id; //lo tengo que mandar a la review para hacer la request de createReview
 
   useEffect(() => {
     dispatch(getProductDetails(id));
@@ -139,7 +140,7 @@ export default function Details() {
           </div>
 
           <div>
-            <RatingSystem />
+            <RatingSystem productId={productId} />
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0">
