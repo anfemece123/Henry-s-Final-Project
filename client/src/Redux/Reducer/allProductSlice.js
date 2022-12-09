@@ -53,19 +53,21 @@ export const getById = createAsyncThunk("getById/getById", async (id) => {
     respuesta.json()
   );
 });
-export const updateProduct = createAsyncThunk(
-  "updateProduct/updateProduct",
-  async (id, value) => {
-    return await axios.put(`http://localhost:3001/product/update/${id}`, value);
-  }
-);
-
 // export const updateProduct = createAsyncThunk(
 //   "updateProduct/updateProduct",
 //   async (id, value) => {
-//     console.log("value", value);
+
+//     return await axios.put(`http://localhost:3001/product/update/${id}`, value);
+//   }
+// );
+
+// export const updateProduct =(
+//   "updateProduct/updateProduct",
+//   async (id, values) => {
+//     console.log("id", id);
+//     console.log("value", values);
 //     return axios
-//       .put(`http://localhost:3001/product/update/${id}`, value)
+//       .put(`http://localhost:3001/product/update/${id}`, values)
 //       .then((response) => {
 //         const respuesta = response;
 //         console.log(`put user response => ${respuesta}`);
