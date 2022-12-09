@@ -11,6 +11,7 @@ const orderRoutes = require("./routes/order");
 const checkoutRoutes = require("./routes/payments.js");
 const authRoutes = require("./routes/auth");
 const cartRoutes = require("./routes/cart");
+const reviewRoutes = require("./routes/review");
 
 const server = express();
 
@@ -39,6 +40,7 @@ server.use("/auth", authRoutes);
 server.use("/order", orderRoutes);
 server.use("/cart", cartRoutes);
 server.use("/checkout", checkoutRoutes); //payments.js
+server.use("/review", reviewRoutes);
 
 // Error catching endware.
 server.use((err, req, res, next) => {

@@ -3,5 +3,5 @@ Content-Type: application/json
 
 {
  "brand": "Nike",
-"isOnSale": true,
+"isOnSale": true
 }

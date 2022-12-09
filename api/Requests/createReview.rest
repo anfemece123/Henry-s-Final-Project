@@ -1,0 +1,8 @@
+POST http://localhost:3001/review/newReview/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkYW50ZS5ua2FkZGFyaWFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTExMTEiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjcwNTQxMjU5LCJleHAiOjE2NzMxMzMyNTl9.NYJNxPLmtKEmZmeYQ8FmisD5JlvInaQx6IUWgRrtiBo
+
+{
+    "calification": 5,
+    "comment": "a good product"
+}
