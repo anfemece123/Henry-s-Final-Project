@@ -16,6 +16,9 @@ import { clearCart } from "../../Redux/Reducer/cartSlice";
 import { logout } from "../../Redux/Reducer/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { getAllusers, getByIdUser } from "../../Redux/Reducer/Users";
+import { useEffect } from "react";
+// import { get } from "../../../../api/src/app";
 
 export default function ContainerMenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -28,7 +31,9 @@ export default function ContainerMenuUser() {
     // Object.keys(state.auth) >= 1 &&
     state.auth.auth.first_name[0].toUpperCase()
   );
-  const image = useSelector((state) => state.auth.auth.profileImage);
+  const image = useSelector((state) => state.users.userId);
+
+  // const user2 = useSelector((state) => state.users.allUsers[0]);
 
   const cart = useSelector((state) => state.cart);
 
@@ -53,6 +58,10 @@ export default function ContainerMenuUser() {
     dispatch(logout());
     navigate("/home");
   }
+  useEffect(() => {
+    dispatch(getByIdUser(userId));
+    dispatch(getAllusers());
+  }, [dispatch]);
 
   return (
     <React.Fragment>
@@ -66,7 +75,7 @@ export default function ContainerMenuUser() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar alt="Remy Sharp" src={image} />
+            <Avatar alt="Remy Sharp" src={image.profileImage} />
           </IconButton>
         </Tooltip>
       </Box>
@@ -106,7 +115,7 @@ export default function ContainerMenuUser() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <Link to="/profile">
-          <MenuItem>
+          <MenuItem onClick={() => dispatch(getAllusers())}>
             <Avatar sx={{ width: 32, height: 32 }}>{name}</Avatar>
             Profile
           </MenuItem>
