@@ -18,7 +18,8 @@ import Auth from "../../Admin/layouts/Auth";
 import { Cart } from "../../User/Views/Cart/Cart";
 import CheckoutForm from "../../Stripe/checkoutForm";
 import Welcome from "../../User/Views/Welcome";
-import MapExample from "../../Admin/Features/Maps/MapExample";
+import { FormEditProduct } from "../../Admin/Views/FormEditProduct/FormEditProduct";
+import { FormEditUser } from "../../Admin/Views/FormEditUser/FormEditUser";
 
 const router = createBrowserRouter([
   {
@@ -102,6 +103,14 @@ const router = createBrowserRouter([
   {
     path: "/pruebas",
     element: <Settings />,
+  },
+  {
+    path: "/formEditProduct",
+    element: <FormEditProduct />,
+  },
+  {
+    path: "/formEditUser",
+    element: <FormEditUser />,
   },
 ]);
 

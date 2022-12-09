@@ -30,7 +30,7 @@ export default function Admin() {
             <Route path="settings" element={<Settings />} />
             <Route path="tables" element={<Tables />} />
           </Routes>
-          <FooterAdmin />
+          {/* <FooterAdmin /> */}
         </div>
       </div>
     </>

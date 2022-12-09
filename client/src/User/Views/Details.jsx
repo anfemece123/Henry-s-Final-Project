@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 // import RatingSystem from "./Rating/RatingSystem";
 import RatingSystem from "./Rating/RatingSystem";
+import ReviewSystem from "./Rating/ReviewSystem";
 
 export default function Details() {
   const details = useSelector((state) => state.details);
@@ -25,6 +26,7 @@ export default function Details() {
   const product = details.details;
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = React.useState(false);
+  const productId = details.details.id; //lo tengo que mandar a la review para hacer la request de createReview
 
   useEffect(() => {
     dispatch(getProductDetails(id));
@@ -139,7 +141,10 @@ export default function Details() {
           </div>
 
           <div>
-            <RatingSystem />
+            <RatingSystem productId={productId} />
+          </div>
+          <div>
+            <ReviewSystem /* reviews={reviews} */ />
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0">

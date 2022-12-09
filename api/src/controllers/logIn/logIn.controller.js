@@ -6,7 +6,6 @@ const { TOKEN_SECRET } = process.env;
 
 logInUser = async (req, res) => {
   const { email, password } = req.body;
-  console.log("email:", email, "password:", password);
   // valido todos los datos recibidos
   if (!email || !password) {
     return res.status(400).send("Missing Data");

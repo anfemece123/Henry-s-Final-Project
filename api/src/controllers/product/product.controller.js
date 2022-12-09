@@ -19,7 +19,7 @@ getAllProducts = async (req, res) => {
   }
   try {
     const allProducts = await Product.findAll({
-      where: {},
+      include: { all: true },
     });
     res.status(200).send(allProducts);
   } catch (error) {
@@ -85,7 +85,9 @@ createNewProducts = async (req, res) => {
 getDetail = async (req, res) => {
   try {
     const { id } = req.params;
-    const productDetail = await Product.findByPk(id);
+    const productDetail = await Product.findByPk(id, {
+      include: { all: true },
+    });
     if (!productDetail) return res.status(400).send("Product Not Found");
     return res.status(200).send(productDetail);
   } catch (error) {
@@ -152,7 +154,7 @@ deleteProduct = async (req, res) => {
       where: { id: idProduct },
     });
     await product.destroy();
-    res.status(200).send("User Succesfully Removed");
+    res.status(200).send(idProduct);
   } catch (error) {
     return res.status(404).send(error.message);
   }

@@ -24,10 +24,9 @@ export default function ContainerMenuUser() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const name = useSelector(
-    (state) =>
-      Object.keys(state.auth) >= 1 &&
-      state.auth.auth.first_name[0].toUpperCase()
+  const name = useSelector((state) =>
+    // Object.keys(state.auth) >= 1 &&
+    state.auth.auth.first_name[0].toUpperCase()
   );
   const image = useSelector((state) => state.auth.auth.profileImage);
 
