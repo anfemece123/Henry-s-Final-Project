@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import swal from "sweetalert";
@@ -28,10 +28,6 @@ export default function checkoutForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    useEffect(() => {
-      dispatch(getAllusers());
-      dispatch(getByIdUser(user.id));
-    }, [dispatch]);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
@@ -88,6 +84,11 @@ export default function checkoutForm() {
     const idUser = auth.id;
     dispatch(clearCart(idUser));
   };
+
+  useEffect(() => {
+    dispatch(getAllusers());
+    dispatch(getByIdUser(user.id));
+  }, [dispatch]);
 
   return (
     <div>

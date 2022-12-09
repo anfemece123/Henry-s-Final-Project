@@ -114,7 +114,7 @@ const router = createBrowserRouter([
     element: <FormEditUser />,
   },
   {
-    path: "Purchase-history",
+    path: "/Purchase-history",
     element: <PurchaseHistory />,
   },
 ]);
