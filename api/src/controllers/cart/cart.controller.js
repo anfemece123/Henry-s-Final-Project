@@ -13,7 +13,6 @@ createCart = async (req, res) => {
   }
   try {
     const cart = await Cart.findOne({ where: { UserId: idUser } });
-    console.log(cart);
     cart && (await cart.destroy());
 
     const newCart = await Cart.create({

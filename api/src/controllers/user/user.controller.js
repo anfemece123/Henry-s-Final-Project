@@ -147,13 +147,14 @@ getAllUsers = async (req, res) => {
 };
 //LOGICAL ERASING
 deleteUser = async (req, res) => {
-  const { id } = req.params; // en realidad lo voy a recibir de req.userId cuando conecte el middleware
+  const { id } = req.params;
   try {
     const user = await User.findOne({
       where: { id },
     });
     await user.update({ isBanned: true });
     await user.save();
+    nodemailer.sendUserBannedEmail(user.first_name, user.last_name, user.email);
     res.status(200).send("User Succesfully Banned");
   } catch (error) {
     return res.status(404).send(error.message);

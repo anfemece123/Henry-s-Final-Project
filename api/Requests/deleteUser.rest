@@ -1,0 +1,2 @@
+PUT http://localhost:3001/user/delete/1
+Content-Type: application/json

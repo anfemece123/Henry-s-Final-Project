@@ -11,12 +11,30 @@ const initialState = {
 
 export const createProductReview = createAsyncThunk(
   "createProductReview/createProductReview",
-  async (review, idProduct, idUser) => {
-    return await axios
-      .post(`ruta donde tengo que enviarlo`)
+  async (reviewData) => {
+    console.log("reviewData: ", reviewData);
+    const productId = reviewData.productId;
+    const token = reviewData.token;
+    const calification = reviewData.calification;
+    const comment = reviewData.comment;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    return axios
+      .post(
+        `http://localhost:3001/review/newReview/${productId}`,
+        {
+          calification,
+          comment,
+        },
+        config
+      )
       .then((response) =>
-        console.log(`Respuesta del back review => ${response}`)
-      );
+        console.log(`Respuesta del back review => ${response.data}`)
+      )
+      .catch((error) => console.log(error));
   }
 );
 
