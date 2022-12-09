@@ -147,7 +147,7 @@ getAllUsers = async (req, res) => {
 };
 //LOGICAL ERASING
 deleteUser = async (req, res) => {
-  const { id } = req.params; // en realidad lo voy a recibir de req.userId cuando conecte el middleware
+  const { id } = req.params;
   try {
     const user = await User.findOne({
       where: { id },
