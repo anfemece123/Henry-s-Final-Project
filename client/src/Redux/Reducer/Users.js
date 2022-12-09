@@ -47,14 +47,14 @@ export const deleteUserId = createAsyncThunk(
   }
 );
 
-export const googleAuth = createAsyncThunk(
+/* export const googleAuth = createAsyncThunk(
   "googleAuth/googleAuth",
   async (credentials) => {
     return await axios
       .post(`http://localhost:3001/logIn/googleLogin`, credentials)
       .then((response) => response.data);
   }
-);
+); */
 
 const usersSlice = createSlice({
   name: "users",
@@ -80,7 +80,7 @@ const usersSlice = createSlice({
       state.allUsers = [];
       state.error = action.error.message;
     });
-    builder.addCase(googleAuth.pending, (state) => {
+    /*  builder.addCase(googleAuth.pending, (state) => {
       state.loading = true;
     });
     builder.addCase(googleAuth.fulfilled, (state, action) => {
@@ -91,7 +91,7 @@ const usersSlice = createSlice({
     builder.addCase(googleAuth.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error.message;
-    });
+    }); */
   },
 });
 
