@@ -11,6 +11,7 @@ import Container from "@mui/material/Container";
 import CheckoutStructure from "./CheckoutStructure";
 import { Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { getAllusers, getByIdUser } from "../Redux/Reducer/Users";
 
 export default function checkoutForm() {
   const stripe = useStripe();
@@ -20,12 +21,17 @@ export default function checkoutForm() {
   const cart = useSelector((state) => state.cart);
   const token = useSelector((state) => state.auth.auth.token);
   const auth = useSelector((state) => state.auth.auth);
+  const user = useSelector((state) => state.users.userId);
 
   const totalCart = useSelector((state) => state.cart.total);
   console.log("array de productos", cart.products);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    useEffect(() => {
+      dispatch(getAllusers());
+      dispatch(getByIdUser(user.id));
+    }, [dispatch]);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
@@ -107,12 +113,12 @@ export default function checkoutForm() {
         </div> */}
         <Stack spacing={3}>
           <CheckoutStructure
-            first_name={auth.first_name}
-            address={auth.address}
-            phoneNumber={auth.phoneNumber}
-            profileImage={auth.profileImage}
-            last_name={auth.last_name}
-            email={auth.email}
+            first_name={user.first_name}
+            address={user.address}
+            phoneNumber={user.phoneNumber}
+            profileImage={user.profileImage}
+            last_name={user.last_name}
+            email={user.email}
           />
           <form onSubmit={handleSubmit} className="text-center">
             <CardElement />
