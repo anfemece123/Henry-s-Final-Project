@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
 import { errorRemove } from "../../../Redux/Reducer/authSlice";
 import jwt_decode from "jwt-decode";
 import { redirect } from "react-router-dom";
-import { googleAuth } from "../../../Redux/Reducer/Users";
+import { googleAuth } from "../../../Redux/actions/index";
 
 function Copyright(props) {
   return (
@@ -63,17 +63,13 @@ export default function LogIn() {
   }, [user]);
 
   // Todo lo de google hasta el siguiente comment
-
-  function handleCallBack(response) {
-    console.log("Enconded JWT ID token:" + response.credential); // Este toquen es el que debemos de manejar para autentificarlo
-    var userObject = jwt_decode(response.credential);
-    console.log(userObject); // credenciales decodificadas para tomar la info que necesitemos
+  const handleCallBack = (response) => {
+    const userObject = jwt_decode(response.credential);
     setGoogleUser(userObject);
-    // console.log(`Prueba verificando guardado en estado => ${googleUser}`);
-    // Decidir a donde queremos enviar esta informacion para utilizarla y hacer la verificacion/autentificacion
     document.getElementById("signInDiv").hidden = true;
-    dispatch(googleAuth(response.credential));
-  }
+    const credentials = response.credential;
+    dispatch(googleAuth(credentials));
+  };
 
   const handleSingOut = () => {
     setGoogleUser({});
