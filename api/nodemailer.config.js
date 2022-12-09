@@ -17,12 +17,31 @@ module.exports.sendConfirmationEmail = (name, email, confirmationCode) => {
       from: user,
       to: email,
       subject: "Please confirm your account",
-      html: `<h1>Email Confirmation</h1>
+      html: `<!DOCTYPE html>
+      <html lang="en"> 
+      <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+      .email-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      </style>
+      </head>
+      <body>
+        <div class="email-container">
+          <h1>Email Confirmation</h1>
           <h2>Hello ${name}</h2>
           <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
           <a href=http://localhost:3000/confirm/${confirmationCode}> Click here</a>
           <p>TIENDA NUESTRA.</p>
-          </div>`,
+        </div>
+      </body>    
+      </html>`,
     })
     .catch((err) => console.log(err));
 };
@@ -67,4 +86,14 @@ module.exports.sendUserBannedEmail = (name, lastName, email) => {
 {
   /* <p>Products</p>
 <p>${newOrder.products}</p> */
+}
+
+{
+  /* <div>
+      <h1>Email Confirmation</h1>
+          <h2>Hello ${name}</h2>
+          <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
+          <a href=http://localhost:3000/confirm/${confirmationCode}> Click here</a>
+          <p>TIENDA NUESTRA.</p>
+</div> */
 }
