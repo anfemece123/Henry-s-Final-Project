@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 import { errorRemove } from "../../../Redux/Reducer/authSlice";
 import jwt_decode from "jwt-decode";
 import { redirect } from "react-router-dom";
+import { googleAuth } from "../../../Redux/Reducer/Users";
 
 function Copyright(props) {
   return (
@@ -71,9 +72,7 @@ export default function LogIn() {
     // console.log(`Prueba verificando guardado en estado => ${googleUser}`);
     // Decidir a donde queremos enviar esta informacion para utilizarla y hacer la verificacion/autentificacion
     document.getElementById("signInDiv").hidden = true;
-    if (response.credential) {
-      return navigate("/home");
-    }
+    dispatch(googleAuth(response.credential));
   }
 
   const handleSingOut = () => {
@@ -206,22 +205,6 @@ export default function LogIn() {
                 <Link href="#" variant="body2" to="/formRegister">
                   {"Don't have an account? Sign Up"}
                 </Link>
-              </Grid>
-              <Grid item>
-                <div id="signInDiv">Register with Google</div>
-                <Button
-                  type="submit"
-                  id="signOut"
-                  onClick={(e) => handleSingOut(e)}
-                >
-                  Sing Out
-                </Button>
-                {user && (
-                  <div>
-                    <img src={googleUser.picture} alt={googleUser.name} />
-                    <h3>{googleUser.name}</h3>
-                  </div>
-                )}
               </Grid>
             </Grid>
           </Box>
