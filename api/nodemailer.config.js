@@ -21,6 +21,7 @@ module.exports.sendConfirmationEmail = (name, email, confirmationCode) => {
           <h2>Hello ${name}</h2>
           <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
           <a href=http://localhost:3000/confirm/${confirmationCode}> Click here</a>
+          <p>TIENDA NUESTRA.</p>
           </div>`,
     })
     .catch((err) => console.log(err));
@@ -32,16 +33,15 @@ module.exports.sendPurchaseConfirmation = (name, email, newOrder) => {
       from: user,
       to: email,
       subject: "Purchase Information",
-      html: `<h2>Hello ${name}</h2>
-          <p>Thank you for your purchase.</p>
-          <h3>Purchase Information:</h3>
+      html: `<p>${name}, Thank you for your purchase.</p>
+          <h3>Purchase Summary:</h3>
           <div>
-          <p>Nº order: ${newOrder.id}</p>
-          <p>Products</p>
-          <p>${newOrder.products}</p>
+          <p>Nº Order: ${newOrder.id}</p>
           <p>Quantity of Products: ${newOrder.products_quantity}</p>
-          <p>Total: ${newOrder.total}</p>
+          <p>You Paid Off: $ ${newOrder.total}</p>
           <p>Status: ${newOrder.status}</p>
+          <p>Kind Regards,</p>
+          <p>TIENDA NUESTRA.</p>
           </div>`,
     })
     .catch((err) => console.log(err));
@@ -63,3 +63,8 @@ module.exports.sendUserBannedEmail = (name, lastName, email) => {
     })
     .catch((err) => console.log(err));
 };
+
+{
+  /* <p>Products</p>
+<p>${newOrder.products}</p> */
+}
