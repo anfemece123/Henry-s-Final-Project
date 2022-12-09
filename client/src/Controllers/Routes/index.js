@@ -20,6 +20,7 @@ import CheckoutForm from "../../Stripe/checkoutForm";
 import Welcome from "../../User/Views/Welcome";
 import { FormEditProduct } from "../../Admin/Views/FormEditProduct/FormEditProduct";
 import { FormEditUser } from "../../Admin/Views/FormEditUser/FormEditUser";
+import PurchaseHistory from "../../User/Features/PurchaseHistory";
 
 const router = createBrowserRouter([
   {
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
   {
     path: "/formEditUser",
     element: <FormEditUser />,
+  },
+  {
+    path: "Purchase-history",
+    element: <PurchaseHistory />,
   },
 ]);
 
