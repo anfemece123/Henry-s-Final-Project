@@ -155,7 +155,7 @@ deleteUser = async (req, res) => {
     await user.update({ isBanned: true });
     await user.save();
     nodemailer.sendUserBannedEmail(user.first_name, user.last_name, user.email);
-    res.status(200).send("User Succesfully Banned");
+    res.status(200).send(id);
   } catch (error) {
     return res.status(404).send(error.message);
   }
