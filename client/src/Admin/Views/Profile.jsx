@@ -10,15 +10,17 @@ import { getAllusers, getByIdUser } from "../../Redux/Reducer/Users";
 import EditIcon from "@mui/icons-material/Edit";
 
 export default function Profile() {
-  const user2 = useSelector((state) => state.users.allUsers[0]);
-  const user = useSelector((state) => state.auth.auth);
   // console.log(user2);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const user2 = useSelector((state) => state.users.userId);
+  const user = useSelector((state) => state.auth.auth);
   useEffect(() => {
     dispatch(getAllusers());
+    dispatch(getByIdUser(user.id));
   }, [dispatch]);
+
   function editBotoAlert(e) {
     swal({
       title: "Are you sure?",

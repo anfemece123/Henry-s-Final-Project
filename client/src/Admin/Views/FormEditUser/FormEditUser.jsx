@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import { updateUser } from "../../../Redux/actions";
+import { getByIdUser } from "../../../Redux/Reducer/Users";
 // import NavBar from "../../Features/NavBar";
 
 export const FormEditUser = () => {
@@ -72,6 +73,7 @@ export const FormEditUser = () => {
             }}
             onSubmit={(values, { resetForm }) => {
               dispatch(updateUser(infoUser.id, values));
+
               console.log("info en registro", infoUser.id);
               console.log("objeto en registro", values);
               resetForm();

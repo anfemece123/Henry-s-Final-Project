@@ -26,6 +26,7 @@
 • http://localhost:3001/review/newReview/:productId
 
 • http://localhost:3001/logIn
+• http://localhost:3001/logIn/googleLogIn
 
 http://localhost:3000/admin/dashboard
 http://localhost:3000/admin/maps
