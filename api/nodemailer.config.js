@@ -46,3 +46,20 @@ module.exports.sendPurchaseConfirmation = (name, email, newOrder) => {
     })
     .catch((err) => console.log(err));
 };
+
+module.exports.sendUserBannedEmail = (name, lastName, email) => {
+  transport
+    .sendMail({
+      from: user,
+      to: email,
+      subject: "Banned Account",
+      html: `<h2>Hello ${name}</h2>
+          <p>Hello ${name} ${lastName},</p>
+          <h3>We regret to inform you that your account has been banned.</h3>
+          <p>Please contact to ${user} to recover your account.</p>
+          <p>Kind Regards,</p>
+          <p>TIENDA NUESTRA.</p>
+          `,
+    })
+    .catch((err) => console.log(err));
+};
