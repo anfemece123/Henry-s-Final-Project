@@ -2,7 +2,5 @@ PUT http://localhost:3001/user/update/1
 Content-Type: application/json
 
 {
- "password": "1234",
- "phoneNumber": "113496333",
-  "address": "aaaaaaaaaaaaaa"
+  "isBanned": false
 }
