@@ -4,29 +4,15 @@ import validate from "./validate";
 import swal from "sweetalert";
 
 import { useDispatch, useSelector } from "react-redux";
-import { formCreate } from "../../../Redux/actions";
-import { Link } from "react-router-dom";
+import { updateProduct } from "../../../Redux/actions";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../../Features/Navbars/AdminNavbar";
-import { updateProduct } from "../../../Redux/Reducer/allProductSlice";
 
 export const FormEditProduct = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const productId = useSelector((state) => state.allProducts.productId);
-
-  const [edit, setEdit] = useState({
-    title: `${productId.title}`,
-    category: productId.category,
-    //   isOnSale: "",
-    color: productId.color,
-    season: productId.season,
-    price: productId.price,
-    size: productId.size,
-    gender: productId.gender,
-    stock: productId.stock,
-    image: productId.image,
-  });
-
   const alert = (e) => {
     if (!formularioEnviado) {
       return swal({
@@ -42,7 +28,7 @@ export const FormEditProduct = () => {
       });
     }
   };
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(productId.image);
   const [loading, setLoading] = useState(false);
 
   const uploadImage = async (e) => {
@@ -73,19 +59,46 @@ export const FormEditProduct = () => {
         {/* <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
           <Link to="/home">Inicio</Link>
         </button> */}
-        <span class="text-2xl font-light">Form Create</span>
+        <span class="text-2xl font-light">Form Edit Product</span>
         <div class="w-50 max-w-lg">
           <Formik
-            initialValues={edit}
+            initialValues={{
+              /* id: "", */
+              title: productId.title,
+              category: productId.category,
+              //   isOnSale: "",
+              color: productId.color,
+              season: productId.season,
+              price: productId.price,
+              size: productId.size,
+              gender: productId.gender,
+              stock: productId.stock,
+              image: productId.image,
+            }}
             onSubmit={(values, { resetForm }) => {
-              dispatch(updateProduct(productId.id, values));
-              console.log("values", values);
-              console.log("id", productId.id);
+              const data = {
+                title: values.title,
+                category: values.category,
+                //   isOnSale: "",
+                color: values.color,
+                season: values.season,
+                price: values.price,
+                size: values.size,
+                gender: values.gender,
+                stock: values.stock,
+                image: values.image,
+              };
+
+              dispatch(updateProduct(productId.id, data));
+
+              console.log("values en formulario", values);
+              console.log("id en formulario", productId.id);
 
               resetForm();
 
               setformularioEnviado(true);
               setTimeout(() => setformularioEnviado(false), 5000);
+              navigate("/admin/tables");
             }}
             validate={(values) => validate(values)}
           >
@@ -436,7 +449,7 @@ export const FormEditProduct = () => {
                   class="mt-4 bg-black text-white py-2 px-6 rounded-lg"
                   onClick={alert}
                 >
-                  Accept
+                  Edit product
                 </button>
               </form>
             )}
