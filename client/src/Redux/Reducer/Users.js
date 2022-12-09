@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
   allUsers: [],
   adminUser: [],
+  userId: {},
   loading: false,
   error: "",
 };
@@ -29,11 +30,45 @@ export const updateUser = createAsyncThunk(
       });
   }
 );
+export const getByIdUser = createAsyncThunk(
+  "getByIdUser/getByIdUser",
+  async (id) => {
+    console.log("id en reducer", id);
+    return await fetch(`http://localhost:3001/user/${id}`).then((respuesta) =>
+      respuesta.json()
+    );
+  }
+);
+export const deleteUserId = createAsyncThunk(
+  "deleteUserId/deleteUserId",
+  async (id) => {
+    console.log("idreducer", id);
+    return await axios.put(`http://localhost:3001/user/delete/${id}`);
+  }
+);
 
 const usersSlice = createSlice({
   name: "users",
   initialState,
   extraReducers: (builder) => {
+    //!getbyid
+    builder.addCase(getByIdUser.fulfilled, (state, action) => {
+      state.loading = false;
+      state.userId = action.payload;
+      state.error = "";
+      console.log("userId", state.userId);
+    });
+    //!deletbyid
+    // builder.addCase(deleteUserId.fulfilled, (state, action) => {
+    //   const delProduct = state.allProducts.filter(
+    //     (e) => e.id !== action.payload.data
+    //   );
+    //   // console.log(action.payload.data);
+    //   state.loading = false;
+    //   state.userId = [...delProduct];
+    //   state.error = "";
+    // });
+    //!====
     builder.addCase(getAllusers.pending, (state) => {
       state.loading = true;
     });
