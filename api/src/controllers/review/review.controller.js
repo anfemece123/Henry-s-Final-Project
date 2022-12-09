@@ -5,7 +5,6 @@ const { User } = require("../../db");
 let id = 1;
 
 createReview = async (req, res) => {
-  console.log("funciona");
   const { productId } = req.params;
   const { calification, comment } = req.body;
   const userId = req.UserId;
