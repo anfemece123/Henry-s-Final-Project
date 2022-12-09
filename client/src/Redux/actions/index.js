@@ -1,3 +1,4 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { setAuth, setErrorAuth } from "../Reducer/authSlice";
 import { restoreCart } from "../Reducer/cartSlice";
@@ -58,3 +59,23 @@ export const logIn = ({ email, password }) => {
       });
   };
 };
+
+export const googleAuth = createAsyncThunk(
+  "googleAuth/googleAuth",
+  async (credentials) => {
+    console.log("credentials", credentials);
+    return await axios
+      .post(`http://localhost:3001/logIn/googleLogin`, { credentials })
+      .then((response) => {
+        const user = response;
+        dispatch(setAuth(user.data[0]));
+        console.log("cart:", user.data[1]);
+        user.data[1] && dispatch(restoreCart(user.data[1]));
+      })
+      .catch((error) => {
+        console.log(error);
+        const messageError = error.response;
+        dispatch(setErrorAuth(messageError));
+      });
+  }
+);
