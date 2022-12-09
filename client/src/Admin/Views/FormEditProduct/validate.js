@@ -45,9 +45,9 @@ export default function validate(values) {
   if (!values.price) {
     errors.price = "Please enter a price";
   }
-  if (!RegExpressionNum.test(values.price)) {
-    errors.price = "only numbers are allowed";
-  }
+  // if (!RegExpressionNum.test(values.price)) {
+  //   errors.price = "only numbers are allowed";
+  // }
 
   //size
 
