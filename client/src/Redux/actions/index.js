@@ -60,11 +60,9 @@ export const logIn = ({ email, password }) => {
   };
 };
 
-export const googleAuth = createAsyncThunk(
-  "googleAuth/googleAuth",
-  async (credentials) => {
-    console.log("credentials", credentials);
-    return await axios
+export const googleAuth = (credentials) => {
+  return function (dispatch) {
+    return axios
       .post(`http://localhost:3001/logIn/googleLogin`, { credentials })
       .then((response) => {
         const user = response;
@@ -74,8 +72,8 @@ export const googleAuth = createAsyncThunk(
       })
       .catch((error) => {
         console.log(error);
-        const messageError = error.response;
+        const messageError = error.message;
         dispatch(setErrorAuth(messageError));
       });
-  }
-);
+  };
+};

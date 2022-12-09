@@ -130,12 +130,14 @@ export default function ContainerMenuUser() {
           </ListItemIcon>
           Add another account
         </MenuItem> */}
-        {/* <MenuItem>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem> */}
+        <Link to="/Purchase-history">
+          <MenuItem>
+            <ListItemIcon>
+              <Settings fontSize="small" />
+            </ListItemIcon>
+            Purchase history
+          </MenuItem>
+        </Link>
         <MenuItem>
           <button onClick={logOutSubmit}>
             <ListItemIcon>

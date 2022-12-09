@@ -17,7 +17,6 @@ export default function Profile() {
   const user2 = useSelector((state) => state.users.userId);
   const user = useSelector((state) => state.auth.auth);
   useEffect(() => {
-    dispatch(getAllusers());
     dispatch(getByIdUser(user.id));
   }, [dispatch]);
 
