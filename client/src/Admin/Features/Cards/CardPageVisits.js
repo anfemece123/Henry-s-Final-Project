@@ -1,16 +1,38 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getAllusers } from "../../../Redux/Reducer/Users";
+import { deleteUserId, getAllusers } from "../../../Redux/Reducer/Users";
+import BlockIcon from "@mui/icons-material/Block";
+
 // components
 
 export default function CardPageVisits() {
   const user = useSelector((state) => state.users.allUsers);
+  console.log(user);
   const error = useSelector((state) => state.users.error);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getAllusers());
   }, [dispatch]);
+  function alertButtonDelete(e) {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this product!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        dispatch(deleteUserId(e));
+        swal("Poof! Your product has been deleted!", {
+          icon: "success",
+        });
+      } else {
+        swal("Your product is safe!");
+      }
+    });
+  }
 
   if (useSelector((state) => !state.users.loading && state.users.error))
     return <h1>{error}</h1>;
@@ -51,9 +73,8 @@ export default function CardPageVisits() {
                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Banned
                 </th>
-
                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                  Action
+                  phoneNumber
                 </th>
               </tr>
             </thead>
@@ -71,12 +92,29 @@ export default function CardPageVisits() {
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {element.isAdmin ? "true" : "false"}
                       </td>
+                      {/* <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        {element.phoneNumber}
+                      </td> */}
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {element.isBanned ? "true" : "false"}
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button>Ban user</button>
+                        {element.phoneNumber}
                       </td>
+                      {/* <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        <button>Ban user</button>
+                      </td> */}
+                      <button
+                        value={element.id}
+                        type="submit"
+                        onClick={() => {
+                          {
+                            alertButtonDelete(element.id);
+                          }
+                        }}
+                      >
+                        <BlockIcon />
+                      </button>
                     </tr>
                   );
                 })

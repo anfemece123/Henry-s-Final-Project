@@ -2,9 +2,17 @@ import axios from "axios";
 import { setAuth, setErrorAuth } from "../Reducer/authSlice";
 import { restoreCart } from "../Reducer/cartSlice";
 
-export const updateProduct = (id, values) => async () => {
+export const updateUser = (id, values) => async () => {
   console.log("id", id);
-  console.log("value", values);
+  console.log("values", values);
+  await axios({
+    method: "PUT",
+    url: `http://localhost:3001/user/update/${id}`,
+    values,
+    data: values,
+  });
+};
+export const updateProduct = (id, values) => async () => {
   await axios({
     method: "PUT",
     url: `http://localhost:3001/product/update/${id}`,
