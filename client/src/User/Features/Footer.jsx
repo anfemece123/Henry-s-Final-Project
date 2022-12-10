@@ -7,8 +7,8 @@ export default function Footer() {
         <div className="mb-6 md:mb-0">
           <a href="asdas" className="flex items-center">
             {/* <img src="asdasd" className="mr-3 h-8" alt="Icono nuestro" /> */}
-            <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-              TIENDA NUESTRA
+            <span className="self-center text-2xl font-cursive-titles font-semibold whitespace-nowrap text-white">
+              Tienda Nuestra
             </span>
           </a>
         </div>
