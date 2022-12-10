@@ -3,6 +3,7 @@ import NavBar from "../Features/NavBar";
 import girLanding from "../../Images/bg2.png";
 import { Link } from "react-router-dom";
 import Footer from "../Features/Footer";
+/* import Carrousel from "./Carrousel"; */
 
 export default function Landing() {
   return (
@@ -18,17 +19,19 @@ export default function Landing() {
             style={{ height: "700px" }}
           />
         </div>
+        {/* <Carrousel /> */}
+
         <div className="col-span-2 m-auto">
           <div className="text-start text-5xl font-noto-serif">
             <h1>
-              El estilo,
+              The style,
               <br />
-              es la ropa de tu personalidad
+              is your personality
             </h1>
           </div>
           <div className="text-center mt-11">
             <button className="font-noto-serif text-2xl rounded-full bg-black text-white border border-slate-900 p-4">
-              <Link to="/home">VER CATALOGO</Link>
+              <Link to="/home">WATCH CATALOG</Link>
             </button>
           </div>
         </div>

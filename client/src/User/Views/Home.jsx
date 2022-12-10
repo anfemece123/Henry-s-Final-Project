@@ -39,15 +39,16 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <div className="grid grid-cols-4 min-w-screen min-h-screen">
+    <>
       <div className="col-span-4">
         <NavBar />
       </div>
-      <div className="col-span-4 text-center text-slate-700 font-cursive-titles text-5xl mt-5">
+
+      <div className="col-span-4 text-center text-slate-700 font-cursive-titles text-5xl mt-2">
         <h1>Products</h1>
       </div>
       <Filtros orden={orden} setCurrentPage={setCurrentPage} />
-      <div className="col-span-4">
+      <div className="grid grid-cols-3 gap-4 justify-items-center items-center">
         {product.loading && <Loading />}
         {product.error && <ErrorSearch />}
 
@@ -67,17 +68,20 @@ export default function Home() {
               );
             })
           : null}
-        <Stack spacing={2}>
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 ">
+        <Stack spacing={1}>
           <Paginado
             productsPerPage={productsPerPage}
             productPaginado={productPaginado.length}
+            currentPage={currentPage}
             paginado={paginado}
           />
         </Stack>
-      </div>
-      <div className="col-span-4">
+
         <Footer />
       </div>
-    </div>
+    </>
   );
 }

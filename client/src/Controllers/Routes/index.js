@@ -11,10 +11,10 @@ import Maps from "../../Admin/Views/admin/Maps.jsx";
 import Settings from "../../Admin/Views/admin/Settings.jsx";
 import Tables from "../../Admin/Views/admin/Tables";
 import Admin from "../../Admin/layouts/Admin";
-import Login from "../../Admin/Views/auth/Login";
-import Register from "../../Admin/Views/auth/Register";
+// import Login from "../../Admin/Views/auth/Login";
+// import Register from "../../Admin/Views/auth/Register";
 import Profile from "../../Admin/Views/Profile";
-import Auth from "../../Admin/layouts/Auth";
+// import Auth from "../../Admin/layouts/Auth";
 import { Cart } from "../../User/Views/Cart/Cart";
 import CheckoutForm from "../../Stripe/checkoutForm";
 import Welcome from "../../User/Views/Welcome";
@@ -26,15 +26,14 @@ import RatingSystem from "../../User/Views/Rating/RatingSystem";
 
 const router = createBrowserRouter([
   {
-    path: "/home",
-    element: <Home />,
-  },
-  {
     path: "/",
     element: <Landing />,
     errorElement: <ErrorPage />,
   },
-
+  {
+    path: "/home",
+    element: <Home />,
+  },
   {
     path: "/formCreate",
     element: <FormCreate />,
@@ -56,20 +55,20 @@ const router = createBrowserRouter([
     element: <Cart />,
   },
 
-  {
-    path: "/auth",
-    element: <Auth />,
-    children: [
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "register",
-        element: <Register />,
-      },
-    ],
-  },
+  // {
+  //   path: "/auth",
+  //   element: <Auth />,
+  //   children: [
+  //     {
+  //       path: "login",
+  //       element: <Login />,
+  //     },
+  //     {
+  //       path: "register",
+  //       element: <Register />,
+  //     },
+  //   ],
+  // },
   {
     path: "/admin",
     element: <Admin />,

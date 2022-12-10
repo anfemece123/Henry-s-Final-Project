@@ -126,7 +126,7 @@ updateUser = async (req, res) => {
 getUserDetail = async (req, res) => {
   try {
     const { id } = req.params;
-    const userDetail = await User.findOne({ where: { id } });
+    const userDetail = await User.findByPk(id, { include: { all: true } });
     if (!userDetail) return res.status(400).send("User Not Found");
     return res.status(200).send(userDetail);
   } catch (error) {

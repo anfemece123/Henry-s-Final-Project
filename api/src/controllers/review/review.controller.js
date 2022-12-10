@@ -29,7 +29,28 @@ createReview = async (req, res) => {
   }
 };
 
-module.exports = createReview;
+getAllReviews = async (req, res) => {
+  try {
+    const allReviews = await Review.findAll({ include: { all: true } });
+    if (!allReviews) return res.status(400).send("Reviews Not Found");
+    return res.status(200).send(allReviews);
+  } catch (error) {
+    return res.status(404).send(error);
+  }
+};
+
+getReviewDetail = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const reviewDetail = await Review.findByPk(id, { include: { all: true } });
+    if (!reviewDetail) return res.status(400).send("User Not Found");
+    return res.status(200).send(reviewDetail);
+  } catch (error) {
+    return res.status(404).send(error);
+  }
+};
+
+module.exports = { createReview, getAllReviews, getOrderDetail };
 /* changeVisibility,
   getOrderDetail,
-  getAllReviews, */
+   */
