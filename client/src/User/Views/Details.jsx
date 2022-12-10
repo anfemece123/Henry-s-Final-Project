@@ -63,7 +63,7 @@ export default function Details() {
   if (loading) return <Loading />;
   if (!loading && error) return <h1>{error}</h1>;
   return (
-    <div className=" min-h-screen bg-gray-200">
+    <div className=" min-h-screen bg-white-200">
       <div className="grid grid-cols-5 ">
         <div className="col-span-5 ">
           <NavBar />
@@ -135,7 +135,7 @@ export default function Details() {
                 sx={{ width: "100%" }}
               >
                 <AlertTitle>Added to cart successfully!</AlertTitle>
-                Remember to log in to complete your bough!
+                Remember to log in to complete your purchase!
               </Alert>
             </Snackbar>
           </div>
