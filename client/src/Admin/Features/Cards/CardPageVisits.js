@@ -97,7 +97,8 @@ export default function CardPageVisits() {
                         ></img>{" "}
                       </th>
                       <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        {element.first_name} {element.last_name}
+                        {element.first_name} {element.last_name} (ID:{" "}
+                        {element.id})
                       </th>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {element.email}
