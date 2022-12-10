@@ -50,7 +50,30 @@ getReviewDetail = async (req, res) => {
   }
 };
 
-module.exports = { createReview, getAllReviews, getOrderDetail };
-/* changeVisibility,
+changeVisibility = async (req, res) => {
+  const { idReview } = req.params;
+  const { isVisible } = req.body;
+
+  if (!isVisible) {
+    return res.status(400).send("Missing Data");
+  }
+  try {
+    const review = await Review.findOne({
+      where: { id: idReview },
+    });
+    review.update({
+      isVisible,
+    });
+    await review.save();
+    res.status(200).send(id);
+  } catch (error) {
+    return res.status(404).send(error.message);
+  }
+};
+
+module.exports = {
+  createReview,
+  getAllReviews,
   getOrderDetail,
-   */
+  changeVisibility,
+};
