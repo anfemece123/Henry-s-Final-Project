@@ -4,7 +4,7 @@ Content-Type: application/json
 {
   "first_name": "Dante",
   "last_name": "Kaddarian",
-  "email":"dante.nkaddarian@gmail.com",
+  "email":"blink.0068@gmail.com",
   "password": "11111",
   "phoneNumber": "1134965291",
   "address": "Calle Falsa 123",
