@@ -14,7 +14,7 @@ export default function Paginado({
       <ul className="flex flex-row gap-4">
         <li>
           <button
-            className="rounded-lg py-5 px-3 hover:bg-blue-100 hover:text-slate-900 text-black-900 font-bold text-xl"
+            className="rounded-lg py-5 px-3 hover:bg-blue-100 hover:text-slate-900 focus:none text-black-900 font-bold text-xl"
             onClick={() => {
               currentPage > 1
                 ? paginado(currentPage - 1)
@@ -37,7 +37,7 @@ export default function Paginado({
           ))}
         <li>
           <button
-            className="rounded-lg py-5 px-3 hover:bg-blue-100 hover:text-slate-900 text-black-900 font-bold text-xl"
+            className="rounded-lg py-5 px-3 hover:bg-blue-100 hover:text-slate-900 focus:none text-black-900 font-bold text-xl"
             onClick={() => {
               currentPage < pageNumbers.length
                 ? paginado(currentPage + 1)
