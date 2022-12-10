@@ -38,22 +38,21 @@ export default function CardPageVisits() {
     return <h1>{error}</h1>;
   return (
     <>
-      <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+      <h3 className="pt-40 pb-10 text-2xl font-semibold font-bold tracking-wide ">
+        Users
+      </h3>
+      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded ">
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
-            <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-              <h3 className="font-semibold text-base text-blueGray-700">
-                User Data Base
-              </h3>
-            </div>
-            <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+            <div className="relative w-full px-4 max-w-full flex-grow flex-1"></div>
+            {/* <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
               <button
                 className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
               >
                 See all
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="block w-full overflow-x-auto">
@@ -62,8 +61,12 @@ export default function CardPageVisits() {
             <thead>
               <tr>
                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                  Profile image
+                </th>
+                <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   User Name
                 </th>
+
                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   Email
                 </th>
@@ -76,6 +79,9 @@ export default function CardPageVisits() {
                 <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                   phoneNumber
                 </th>
+                <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                  Address
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -84,7 +90,14 @@ export default function CardPageVisits() {
                   return (
                     <tr key={element.id}>
                       <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        {element.first_name} (ID:{element.id})
+                        <img
+                          src={element.profileImage}
+                          className="h-12 w-12 bg-white rounded-full border"
+                          alt="..."
+                        ></img>{" "}
+                      </th>
+                      <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                        {element.first_name} {element.last_name}
                       </th>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {element.email}
@@ -101,20 +114,30 @@ export default function CardPageVisits() {
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {element.phoneNumber}
                       </td>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        {element.address}
+                      </td>
                       {/* <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <button>Ban user</button>
                       </td> */}
-                      <button
-                        value={element.id}
-                        type="submit"
-                        onClick={() => {
-                          {
-                            alertButtonDelete(element.id);
-                          }
-                        }}
-                      >
-                        <BlockIcon />
-                      </button>
+                      <td className="border-t-0 px-6 align-middle border-l-0 border-r-0  whitespace-nowrap p-4">
+                        <button
+                          value={element.id}
+                          type="submit"
+                          onClick={() => {
+                            {
+                              alertButtonDelete(element.id);
+                            }
+                          }}
+                        >
+                          <div>
+                            <a className="decoration-red-500 mr-2 text-rose-600">
+                              Ban
+                            </a>
+                            <BlockIcon color="warning" />
+                          </div>
+                        </button>
+                      </td>
                     </tr>
                   );
                 })

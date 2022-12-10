@@ -65,7 +65,7 @@ export default function CardTable({ color }) {
 
   return (
     <div>
-      <h3 className="pt-40 pb-10 text-2xl font-sans font-bold tracking-wide">
+      <h3 className="pt-40 pb-10 text-2xl font-semibold font-bold tracking-wide">
         Products
       </h3>
       {products
