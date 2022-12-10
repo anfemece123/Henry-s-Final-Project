@@ -24,7 +24,7 @@ export const createProductReview = createAsyncThunk(
     };
     return axios
       .post(
-        `http://localhost:3001/review/newReview/${productId}`,
+        `http://localhost:3001/review/newReview/${idProduct}`,
         {
           calification,
           comment,

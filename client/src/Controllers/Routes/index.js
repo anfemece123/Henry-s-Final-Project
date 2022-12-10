@@ -21,6 +21,8 @@ import Welcome from "../../User/Views/Welcome";
 import { FormEditProduct } from "../../Admin/Views/FormEditProduct/FormEditProduct";
 import { FormEditUser } from "../../Admin/Views/FormEditUser/FormEditUser";
 import PurchaseHistory from "../../User/Features/PurchaseHistory";
+import ReviewSystem from "../../User/Views/Rating/ReviewSystem";
+import RatingSystem from "../../User/Views/Rating/RatingSystem";
 
 const router = createBrowserRouter([
   {
@@ -114,8 +116,12 @@ const router = createBrowserRouter([
     element: <FormEditUser />,
   },
   {
-    path: "/Purchase-history",
+    path: "/purchaseHistory/:id",
     element: <PurchaseHistory />,
+  },
+  {
+    path: "/createReview/:id",
+    element: <RatingSystem />,
   },
 ]);
 
