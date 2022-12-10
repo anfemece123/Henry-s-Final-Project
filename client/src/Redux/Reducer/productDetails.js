@@ -10,7 +10,10 @@ export const getProductDetails = createAsyncThunk(
   "getProductDetails/getProductDetails",
   async (id) => {
     return await fetch(`http://localhost:3001/product/${id}`).then(
-      (respuesta) => respuesta.json()
+      (respuesta) => {
+        console.log(respuesta);
+        return respuesta.json();
+      }
     );
   }
 );

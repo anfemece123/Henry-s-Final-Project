@@ -13,7 +13,7 @@ export const createProductReview = createAsyncThunk(
   "createProductReview/createProductReview",
   async (reviewData) => {
     console.log("reviewData: ", reviewData);
-    const productId = reviewData.productId;
+    const idProduct = reviewData.productId;
     const token = reviewData.token;
     const calification = reviewData.calification;
     const comment = reviewData.comment;
@@ -24,7 +24,7 @@ export const createProductReview = createAsyncThunk(
     };
     return axios
       .post(
-        `http://localhost:3001/review/newReview/${productId}`,
+        `http://localhost:3001/review/newReview/${idProduct}`,
         {
           calification,
           comment,

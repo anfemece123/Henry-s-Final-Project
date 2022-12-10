@@ -13,7 +13,6 @@ import Alert from "@mui/material/Alert";
 import { AlertTitle } from "@mui/material";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-// import RatingSystem from "./Rating/RatingSystem";
 import RatingSystem from "./Rating/RatingSystem";
 import ReviewSystem from "./Rating/ReviewSystem";
 
@@ -141,10 +140,7 @@ export default function Details() {
           </div>
 
           <div>
-            <RatingSystem productId={productId} />
-          </div>
-          <div>
-            <ReviewSystem /* reviews={reviews} */ />
+            <ReviewSystem />
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0">
