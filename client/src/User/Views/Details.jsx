@@ -140,9 +140,6 @@ export default function Details() {
           </div>
 
           <div>
-            <RatingSystem productId={productId} />
-          </div>
-          <div>
             <ReviewSystem />
           </div>
         </div>

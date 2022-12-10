@@ -27,8 +27,8 @@ export default function RatingSystem() {
   const [calification, setCalification] = React.useState(2);
   const [comment, setComment] = React.useState("");
   const token = useSelector((state) => state.auth.auth.token);
-  const { productId } = useParams();
-
+  const productIdAux = useParams();
+  const productId = parseInt(productIdAux.id);
   const handleChange = (e) => {
     setComment({
       ...comment,

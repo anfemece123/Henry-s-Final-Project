@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import NavBar from "../Features/NavBar";
 
 export default function PurcharseHistory() {
   const userID = useSelector((state) => state.auth.auth.id);
@@ -18,6 +19,7 @@ export default function PurcharseHistory() {
 
   return (
     <>
+      <NavBar />
       {users.allUsers.length ? (
         users.allUsers[index].Orders.map((element) => {
           return (
