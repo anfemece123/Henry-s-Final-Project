@@ -1,0 +1,2 @@
+GET http://localhost:3001/review/allReviews
+Content-Type: application/json

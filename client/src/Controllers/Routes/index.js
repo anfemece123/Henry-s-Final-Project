@@ -24,15 +24,14 @@ import PurchaseHistory from "../../User/Features/PurchaseHistory";
 
 const router = createBrowserRouter([
   {
-    path: "/home",
-    element: <Home />,
-  },
-  {
     path: "/",
     element: <Landing />,
     errorElement: <ErrorPage />,
   },
-
+  {
+    path: "/home",
+    element: <Home />,
+  },
   {
     path: "/formCreate",
     element: <FormCreate />,

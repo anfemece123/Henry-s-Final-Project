@@ -2,37 +2,37 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="p-4 bg-slate-900 sm:p-6 dark:bg-gray-900">
+    <footer className="p-5 bg-slate-900 sm:p-6 dark:bg-gray-900">
       <div className="md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
           <a href="asdas" className="flex items-center">
-            <img src="asdasd" className="mr-3 h-8" alt="Icono nuestro" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              TIENDA NUESTRA
+            {/* <img src="asdasd" className="mr-3 h-8" alt="Icono nuestro" /> */}
+            <span className="self-center text-2xl font-cursive-titles font-semibold whitespace-nowrap text-white">
+              Tienda Nuestra
             </span>
           </a>
         </div>
         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Enlaces
+              Links
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
                 <a href="" className="hover:underline">
-                  Moda X
+                  Fashion A
                 </a>
               </li>
               <li>
                 <a href="" className="hover:underline">
-                  Moda Y
+                  Fashion B
                 </a>
               </li>
             </ul>
           </div>
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              CONTACTO
+              CONTACT
             </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
@@ -54,12 +54,12 @@ export default function Footer() {
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
                 <a href="#" className="hover:underline">
-                  ¿Quienes somos?
+                  About Us
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:underline">
-                  Terminos y Condiciones
+                  Terms & Conditions
                 </a>
               </li>
             </ul>

@@ -29,7 +29,17 @@ createReview = async (req, res) => {
   }
 };
 
-module.exports = createReview;
+getAllReviews = async (req, res) => {
+  try {
+    const allReviews = await Review.findAll({ include: { all: true } });
+    if (!allReviews) return res.status(400).send("Reviews Not Found");
+    return res.status(200).send(allReviews);
+  } catch (error) {
+    return res.status(404).send(error);
+  }
+};
+
+module.exports = { createReview, getAllReviews };
 /* changeVisibility,
   getOrderDetail,
-  getAllReviews, */
+   */
