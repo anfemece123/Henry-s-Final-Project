@@ -39,7 +39,7 @@ export default function MenuContainer() {
         <Link to="/formCreate">
           <MenuItem onClick={handleClose}>Add New Product</MenuItem>
         </Link>
-        <Link to="/admin">
+        <Link to="/admin/dashboard">
           <MenuItem onClick={handleClose}>Admin Panel</MenuItem>
         </Link>
       </Menu>
