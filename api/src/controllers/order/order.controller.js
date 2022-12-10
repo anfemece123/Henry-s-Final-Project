@@ -39,6 +39,7 @@ createOrder = async (req, res) => {
     id++;
     return;
   } catch (error) {
+    console.log(error);
     return res.status(404).send(error.message);
   }
 };

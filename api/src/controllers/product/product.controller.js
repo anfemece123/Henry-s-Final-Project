@@ -88,6 +88,7 @@ getDetail = async (req, res) => {
     const productDetail = await Product.findByPk(id, {
       include: { all: true },
     });
+    console.log(productDetail);
     if (!productDetail) return res.status(400).send("Product Not Found");
     return res.status(200).send(productDetail);
   } catch (error) {

@@ -130,7 +130,7 @@ export default function ContainerMenuUser() {
           </ListItemIcon>
           Add another account
         </MenuItem> */}
-        <Link to="/Purchase-history">
+        <Link to={`/purchaseHistory/${userId}`}>
           <MenuItem>
             <ListItemIcon>
               <Settings fontSize="small" />

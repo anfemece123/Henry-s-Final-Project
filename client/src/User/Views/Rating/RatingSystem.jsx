@@ -13,12 +13,13 @@ import FormatItalic from "@mui/icons-material/FormatItalic";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import Check from "@mui/icons-material/Check";
 import Rating from "@mui/material/Rating";
+import { useParams } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { createProductReview } from "../../../Redux/Reducer/RatingSlice";
 import Typography from "@mui/material/Typography";
 
-export default function RatingSystem({ productId }) {
+export default function RatingSystem() {
   const dispatch = useDispatch();
   const [italic, setItalic] = React.useState(false);
   const [fontWeight, setFontWeight] = React.useState("normal");
@@ -26,7 +27,8 @@ export default function RatingSystem({ productId }) {
   const [calification, setCalification] = React.useState(2);
   const [comment, setComment] = React.useState("");
   const token = useSelector((state) => state.auth.auth.token);
-
+  const productIdAux = useParams();
+  const productId = parseInt(productIdAux.id);
   const handleChange = (e) => {
     setComment({
       ...comment,
