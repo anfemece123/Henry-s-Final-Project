@@ -1,6 +1,7 @@
 import React from "react";
 // import CardLineChart from "../../Features/Cards/CardLineChart";
-import CardStats from "../../Features/Cards/CardStats";
+// import CardStats from "../../Features/Cards/CardStats";
+import ReviewsAdmin from "../../Features/Cards/ReviewsAdmin";
 
 // components
 
@@ -12,7 +13,7 @@ export default function Maps() {
       <div className="flex flex-wrap">
         <div className="w-full px-4">
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-            <CardStats />
+            <ReviewsAdmin />
           </div>
         </div>
       </div>
