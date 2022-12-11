@@ -8,7 +8,14 @@ const initialState = {
   allReview: [],
   error: "",
 };
-
+export const getAllReviews = createAsyncThunk(
+  "getAllReviews/getAllReviews",
+  async () => {
+    return await fetch(`http://localhost:3001/review/AllReviews`).then(
+      (response) => response.json()
+    );
+  }
+);
 export const createProductReview = createAsyncThunk(
   "createProductReview/createProductReview",
   async (reviewData) => {
@@ -37,11 +44,23 @@ export const createProductReview = createAsyncThunk(
       .catch((error) => console.log(error));
   }
 );
+export const updateReview = createAsyncThunk(
+  "updateReview/updateReview",
+  async (idReview) => {
+    // console.log("idreducer", id);
+    return await axios.put(`http://localhost:3001/review/update/${idReview}`);
+  }
+);
 
 const reviewSlice = createSlice({
   name: "review",
   initialState,
   extraReducers: (builder) => {
+    builder.addCase(getAllReviews.fulfilled, (state, action) => {
+      state.loading = false;
+      state.allReview = action.payload;
+      state.error = "";
+    });
     builder.addCase(createProductReview.pending, (state) => {
       state.loading = true;
     });

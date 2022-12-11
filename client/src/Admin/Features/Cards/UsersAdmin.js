@@ -6,9 +6,9 @@ import BlockIcon from "@mui/icons-material/Block";
 
 // components
 
-export default function CardPageVisits() {
+export default function UsersAdmin() {
   const user = useSelector((state) => state.users.allUsers);
-  console.log(user);
+  console.log("orders en users", user[0].Orders.length);
   const error = useSelector((state) => state.users.error);
   const dispatch = useDispatch();
 
@@ -97,19 +97,20 @@ export default function CardPageVisits() {
                         ></img>{" "}
                       </th>
                       <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        {element.first_name} {element.last_name}
+                        {element.first_name} {element.last_name} (ID:{" "}
+                        {element.id})
                       </th>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {element.email}
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {element.isAdmin ? "true" : "false"}
+                        {element.isAdmin ? "yes" : "no"}
                       </td>
                       {/* <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {element.phoneNumber}
                       </td> */}
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {element.isBanned ? "true" : "false"}
+                        {element.isBanned ? "yes" : "No"}
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {element.phoneNumber}

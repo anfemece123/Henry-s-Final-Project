@@ -2,16 +2,17 @@ import React from "react";
 
 // components
 
-import CardSettings from "../../Features/Cards/CardSettings";
-import CardProfile from "../../Features/Cards/CardProfile.js";
-import CardSocialTraffic from "../../Features/Cards/CardSocialTraffic";
+// import CardSettings from "../../Features/Cards/CardSettings";
+// import CardProfile from "../../Features/Cards/CardProfile.js";
+// import CardSocialTraffic from "../../Features/Cards/CardSocialTraffic";
+import OrdersAdmin from "../../Features/Cards/OrdersAdmin";
 
 export default function Settings() {
   return (
     <>
       <div className="flex flex-wrap">
         <div className="w-full  px-4">
-          <CardSocialTraffic />
+          <OrdersAdmin />
         </div>
         {/* <div className="w-full lg:w-8/12 px-4">
           <CardSettings />
