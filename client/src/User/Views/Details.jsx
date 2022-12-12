@@ -62,91 +62,98 @@ export default function Details() {
   if (loading) return <Loading />;
   if (!loading && error) return <h1>{error}</h1>;
   return (
-    <div className=" min-h-screen bg-white-200">
-      <div className="grid grid-cols-5 ">
-        <div className="col-span-5 ">
+    <>
+      <div className="flex flex-col gap-10">
+        <div className="col-span-4">
           <NavBar />
-          <Link to="/home">
-            <div
-              className="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer"
-              // onclick="checkoutHandler(false)"
-            >
-              <ArrowBackIcon />
-              <p className="text-sm pl-2 leading-none dark:hover:text-gray-200">
-                Continue Shopping
-              </p>
+        </div>
+        <Link to="/home">
+          <div
+            className="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer"
+            // onclick="checkoutHandler(false)"
+          >
+            <ArrowBackIcon />
+            <p className="text-sm leading-none dark:hover:text-gray-200">
+              Continue Shopping
+            </p>
+          </div>
+        </Link>
+        <div className="flex flex-col justify-center gap-4 mx-auto">
+          <div className="flex flex-row gap-4">
+            <div className="w-[32rem] border border-slate-900 rounded-lg shadow-2xl shadow-gray-600 hover:shadow-2xl">
+              <img
+                className="h-[32rem] m-auto"
+                src={details.details.image}
+                alt={`pic-for${details.details.title}`}
+              />
             </div>
-          </Link>
-        </div>
-        <div className="col-span-2 w-[32rem] ml-5 mt-20 mb-20 shadow-2xl shadow-gray-600 hover:shadow-2xl hover:shadow-green-700">
-          <img
-            className="h-[32rem] m-auto"
-            src={details.details.image}
-            alt={`pic-for${details.details.title}`}
-          />
-        </div>
-        <div className="col-span-3 border border-slate-900 bg-gray-800 rounded-lg text-white shadow-2xl  shadow-gray-600  hover:shadow-2xl hover:shadow-green-700 m-auto w-[65rem]">
-          {/*no se si quedan mejor los detalles con esto en el div de arriba
+            <div className="border border-slate-900 rounded-lg shadow-2xl shadow-gray-600 hover:shadow-2xl  p-10 w-[65rem]">
+              {/*no se si quedan mejor los detalles con esto en el div de arriba
          de este comentario  => bg-slate-300 p-10 */}
-          <div className="flex gap-32 mt-10">
-            <div className="font-noto-serif text-3xl justify-center p-4">
-              <h1 className="capitalize">PRODUCT: {details.details.title}</h1>
-              <br />
-              <p>PRICE: ${details.details.price}</p>
-              <br />
-              <p>SIZE: {details.details.size}</p>
-              <br />
-              <p>CATEGORY: {details.details.category}</p>
-              <br />
+              <div className="flex gap-32">
+                <div className="font-noto-serif text-3xl justify-center">
+                  <h1 className="capitalize">
+                    PRODUCT: {details.details.title}
+                  </h1>
+                  <br />
+                  <p>PRICE: ${details.details.price}</p>
+                  <br />
+                  <p>SIZE: {details.details.size}</p>
+                  <br />
+                  <p>CATEGORY: {details.details.category}</p>
+                  <br />
+                </div>
+                <div className="font-noto-serif text-3xl m-auto">
+                  <p className="capitalize">COLOR: {details.details.color}</p>
+                  <br />
+                  <p className="capitalize">SEASON: {details.details.season}</p>
+                  <br />
+                  <p className="capitalize">GENDER: {details.details.gender}</p>
+                  <br />
+                  <p>STOCK: {details.details.stock - quantity}</p>
+                  <br />
+                </div>
+              </div>
+              <div className="text-center mt-5">
+                <div className="block font-noto-serif text-2xl m-auto">
+                  <span onClick={() => handleQuantity("dec")}>-</span>
+                  <span> {quantity} </span>
+                  <span onClick={() => handleQuantity("inc")}>+</span>
+                </div>
+                <br />
+                {details.details.stock >= 1 && (
+                  <button
+                    className="animate-pulse border border-slate-600 p-2 rounded-lg hover:bg-black hover:border-slate-800 hover:text-white "
+                    onClick={handleClick}
+                  >
+                    add to cart (${details.details.price * quantity} )
+                  </button>
+                )}
+              </div>
+              <div>
+                <Snackbar
+                  open={open}
+                  autoHideDuration={2000}
+                  onClose={handleClose}
+                >
+                  <Alert
+                    onClose={handleClose}
+                    severity="success"
+                    sx={{ width: "100%" }}
+                  >
+                    <AlertTitle>Added to cart successfully!</AlertTitle>
+                    Remember to log in to complete your purchase!
+                  </Alert>
+                </Snackbar>
+              </div>
             </div>
-            <div className="font-noto-serif text-2xl m-auto">
-              <p className="capitalize">COLOR: {details.details.color}</p>
-              <br />
-              <p className="capitalize">SEASON: {details.details.season}</p>
-              <br />
-              <p className="capitalize">GENDER: {details.details.gender}</p>
-              <br />
-              <p>STOCK: {details.details.stock - quantity}</p>
-              <br />
-            </div>
-            <div className="font-noto-serif text-2xl m-auto">
-              <RemoveIcon onClick={() => handleQuantity("dec")} />
-              <p>{quantity}</p>
-              <AddIcon onClick={() => handleQuantity("inc")} />
-            </div>
           </div>
-          <div className="text-center">
-            {details.details.stock >= 1 && (
-              <button
-                className="animate-pulse border border-slate-200 p-2 mb-3 rounded-lg hover:bg-green-400 hover:border-slate-800 hover:text-black"
-                onClick={handleClick}
-              >
-                add to cart (${details.details.price * quantity} )
-              </button>
-            )}
-          </div>
-
-          <div>
-            <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
-              <Alert
-                onClose={handleClose}
-                severity="success"
-                sx={{ width: "100%" }}
-              >
-                <AlertTitle>Added to cart successfully!</AlertTitle>
-                Remember to log in to complete your purchase!
-              </Alert>
-            </Snackbar>
-          </div>
-
-          <div>
-            <ReviewSystem />
-          </div>
-        </div>
-        <div className="absolute inset-x-0 bottom-0">
-          <Footer />
+          <ReviewSystem />
         </div>
       </div>
-    </div>
+      <div className="absolute inset-x-0 bottom-0">
+        <Footer />
+      </div>
+    </>
   );
 }

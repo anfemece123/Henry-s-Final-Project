@@ -22,11 +22,12 @@ export default function SearchBar() {
     <Autocomplete
       disablePortal
       id="combo-box-demo"
+      name="search"
       options={productsAutocomplete}
       onChange={filterUsers}
       ref={inputRef}
       sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} />}
+      renderInput={(params) => <TextField {...params} label="Movie" />}
     />
   );
 }
