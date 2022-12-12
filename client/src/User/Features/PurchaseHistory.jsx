@@ -10,10 +10,11 @@ export default function PurcharseHistory() {
   const userOrder = useSelector((state) => state.users.userId.id);
   const users = useSelector((state) => state.users);
   const index = parseInt(userID - 1);
+  const reviewID = useSelector((state) => state.users.userId);
 
   useEffect(() => {
     console.log(`ID del usuario en auth => ${userID}`);
-    console.log(`ID del usuario en allUsers => ${userOrder}`);
+    console.log(`ID del usuario en users.usersID => ${userOrder}`);
     console.log(`INdex para buscar => ${index}`);
   });
 

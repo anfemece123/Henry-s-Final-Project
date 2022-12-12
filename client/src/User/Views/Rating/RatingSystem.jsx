@@ -14,10 +14,12 @@ import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import Check from "@mui/icons-material/Check";
 import Rating from "@mui/material/Rating";
 import { useParams } from "react-router-dom";
-
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createProductReview } from "../../../Redux/Reducer/RatingSlice";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 export default function RatingSystem() {
   const dispatch = useDispatch();
@@ -27,8 +29,13 @@ export default function RatingSystem() {
   const [calification, setCalification] = React.useState(2);
   const [comment, setComment] = React.useState("");
   const token = useSelector((state) => state.auth.auth.token);
+  const userId = useSelector((state) => state.users.userId);
   const productIdAux = useParams();
+  const navigate = useNavigate();
+  const [exist, setExist] = useState(false);
+
   const productId = parseInt(productIdAux.id);
+
   const handleChange = (e) => {
     setComment({
       ...comment,
@@ -36,9 +43,31 @@ export default function RatingSystem() {
     });
   };
 
+  const verificar = userId.Reviews.filter(
+    (element) => element.ProductId === productId
+  );
+
+  useEffect(() => {
+    console.log(verificar);
+  });
   const handleClick = (e) => {
-    const reviewData = { calification, ...comment, productId, token };
-    dispatch(createProductReview(reviewData));
+    if (!verificar.length) {
+      const reviewData = { calification, ...comment, productId, token };
+      dispatch(createProductReview(reviewData));
+
+      swal({
+        title: "Done!",
+        text: "Be carefull with what you say. You can hurt someone 😧",
+        icon: "success",
+      });
+      navigate(`/detail/${productId}`);
+    } else {
+      swal({
+        title: "Already voted!",
+        text: "If you have a problem. Contact Us 😋",
+        icon: "warning",
+      });
+    }
   };
 
   return (
