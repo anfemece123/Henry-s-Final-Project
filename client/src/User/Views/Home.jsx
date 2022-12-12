@@ -69,6 +69,7 @@ export default function Home() {
             })
           : null}
       </div>
+
       <Stack spacing={1}>
         <Paginado
           productsPerPage={productsPerPage}

@@ -25,6 +25,7 @@ export default function UsersAdmin() {
     }).then((willDelete) => {
       if (willDelete) {
         dispatch(deleteUserId(e));
+        window.location.reload();
         swal("Poof! Your product has been deleted!", {
           icon: "success",
         });
@@ -38,9 +39,7 @@ export default function UsersAdmin() {
     return <h1>{error}</h1>;
   return (
     <>
-      <h3 className="pt-40 pb-10 text-2xl font-semibold font-bold tracking-wide ">
-        Users
-      </h3>
+      <h3 className="pt-40 pb-10 text-2xl font-bold tracking-wide ">Users</h3>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded ">
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
