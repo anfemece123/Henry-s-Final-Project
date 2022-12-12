@@ -36,7 +36,7 @@ export const ForrmRegister = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 antialiased  flex flex-col justify-center ">
+    <div className="min-h-screen bg-gray-100 text-gray-800 antialiased flex flex-col justify-center ">
       <NavBar />
       <div class="relative py-3 sm:max-w-xl mx-auto text-center">
         <span class="text-2xl font-light">Form Register</span>
