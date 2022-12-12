@@ -110,7 +110,7 @@ export default function Details() {
                   <br />
                   <p className="capitalize">GENDER: {details.details.gender}</p>
                   <br />
-                  <p>STOCK: {details.details.stock - quantity}</p>
+                  <p>STOCK: {details.details.stock}</p>
                   <br />
                 </div>
               </div>

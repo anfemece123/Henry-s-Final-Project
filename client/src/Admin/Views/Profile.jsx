@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import BusinessIcon from "@mui/icons-material/Business";
-import Footer from "../Features/Footers/Footer";
+import Footer from "../../User/Features/Footer";
 import NavBar from "../../User/Features/NavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";

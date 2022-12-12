@@ -3,12 +3,11 @@ import { Formik } from "formik";
 import validate from "./validate";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { formRegister } from "../../../Redux/actions";
-// import { Link } from "react-router-dom";
+
 import swal from "sweetalert";
 import { updateUser } from "../../../Redux/actions";
 import { getByIdUser } from "../../../Redux/Reducer/Users";
-// import NavBar from "../../Features/NavBar";
+import NavBar from "../../../User/Features/NavBar";
 
 export const FormEditUser = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
@@ -54,8 +53,8 @@ export const FormEditUser = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 antialiased  flex flex-col justify-center ">
-      {/* <NavBar /> */}
+    <div className="min-h-screen bg-gray-100 text-gray-800 antialiased  flex flex-col">
+      <NavBar />
       <div class="relative py-3 sm:max-w-xl mx-auto text-center">
         <span class="text-2xl font-light">Form Edit profile</span>
         <div class="w-50 max-w-lg">
