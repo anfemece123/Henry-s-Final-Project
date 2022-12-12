@@ -18,7 +18,6 @@ export default function ReviewSystem(props) {
             <div>
               {review.isVisible && (
                 <div>
-                  {console.log(review.isVisible)}
                   <p>User:{review.UserId}</p>
                   <p>
                     Calification:

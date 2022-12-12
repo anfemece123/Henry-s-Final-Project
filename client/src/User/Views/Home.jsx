@@ -78,9 +78,7 @@ export default function Home() {
           paginado={paginado}
         />
       </Stack>
-      <div className="absolute inset-x-0 bottom-0 ">
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 }

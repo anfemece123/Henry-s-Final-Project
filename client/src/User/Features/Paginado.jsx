@@ -10,7 +10,8 @@ export default function Paginado({
     pageNumbers.push(i);
   }
   return (
-    <nav className="inset-x-0 bottom-0 flex flex-row justify-center mb-30">
+    <nav className=" absolute inset-x-0  flex flex-row justify-center mb-30">
+
       <ul className="flex flex-row gap-4">
         <li>
           <button
