@@ -24,8 +24,8 @@ export default function ReviewsAdmin() {
   }, [dispatch]);
   function alertButtonDelete(e) {
     swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this product!",
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this product!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -34,11 +34,11 @@ export default function ReviewsAdmin() {
         dispatch(updateReview(e));
         window.location.reload();
 
-        swal("Poof! Your product has been deleted!", {
+        swal("Poof!Your product has been deleted!", {
           icon: "success",
         });
       } else {
-        swal("Your product is safe!");
+        swal("Your product is safe!");
       }
     });
   }
@@ -49,7 +49,7 @@ export default function ReviewsAdmin() {
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-              <h3 className="pt-40 pb-10 text-2xl font-semibold font-bold tracking-wide">
+              <h3 className="pt-40 pb-10 text-2xl font-bold tracking-wide">
                 Reviews
               </h3>
             </div>
@@ -109,23 +109,24 @@ export default function ReviewsAdmin() {
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {element.isVisible ? "yes" : "No"}
+                        <button
+                          value={element.id}
+                          type="submit"
+                          onClick={() => {
+                            {
+                              alertButtonDelete(element.id);
+                            }
+                          }}
+                        >
+                          <div>
+                            <a className="decoration-red-500 mr-2 text-rose-600">
+                              Ban
+                            </a>
+                            <BlockIcon color="warning" />
+                          </div>
+                        </button>
                       </td>
-                      <button
-                        value={element.id}
-                        type="submit"
-                        onClick={() => {
-                          {
-                            alertButtonDelete(element.id);
-                          }
-                        }}
-                      >
-                        <div>
-                          <a className="decoration-red-500 mr-2 text-rose-600">
-                            Ban
-                          </a>
-                          <BlockIcon color="warning" />
-                        </div>
-                      </button>
+
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"></td>
                     </tr>
                   );
