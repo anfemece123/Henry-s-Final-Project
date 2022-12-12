@@ -14,7 +14,7 @@ import {
 import TableDropdown from "../Dropdowns/TableDropdown";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function CardTable({ color }) {
+export default function ProductsAdmin({ color }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const products = useSelector((state) => state.allProducts.allProducts);
@@ -35,6 +35,7 @@ export default function CardTable({ color }) {
     }).then((willDelete) => {
       if (willDelete) {
         dispatch(deleteProId(e));
+
         swal("Poof! Your product has been deleted!", {
           icon: "success",
         });
@@ -238,10 +239,10 @@ export default function CardTable({ color }) {
   );
 }
 
-CardTable.defaultProps = {
+ProductsAdmin.defaultProps = {
   color: "light",
 };
 
-CardTable.propTypes = {
+ProductsAdmin.propTypes = {
   color: PropTypes.oneOf(["light", "dark"]),
 };

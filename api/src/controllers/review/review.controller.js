@@ -52,21 +52,18 @@ getReviewDetail = async (req, res) => {
 
 changeVisibility = async (req, res) => {
   const { idReview } = req.params;
-  const { isVisible } = req.body;
 
-  if (!isVisible) {
-    return res.status(400).send("Missing Data");
-  }
   try {
     const review = await Review.findOne({
       where: { id: idReview },
     });
     review.update({
-      isVisible,
+      isVisible: false,
     });
     await review.save();
-    res.status(200).send(id);
+    res.status(200).send(idReview);
   } catch (error) {
+    console.log(error);
     return res.status(404).send(error.message);
   }
 };
