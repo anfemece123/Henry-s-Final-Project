@@ -50,7 +50,27 @@ getReviewDetail = async (req, res) => {
   }
 };
 
-module.exports = { createReview, getAllReviews, getOrderDetail };
-/* changeVisibility,
+changeVisibility = async (req, res) => {
+  const { idReview } = req.params;
+
+  try {
+    const review = await Review.findOne({
+      where: { id: idReview },
+    });
+    review.update({
+      isVisible: false,
+    });
+    await review.save();
+    res.status(200).send(idReview);
+  } catch (error) {
+    console.log(error);
+    return res.status(404).send(error.message);
+  }
+};
+
+module.exports = {
+  createReview,
+  getAllReviews,
   getOrderDetail,
-   */
+  changeVisibility,
+};
