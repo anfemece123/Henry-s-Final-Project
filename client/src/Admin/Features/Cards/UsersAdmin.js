@@ -25,6 +25,7 @@ export default function UsersAdmin() {
     }).then((willDelete) => {
       if (willDelete) {
         dispatch(deleteUserId(e));
+        window.location.reload();
         swal("Poof! Your product has been deleted!", {
           icon: "success",
         });

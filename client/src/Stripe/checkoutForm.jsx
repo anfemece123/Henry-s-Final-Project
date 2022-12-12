@@ -25,7 +25,7 @@ export default function checkoutForm() {
 
   const totalCart = useSelector((state) => state.cart.total);
   console.log("array de productos", cart.products);
-
+  const url = "https://henry-s-final-project-backend-production.up.railway.app";
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -35,13 +35,10 @@ export default function checkoutForm() {
     });
     if (!error) {
       const { id } = paymentMethod;
-      const { data } = await axios.post(
-        `http://localhost:3001/checkout/checkout`,
-        {
-          id,
-          amount: totalCart * 100,
-        }
-      );
+      const { data } = await axios.post(`${url}/checkout/checkout`, {
+        id,
+        amount: totalCart * 100,
+      });
       //creando la orden en el back-end
       const products = cart.products;
       const products_quantity = cart.quantity;
@@ -54,7 +51,7 @@ export default function checkoutForm() {
       };
       axios
         .post(
-          `http://localhost:3001/order/newOrder`,
+          `${url}/order/newOrder`,
           {
             products,
             products_quantity,
