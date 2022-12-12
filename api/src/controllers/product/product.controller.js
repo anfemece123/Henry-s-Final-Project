@@ -13,7 +13,6 @@ getAllProducts = async (req, res) => {
       const allProductsFromDb = await Product.bulkCreate(Test);
       return res.status(200).send(allProductsFromDb);
     } catch (error) {
-      console.log(error);
       return res.status(404).send(error.message);
     }
   }
@@ -23,7 +22,6 @@ getAllProducts = async (req, res) => {
     });
     res.status(200).send(allProducts);
   } catch (error) {
-    console.log(error);
     return res.status(404).send(error.message);
   }
 };
@@ -88,7 +86,6 @@ getDetail = async (req, res) => {
     const productDetail = await Product.findByPk(id, {
       include: { all: true },
     });
-    console.log(productDetail);
     if (!productDetail) return res.status(400).send("Product Not Found");
     return res.status(200).send(productDetail);
   } catch (error) {

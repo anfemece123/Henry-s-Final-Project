@@ -69,19 +69,15 @@ export default function Home() {
             })
           : null}
       </div>
-
-      <div className="absolute inset-x-0 bottom-0 ">
-        <Stack spacing={1}>
-          <Paginado
-            productsPerPage={productsPerPage}
-            productPaginado={productPaginado.length}
-            currentPage={currentPage}
-            paginado={paginado}
-          />
-        </Stack>
-
-        <Footer />
-      </div>
+      <Stack spacing={1}>
+        <Paginado
+          productsPerPage={productsPerPage}
+          productPaginado={productPaginado.length}
+          currentPage={currentPage}
+          paginado={paginado}
+        />
+      </Stack>
+      <Footer />
     </>
   );
 }
