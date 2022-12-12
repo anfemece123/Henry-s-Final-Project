@@ -31,7 +31,6 @@ export const updateUser = createAsyncThunk(
 export const getByIdUser = createAsyncThunk(
   "getByIdUser/getByIdUser",
   async (id) => {
-    console.log("id en reducer", id);
     return await fetch(`${url}/user/${id}`).then((respuesta) =>
       respuesta.json()
     );
@@ -40,7 +39,7 @@ export const getByIdUser = createAsyncThunk(
 export const deleteUserId = createAsyncThunk(
   "deleteUserId/deleteUserId",
   async (id) => {
-    console.log("idreducer", id);
+    console.log(`id para borrar => ${id}`);
     return await axios.put(`${url}/user/delete/${id}`);
   }
 );

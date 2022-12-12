@@ -4,6 +4,7 @@ import { setAuth, setErrorAuth } from "../Reducer/authSlice";
 import { restoreCart } from "../Reducer/cartSlice";
 
 const url = "https://henry-s-final-project-backend-production.up.railway.app";
+
 export const updateUser = (id, values) => async () => {
   console.log("id", id);
   console.log("values", values);
@@ -14,6 +15,7 @@ export const updateUser = (id, values) => async () => {
     data: values,
   });
 };
+
 export const updateProduct = (id, values) => async () => {
   await axios({
     method: "PUT",

@@ -30,10 +30,6 @@ export default function Profile() {
     }).then((willDelete) => {
       if (willDelete) {
         navigate("/formEditUser");
-
-        // swal("Poof! Your product has been deleted!", {
-        //   icon: "success",
-        // });
       } else {
         swal("Your product is safe!");
       }
