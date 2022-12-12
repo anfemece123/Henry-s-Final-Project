@@ -32,8 +32,6 @@ export default function ReviewsAdmin() {
     }).then((willDelete) => {
       if (willDelete) {
         dispatch(updateReview(e));
-        window.location.reload();
-
         swal("Poof!Your product has been deleted!", {
           icon: "success",
         });
