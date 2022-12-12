@@ -124,7 +124,7 @@ export default function checkoutForm() {
           <form onSubmit={handleSubmit} className="text-center">
             <CardElement />
             <Button type="submit" variant="contained">
-              Comprar
+              To buy
             </Button>
           </form>
         </Stack>
