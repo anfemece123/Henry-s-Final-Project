@@ -8,11 +8,12 @@ const initialState = {
   allReview: [],
   error: "",
 };
+const url = "https://henry-s-final-project-backend-production.up.railway.app";
 export const getAllReviews = createAsyncThunk(
   "getAllReviews/getAllReviews",
   async () => {
-    return await fetch(`http://localhost:3001/review/AllReviews`).then(
-      (response) => response.json()
+    return await fetch(`${url}/review/AllReviews`).then((response) =>
+      response.json()
     );
   }
 );
@@ -31,7 +32,7 @@ export const createProductReview = createAsyncThunk(
     };
     return axios
       .post(
-        `http://localhost:3001/review/newReview/${idProduct}`,
+        `${url}/review/newReview/${idProduct}`,
         {
           calification,
           comment,
@@ -48,7 +49,7 @@ export const updateReview = createAsyncThunk(
   "updateReview/updateReview",
   async (idReview) => {
     // console.log("idreducer", id);
-    return await axios.put(`http://localhost:3001/review/update/${idReview}`);
+    return await axios.put(`${url}/review/update/${idReview}`);
   }
 );
 

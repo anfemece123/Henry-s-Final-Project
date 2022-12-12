@@ -5,16 +5,14 @@ const initialState = {
   loading: false,
   error: "",
 };
-
+const url = "https://henry-s-final-project-backend-production.up.railway.app";
 export const getProductDetails = createAsyncThunk(
   "getProductDetails/getProductDetails",
   async (id) => {
-    return await fetch(`http://localhost:3001/product/${id}`).then(
-      (respuesta) => {
-        console.log(respuesta);
-        return respuesta.json();
-      }
-    );
+    return await fetch(`${url}/product/${id}`).then((respuesta) => {
+      console.log(respuesta);
+      return respuesta.json();
+    });
   }
 );
 
