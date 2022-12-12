@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import Footer from "../Features/Footer";
 import NavBar from "../Features/NavBar";
 
 export default function PurcharseHistory() {
@@ -100,6 +101,7 @@ export default function PurcharseHistory() {
       ) : (
         <h1>Aun no has comprado nada</h1>
       )}
+      <Footer />
     </>
   );
 }

@@ -6,7 +6,7 @@ import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProduct } from "../../../Redux/actions";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../Features/Navbars/AdminNavbar";
+import NavBar from "../../../User/Features/NavBar";
 
 export const FormEditProduct = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
@@ -54,7 +54,7 @@ export const FormEditProduct = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800 antialiased  flex flex-col justify-center ">
-      <Navbar />
+      <NavBar />
       <div class="relative py-3 sm:max-w-xl mx-auto text-center">
         {/* <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
           <Link to="/home">Inicio</Link>
