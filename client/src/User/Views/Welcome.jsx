@@ -10,11 +10,12 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import image from "../../Images/welcome-bg.jpg";
 
 const Welcome = () => {
+  const url = "https://henry-s-final-project-backend-production.up.railway.app";
   const URL = useParams().confirmationCode;
   console.log("el path es: ", URL);
   const verifyUser = (URL) => {
     return axios
-      .get(`http://localhost:3001/auth/confirm/${URL}`)
+      .get(`${url}/auth/confirm/${URL}`)
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error.message));
   };
