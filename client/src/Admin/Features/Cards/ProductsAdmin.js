@@ -33,7 +33,6 @@ export default function ProductsAdmin({ color }) {
     }).then((willDelete) => {
       if (willDelete) {
         dispatch(deleteProId(e));
-
         swal("Poof! Your product has been deleted!", {
           icon: "success",
         });
