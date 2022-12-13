@@ -167,10 +167,12 @@ export default function Details() {
               </div>
             </div>
           </div>
-          <ReviewSystem />
+          <div className="overflow-auto h-[10rem]">
+            <ReviewSystem />
+          </div>
         </div>
       </div>
-      <div className="absolute inset-x-0 bottom-0">
+      <div>
         <Footer />
       </div>
     </>

@@ -28,6 +28,7 @@ export default function UsersAdmin() {
         swal("Poof!The user has been blocked.", {
           icon: "success",
         });
+        window.location.reload();
       } else {
         swal("The user is safe!");
       }

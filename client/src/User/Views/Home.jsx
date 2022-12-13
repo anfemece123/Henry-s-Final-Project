@@ -70,15 +70,19 @@ export default function Home() {
           : null}
       </div>
 
-      <Stack spacing={1}>
-        <Paginado
-          productsPerPage={productsPerPage}
-          productPaginado={productPaginado.length}
-          currentPage={currentPage}
-          paginado={paginado}
-        />
-      </Stack>
-      <Footer />
+      <div>
+        <Stack spacing={1}>
+          <Paginado
+            productsPerPage={productsPerPage}
+            productPaginado={productPaginado.length}
+            currentPage={currentPage}
+            paginado={paginado}
+          />
+        </Stack>
+      </div>
+      <div>
+        <Footer />
+      </div>
     </>
   );
 }
