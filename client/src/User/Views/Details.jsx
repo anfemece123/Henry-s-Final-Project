@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import RatingSystem from "./Rating/RatingSystem";
 import ReviewSystem from "./Rating/ReviewSystem";
+import { getAllReviews } from "../../Redux/Reducer/RatingSlice";
 
 export default function Details() {
   const details = useSelector((state) => state.details);
@@ -31,6 +32,9 @@ export default function Details() {
   useEffect(() => {
     dispatch(getProductDetails(id));
   }, [dispatch, id]);
+  useEffect(() => {
+    dispatch(getAllReviews());
+  }, [dispatch]);
 
   const handleClick = () => {
     dispatch(
