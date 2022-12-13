@@ -10,7 +10,7 @@ export const updateUser = (id, values) => async () => {
   console.log("values", values);
   await axios({
     method: "PUT",
-    url: `${url}/user/update/${id}`,
+    url: `http://localhost:3001/user/update/${id}`,
     values,
     data: values,
   });
@@ -19,7 +19,7 @@ export const updateUser = (id, values) => async () => {
 export const updateProduct = (id, values) => async () => {
   await axios({
     method: "PUT",
-    url: `${url}/product/update/${id}`,
+    url: `http://localhost:3001/product/update/${id}`,
     values,
     data: values,
   });
@@ -29,7 +29,7 @@ export const formCreate = (data) => async () => {
   console.log("data en actions", data);
   await axios({
     method: "POST",
-    url: `${url}/product/createProduct`,
+    url: `http://localhost:3001/product/createProduct`,
     data: data,
   });
 };
@@ -38,7 +38,7 @@ export const formRegister = (data) => async () => {
   console.log("data en actions", data);
   await axios({
     method: "POST",
-    url: `${url}/user/newUser`,
+    url: `http://localhost:3001/user/newUser`,
     data: data,
   });
 };
@@ -46,7 +46,7 @@ export const formRegister = (data) => async () => {
 export const logIn = ({ email, password }) => {
   return function (dispatch) {
     return axios
-      .post(`${url}/logIn`, {
+      .post(`http://localhost:3001/logIn`, {
         email,
         password,
       })
@@ -66,7 +66,7 @@ export const logIn = ({ email, password }) => {
 export const googleAuth = (credentials) => {
   return function (dispatch) {
     return axios
-      .post(`${url}/logIn/googleLogin`, { credentials })
+      .post(`http://localhost:3001/logIn/googleLogin`, { credentials })
       .then((response) => {
         const user = response;
         dispatch(setAuth(user.data[0]));

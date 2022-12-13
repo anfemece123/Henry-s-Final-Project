@@ -19,8 +19,8 @@ export const FormEditUser = () => {
   const alert = (e) => {
     if (!formularioEnviado) {
       return swal({
-        title: "Good Job!",
-        text: "Product created!",
+        title: "Success!",
+        text: "User modified successfuly!",
         icon: "success",
       });
     } else {
@@ -62,9 +62,6 @@ export const FormEditUser = () => {
             initialValues={{
               first_name: infoUser.first_name,
               last_name: infoUser.last_name,
-              // email: "",
-              // password: "",
-              // confirmPassword: "",
               phoneNumber: infoUser.phoneNumber,
               address: infoUser.address,
               profileImage: infoUser.profileImage,
@@ -72,7 +69,6 @@ export const FormEditUser = () => {
             }}
             onSubmit={(values, { resetForm }) => {
               dispatch(updateUser(infoUser.id, values));
-
               console.log("info en registro", infoUser.id);
               console.log("objeto en registro", values);
               resetForm();
@@ -117,7 +113,6 @@ export const FormEditUser = () => {
                       </div>
                     )}
                   </div>
-
                   <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block font-semibold" for="grid-first-name">
                       Last Name
@@ -182,68 +177,7 @@ export const FormEditUser = () => {
                     )}
                   </div>
                 </div>
-                {/* <div>
-                  <label class="block font-semibold"> Email</label>
-                  <input
-                    className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="email"
-                    value={values.email}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.email && errors.email && (
-                    <div className="text-red-700 underline decoration-pink-500">
-                      {errors.email}
-                    </div>
-                  )}
-                </div> */}
-                <div className="flex flex-wrap -mx-3 mb-6">
-                  {/* <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block font-semibold" for="grid-first-name">
-                      Password
-                    </label>
-                    <input
-                      className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                      type="password"
-                      id="password"
-                      name="password"
-                      placeholder="password"
-                      value={values.password}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.password && errors.password && (
-                      <div className="text-red-700 underline decoration-pink-500">
-                        {errors.password}
-                      </div>
-                    )}
-                  </div> */}
-
-                  {/* <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block font-semibold" for="grid-first-name">
-                      Confirm Password
-                    </label>
-                    <input
-                      className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                      type="password"
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      placeholder="confirmPassword"
-                      value={values.confirmPassword}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.confirmPassword && errors.confirmPassword && (
-                      <div className="text-red-700 underline decoration-pink-500">
-                        {errors.confirmPassword}
-                      </div>
-                    )}
-                  </div> */}
-                </div>
-
+                <div className="flex flex-wrap -mx-3 mb-6"></div>
                 <div>
                   <p hidden>{(values.profileImage = image)}</p>
                   <label class="block font-semibold"> Image</label>

@@ -15,7 +15,7 @@ const Welcome = () => {
   console.log("el path es: ", URL);
   const verifyUser = (URL) => {
     return axios
-      .get(`${url}/auth/confirm/${URL}`)
+      .get(`http://localhost:3001/auth/confirm/${URL}`)
       .then((response) => console.log(response.data))
       .catch((error) => console.log(error.message));
   };

@@ -56,17 +56,12 @@ export const FormEditProduct = () => {
     <div className="min-h-screen bg-gray-100 text-gray-800 antialiased  flex flex-col justify-center ">
       <NavBar />
       <div class="relative py-3 sm:max-w-xl mx-auto text-center">
-        {/* <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
-          <Link to="/home">Inicio</Link>
-        </button> */}
         <span class="text-2xl font-light">Form Edit Product</span>
         <div class="w-50 max-w-lg">
           <Formik
             initialValues={{
-              /* id: "", */
               title: productId.title,
               category: productId.category,
-              //   isOnSale: "",
               color: productId.color,
               season: productId.season,
               price: productId.price,
@@ -79,7 +74,7 @@ export const FormEditProduct = () => {
               const data = {
                 title: values.title,
                 category: values.category,
-                //   isOnSale: "",
+
                 color: values.color,
                 season: values.season,
                 price: values.price,
@@ -90,12 +85,9 @@ export const FormEditProduct = () => {
               };
 
               dispatch(updateProduct(productId.id, data));
-
               console.log("values en formulario", values);
               console.log("id en formulario", productId.id);
-
               resetForm();
-
               setformularioEnviado(true);
               setTimeout(() => setformularioEnviado(false), 5000);
               navigate("/admin/tables");
@@ -112,24 +104,7 @@ export const FormEditProduct = () => {
               setFieldValue,
             }) => (
               <form onSubmit={handleSubmit}>
-                <div className="w-full px-3">
-                  {/* <label class="block font-semibold">id</label>
-                  <input
-                    className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                    type="id"
-                    id="id"
-                    name="id"
-                    placeholder="id"
-                    value={values.id}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.id && errors.id && (
-                    <div className="text-red-700 underline decoration-pink-500">
-                      {errors.id}
-                    </div>
-                  )} */}
-                </div>
+                <div className="w-full px-3"></div>
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block font-semibold" for="grid-first-name">
@@ -215,10 +190,8 @@ export const FormEditProduct = () => {
                     )}
                   </div>
                 </div>
-
                 <div>
                   <label class="font-semibold"> color</label>
-
                   <div
                     class="grid w-[30rem] grid-cols-3 space-x-2 rounded-xl bg-gray-200 p-2"
                     x-data="app"
@@ -234,7 +207,6 @@ export const FormEditProduct = () => {
                         onChange={() => setFieldValue("color", "blue")}
                         onBlur={handleBlur}
                       />
-
                       <label
                         for="1"
                         class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
@@ -242,7 +214,6 @@ export const FormEditProduct = () => {
                         blue
                       </label>
                     </div>
-
                     <div>
                       <input
                         class="peer hidden"
@@ -429,23 +400,7 @@ export const FormEditProduct = () => {
                     </div>
                   )}
                 </div>
-                {/* <div>
-              <label> isOnSale</label>
-              <input
-                type="text"
-                id="isOnSale"
-                name="isOnSale"
-                placeholder="isOnSale"
-                value={values.isOnSale}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-              {touched.isOnSale && errors.isOnSale && (
-                <div>{errors.isOnSale}</div>
-              )} */}
-                {/* </div> */}
                 <button
-                  // type="submit"
                   class="mt-4 bg-black text-white py-2 px-6 rounded-lg"
                   onClick={alert}
                 >

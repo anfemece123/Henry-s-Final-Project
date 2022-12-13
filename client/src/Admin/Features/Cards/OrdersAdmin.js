@@ -19,13 +19,7 @@ export default function OrdersAdmin({ color }) {
     "orders",
     orders.map((e) => e.products)
   );
-  // const user = useSelector((state) => state.users.allUsers);
-  // const userMap= user.map
-  // const userMap = user.map((e) => e.Orders).flat();
-  // console.log(
-  //   "first name",
-  //   user.map((e) => e.Orders).map((e) => e.map((e) => e.id))
-  // );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,9 +28,7 @@ export default function OrdersAdmin({ color }) {
 
   return (
     <div>
-      <h3 className="pt-40 pb-10 text-2xl font-semibold font-bold tracking-wide">
-        Orders
-      </h3>
+      <h3 className="pt-40 pb-10 text-2xl font-bold tracking-wide">Orders</h3>
       {orders
         ? orders.map((element) => {
             return (
