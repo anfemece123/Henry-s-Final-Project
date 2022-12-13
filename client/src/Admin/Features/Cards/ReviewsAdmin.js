@@ -25,20 +25,18 @@ export default function ReviewsAdmin() {
   function alertButtonDelete(e) {
     swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this product!",
+      text: "You are about to delete this review!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
         dispatch(updateReview(e));
-        window.location.reload();
-
-        swal("Poof!Your product has been deleted!", {
+        swal("Poof!The review has disappeared!", {
           icon: "success",
         });
       } else {
-        swal("Your product is safe!");
+        swal("Nothing has changed!");
       }
     });
   }

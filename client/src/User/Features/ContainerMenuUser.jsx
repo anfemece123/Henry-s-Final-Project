@@ -51,7 +51,7 @@ export default function ContainerMenuUser() {
     //si esta logueado y tiene carrito , mando el carrito al back
     if (userId && Object.keys(cart)) {
       axios
-        .post(`${url}/cart/newCart/${userId}`, cart)
+        .post(`http://localhost:3001/cart/newCart/${userId}`, cart)
         .then((response) => console.log(response.data))
         .catch((error) => console.log(error));
     }

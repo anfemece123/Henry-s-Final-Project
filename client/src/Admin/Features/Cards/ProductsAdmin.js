@@ -19,16 +19,14 @@ export default function ProductsAdmin({ color }) {
   const navigate = useNavigate();
   const products = useSelector((state) => state.allProducts.allProducts);
 
-  // const [productId, setProductId] = useState(null);
   useEffect(() => {
-    // dispatch(deleteProId());
     dispatch(getAllProducts());
   }, [dispatch]);
 
   function alertButtonDelete(e) {
     swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this product!",
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this product!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -36,39 +34,33 @@ export default function ProductsAdmin({ color }) {
       if (willDelete) {
         dispatch(deleteProId(e));
 
-        swal("Poof! Your product has been deleted!", {
+        swal("Poof! Your product has been deleted!", {
           icon: "success",
         });
       } else {
-        swal("Your product is safe!");
+        swal("Your product is safe!");
       }
     });
   }
   function editBotoAlert(e) {
     swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this product!",
+      title: "Are you sure?",
+      text: "You are about to modify this product.",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
         navigate("/formEditProduct");
-
-        // swal("Poof! Your product has been deleted!", {
-        //   icon: "success",
-        // });
       } else {
-        swal("Your product is safe!");
+        swal("Your product is safe!");
       }
     });
   }
 
   return (
     <div>
-      <h3 className="pt-40 pb-10 text-2xl font-semibold font-bold tracking-wide">
-        Products
-      </h3>
+      <h3 className="pt-40 pb-10 text-2xl font-bold tracking-wide">Products</h3>
       {products
         ? products.map((element) => {
             return (
