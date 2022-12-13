@@ -22,12 +22,14 @@ export default function checkoutForm() {
   const token = useSelector((state) => state.auth.auth.token);
   const auth = useSelector((state) => state.auth.auth);
   const user = useSelector((state) => state.users.userId);
+  const [loading, setLoading] = React.useState(false);
 
   const totalCart = useSelector((state) => state.cart.total);
   console.log("array de productos", cart.products);
   const url = "https://henry-s-final-project-backend-production.up.railway.app";
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
@@ -72,8 +74,10 @@ export default function checkoutForm() {
         icon: "success",
         button: "Ok",
       });
+      setLoading(false);
       navigate("/home");
     } else {
+      setLoading(false);
       return swal({
         title: "Payment denied!",
         text: "Please, check your credit card information!",
@@ -81,6 +85,7 @@ export default function checkoutForm() {
         button: "Let me see",
       });
     }
+
     const idUser = auth.id;
     dispatch(clearCart(idUser));
   };
@@ -94,10 +99,7 @@ export default function checkoutForm() {
     <div>
       <NavBar />
       <Link to="/cart">
-        <div
-          className="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer"
-          // onclick="checkoutHandler(false)"
-        >
+        <div className="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer">
           <ArrowBackIcon />
           <p className="text-sm pl-2 leading-none dark:hover:text-gray-200">
             back to cart
@@ -105,13 +107,6 @@ export default function checkoutForm() {
         </div>
       </Link>
       <Container className="border border-red-900">
-        {/* <div className="col-span-3 items-center">
-          <form onSubmit={handleSubmit}>
-            <CardElement />
-            <p> ${totalCart}</p>
-            
-          </form>
-        </div> */}
         <Stack spacing={3}>
           <CheckoutStructure
             first_name={user.first_name}
@@ -121,12 +116,25 @@ export default function checkoutForm() {
             last_name={user.last_name}
             email={user.email}
           />
-          <form onSubmit={handleSubmit} className="text-center">
-            <CardElement />
-            <Button type="submit" variant="contained">
-              To buy
-            </Button>
-          </form>
+          {loading ? (
+            <form onSubmit={handleSubmit} className="text-center">
+              <CardElement />
+              <Button type="submit" variant="outlined" disabled>
+                <img
+                  className="animate-spin"
+                  src={require("../Images/loading.svg").default}
+                  alt="mySvgImage"
+                />
+              </Button>
+            </form>
+          ) : (
+            <form onSubmit={handleSubmit} className="text-center">
+              <CardElement />
+              <Button type="submit" variant="outlined">
+                PAY
+              </Button>
+            </form>
+          )}
         </Stack>
       </Container>
     </div>
