@@ -26,7 +26,7 @@ getAllProducts = async (req, res) => {
   }
 };
 
-let id = 33;
+let id = 28;
 
 createNewProducts = async (req, res) => {
   const {
