@@ -18,7 +18,6 @@ export default function Footer() {
           <a href="asdas" className="flex items-center">
             {/* <img src="asdasd" className="mr-3 h-8" alt="Icono nuestro" /> */}
             <span className="self-center text-2xl font-cursive-titles font-semibold whitespace-nowrap text-white">
-              Tienda Nuestra
               <img src={logo} />
             </span>
           </a>
