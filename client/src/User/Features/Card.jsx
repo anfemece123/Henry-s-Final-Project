@@ -15,7 +15,7 @@ export default function Card({
       <img
         src={images}
         className="m-auto pt-2"
-        style={{ width: "250px", height: "175px" }}
+        style={{ width: "185px", height: "185px" }}
       />
       <div>
         <div className="pt-5 font-noto-serif uppercase text-center text-3xl hover:animate-pulse hover:text-green-700">
