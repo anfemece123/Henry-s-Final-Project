@@ -22,6 +22,7 @@ import { errorRemove } from "../../../Redux/Reducer/authSlice";
 import jwt_decode from "jwt-decode";
 import { redirect } from "react-router-dom";
 import { googleAuth } from "../../../Redux/actions/index";
+import logo from "../../../Images/logo.png";
 
 function Copyright(props) {
   return (
@@ -135,9 +136,10 @@ export default function LogIn() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <img src={logo} width="250px" />
+          {/* <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
-          </Avatar>
+          </Avatar> */}
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
