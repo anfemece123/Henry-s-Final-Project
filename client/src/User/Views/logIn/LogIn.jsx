@@ -89,7 +89,7 @@ export default function LogIn() {
 
     google.accounts.id.renderButton(document.getElementById("signInDiv"), {
       theme: "outline",
-      size: "large",
+      size: "medium",
     });
 
     google.accounts.id.prompt(); // Esto hace que te "popee" el cartelito de elegir cuenta al loguearte
