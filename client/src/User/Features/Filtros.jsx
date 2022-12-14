@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sortByPrice, getByFilters } from "../../Redux/Reducer/allProductSlice";
 
-export const Filtros = ({ orden, setCurrentPage }) => {
+export const Filtros = ({ setOrden, setCurrentPage }) => {
   const dispatch = useDispatch();
   const products = [...useSelector((state) => state.allProducts.allProducts)];
   const [filters, setFilters] = useState({
@@ -13,12 +13,6 @@ export const Filtros = ({ orden, setCurrentPage }) => {
   });
 
   useEffect(() => {
-    if (
-      filters.gender !== "" &&
-      filters.category !== "" &&
-      filters.color !== ""
-    )
-      console.log(page);
     dispatch(getByFilters(filters));
   }, [dispatch, filters]);
 
@@ -29,18 +23,28 @@ export const Filtros = ({ orden, setCurrentPage }) => {
 
     setCurrentPage(1);
     dispatch(getByFilters(filters));
-    orden(`Ordenado ${e.target.value}`);
+    setOrden(`Ordenado ${e.target.value}`);
   }
   function sortingHandler(e) {
-    if (e.target.value === "asc") {
-      const sortedProducts = products?.sort((a, b) => a.price - b.price);
-      setCurrentPage(1);
-      dispatch(sortByPrice(sortedProducts));
-      orden(`Ordenado ${e.target.value}`);
+    setCurrentPage(1);
+    const sorting = e.target.value;
+    let sortedProducts = [];
+    console.log(sorting);
+    console.log("se van a ordenar: ", sorting);
+    console.log("productos a ordenar: ", products);
+    if (sorting === "asc") {
+      console.log("se van a ordenar ascendente: ", sorting);
+      sortedProducts = products.sort((a, b) => a.price - b.price);
+    } else if (sorting === "desc") {
+      console.log("se van a ordenar descendente: ", sorting);
+      sortedProducts = products.sort((a, b) => b.price - a.price);
+    } else {
+      console.log("se van a ordenar por id: ", sorting);
+      sortedProducts = products.sort((a, b) => a.id - b.id);
     }
-    const sortedProducts = products?.sort((a, b) => b.price - a.price);
+    console.log(sortedProducts);
     dispatch(sortByPrice(sortedProducts));
-    orden(`Ordenado ${e.target.value}`);
+    setOrden(`Ordenado ${sorting}`);
   }
 
   return (

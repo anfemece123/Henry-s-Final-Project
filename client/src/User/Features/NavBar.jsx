@@ -16,7 +16,6 @@ import { ContainerLogIn } from "./ContainerLogIn";
 
 export default function NavBar() {
   const cart = useSelector((state) => state.cart.quantity);
-  const dispatch = useDispatch();
 
   const StyledBadge = styled(Badge)(({ theme }) => ({
     "& .MuiBadge-badge": {

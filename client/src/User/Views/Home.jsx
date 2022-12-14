@@ -39,7 +39,7 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="static">
       <div className="col-span-4">
         <NavBar />
       </div>
@@ -47,16 +47,16 @@ export default function Home() {
       <div className="col-span-4 text-center text-slate-700 font-cursive-titles text-5xl mt-2">
         <h1>Products</h1>
       </div>
-      <Filtros orden={orden} setCurrentPage={setCurrentPage} />
+      <Filtros setOrden={setOrden} setCurrentPage={setCurrentPage} />
       <div className="grid grid-cols-3 gap-4 justify-items-center items-center">
         {product.loading && <Loading />}
         {product.error && <ErrorSearch />}
 
         {currentProduct
-          ? currentProduct.map((element) => {
+          ? currentProduct.map((element, index) => {
               return (
                 <Card
-                  key={element.id}
+                  key={index}
                   id={element.id}
                   title={element.title}
                   price={element.price}
@@ -69,20 +69,15 @@ export default function Home() {
             })
           : null}
       </div>
-
-      <div>
-        <Stack spacing={1}>
-          <Paginado
-            productsPerPage={productsPerPage}
-            productPaginado={productPaginado.length}
-            currentPage={currentPage}
-            paginado={paginado}
-          />
-        </Stack>
-      </div>
-      <div>
-        <Footer />
-      </div>
-    </>
+      <Stack spacing={1}>
+        <Paginado
+          productsPerPage={productsPerPage}
+          productPaginado={productPaginado.length}
+          currentPage={currentPage}
+          paginado={paginado}
+        />
+      </Stack>
+      <Footer />
+    </div>
   );
 }
