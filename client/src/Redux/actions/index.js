@@ -6,8 +6,6 @@ import { restoreCart } from "../Reducer/cartSlice";
 const url = "https://henry-s-final-project-backend-production.up.railway.app";
 
 export const updateUser = (id, values) => async () => {
-  console.log("id", id);
-  console.log("values", values);
   await axios({
     method: "PUT",
     url: `http://localhost:3001/user/update/${id}`,
@@ -26,7 +24,6 @@ export const updateProduct = (id, values) => async () => {
 };
 
 export const formCreate = (data) => async () => {
-  console.log("data en actions", data);
   await axios({
     method: "POST",
     url: `http://localhost:3001/product/createProduct`,
@@ -35,7 +32,6 @@ export const formCreate = (data) => async () => {
 };
 
 export const formRegister = (data) => async () => {
-  console.log("data en actions", data);
   await axios({
     method: "POST",
     url: `http://localhost:3001/user/newUser`,
@@ -53,7 +49,6 @@ export const logIn = ({ email, password }) => {
       .then((response) => {
         const user = response;
         dispatch(setAuth(user.data[0]));
-        console.log("cart:", user.data[1]);
         user.data[1] && dispatch(restoreCart(user.data[1])); //viene el carrito y lo muestro en vez de mostrarlo vacio
       })
       .catch((error) => {
@@ -66,16 +61,16 @@ export const logIn = ({ email, password }) => {
 export const googleAuth = (credentials) => {
   return function (dispatch) {
     return axios
-      .post(`http://localhost:3001/logIn/googleLogin`, { credentials })
+      .post(`http://localhost:3001/logIn/googleLogIn`, { credentials })
       .then((response) => {
         const user = response;
+        //console.log(user.data[0]);
+        //console.log(user.data[1]);
         dispatch(setAuth(user.data[0]));
-        console.log("cart:", user.data[1]);
         user.data[1] && dispatch(restoreCart(user.data[1]));
       })
       .catch((error) => {
-        console.log(error);
-        const messageError = error.message;
+        const messageError = error.response.data;
         dispatch(setErrorAuth(messageError));
       });
   };

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
 import Rating from "@mui/material/Rating";
 import BlockIcon from "@mui/icons-material/Block";
-import { useNavigate } from "react-router-dom";
 import {
   getAllReviews,
   updateReview,
@@ -18,7 +17,7 @@ export default function ReviewsAdmin() {
   console.log("reviews", reviews);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(getAllReviews());
   }, [dispatch]);
@@ -32,8 +31,12 @@ export default function ReviewsAdmin() {
     }).then((willDelete) => {
       if (willDelete) {
         dispatch(updateReview(e));
+
         swal("Poof!The review has disappeared!", {
           icon: "success",
+          buttons: true,
+        }).then(() => {
+          dispatch(getAllReviews());
         });
       } else {
         swal("Nothing has changed!");
@@ -92,7 +95,12 @@ export default function ReviewsAdmin() {
                         {element.User.first_name} {element.User.last_name}
                       </th>
                       <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        {element.Product.title}
+                        {element.Product.title}{" "}
+                        <img
+                          src={element.Product.image}
+                          className="h-12 w-12 bg-white rounded-full border"
+                          alt="..."
+                        ></img>
                       </th>
                       <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                         <Rating

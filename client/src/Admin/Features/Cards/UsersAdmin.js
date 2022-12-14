@@ -27,8 +27,10 @@ export default function UsersAdmin() {
         dispatch(deleteUserId(e));
         swal("Poof!The user has been blocked.", {
           icon: "success",
+          buttons: true,
+        }).then(() => {
+          dispatch(getAllusers());
         });
-        window.location.reload();
       } else {
         swal("The user is safe!");
       }

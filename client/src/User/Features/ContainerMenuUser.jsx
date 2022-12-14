@@ -49,7 +49,7 @@ export default function ContainerMenuUser() {
 
   function logOutSubmit() {
     //si esta logueado y tiene carrito , mando el carrito al back
-    if (userId && Object.keys(cart)) {
+    if (userId && Object.keys(cart).length > 0) {
       axios
         .post(`http://localhost:3001/cart/newCart/${userId}`, cart)
         .then((response) => console.log(response.data))

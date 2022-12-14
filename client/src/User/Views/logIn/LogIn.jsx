@@ -64,11 +64,14 @@ export default function LogIn() {
 
   // Todo lo de google hasta el siguiente comment
   const handleCallBack = (response) => {
-    const userObject = jwt_decode(response.credential);
-    setGoogleUser(userObject);
-    document.getElementById("signInDiv").hidden = true;
     const credentials = response.credential;
     dispatch(googleAuth(credentials));
+    if (Object.keys(user).length >= 1) {
+      const userObject = jwt_decode(response.credential);
+      setGoogleUser(userObject);
+      document.getElementById("signInDiv").hidden = true;
+      navigate("/home");
+    }
   };
 
   const handleSingOut = () => {
@@ -163,10 +166,10 @@ export default function LogIn() {
               onChange={handleChange}
               autoComplete="current-password"
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
@@ -178,13 +181,7 @@ export default function LogIn() {
             </Button>
             {/* TODO LO DE GOOGLE TEMPORAL */}
             <div id="signInDiv"></div>
-            <Button
-              type="submit"
-              id="signOut"
-              onClick={(e) => handleSingOut(e)}
-            >
-              Sing Out
-            </Button>
+
             {user && (
               <div>
                 <img src={googleUser.picture} alt={googleUser.name} />
@@ -192,20 +189,20 @@ export default function LogIn() {
               </div>
             )}
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
                 <Link href="#" variant="body2" to="/formRegister">
-                  {"Don't have an account? Sign Up"}
+                  <Button
+                    type="submit"
+                    id="signOut"
+                    onClick={(e) => handleSingOut(e)}
+                  >
+                    Don't have an account? Sign Up
+                  </Button>
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

@@ -80,11 +80,26 @@ logInGoogle = async (req, res) => {
   const userAux = jwt_decode(credentials);
   const password = userAux.jti;
   const passwordHashed = await bcrypt.hash(password, 10 /* saltRounds */);
-  console.log("userAux", userAux);
+
+  let email = "";
+  let googleUser = {};
+  try {
+    email = userAux.email;
+    googleUser = await User.findOne({
+      where: { email },
+    });
+    if (googleUser && googleUser.isBanned) {
+      return res
+        .status(403 /* Forbidden */)
+        .send("Your Account Is Banned, Contact With The Company");
+    }
+  } catch (error) {
+    console.log(error.message);
+    return res.status(404).send(error.message);
+  }
 
   try {
-    const email = userAux.email;
-    const [googleUser, created] = await User.findOrCreate({
+    const [gUser, created] = await User.findOrCreate({
       where: { email },
       defaults: {
         first_name: userAux.given_name,
@@ -101,31 +116,35 @@ logInGoogle = async (req, res) => {
       },
     });
 
+    console.log("created: ", created);
+    console.log("gUser despues de findOrCreate: ", gUser);
+
     const userForToken = {
-      id: googleUser.id,
-      email: googleUser.email,
+      id: gUser.id,
+      email: gUser.email,
       password,
-      isAdmin: googleUser.isAdmin,
+      isAdmin: gUser.isAdmin,
     };
 
     const token = jwt.sign(userForToken, TOKEN_SECRET, {
       expiresIn: 60 * 60 * 24 * 30, //que se tenga que loguear cada 30 dias
     });
     const loggedUser = {
-      id: googleUser.id,
-      first_name: googleUser.first_name,
-      last_name: googleUser.last_name,
-      address: googleUser.address,
-      email: googleUser.email,
-      phoneNumber: googleUser.phoneNumber,
-      address: googleUser.address,
-      profileImage: googleUser.profileImage,
-      isAdmin: googleUser.isAdmin,
+      id: gUser.id,
+      first_name: gUser.first_name,
+      last_name: gUser.last_name,
+      address: gUser.address,
+      email: gUser.email,
+      phoneNumber: gUser.phoneNumber,
+      address: gUser.address,
+      profileImage: gUser.profileImage,
+      isAdmin: gUser.isAdmin,
       token,
     };
-    const id = googleUser.id;
+    const id = gUser.id;
     const cart = await Cart.findOne({ where: { id } });
-    console.log("loggedUser: ", loggedUser);
+    console.log("id :", id);
+    console.log("type of id :", typeof id);
     console.log("cart: ", cart);
     return res.status(200).send([loggedUser, cart]);
   } catch (error) {
