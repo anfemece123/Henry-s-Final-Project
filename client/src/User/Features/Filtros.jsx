@@ -83,7 +83,7 @@ export const Filtros = ({ orden, setCurrentPage }) => {
             <option value="">Category</option>
             <option value="shirts">Shirt</option>
             <option value="t-shirts">T-shirt</option>
-            <option value="foot">Shoes</option>
+            <option value="shoes">Shoes</option>
             <option value="jeans">jeans</option>
             <option value="jackets">Jackets</option>
           </select>
