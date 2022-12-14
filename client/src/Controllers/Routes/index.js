@@ -23,6 +23,7 @@ import { FormEditUser } from "../../Admin/Views/FormEditUser/FormEditUser";
 import PurchaseHistory from "../../User/Features/PurchaseHistory";
 import ReviewSystem from "../../User/Views/Rating/ReviewSystem";
 import RatingSystem from "../../User/Views/Rating/RatingSystem";
+import ComingSoon from "./ComingSoon";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: "/cart",
     element: <Cart />,
+  },
+  {
+    path: "/aboutUs",
+    element: <ComingSoon />,
   },
 
   // {

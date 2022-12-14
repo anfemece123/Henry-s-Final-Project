@@ -3,7 +3,8 @@ import NavBar from "../Features/NavBar";
 import girLanding from "../../Images/bg2.png";
 import { Link } from "react-router-dom";
 import Footer from "../Features/Footer";
-/* import Carrousel from "./Carrousel"; */
+
+import { height } from "@mui/system";
 
 export default function Landing() {
   return (
@@ -16,13 +17,14 @@ export default function Landing() {
           <img
             src={girLanding}
             className="m-auto"
-            style={{ height: "700px" }}
+            style={{
+              height: "49rem",
+            }}
           />
         </div>
-        {/* <Carrousel /> */}
 
         <div className="col-span-2 m-auto">
-          <div className="text-start text-5xl font-noto-serif">
+          <div className="text-start text-5xl font-cursive-titles">
             <h1>
               The style,
               <br />
