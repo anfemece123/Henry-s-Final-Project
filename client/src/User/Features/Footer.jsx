@@ -8,6 +8,7 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
+import logo from "../../Images/logo.png";
 
 export default function Footer() {
   return (
@@ -18,6 +19,7 @@ export default function Footer() {
             {/* <img src="asdasd" className="mr-3 h-8" alt="Icono nuestro" /> */}
             <span className="self-center text-2xl font-cursive-titles font-semibold whitespace-nowrap text-white">
               Tienda Nuestra
+              <img src={logo} />
             </span>
           </a>
         </div>
