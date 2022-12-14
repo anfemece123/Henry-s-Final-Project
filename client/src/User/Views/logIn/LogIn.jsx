@@ -64,11 +64,14 @@ export default function LogIn() {
 
   // Todo lo de google hasta el siguiente comment
   const handleCallBack = (response) => {
-    const userObject = jwt_decode(response.credential);
-    setGoogleUser(userObject);
-    document.getElementById("signInDiv").hidden = true;
     const credentials = response.credential;
     dispatch(googleAuth(credentials));
+    if (Object.keys(user).length >= 1) {
+      const userObject = jwt_decode(response.credential);
+      setGoogleUser(userObject);
+      document.getElementById("signInDiv").hidden = true;
+      navigate("/home");
+    }
   };
 
   const handleSingOut = () => {
