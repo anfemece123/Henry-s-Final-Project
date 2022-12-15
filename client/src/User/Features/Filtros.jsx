@@ -12,19 +12,25 @@ export const Filtros = ({ setOrden, setCurrentPage }) => {
     color: "",
   });
 
-  useEffect(() => {
-    dispatch(getByFilters(filters));
-  }, [dispatch, filters]);
-
   function filterHandler(e) {
     const filterName = e.target.name;
     const filterValue = e.target.value;
     setFilters({ ...filters, [filterName]: filterValue });
-
     setCurrentPage(1);
     dispatch(getByFilters(filters));
     setOrden(`Ordenado ${e.target.value}`);
   }
+  /*   function sortingHandler(e) {
+    if (e.target.value === "asc") {
+      const sortedProducts = products?.sort((a, b) => a.price - b.price);
+      setCurrentPage(1);
+      dispatch(sortByPrice(sortedProducts));
+      setOrden(`Ordenado ${e.target.value}`);
+    }
+    const sortedProducts = products?.sort((a, b) => b.price - a.price);
+    dispatch(sortByPrice(sortedProducts));
+    setOrden(`Ordenado ${e.target.value}`);
+  } */
   function sortingHandler(e) {
     setCurrentPage(1);
     const sorting = e.target.value;
@@ -47,8 +53,12 @@ export const Filtros = ({ setOrden, setCurrentPage }) => {
     setOrden(`Ordenado ${sorting}`);
   }
 
+  useEffect(() => {
+    dispatch(getByFilters(filters));
+  }, [dispatch, filters]);
+
   return (
-    <div className="col-span-5 mt-5 mb-5">
+    <div className="">
       {/* Aca van los filtros */}
       <div className="flex flex-row justify-around">
         <div>

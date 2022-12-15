@@ -171,7 +171,7 @@ export default function Details() {
               </div>
             </div>
           </div>
-          <div className="overflow-auto h-[10rem]">
+          <div className="overflow-auto h-[7rem]">
             <ReviewSystem />
           </div>
         </div>

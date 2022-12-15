@@ -12,7 +12,7 @@ const url = "https://henry-s-final-project-backend-production.up.railway.app";
 export const getAllReviews = createAsyncThunk(
   "getAllReviews/getAllReviews",
   async () => {
-    return await fetch(`http://localhost:3001/review/AllReviews`).then(
+    return await fetch(`http://localhost:3000/review/AllReviews`).then(
       (response) => response.json()
     );
   }
@@ -32,7 +32,7 @@ export const createProductReview = createAsyncThunk(
     };
     return axios
       .post(
-        `http://localhost:3001/review/newReview/${idProduct}`,
+        `http://localhost:3000/review/newReview/${idProduct}`,
         {
           calification,
           comment,
@@ -49,7 +49,7 @@ export const updateReview = createAsyncThunk(
   "updateReview/updateReview",
   async (idReview) => {
     // console.log("idreducer", id);
-    return await axios.put(`http://localhost:3001/review/update/${idReview}`);
+    return await axios.put(`http://localhost:3000/review/update/${idReview}`);
   }
 );
 

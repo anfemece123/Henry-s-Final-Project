@@ -29,7 +29,7 @@ export default function NavBar() {
   const admin = auth.isAdmin;
 
   return (
-    <nav className="w-full bg-gray-900 flex flex-row justify-between items-center gap-4 px-2">
+    <nav className="w-full bg-gray-900 flex flex-row justify-between gap-4 px-2">
       {auth.isAdmin === true ? (
         <>
           <div className="flex flex-row gap-4">
@@ -42,7 +42,7 @@ export default function NavBar() {
             </Link>
             <SearchBar />
           </div>
-          <div className="flex flex-row justify-end mr-5">
+          <div className="flex flex-row justify-end">
             <ContainerLogIn />
             <Link
               to="/cart"

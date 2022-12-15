@@ -37,7 +37,7 @@ export const ForrmRegister = () => {
   };
 
   return (
-    <body class="font-mono bg-gray-400">
+    <body class="font-mono bg-gray-400 h-full">
       <NavBar />
       <div class="container mx-auto">
         <div class="flex justify-center px-6 my-12">
@@ -236,7 +236,7 @@ export const ForrmRegister = () => {
                           class="block mb-2 text-sm font-bold text-gray-700"
                           for="firstName"
                         >
-                          confirmPassword
+                          Confirm Password
                         </label>
                         <input
                           className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
@@ -306,7 +306,6 @@ export const ForrmRegister = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </body>
   );
 };
