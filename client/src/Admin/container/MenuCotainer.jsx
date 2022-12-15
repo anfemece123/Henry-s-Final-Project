@@ -16,7 +16,7 @@ export default function MenuContainer() {
   };
 
   return (
-    <div>
+    <div className="flex flex-row justify-center items-center">
       <Button
         id="fade-button"
         aria-controls={open ? "fade-menu" : undefined}

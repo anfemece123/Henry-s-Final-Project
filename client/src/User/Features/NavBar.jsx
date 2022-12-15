@@ -29,38 +29,45 @@ export default function NavBar() {
   const admin = auth.isAdmin;
 
   return (
-    <div className="w-full bg-gray-900">
+    <nav className="w-full bg-gray-900 flex flex-row justify-between items-center gap-4 px-2">
       {auth.isAdmin === true ? (
-        <nav className="w-full h-fit items-center flex gap-4">
-          <MenuContainer />
-          <Link to="/home">
-            <HomeIcon
-              sx={{ fontSize: 45 }}
-              className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900"
-            ></HomeIcon>
-          </Link>
-
-          <SearchBar />
-          <ContainerLogIn />
-          <Link to="/cart">
-            <IconButton aria-label="cart">
-              <StyledBadge badgeContent={cart} color="secondary">
-                <ShoppingCartIcon color="primary" />
-              </StyledBadge>
-            </IconButton>
-          </Link>
-        </nav>
+        <>
+          <div className="flex flex-row gap-4">
+            <MenuContainer />
+            <Link to="/home">
+              <HomeIcon
+                sx={{ fontSize: 45 }}
+                className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900"
+              ></HomeIcon>
+            </Link>
+            <SearchBar />
+          </div>
+          <div className="flex flex-row justify-end mr-5">
+            <ContainerLogIn />
+            <Link
+              to="/cart"
+              className="flex flex-row justify-center items-center"
+            >
+              <IconButton aria-label="cart">
+                <StyledBadge badgeContent={cart} color="secondary">
+                  <ShoppingCartIcon color="primary" />
+                </StyledBadge>
+              </IconButton>
+            </Link>
+          </div>
+        </>
       ) : (
-        <nav className="w-full h-fit items-center flex gap-4">
+        <>
           {/* <MenuContainer /> */}
-          <Link to="/home">
-            <HomeIcon
-              sx={{ fontSize: 45 }}
-              className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900"
-            ></HomeIcon>
-          </Link>
-
-          <SearchBar />
+          <div className="flex flex-row gap-4">
+            <Link to="/home">
+              <HomeIcon
+                sx={{ fontSize: 45 }}
+                className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900"
+              ></HomeIcon>
+            </Link>
+            <SearchBar />
+          </div>
 
           {/* <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
             <Link to="/formRegister">Register</Link>
@@ -70,16 +77,18 @@ export default function NavBar() {
               <LoginIcon /> Log In
             </Link>
           </button> */}
-          <ContainerLogIn />
-          <Link to="/cart">
-            <IconButton aria-label="cart">
-              <StyledBadge badgeContent={cart} color="secondary">
-                <ShoppingCartIcon color="primary" />
-              </StyledBadge>
-            </IconButton>
-          </Link>
-        </nav>
+          <div className="flex flex-row justify-end mr-8">
+            <ContainerLogIn />
+            <Link to="/cart">
+              <IconButton aria-label="cart">
+                <StyledBadge badgeContent={cart} color="secondary">
+                  <ShoppingCartIcon color="primary" />
+                </StyledBadge>
+              </IconButton>
+            </Link>
+          </div>
+        </>
       )}
-    </div>
+    </nav>
   );
 }

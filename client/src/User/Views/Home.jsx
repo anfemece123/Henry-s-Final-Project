@@ -40,11 +40,8 @@ export default function Home() {
 
   return (
     <div className="static">
-      <div className="col-span-4">
-        <NavBar />
-      </div>
-
-      <div className="col-span-4 text-center text-slate-700 font-cursive-titles text-5xl mt-2">
+      <NavBar />
+      <div className="col-span-4 text-center text-slate-700 font-cursive-titles text-5xl">
         <h1>Products</h1>
       </div>
       <Filtros setOrden={setOrden} setCurrentPage={setCurrentPage} />
@@ -69,14 +66,12 @@ export default function Home() {
             })
           : null}
       </div>
-      <Stack spacing={1}>
-        <Paginado
-          productsPerPage={productsPerPage}
-          productPaginado={productPaginado.length}
-          currentPage={currentPage}
-          paginado={paginado}
-        />
-      </Stack>
+      <Paginado
+        productsPerPage={productsPerPage}
+        productPaginado={productPaginado.length}
+        currentPage={currentPage}
+        paginado={paginado}
+      />
       <Footer />
     </div>
   );
