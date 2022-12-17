@@ -8,7 +8,6 @@ import BlockIcon from "@mui/icons-material/Block";
 
 export default function UsersAdmin() {
   const user = useSelector((state) => state.users.allUsers);
-  console.log("orders en users", user[0].Orders.length);
   const error = useSelector((state) => state.users.error);
   const dispatch = useDispatch();
 
