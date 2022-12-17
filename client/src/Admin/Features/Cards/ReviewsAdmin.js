@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import swal from "sweetalert";
+
 import Rating from "@mui/material/Rating";
 import BlockIcon from "@mui/icons-material/Block";
 import {
@@ -12,7 +12,6 @@ import {
 // components
 
 export default function ReviewsAdmin() {
-  // const orders = useSelector((state) => state.orders.allOrders);
   const reviews = useSelector((state) => state.reviews.allReview);
   console.log("reviews", reviews);
 
@@ -20,28 +19,9 @@ export default function ReviewsAdmin() {
 
   useEffect(() => {
     dispatch(getAllReviews());
-  }, [dispatch]);
+  }, [dispatch, reviews]);
   function alertButtonDelete(e) {
-    swal({
-      title: "Are you sure?",
-      text: "You are about to delete this review!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        dispatch(updateReview(e));
-
-        swal("Poof!The review has disappeared!", {
-          icon: "success",
-          buttons: true,
-        }).then(() => {
-          dispatch(getAllReviews());
-        });
-      } else {
-        swal("Nothing has changed!");
-      }
-    });
+    dispatch(updateReview(e));
   }
 
   return (
@@ -54,14 +34,6 @@ export default function ReviewsAdmin() {
                 Reviews
               </h3>
             </div>
-            {/* <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-              <button
-                className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button"
-              >
-                See all
-              </button>
-            </div> */}
           </div>
         </div>
         <div className="block w-full overflow-x-auto">

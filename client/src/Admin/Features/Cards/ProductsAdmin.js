@@ -24,22 +24,7 @@ export default function ProductsAdmin({ color }) {
   }, [dispatch]);
 
   function alertButtonDelete(e) {
-    swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this product!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        dispatch(deleteProId(e));
-        swal("Poof! Your product has been deleted!", {
-          icon: "success",
-        });
-      } else {
-        swal("Your product is safe!");
-      }
-    });
+    dispatch(deleteProId(e));
   }
   function editBotoAlert(e) {
     swal({
