@@ -62,7 +62,6 @@ export default function Details() {
       quantity > 1 && setQuantity(quantity - 1);
     } else {
       quantity < details.details.stock && setQuantity(quantity + 1);
-      setWarning(true);
     }
   };
 

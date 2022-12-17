@@ -7,24 +7,31 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateProduct } from "../../../Redux/actions";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../../User/Features/NavBar";
+import { getAllProducts } from "../../../Redux/Reducer/allProductSlice";
 
 export const FormEditProduct = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const productId = useSelector((state) => state.allProducts.productId);
-  const alert = (e) => {
+
+  const alert = () => {
     if (!formularioEnviado) {
       return swal({
-        title: "Good Job!",
-        text: "Product created!",
+        title: "Are you sure?",
+        text: "product edit",
         icon: "success",
-      });
-    } else {
-      return swal({
-        title: "Something went wrong :'(",
-        text: "Try again later!",
-        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          dispatch(getAllProducts());
+          swal("ok!", {
+            icon: "success",
+          });
+        } else {
+          swal("Nice");
+        }
       });
     }
   };

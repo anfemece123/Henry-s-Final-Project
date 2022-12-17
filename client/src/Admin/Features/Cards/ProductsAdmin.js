@@ -19,10 +19,6 @@ export default function ProductsAdmin({ color }) {
   const navigate = useNavigate();
   const products = useSelector((state) => state.allProducts.allProducts);
 
-  useEffect(() => {
-    dispatch(getAllProducts());
-  }, [dispatch]);
-
   function alertButtonDelete(e) {
     swal({
       title: "Are you sure?",
@@ -32,15 +28,20 @@ export default function ProductsAdmin({ color }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        dispatch(deleteProId(e));
-        swal("Poof! Your product has been deleted!", {
+        dispatch(updateReview(e));
+
+        swal("Poof!The review has disappeared!", {
           icon: "success",
+          buttons: true,
+        }).then(() => {
+          dispatch(getAllProducts());
         });
       } else {
         swal("Your product is safe!");
       }
     });
   }
+
   function editBotoAlert(e) {
     swal({
       title: "Are you sure?",
@@ -50,12 +51,16 @@ export default function ProductsAdmin({ color }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
+        dispatch(getAllProducts());
         navigate("/formEditProduct");
       } else {
         swal("Your product is safe!");
       }
     });
   }
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [dispatch]);
 
   return (
     <div>

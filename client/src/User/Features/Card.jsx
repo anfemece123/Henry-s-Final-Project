@@ -20,7 +20,7 @@ export default function Card({
       <div>
         <div className="pt-5 font-noto-serif uppercase text-center text-3xl hover:animate-pulse hover:text-green-700">
           <Link to={`/detail/${id}`}>
-            <h3>{title}</h3>
+            <h1>{title}</h1>
           </Link>
         </div>
       </div>

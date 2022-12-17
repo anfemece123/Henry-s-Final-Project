@@ -176,6 +176,7 @@ export default function RatingSystem() {
               }}
             />
           </FormControl>
+          <Footer />
         </div>
       </div>
     </>
