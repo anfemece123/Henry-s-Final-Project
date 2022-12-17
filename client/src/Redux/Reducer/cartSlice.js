@@ -12,7 +12,7 @@ export const clearCart = createAsyncThunk(
   "clearCart/clearCart",
   async (idUser) => {
     return await axios
-      .delete(`${url}/cart/delete/${idUser}`)
+      .delete(`http://localhost:3001/cart/delete/${idUser}`)
       .then((respuesta) => console.log(respuesta))
       .catch((respuesta) => console.log(respuesta));
   }
@@ -77,11 +77,6 @@ const cartSlice = createSlice({
       }
     },
     removeQuantity: (state, action) => {
-      // const mapeo = state.products.map((e) => e.quantity);
-      // console.log("mapeo", mapeo);
-      // const indice = 0;
-      // mapeo[indice] = 14;
-      // state.products = mapeo;
       const find1 = state.products.find(
         (element) => element.id === action.payload.id
       );
