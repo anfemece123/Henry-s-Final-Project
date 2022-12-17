@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sortByPrice, getByFilters } from "../../Redux/Reducer/allProductSlice";
 
-export const Filtros = ({ orden, setCurrentPage }) => {
+export const Filtros = ({ setOrden, setCurrentPage }) => {
   const dispatch = useDispatch();
   const products = [...useSelector((state) => state.allProducts.allProducts)];
   const [filters, setFilters] = useState({
@@ -12,39 +12,53 @@ export const Filtros = ({ orden, setCurrentPage }) => {
     color: "",
   });
 
-  useEffect(() => {
-    if (
-      filters.gender !== "" &&
-      filters.category !== "" &&
-      filters.color !== ""
-    )
-      console.log(page);
-    dispatch(getByFilters(filters));
-  }, [dispatch, filters]);
-
   function filterHandler(e) {
     const filterName = e.target.name;
     const filterValue = e.target.value;
     setFilters({ ...filters, [filterName]: filterValue });
-
     setCurrentPage(1);
     dispatch(getByFilters(filters));
-    orden(`Ordenado ${e.target.value}`);
+    setOrden(`Ordenado ${e.target.value}`);
   }
-  function sortingHandler(e) {
+  /*   function sortingHandler(e) {
     if (e.target.value === "asc") {
       const sortedProducts = products?.sort((a, b) => a.price - b.price);
       setCurrentPage(1);
       dispatch(sortByPrice(sortedProducts));
-      orden(`Ordenado ${e.target.value}`);
+      setOrden(`Ordenado ${e.target.value}`);
     }
     const sortedProducts = products?.sort((a, b) => b.price - a.price);
     dispatch(sortByPrice(sortedProducts));
-    orden(`Ordenado ${e.target.value}`);
+    setOrden(`Ordenado ${e.target.value}`);
+  } */
+  function sortingHandler(e) {
+    setCurrentPage(1);
+    const sorting = e.target.value;
+    let sortedProducts = [];
+    console.log(sorting);
+    console.log("se van a ordenar: ", sorting);
+    console.log("productos a ordenar: ", products);
+    if (sorting === "asc") {
+      console.log("se van a ordenar ascendente: ", sorting);
+      sortedProducts = products.sort((a, b) => a.price - b.price);
+    } else if (sorting === "desc") {
+      console.log("se van a ordenar descendente: ", sorting);
+      sortedProducts = products.sort((a, b) => b.price - a.price);
+    } else {
+      console.log("se van a ordenar por id: ", sorting);
+      sortedProducts = products.sort((a, b) => a.id - b.id);
+    }
+    console.log(sortedProducts);
+    dispatch(sortByPrice(sortedProducts));
+    setOrden(`Ordenado ${sorting}`);
   }
 
+  useEffect(() => {
+    dispatch(getByFilters(filters));
+  }, [dispatch, filters]);
+
   return (
-    <div className="col-span-5 mt-5 mb-5">
+    <div className="">
       {/* Aca van los filtros */}
       <div className="flex flex-row justify-around">
         <div>

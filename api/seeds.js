@@ -240,7 +240,7 @@ const products = [
   },
   {
     id: 20,
-    title: "awesome green wool t-shirt",
+    title: "green wool t-shirt",
     category: "t-shirts",
     color: "green",
     season: "summer",
@@ -301,7 +301,7 @@ const products = [
   },
   {
     id: 25,
-    title: "Leather King Women's Jacket",
+    title: "Leather King Jacket",
     category: "jackets",
     color: "black",
     season: "autumn",
@@ -313,7 +313,7 @@ const products = [
   },
   {
     id: 26,
-    title: "Ladies Long Sleeve Value Denim Shirts",
+    title: "Long Sleeve Denim Shirts",
     category: "shirts",
     color: "blue",
     season: "spring",
@@ -335,7 +335,7 @@ const products = [
   },
   {
     id: 28,
-    title: "Korean False Shirt Doll Collar Blouse",
+    title: "Korean Doll Collar Shirt",
     category: "shirts",
     color: "white",
     season: "spring",
@@ -347,7 +347,7 @@ const products = [
   },
   {
     id: 29,
-    title: "Long Sleeve Plaid Flannel Shirt",
+    title: "Plaid Flannel Shirt",
     category: "shirts",
     color: "green",
     season: "spring",
@@ -374,7 +374,7 @@ const products = [
   },
   {
     id: 31,
-    title: "Keds Women's Core Champion Sneaker",
+    title: "Core Champion Sneaker",
     category: "shoes",
     color: "red",
     brand: "keds",
@@ -388,7 +388,7 @@ const products = [
   },
   {
     id: 32,
-    title: "Long Sleeve Trendy Wool Jacket",
+    title: "Long Sleeve Wool Jacket",
     category: "jackets",
     color: "black",
     season: "autumn",

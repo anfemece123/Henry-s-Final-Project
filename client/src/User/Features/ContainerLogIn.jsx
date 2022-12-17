@@ -8,9 +8,9 @@ export const ContainerLogIn = () => {
   const auth = useSelector((state) => state.auth.auth);
 
   return (
-    <div className="w-full h-fit items-center flex gap-4">
+    <>
       {Object.keys(auth) < 1 ? (
-        <div className="w-full h-fit items-center flex gap-4">
+        <>
           <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
             <Link to="/formRegister">Register</Link>
           </button>
@@ -19,7 +19,7 @@ export const ContainerLogIn = () => {
               <LoginIcon /> Log In
             </Link>
           </button>
-        </div>
+        </>
       ) : (
         <div className="w-full h-fit items-center flex gap-4">
           <ContainerMenuUser />
@@ -31,6 +31,6 @@ export const ContainerLogIn = () => {
           </button> */}
         </div>
       )}
-    </div>
+    </>
   );
 };

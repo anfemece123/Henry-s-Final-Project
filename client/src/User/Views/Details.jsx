@@ -62,7 +62,6 @@ export default function Details() {
       quantity > 1 && setQuantity(quantity - 1);
     } else {
       quantity < details.details.stock && setQuantity(quantity + 1);
-      setWarning(true);
     }
   };
 
@@ -171,7 +170,7 @@ export default function Details() {
               </div>
             </div>
           </div>
-          <div className="overflow-auto h-[10rem]">
+          <div className="overflow-auto h-[7rem]">
             <ReviewSystem />
           </div>
         </div>

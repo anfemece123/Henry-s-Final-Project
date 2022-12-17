@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import swal from "sweetalert";
 import { updateUser } from "../../../Redux/actions";
-import { getByIdUser } from "../../../Redux/Reducer/Users";
+import { getAllusers, getByIdUser } from "../../../Redux/Reducer/Users";
 import NavBar from "../../../User/Features/NavBar";
 
 export const FormEditUser = () => {
@@ -14,20 +14,27 @@ export const FormEditUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const infoUser = useSelector((state) => state.users.userId);
+  const user = useSelector((state) => state.auth.auth);
   const [image, setImage] = useState(infoUser.profileImage);
   const [loading, setLoading] = useState(false);
   const alert = (e) => {
     if (!formularioEnviado) {
       return swal({
-        title: "Success!",
-        text: "User modified successfuly!",
+        title: "Are you sure?",
+        text: "profile edit",
         icon: "success",
-      });
-    } else {
-      return swal({
-        title: "Something went wrong :'(",
-        text: "Try again later!",
-        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          dispatch(getByIdUser(user.id));
+          // dispatch(getAllusers());
+          swal("ok!", {
+            icon: "success",
+          });
+        } else {
+          swal("Your product is safe!");
+        }
       });
     }
   };
@@ -73,11 +80,11 @@ export const FormEditUser = () => {
               console.log("objeto en registro", values);
               resetForm();
               setformularioEnviado(true);
-              swal({
-                title: "Excellent!",
-                text: "Remember to verify it! Check your email",
-                icon: "success",
-              });
+              // swal({
+              //   title: "Excellent!",
+              //   text: "Remember to verify it! Check your email",
+              //   icon: "success",
+              // });
               navigate("/profile");
             }}
             validate={(values) => validate(values)}

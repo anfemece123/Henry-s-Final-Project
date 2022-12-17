@@ -9,8 +9,8 @@ const url = "https://henry-s-final-project-backend-production.up.railway.app";
 export const getAllOrders = createAsyncThunk(
   "getAllOrders/getAllOrders",
   async () => {
-    return await fetch(`http://localhost:3001/order/allOrders`).then(
-      (response) => response.json()
+    return await fetch(`${url}/order/allOrders`).then((response) =>
+      response.json()
     );
   }
 );

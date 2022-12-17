@@ -8,7 +8,7 @@ const url = "https://henry-s-final-project-backend-production.up.railway.app";
 export const updateUser = (id, values) => async () => {
   await axios({
     method: "PUT",
-    url: `http://localhost:3001/user/update/${id}`,
+    url: `${url}/user/update/${id}`,
     values,
     data: values,
   });
@@ -17,7 +17,7 @@ export const updateUser = (id, values) => async () => {
 export const updateProduct = (id, values) => async () => {
   await axios({
     method: "PUT",
-    url: `http://localhost:3001/product/update/${id}`,
+    url: `${url}/product/update/${id}`,
     values,
     data: values,
   });
@@ -26,7 +26,7 @@ export const updateProduct = (id, values) => async () => {
 export const formCreate = (data) => async () => {
   await axios({
     method: "POST",
-    url: `http://localhost:3001/product/createProduct`,
+    url: `${url}/product/createProduct`,
     data: data,
   });
 };
@@ -34,7 +34,7 @@ export const formCreate = (data) => async () => {
 export const formRegister = (data) => async () => {
   await axios({
     method: "POST",
-    url: `http://localhost:3001/user/newUser`,
+    url: `${url}/user/newUser`,
     data: data,
   });
 };
@@ -42,7 +42,7 @@ export const formRegister = (data) => async () => {
 export const logIn = ({ email, password }) => {
   return function (dispatch) {
     return axios
-      .post(`http://localhost:3001/logIn`, {
+      .post(`${url}/logIn`, {
         email,
         password,
       })
@@ -61,11 +61,9 @@ export const logIn = ({ email, password }) => {
 export const googleAuth = (credentials) => {
   return function (dispatch) {
     return axios
-      .post(`http://localhost:3001/logIn/googleLogIn`, { credentials })
+      .post(`${url}/logIn/googleLogin`, { credentials })
       .then((response) => {
         const user = response;
-        //console.log(user.data[0]);
-        //console.log(user.data[1]);
         dispatch(setAuth(user.data[0]));
         user.data[1] && dispatch(restoreCart(user.data[1]));
       })
