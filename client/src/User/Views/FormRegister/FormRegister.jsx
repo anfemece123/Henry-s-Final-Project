@@ -42,10 +42,7 @@ export const ForrmRegister = () => {
       <div class="container mx-auto">
         <div class="flex justify-center px-6 my-12">
           <div class="w-full xl:w-3/4 lg:w-11/12 flex">
-            <div
-              class="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg bg-[url('https://images.hola.com/fashion/imagenes/lifestyle/2019022866847/planes-marzo-madrid-arco/0-279-758/muji-a.jpg')]"
-              // style="background-image: url('https://source.unsplash.com/Mv9hjnEUHR4/600x800')"
-            ></div>
+            <div class="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg bg-[url('https://images.hola.com/fashion/imagenes/lifestyle/2019022866847/planes-marzo-madrid-arco/0-279-758/muji-a.jpg')]"></div>
 
             <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
               <h3 class="pt-4 text-2xl text-center">Sing Up</h3>
@@ -236,7 +233,7 @@ export const ForrmRegister = () => {
                           class="block mb-2 text-sm font-bold text-gray-700"
                           for="firstName"
                         >
-                          confirmPassword
+                          Confirm Password
                         </label>
                         <input
                           className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"

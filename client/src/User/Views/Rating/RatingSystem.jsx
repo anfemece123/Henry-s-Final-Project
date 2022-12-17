@@ -22,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import Footer from "../../Features/Footer";
 import NavBar from "../../Features/NavBar";
+import { getProductDetails } from "../../../Redux/Reducer/productDetails";
 
 export default function RatingSystem() {
   const dispatch = useDispatch();
@@ -35,8 +36,9 @@ export default function RatingSystem() {
   const productIdAux = useParams();
   const navigate = useNavigate();
   const [exist, setExist] = useState(false);
-
+  const { id } = useParams();
   const productId = parseInt(productIdAux.id);
+  const detail = useSelector((state) => state.details.details);
 
   const handleChange = (e) => {
     setComment({
@@ -50,8 +52,9 @@ export default function RatingSystem() {
   );
 
   useEffect(() => {
+    dispatch(getProductDetails(id));
     console.log(verificar);
-  });
+  }, [dispatch]);
   const handleClick = (e) => {
     if (!verificar.length) {
       const reviewData = { calification, ...comment, productId, token };
@@ -66,7 +69,7 @@ export default function RatingSystem() {
     } else {
       swal({
         title: "Already voted!",
-        text: "If you have a problem. Contact Us 😋",
+        text: "If you have a problem. Contact Us.",
         icon: "warning",
       });
     }
@@ -74,95 +77,110 @@ export default function RatingSystem() {
 
   return (
     <>
-      <NavBar />
-      <FormControl>
-        <Box
-          sx={{
-            "& > legend": { mt: 2 },
-          }}
-        >
-          <Typography component="legend">Please review the product</Typography>
-          <Rating
-            name="simple-controlled"
-            value={calification}
-            onChange={(event, newValue) => {
-              setCalification(newValue);
-            }}
+      <div className=" bg-gradient-to-t bg-2">
+        <NavBar />
+
+        <div className="min-w-100 h-[40rem] flex font-noto-serif ">
+          <img
+            src={detail.image}
+            style={{ width: "320px" }}
+            className="m-auto shadow-lg"
           />
-        </Box>
-        <FormLabel>Your review here</FormLabel>
-        <Textarea
-          placeholder="Type something here…"
-          minRows={3}
-          // Capturar valor de este campo
-          valur={comment}
-          name="comment"
-          onChange={handleChange}
-          endDecorator={
+
+          <FormControl className="w-[55rem] h-[20rem] m-auto text-center">
             <Box
               sx={{
-                display: "flex",
-                gap: "var(--Textarea-paddingBlock)",
-                pt: "var(--Textarea-paddingBlock)",
-                borderTop: "1px solid",
-                borderColor: "divider",
-                flex: "auto",
+                "& > legend": { mt: 2 },
               }}
             >
-              <IconButton
-                variant="plain"
-                color="neutral"
-                onClick={(event) => setAnchorEl(event.currentTarget)}
-              >
-                <FormatBold />
-                <KeyboardArrowDown fontSize="md" />
-              </IconButton>
-              <Menu
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={() => setAnchorEl(null)}
-                size="sm"
-                placement="bottom-start"
-                sx={{ "--List-decorator-size": "24px" }}
-              >
-                {["200", "normal", "bold"].map((weight) => (
-                  <MenuItem
-                    key={weight}
-                    selected={fontWeight === weight}
-                    onClick={() => {
-                      setFontWeight(weight);
-                      setAnchorEl(null);
-                    }}
-                    sx={{ fontWeight: weight }}
-                  >
-                    <ListItemDecorator>
-                      {fontWeight === weight && <Check fontSize="sm" />}
-                    </ListItemDecorator>
-                    {weight === "200" ? "lighter" : weight}
-                  </MenuItem>
-                ))}
-              </Menu>
-              <IconButton
-                variant={italic ? "soft" : "plain"}
-                color={italic ? "primary" : "neutral"}
-                aria-pressed={italic}
-                onClick={() => setItalic((bool) => !bool)}
-              >
-                <FormatItalic />
-              </IconButton>
-              <Button onClick={handleClick} sx={{ ml: "auto" }}>
-                SUBMIT
-              </Button>
+              <Typography component="legend">
+                Please review the product
+              </Typography>
+              <Rating
+                name="simple-controlled"
+                value={calification}
+                onChange={(event, newValue) => {
+                  setCalification(newValue);
+                }}
+              />
             </Box>
-          }
-          sx={{
-            minWidth: 300,
-            fontWeight,
-            fontStyle: italic ? "italic" : "initial",
-          }}
-        />
-      </FormControl>
-      <Footer />
+            <FormLabel>Your review here</FormLabel>
+            <Textarea
+              placeholder="Type something here…"
+              minRows={3}
+              // Capturar valor de este campo
+              valur={comment}
+              name="comment"
+              onChange={handleChange}
+              endDecorator={
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: "var(--Textarea-paddingBlock)",
+                    pt: "var(--Textarea-paddingBlock)",
+                    borderTop: "1px solid",
+                    borderColor: "divider",
+                    flex: "auto",
+                  }}
+                >
+                  <IconButton
+                    variant="plain"
+                    color="neutral"
+                    onClick={(event) => setAnchorEl(event.currentTarget)}
+                  >
+                    <FormatBold />
+                    <KeyboardArrowDown fontSize="md" />
+                  </IconButton>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={() => setAnchorEl(null)}
+                    size="sm"
+                    placement="bottom-start"
+                    sx={{ "--List-decorator-size": "24px" }}
+                  >
+                    {["200", "normal", "bold"].map((weight) => (
+                      <MenuItem
+                        key={weight}
+                        selected={fontWeight === weight}
+                        onClick={() => {
+                          setFontWeight(weight);
+                          setAnchorEl(null);
+                        }}
+                        sx={{ fontWeight: weight }}
+                      >
+                        <ListItemDecorator>
+                          {fontWeight === weight && <Check fontSize="sm" />}
+                        </ListItemDecorator>
+                        {weight === "200" ? "lighter" : weight}
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                  <IconButton
+                    variant={italic ? "soft" : "plain"}
+                    color={italic ? "primary" : "neutral"}
+                    aria-pressed={italic}
+                    onClick={() => setItalic((bool) => !bool)}
+                  >
+                    <FormatItalic />
+                  </IconButton>
+                  <Button onClick={handleClick} sx={{ ml: "auto" }}>
+                    SUBMIT
+                  </Button>
+                </Box>
+              }
+              sx={{
+                minWidth: 300,
+                fontWeight,
+                fontStyle: italic ? "italic" : "initial",
+              }}
+            />
+          </FormControl>
+          <div className="absolute inset-x-0 bottom-0">
+            <Footer />
+          </div>
+        </div>
+      </div>
     </>
   );
 }

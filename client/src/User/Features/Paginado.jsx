@@ -10,8 +10,7 @@ export default function Paginado({
     pageNumbers.push(i);
   }
   return (
-    <nav className=" absolute inset-x-0  flex flex-row justify-center mb-30">
-
+    <nav className="flex flex-row justify-center">
       <ul className="flex flex-row gap-4">
         <li>
           <button
@@ -27,7 +26,7 @@ export default function Paginado({
         </li>
         {pageNumbers &&
           pageNumbers.map((number) => (
-            <li className=" ">
+            <li className=" " key={number}>
               <button
                 className="rounded-lg py-5 px-3 hover:bg-blue-100 hover:text-slate-900 text-black-900 font-bold text-xl"
                 onClick={() => paginado(number)}

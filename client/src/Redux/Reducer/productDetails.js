@@ -11,6 +11,7 @@ export const getProductDetails = createAsyncThunk(
   async (id) => {
     return await fetch(`http://localhost:3001/product/${id}`).then(
       (respuesta) => {
+        console.log(respuesta);
         return respuesta.json();
       }
     );

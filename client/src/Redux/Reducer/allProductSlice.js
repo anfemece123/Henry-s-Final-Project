@@ -29,7 +29,7 @@ export const getByName = createAsyncThunk(
 );
 
 export const getByFilters = createAsyncThunk(
-  "getGender/getGender",
+  "getByFilters/getByFilters",
   async (filters) => {
     return await axios
       .post(`http://localhost:3001/product/filtered`, filters)
@@ -60,11 +60,6 @@ const productsSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     //?productEdit
-    // builder.addCase(updateProduct.fulfilled, (state, action) => {
-    //   state.loading = false;
-    //   state.allProducts = action.payload;
-    //   state.error = "";
-    // });
     //?productById
     builder.addCase(getById.fulfilled, (state, action) => {
       state.loading = false;
@@ -76,7 +71,6 @@ const productsSlice = createSlice({
       const delProduct = state.allProducts.filter(
         (e) => e.id !== action.payload.data
       );
-      // console.log(action.payload.data);
       state.loading = false;
       state.allProducts = [...delProduct];
       state.error = "";

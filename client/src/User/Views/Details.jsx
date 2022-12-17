@@ -60,8 +60,9 @@ export default function Details() {
   const handleQuantity = (type) => {
     if (type === "dec") {
       quantity > 1 && setQuantity(quantity - 1);
-    } else {
+    } else if (type === "inc") {
       quantity < details.details.stock && setQuantity(quantity + 1);
+    } else {
       setWarning(true);
     }
   };
@@ -171,7 +172,7 @@ export default function Details() {
               </div>
             </div>
           </div>
-          <div className="overflow-auto h-[10rem]">
+          <div className="overflow-auto h-[7rem]">
             <ReviewSystem />
           </div>
         </div>

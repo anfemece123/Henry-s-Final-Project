@@ -12,21 +12,21 @@ import logo from "../../Images/logo.png";
 
 export default function Footer() {
   return (
-    <footer className=" inset-x-0 bottom-0 p-5 bg-gray-900 sm:p-6 dark:bg-gray-900">
+    <footer className="absolute bottom-0 inset-x-0 bg-black dark:bg-gray-900">
       <div className="md:flex md:justify-between">
         <div className="mb-6 md:mb-0">
-          <a href="asdas" className="flex items-center">
+          <a
+            href="https://comforting-chebakia-ea0479.netlify.app/"
+            className="flex items-center"
+          >
             {/* <img src="asdasd" className="mr-3 h-8" alt="Icono nuestro" /> */}
             <span className="self-center text-2xl font-cursive-titles font-semibold whitespace-nowrap text-white">
-              <img src={logo} />
+              <img src={logo} style={{ height: "80px" }} />
             </span>
           </a>
         </div>
-        <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 mr-8">
           <div>
-            <h2 className="mb-2 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              shortcuts
-            </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-2">
                 <Link to="/formRegister" className="hover:underline">
@@ -46,9 +46,6 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h2 className="mb-2 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              PROJECT and TEAM
-            </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
                 <a
@@ -66,9 +63,6 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h2 className="mb-2 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Find Us
-            </h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-2">
                 <GpsFixedIcon className="m-2" /> Nebraska - 208 S Broad St

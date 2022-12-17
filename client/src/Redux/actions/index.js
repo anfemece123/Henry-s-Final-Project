@@ -61,11 +61,9 @@ export const logIn = ({ email, password }) => {
 export const googleAuth = (credentials) => {
   return function (dispatch) {
     return axios
-      .post(`http://localhost:3001/logIn/googleLogIn`, { credentials })
+      .post(`http://localhost:3001/logIn/googleLogin`, { credentials })
       .then((response) => {
         const user = response;
-        //console.log(user.data[0]);
-        //console.log(user.data[1]);
         dispatch(setAuth(user.data[0]));
         user.data[1] && dispatch(restoreCart(user.data[1]));
       })

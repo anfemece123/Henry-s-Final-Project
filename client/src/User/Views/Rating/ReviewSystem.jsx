@@ -11,8 +11,6 @@ export default function ReviewSystem(props) {
         ? null
         : details.Reviews.map((review) => (
             <div className="border border-slate-600 shadow-2xl shadow-gray-600 hover:shadow-2xl">
-              <p>Product Reviews</p>
-
               <div>
                 {review.isVisible && (
                   <div>
