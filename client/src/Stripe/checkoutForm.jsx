@@ -37,10 +37,13 @@ export default function checkoutForm() {
     });
     if (!error) {
       const { id } = paymentMethod;
-      const { data } = await axios.post(`${url}/checkout/checkout`, {
-        id,
-        amount: totalCart * 100,
-      });
+      const { data } = await axios.post(
+        `http://localhost:3001/checkout/checkout`,
+        {
+          id,
+          amount: totalCart * 100,
+        }
+      );
       //creando la orden en el back-end
       const products = cart.products;
       const products_quantity = cart.quantity;
@@ -53,7 +56,7 @@ export default function checkoutForm() {
       };
       axios
         .post(
-          `${url}/order/newOrder`,
+          `http://localhost:3001/order/newOrder`,
           {
             products,
             products_quantity,
