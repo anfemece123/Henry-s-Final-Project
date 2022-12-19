@@ -7,7 +7,7 @@ import { formRegister } from "../../../Redux/actions";
 // import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import NavBar from "../../Features/NavBar";
-import Footer from "../../Features/Footer";
+// import Footer from "../../Features/Footer";
 
 export const ForrmRegister = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
@@ -37,18 +37,18 @@ export const ForrmRegister = () => {
   };
 
   return (
-    <body class="font-mono bg-gray-400 h-full">
+    <div className="font-mono bg-gray-400 h-full">
       <NavBar />
-      <div class="container mx-auto">
-        <div class="flex justify-center px-6 my-12">
-          <div class="w-full xl:w-3/4 lg:w-11/12 flex">
+      <div className="container mx-auto">
+        <div className="flex justify-center px-6 my-12">
+          <div className="w-full xl:w-3/4 lg:w-11/12 flex">
             <div
-              class="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg bg-[url('https://images.hola.com/fashion/imagenes/lifestyle/2019022866847/planes-marzo-madrid-arco/0-279-758/muji-a.jpg')]"
+              className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg bg-[url('https://images.hola.com/fashion/imagenes/lifestyle/2019022866847/planes-marzo-madrid-arco/0-279-758/muji-a.jpg')]"
               // style="background-image: url('https://source.unsplash.com/Mv9hjnEUHR4/600x800')"
             ></div>
 
-            <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
-              <h3 class="pt-4 text-2xl text-center">Sing Up</h3>
+            <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+              <h3 className="pt-4 text-2xl text-center">Sing Up</h3>
               <Formik
                 initialValues={{
                   first_name: "",
@@ -83,14 +83,14 @@ export const ForrmRegister = () => {
                   touched,
                 }) => (
                   <form
-                    class="px-8 pt-6 pb-8 mb-4 bg-white rounded"
+                    className="px-8 pt-6 pb-8 mb-4 bg-white rounded"
                     onSubmit={handleSubmit}
                   >
-                    <div class="mb-4 md:flex md:justify-between">
-                      <div class="mb-4 md:mr-2 md:mb-0">
+                    <div className="mb-4 md:flex md:justify-between">
+                      <div className="mb-4 md:mr-2 md:mb-0">
                         <label
-                          class="block mb-2 text-sm font-bold text-gray-700"
-                          for="firstName"
+                          className="block mb-2 text-sm font-bold text-gray-700"
+                          htmlFor="firstName"
                         >
                           First Name
                         </label>
@@ -105,15 +105,15 @@ export const ForrmRegister = () => {
                           onBlur={handleBlur}
                         />
                         {touched.first_name && errors.first_name && (
-                          <div class="text-xs italic text-red-500">
+                          <div className="text-xs italic text-red-500">
                             {errors.first_name}
                           </div>
                         )}
                       </div>
-                      <div class="mb-4 md:mr-2 md:mb-0">
+                      <div className="mb-4 md:mr-2 md:mb-0">
                         <label
-                          class="block mb-2 text-sm font-bold text-gray-700"
-                          for="firstName"
+                          className="block mb-2 text-sm font-bold text-gray-700"
+                          htmlFor="firstName"
                         >
                           Last name
                         </label>
@@ -128,17 +128,17 @@ export const ForrmRegister = () => {
                           onBlur={handleBlur}
                         />
                         {touched.last_name && errors.last_name && (
-                          <div class="text-xs italic text-red-500">
+                          <div className="text-xs italic text-red-500">
                             {errors.last_name}
                           </div>
                         )}
                       </div>
                     </div>
-                    <div class="mb-4 md:flex md:justify-between">
-                      <div class="mb-4 md:mr-2 md:mb-0">
+                    <div className="mb-4 md:flex md:justify-between">
+                      <div className="mb-4 md:mr-2 md:mb-0">
                         <label
-                          class="block mb-2 text-sm font-bold text-gray-700"
-                          for="firstName"
+                          className="block mb-2 text-sm font-bold text-gray-700"
+                          htmlFor="firstName"
                         >
                           Phone Number
                         </label>
@@ -153,15 +153,15 @@ export const ForrmRegister = () => {
                           onBlur={handleBlur}
                         />
                         {touched.phoneNumber && errors.phoneNumber && (
-                          <div class="text-xs italic text-red-500">
+                          <div className="text-xs italic text-red-500">
                             {errors.phoneNumber}
                           </div>
                         )}
                       </div>
-                      <div class="mb-4 md:mr-2 md:mb-0">
+                      <div className="mb-4 md:mr-2 md:mb-0">
                         <label
-                          class="block mb-2 text-sm font-bold text-gray-700"
-                          for="firstName"
+                          className="block mb-2 text-sm font-bold text-gray-700"
+                          htmlFor="firstName"
                         >
                           Address
                         </label>
@@ -176,22 +176,22 @@ export const ForrmRegister = () => {
                           onBlur={handleBlur}
                         />
                         {touched.address && errors.address && (
-                          <div class="text-xs italic text-red-500">
+                          <div className="text-xs italic text-red-500">
                             {errors.address}
                           </div>
                         )}
                       </div>
                     </div>
 
-                    <div class="mb-4">
+                    <div className="mb-4">
                       <label
-                        class="block mb-2 text-sm font-bold text-gray-700"
-                        for="email"
+                        className="block mb-2 text-sm font-bold text-gray-700"
+                        htmlFor="email"
                       >
                         Email
                       </label>
                       <input
-                        class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                        className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                         type="email"
                         id="email"
                         name="email"
@@ -201,17 +201,17 @@ export const ForrmRegister = () => {
                         onBlur={handleBlur}
                       />
                       {touched.email && errors.email && (
-                        <div class="text-xs italic text-red-500">
+                        <div className="text-xs italic text-red-500">
                           {errors.email}
                         </div>
                       )}
                     </div>
 
-                    <div class="mb-4 md:flex md:justify-between">
-                      <div class="mb-4 md:mr-2 md:mb-0">
+                    <div className="mb-4 md:flex md:justify-between">
+                      <div className="mb-4 md:mr-2 md:mb-0">
                         <label
-                          class="block mb-2 text-sm font-bold text-gray-700"
-                          for="firstName"
+                          className="block mb-2 text-sm font-bold text-gray-700"
+                          htmlFor="firstName"
                         >
                           Password
                         </label>
@@ -226,15 +226,15 @@ export const ForrmRegister = () => {
                           onBlur={handleBlur}
                         />
                         {touched.password && errors.password && (
-                          <div class="text-xs italic text-red-500">
+                          <div className="text-xs italic text-red-500">
                             {errors.password}
                           </div>
                         )}
                       </div>
-                      <div class="mb-4 md:mr-2 md:mb-0">
+                      <div className="mb-4 md:mr-2 md:mb-0">
                         <label
-                          class="block mb-2 text-sm font-bold text-gray-700"
-                          for="firstName"
+                          className="block mb-2 text-sm font-bold text-gray-700"
+                          htmlFor="firstName"
                         >
                           Confirm Password
                         </label>
@@ -249,7 +249,7 @@ export const ForrmRegister = () => {
                           onBlur={handleBlur}
                         />
                         {touched.confirmPassword && errors.confirmPassword && (
-                          <div class="text-xs italic text-red-500">
+                          <div className="text-xs italic text-red-500">
                             {errors.confirmPassword}
                           </div>
                         )}
@@ -257,7 +257,7 @@ export const ForrmRegister = () => {
                     </div>
                     <div className="pb-3">
                       <p hidden>{(values.profileImage = image)}</p>
-                      <label class="pb-4 block font-semibold"> Image</label>
+                      <label className="pb-4 block font-semibold"> Image</label>
                       <input
                         type="file"
                         id="profileImage"
@@ -271,15 +271,15 @@ export const ForrmRegister = () => {
                         <img src={image} width="230px" />
                       )}
                     </div>
-                    <div class="mb-6 text-center">
+                    <div className="mb-6 text-center">
                       <button
-                        class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                        className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                         type="submit"
                       >
                         Register Account
                       </button>
                     </div>
-                    <hr class="mb-6 border-t" />
+                    <hr className="mb-6 border-t" />
                     {/* <div class="text-center">
                       <a
                         class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
@@ -289,14 +289,14 @@ export const ForrmRegister = () => {
                       </a>
                     </div> */}
 
-                    <div class="text-center">
+                    <div className="text-center">
                       <Link to="/login">
-                        <a
-                          class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                        <p
+                          className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
                           href=""
                         >
                           Already have an account? Login!
-                        </a>
+                        </p>
                       </Link>
                     </div>
                   </form>
@@ -306,6 +306,6 @@ export const ForrmRegister = () => {
           </div>
         </div>
       </div>
-    </body>
+    </div>
   );
 };
