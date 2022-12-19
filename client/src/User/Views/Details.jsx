@@ -63,10 +63,12 @@ export default function Details() {
     } else {
       quantity < details.details.stock && setQuantity(quantity + 1);
     }
+    if (quantity === details.details.stock) setWarning(true);
   };
 
   if (loading) return <Loading />;
   if (!loading && error) return <h1>{error}</h1>;
+
   return (
     <>
       <div className="flex flex-col gap-10">
@@ -161,10 +163,8 @@ export default function Details() {
                     severity="warning"
                     sx={{ width: "100%" }}
                   >
-                    <AlertTitle>
-                      There is no more stock of this product!!
-                    </AlertTitle>
-                    Come back soon!
+                    <AlertTitle>Max Items</AlertTitle>
+                    You reached the max items available!
                   </Alert>
                 </Snackbar>
               </div>
