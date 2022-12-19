@@ -16,6 +16,9 @@ import swal from "sweetalert";
 import DeleteIcon from "@mui/icons-material/Delete";
 import NavBar from "../../Features/NavBar";
 import { useNavigate } from "react-router-dom";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
+import { AlertTitle } from "@mui/material";
 
 export const Cart = () => {
   const dispatch = useDispatch();
@@ -26,6 +29,9 @@ export const Cart = () => {
   const auth = useSelector((state) => state.auth.auth);
 
   const priceDetail = useSelector((state) => state.details.details.price);
+
+  const [warning, setWarning] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const deleteItemShopList = (e) => {
     dispatch(
@@ -56,6 +62,41 @@ export const Cart = () => {
     } else {
       navigate("/pasarelaTest");
     }
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setWarning(false);
+    setOpen(false);
+  };
+
+  const handleAddItem = (element) => {
+    element.quantity < element.stock &&
+      element.quantity > 0 &&
+      dispatch(
+        addQuantity({
+          price: element.price,
+          quantity: element.quantity,
+          id: element.id,
+          priceDetail: priceDetail,
+        })
+      );
+    if (element.quantity === element.stock) setWarning(true);
+  };
+
+  const handleDeleteItem = (element) => {
+    element.quantity > 1 &&
+      dispatch(
+        removeQuantity({
+          price: element.price,
+          quantity: element.quantity,
+          id: element.id,
+          priceDetail: priceDetail,
+        })
+      );
   };
 
   return (
@@ -103,30 +144,6 @@ export const Cart = () => {
 
             {infoCart.length > 0 ? (
               infoCart.map((element, index) => {
-                const addItem = () => {
-                  element.quantity < element.stock &&
-                    element.quantity > 0 &&
-                    dispatch(
-                      addQuantity({
-                        price: element.price,
-                        quantity: element.quantity,
-                        id: element.id,
-                        priceDetail: priceDetail,
-                      })
-                    );
-                };
-                const deletItem = () => {
-                  element.quantity > 1 &&
-                    dispatch(
-                      removeQuantity({
-                        price: element.price,
-                        quantity: element.quantity,
-                        id: element.id,
-                        priceDetail: priceDetail,
-                      })
-                    );
-                };
-
                 return (
                   <div className="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
                     <div className="md:w-4/12 2xl:w-1/4 w-full">
@@ -148,9 +165,11 @@ export const Cart = () => {
                           aria-label="Select quantity"
                           className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
                         >
-                          <RemoveIcon onClick={() => deletItem()} />
+                          <RemoveIcon
+                            onClick={() => handleDeleteItem(element)}
+                          />
                           <p>{element.quantity}</p>
-                          <AddIcon onClick={() => addItem()} />
+                          <AddIcon onClick={() => handleAddItem(element)} />
                         </div>
                       </div>
                       <p className="text-xs leading-3 text-gray-600 dark:text-black pt-2">
@@ -238,6 +257,28 @@ export const Cart = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+          <Alert
+            onClose={handleClose}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            <AlertTitle>Added to cart successfully!</AlertTitle>
+            Remember to log in to complete your purchase!
+          </Alert>
+        </Snackbar>
+        <Snackbar open={warning} autoHideDuration={2000} onClose={handleClose}>
+          <Alert
+            onClose={handleClose}
+            severity="warning"
+            sx={{ width: "100%" }}
+          >
+            <AlertTitle>There is no more stock of this product!!</AlertTitle>
+            Come back soon!
+          </Alert>
+        </Snackbar>
       </div>
     </div>
   );
