@@ -50,7 +50,12 @@ export const Filtros = ({ setOrden, setCurrentPage }) => {
 
   return (
     <MDBContainer fluid className="d-flex justify-content-around mt-5 mb-5">
-      <select onChange={filterHandler} name="color">
+      <select
+        className="form-select"
+        onChange={filterHandler}
+        name="color"
+        style={{ width: "220px" }}
+      >
         <option value="">Color</option>
         <option value="white">White</option>
         <option value="black">Black</option>
@@ -59,14 +64,24 @@ export const Filtros = ({ setOrden, setCurrentPage }) => {
         <option value="yellow">Yellow</option>
         <option value="green">Green</option>
       </select>
-      <select onChange={filterHandler} name="gender">
+      <select
+        className="form-select"
+        onChange={filterHandler}
+        name="gender"
+        style={{ width: "220px" }}
+      >
         <option value="">Gender</option>
         <option value="female">Female</option>
         <option value="male">Male</option>
         <option value="other">Both Genders</option>
       </select>
 
-      <select onChange={filterHandler} name="category">
+      <select
+        className="form-select"
+        onChange={filterHandler}
+        name="category"
+        style={{ width: "220px" }}
+      >
         <option value="">Category</option>
         <option value="shirts">Shirt</option>
         <option value="t-shirts">T-shirt</option>
@@ -75,7 +90,11 @@ export const Filtros = ({ setOrden, setCurrentPage }) => {
         <option value="jackets">Jackets</option>
       </select>
 
-      <select onChange={sortingHandler}>
+      <select
+        className="form-select"
+        onChange={sortingHandler}
+        style={{ width: "220px" }}
+      >
         <option value="">Prices</option>
         <option value="asc">Lowest price</option>
         <option value="desc">Highest price</option>
