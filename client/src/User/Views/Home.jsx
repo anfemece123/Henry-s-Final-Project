@@ -39,13 +39,13 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <div className="static">
+    <div>
       <NavBar />
-      <div className="col-span-4 text-center text-slate-700 font-cursive-titles text-5xl">
+      <div>
         <h1>Products</h1>
       </div>
       <Filtros setOrden={setOrden} setCurrentPage={setCurrentPage} />
-      <div className="grid grid-cols-3 gap-y-4 justify-items-center items-center">
+      <div>
         {product.loading && <Loading />}
         {product.error && <ErrorSearch />}
         {currentProduct

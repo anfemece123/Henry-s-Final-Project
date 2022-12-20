@@ -11,21 +11,17 @@ export default function Card({
   images,
 }) {
   return (
-    <div className="w-[27rem] h-[18rem] hover:shadow-2xl hover:shadow-slate-700">
-      <img
-        src={images}
-        className="m-auto pt-2"
-        style={{ width: "200px", height: "150px" }}
-      />
+    <div>
+      <img src={images} style={{ width: "200px", height: "150px" }} />
       <div>
-        <div className="pt-5 font-noto-serif uppercase text-center text-3xl hover:animate-pulse hover:text-green-700">
+        <div>
           <Link to={`/detail/${id}`}>
             <h1>{title}</h1>
           </Link>
         </div>
       </div>
-      <div className="flex flex-row justify-center pl-2 pt-3 pb-2 gap-20">
-        <div className="flex-row text-lg font-noto-serif">
+      <div>
+        <div>
           <div>
             <span>Price:$</span>
             <span> {price}</span>
@@ -35,20 +31,17 @@ export default function Card({
             <span> {size}</span>
           </div>
         </div>
-        <div className="flex flex-col text-lg font-noto-serif">
+        <div>
           <div>
             {stock ? (
               <div>
                 <span>Stock:</span>
-                <span className="text-green-500"> {stock}</span>
+                <span> {stock}</span>
               </div>
             ) : (
               <div>
                 <span>Stock:</span>
-                <span className="text-red-400 animate-pulse">
-                  {" "}
-                  No disponible
-                </span>
+                <span>No disponible</span>
               </div>
             )}
           </div>
@@ -56,12 +49,12 @@ export default function Card({
             {gender ? (
               <div>
                 <span>Gender:</span>
-                <span className="capitalize"> {gender}</span>
+                <span> {gender}</span>
               </div>
             ) : (
               <div>
                 <span>Gender:</span>
-                <span className="uppercase text-amber-400"> All</span>
+                <span> All</span>
               </div>
             )}
           </div>
