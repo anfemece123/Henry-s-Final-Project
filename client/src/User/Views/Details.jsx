@@ -60,8 +60,10 @@ export default function Details() {
   const handleQuantity = (type) => {
     if (type === "dec") {
       quantity > 1 && setQuantity(quantity - 1);
-    } else {
+    } else if (type === "inc") {
       quantity < details.details.stock && setQuantity(quantity + 1);
+    } else {
+      setWarning(true);
     }
     if (quantity === details.details.stock) setWarning(true);
   };

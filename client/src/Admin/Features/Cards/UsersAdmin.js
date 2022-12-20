@@ -15,25 +15,8 @@ export default function UsersAdmin() {
     dispatch(getAllusers());
   }, [dispatch]);
   function alertButtonDelete(e) {
-    swal({
-      title: "Are you sure?",
-      text: "You are about to block this user. There is no turning back!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        dispatch(deleteUserId(e));
-        swal("Poof!The user has been blocked.", {
-          icon: "success",
-          buttons: true,
-        }).then(() => {
-          dispatch(getAllusers());
-        });
-      } else {
-        swal("The user is safe!");
-      }
-    });
+    dispatch(deleteUserId(e));
+    dispatch(getAllusers());
   }
 
   if (useSelector((state) => !state.users.loading && state.users.error))

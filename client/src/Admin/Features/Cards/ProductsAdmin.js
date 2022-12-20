@@ -20,26 +20,7 @@ export default function ProductsAdmin({ color }) {
   const products = useSelector((state) => state.allProducts.allProducts);
 
   function alertButtonDelete(e) {
-    swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this product!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        dispatch(updateReview(e));
-
-        swal("Poof!The review has disappeared!", {
-          icon: "success",
-          buttons: true,
-        }).then(() => {
-          dispatch(getAllProducts());
-        });
-      } else {
-        swal("Your product is safe!");
-      }
-    });
+    dispatch(deleteProId(e));
   }
 
   function editBotoAlert(e) {
