@@ -31,12 +31,20 @@ export const formCreate = (data) => async () => {
   });
 };
 
-export const formRegister = (data) => async () => {
-  await axios({
-    method: "POST",
-    url: `http://localhost:3001/user/newUser`,
-    data: data,
-  });
+export const formRegister = (data) => {
+  return function (dispatch) {
+    return axios({
+      method: "POST",
+      url: `http://localhost:3001/user/newUser`,
+      data: data,
+    })
+      .then((response) => console.log(response))
+      .catch((error) => {
+        console.log(error.response.data);
+        const errorMessage = error.response.data;
+        return dispatch(setErrorAuth(errorMessage));
+      });
+  };
 };
 
 export const logIn = ({ email, password }) => {
