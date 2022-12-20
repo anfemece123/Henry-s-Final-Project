@@ -60,7 +60,7 @@ const router = createBrowserRouter([
     element: <ComingSoon />,
   },
   {
-    path: "/admin",
+    path: "/admin/*",
     element: <Admin />,
     children: [
       {

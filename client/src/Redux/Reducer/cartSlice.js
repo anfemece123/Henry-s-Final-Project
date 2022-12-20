@@ -77,11 +77,6 @@ const cartSlice = createSlice({
       }
     },
     removeQuantity: (state, action) => {
-      // const mapeo = state.products.map((e) => e.quantity);
-      // console.log("mapeo", mapeo);
-      // const indice = 0;
-      // mapeo[indice] = 14;
-      // state.products = mapeo;
       const find1 = state.products.find(
         (element) => element.id === action.payload.id
       );

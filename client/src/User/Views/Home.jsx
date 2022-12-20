@@ -45,7 +45,7 @@ export default function Home() {
         <h1>Products</h1>
       </div>
       <Filtros setOrden={setOrden} setCurrentPage={setCurrentPage} />
-      <div className="grid grid-cols-3 gap-4 justify-items-center items-center">
+      <div className="grid grid-cols-3 gap-y-4 justify-items-center items-center">
         {product.loading && <Loading />}
         {product.error && <ErrorSearch />}
         {currentProduct
@@ -71,7 +71,7 @@ export default function Home() {
         currentPage={currentPage}
         paginado={paginado}
       />
-   <Footer />
+      <Footer />
     </div>
   );
 }

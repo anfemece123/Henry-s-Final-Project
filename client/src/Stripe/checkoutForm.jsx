@@ -69,8 +69,8 @@ export default function checkoutForm() {
         .catch((error) => console.log(error.message));
 
       swal({
-        title: "Payment succeful",
-        text: "Thanks your for your bought!",
+        title: "Payment successful",
+        text: "Thanks your for your Purchase!",
         icon: "success",
         button: "Ok",
       });

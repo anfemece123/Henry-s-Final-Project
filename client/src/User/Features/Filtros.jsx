@@ -20,7 +20,17 @@ export const Filtros = ({ setOrden, setCurrentPage }) => {
     dispatch(getByFilters(filters));
     setOrden(`Ordenado ${e.target.value}`);
   }
-
+  /*   function sortingHandler(e) {
+    if (e.target.value === "asc") {
+      const sortedProducts = products?.sort((a, b) => a.price - b.price);
+      setCurrentPage(1);
+      dispatch(sortByPrice(sortedProducts));
+      setOrden(`Ordenado ${e.target.value}`);
+    }
+    const sortedProducts = products?.sort((a, b) => b.price - a.price);
+    dispatch(sortByPrice(sortedProducts));
+    setOrden(`Ordenado ${e.target.value}`);
+  } */
   function sortingHandler(e) {
     setCurrentPage(1);
     const sorting = e.target.value;

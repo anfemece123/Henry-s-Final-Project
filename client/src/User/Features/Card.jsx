@@ -11,11 +11,11 @@ export default function Card({
   images,
 }) {
   return (
-    <div className="w-[32rem] h-[21rem] hover:shadow-2xl hover:shadow-slate-700">
+    <div className="w-[27rem] h-[18rem] hover:shadow-2xl hover:shadow-slate-700">
       <img
         src={images}
         className="m-auto pt-2"
-        style={{ width: "250px", height: "175px" }}
+        style={{ width: "200px", height: "150px" }}
       />
       <div>
         <div className="pt-5 font-noto-serif uppercase text-center text-3xl hover:animate-pulse hover:text-green-700">
@@ -24,7 +24,7 @@ export default function Card({
           </Link>
         </div>
       </div>
-      <div className="flex flex-row justify-center pl-2 pt-8 pb-2 gap-20">
+      <div className="flex flex-row justify-center pl-2 pt-3 pb-2 gap-20">
         <div className="flex-row text-lg font-noto-serif">
           <div>
             <span>Price:$</span>

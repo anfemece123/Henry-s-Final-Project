@@ -13,11 +13,11 @@ export default function PurcharseHistory() {
   const index = parseInt(userID - 1);
   const reviewID = useSelector((state) => state.users.userId);
 
-  useEffect(() => {
+  /* useEffect(() => {
     console.log(`ID del usuario en auth => ${userID}`);
     console.log(`ID del usuario en users.usersID => ${userOrder}`);
     console.log(`INdex para buscar => ${index}`);
-  });
+  }); */
 
   return (
     <>
@@ -101,7 +101,6 @@ export default function PurcharseHistory() {
       ) : (
         <h1>Aun no has comprado nada</h1>
       )}
-      <Footer />
     </>
   );
 }

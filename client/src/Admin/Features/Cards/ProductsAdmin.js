@@ -19,13 +19,10 @@ export default function ProductsAdmin({ color }) {
   const navigate = useNavigate();
   const products = useSelector((state) => state.allProducts.allProducts);
 
-  useEffect(() => {
-    dispatch(getAllProducts());
-  }, [dispatch]);
-
   function alertButtonDelete(e) {
     dispatch(deleteProId(e));
   }
+
   function editBotoAlert(e) {
     swal({
       title: "Are you sure?",
@@ -35,12 +32,16 @@ export default function ProductsAdmin({ color }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
+        dispatch(getAllProducts());
         navigate("/formEditProduct");
       } else {
         swal("Your product is safe!");
       }
     });
   }
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [dispatch]);
 
   return (
     <div>
