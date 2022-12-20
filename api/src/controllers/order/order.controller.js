@@ -7,7 +7,10 @@ let id = 1;
 createOrder = async (req, res) => {
   const { products, products_quantity, total } = req.body;
   const userId = req.UserId;
-  console.log("products:", products);
+  console.log("products: ", products);
+  console.log("products_quantity: ", products_quantity);
+  console.log("total: ", total);
+  console.log("userId: ", userId);
   if (!products || !products_quantity || !total) {
     return res.status(400).send("Missing Data");
   }
@@ -33,6 +36,7 @@ createOrder = async (req, res) => {
         return res.status(404).send(error.message);
       }
     }
+    //envio e-mail de datos de compra
     const user = await User.findOne({ where: { id: userId } });
     nodemailer.sendPurchaseConfirmation(user.first_name, user.email, newOrder);
     res.status(201).send("Order Succesfully Created");
