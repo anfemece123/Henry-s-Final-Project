@@ -10,11 +10,11 @@ export default function Paginado({
     pageNumbers.push(i);
   }
   return (
-    <nav className="flex flex-row justify-center">
-      <ul className="flex flex-row gap-4">
+    <nav>
+      <ul class="pagination">
         <li>
           <button
-            className="rounded-lg py-5 px-3 hover:bg-blue-100 hover:text-slate-900 focus:none text-black-900 font-bold text-xl"
+            class="page-link"
             onClick={() => {
               currentPage > 1
                 ? paginado(currentPage - 1)
@@ -26,18 +26,15 @@ export default function Paginado({
         </li>
         {pageNumbers &&
           pageNumbers.map((number) => (
-            <li className=" " key={number}>
-              <button
-                className="rounded-lg py-5 px-3 hover:bg-blue-100 hover:text-slate-900 text-black-900 font-bold text-xl"
-                onClick={() => paginado(number)}
-              >
+            <li class="page-item" key={number}>
+              <button class="page-link" onClick={() => paginado(number)}>
                 {number}
               </button>
             </li>
           ))}
-        <li>
+        <li class="page-item">
           <button
-            className="rounded-lg py-5 px-3 hover:bg-blue-100 hover:text-slate-900 focus:none text-black-900 font-bold text-xl"
+            class="page-link"
             onClick={() => {
               currentPage < pageNumbers.length
                 ? paginado(currentPage + 1)

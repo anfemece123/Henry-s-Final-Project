@@ -1,6 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardImage,
+  MDBBtn,
+  MDBRipple,
+} from "mdb-react-ui-kit";
+
 export default function Card({
   id,
   title,
@@ -11,55 +21,66 @@ export default function Card({
   images,
 }) {
   return (
-    <div>
-      <img src={images} style={{ width: "200px", height: "150px" }} />
-      <div>
-        <div>
-          <Link to={`/detail/${id}`}>
-            <h1>{title}</h1>
-          </Link>
-        </div>
-      </div>
-      <div>
-        <div>
-          <div>
-            <span>Price:$</span>
-            <span> {price}</span>
+    <MDBCard>
+      <MDBRipple
+        rippleColor="light"
+        rippleTag="div"
+        className="bg-image hover-overlay text-center"
+        style={{ maxWidth: "320px", minWidth: "320px" }}
+      >
+        <MDBCardImage
+          src={images}
+          style={{ width: "200px", height: "150px" }}
+          fluid
+        />
+        <a>
+          <div
+            className="mask"
+            style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
+          >
+            Podemos poner una descripcion aca o algo :)
           </div>
-          <div>
-            <span>Size:</span>
-            <span> {size}</span>
-          </div>
-        </div>
-        <div>
-          <div>
-            {stock ? (
-              <div>
-                <span>Stock:</span>
-                <span> {stock}</span>
-              </div>
-            ) : (
-              <div>
-                <span>Stock:</span>
-                <span>No disponible</span>
-              </div>
-            )}
-          </div>
-          <div>
-            {gender ? (
-              <div>
-                <span>Gender:</span>
-                <span> {gender}</span>
-              </div>
-            ) : (
-              <div>
-                <span>Gender:</span>
-                <span> All</span>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
+        </a>
+      </MDBRipple>
+      <MDBCardBody className="text-center justify-content-center m-auto">
+        <Link to={`/detail/${id}`}>
+          <MDBCardTitle className="text-center">{title}</MDBCardTitle>
+        </Link>
+        <MDBCardText>
+          <span>Price:$</span>
+          <span> {price}</span>
+          <br />
+          <span>Size:</span>
+          <span> {size}</span>
+
+          {stock ? (
+            <div>
+              <span>Stock:</span>
+              <span> {stock}</span>
+            </div>
+          ) : (
+            <div>
+              <span>Stock:</span>
+              <span>No disponible</span>
+            </div>
+          )}
+
+          {gender ? (
+            <div>
+              <span>Gender:</span>
+              <span> {gender}</span>
+            </div>
+          ) : (
+            <div>
+              <span>Gender:</span>
+              <span> All</span>
+            </div>
+          )}
+        </MDBCardText>
+        <Link to={`/detail/${id}`}>
+          <MDBBtn>Details</MDBBtn>
+        </Link>
+      </MDBCardBody>
+    </MDBCard>
   );
 }
