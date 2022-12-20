@@ -6,14 +6,10 @@ import { FormCreate } from "../../User/Views/FormCreate/FormCreate.jsx";
 import Detail from "../../User/Views/Details";
 import LogIn from "../../User/Views/logIn/LogIn";
 import { ForrmRegister } from "../../User/Views/FormRegister/FormRegister";
-import Dashboard from "../../Admin/Views/admin/Dashboard";
-import Maps from "../../Admin/Views/admin/Maps.jsx";
-import Settings from "../../Admin/Views/admin/Settings.jsx";
-import Tables from "../../Admin/Views/admin/Tables";
-import Admin from "../../Admin/layouts/Admin";
+
 // import Login from "../../Admin/Views/auth/Login";
 // import Register from "../../Admin/Views/auth/Register";
-import Profile from "../../Admin/Views/Profile";
+// import Profile from "../../Admin/Views/Profile";
 // import Auth from "../../Admin/layouts/Auth";
 import { Cart } from "../../User/Views/Cart/Cart";
 import CheckoutForm from "../../Stripe/checkoutForm";
@@ -21,9 +17,8 @@ import Welcome from "../../User/Views/Welcome";
 import { FormEditProduct } from "../../Admin/Views/FormEditProduct/FormEditProduct";
 import { FormEditUser } from "../../Admin/Views/FormEditUser/FormEditUser";
 import PurchaseHistory from "../../User/Features/PurchaseHistory";
-import ReviewSystem from "../../User/Views/Rating/ReviewSystem";
 import RatingSystem from "../../User/Views/Rating/RatingSystem";
-import ComingSoon from "./ComingSoon";
+import AdminContainer from "../../Admin/Views/Container/AdminContainer";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <Home />,
+  },
+  {
+    path: "/admin",
+    element: <AdminContainer />,
   },
   {
     path: "/formCreate",
@@ -55,33 +54,10 @@ const router = createBrowserRouter([
     path: "/cart",
     element: <Cart />,
   },
-  {
-    path: "/aboutUs",
-    element: <ComingSoon />,
-  },
-  {
-    path: "/admin/*",
-    element: <Admin />,
-    children: [
-      {
-        path: "dashboard",
-        element: <Dashboard />,
-      },
-      {
-        path: "maps",
-        element: <Maps />,
-      },
-      {
-        path: "settings",
-        element: <Settings />,
-      },
-      { path: "tables", element: <Tables /> },
-    ],
-  },
-  {
-    path: "/profile",
-    element: <Profile />,
-  },
+  // {
+  //   path: "/profile",
+  //   element: <Profile />,
+  // },
 
   {
     path: "/pasarelaTest",
@@ -92,10 +68,7 @@ const router = createBrowserRouter([
     path: "/confirm/:confirmationCode",
     element: <Welcome />,
   },
-  {
-    path: "/pruebas",
-    element: <Settings />,
-  },
+
   {
     path: "/formEditProduct",
     element: <FormEditProduct />,
