@@ -8,7 +8,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useDispatch, useSelector } from "react-redux";
 import HomeIcon from "@mui/icons-material/Home";
 import LoginIcon from "@mui/icons-material/Login";
-import MenuContainer from "../../Admin/container/MenuCotainer";
+// import MenuContainer from "../../Admin/container/MenuCotainer";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { logout } from "../../Redux/Reducer/authSlice";
 import { clearCart } from "../../Redux/Reducer/cartSlice";
@@ -32,8 +32,8 @@ export default function NavBar() {
     <nav className="">
       {auth.isAdmin === true ? (
         <>
-          <div className="">
-            <MenuContainer />
+          <div className="flex flex-row gap-4">
+            {/* <MenuContainer /> */}
             <Link to="/home">
               <HomeIcon sx={{ fontSize: 45 }} className=""></HomeIcon>
             </Link>
