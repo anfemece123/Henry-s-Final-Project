@@ -1,80 +1,136 @@
 import React from "react";
+import {
+  MDBFooter,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+} from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
-import EmailIcon from "@mui/icons-material/Email";
-import GpsFixedIcon from "@mui/icons-material/GpsFixed";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
-import HowToRegIcon from "@mui/icons-material/HowToReg";
-import LockOpenIcon from "@mui/icons-material/LockOpen";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import PersonSearchIcon from "@mui/icons-material/PersonSearch";
-import logo from "../../Images/image.png";
 
 export default function Footer() {
   return (
-    <footer className="absolute bottom-0 inset-x-0 bg-black dark:bg-gray-900">
-      <div className="md:flex md:justify-between">
-        <div className="mb-1 md:mb-0">
-          {/* <a href="asdas" className="flex items-center"> */}
-          <img src={logo} className="mr-3 h-20" alt="Icono nuestro" />
-          {/* <span className="self-center text-2xl font-cursive-titles font-semibold whitespace-nowrap text-white">
-              Tienda Nuestra
-            </span>
-          </a> */}
+    <MDBFooter bgColor="light" className="text-center text-lg-start text-muted">
+      <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <div className="me-5 d-none d-lg-block"></div>
+        <div>
+          <a href="" className="me-4 text-reset">
+            <MDBIcon fab icon="facebook-f" />
+          </a>
+          <a href="" className="me-4 text-reset">
+            <MDBIcon fab icon="twitter" />
+          </a>
+          <a href="" className="me-4 text-reset">
+            <MDBIcon fab icon="google" />
+          </a>
+          <a href="" className="me-4 text-reset">
+            <MDBIcon fab icon="instagram" />
+          </a>
+          <a href="" className="me-4 text-reset">
+            <MDBIcon fab icon="linkedin" />
+          </a>
+          <a
+            href="https://github.com/anfemece123/Henry-s-Final-Project"
+            className="me-4 text-reset"
+          >
+            <MDBIcon fab icon="github" />
+          </a>
         </div>
-        <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 mr-8">
-          <div>
-            <ul className="text-gray-600 dark:text-gray-400">
-              <li className="mb-2">
-                <Link to="/formRegister" className="hover:underline">
-                  <HowToRegIcon className="m-2" /> Register
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/login" className="hover:underline">
-                  <LockOpenIcon className="m-2" /> Log In
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/cart" className="hover:underline">
-                  <ShoppingCartIcon className="m-2" /> Cart
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <ul className="text-gray-600 dark:text-gray-400">
-              <li className="mb-4">
-                <a
-                  href="https://github.com/anfemece123/Henry-s-Final-Project"
-                  className="hover:underline "
-                >
-                  <GitHubIcon className="m-2" /> GitHub project
+      </section>
+
+      <section className="">
+        <MDBContainer className="text-center text-md-start mt-5">
+          <MDBRow className="mt-3">
+            <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">
+                <MDBIcon icon="gem" className="me-3" />
+                TIENDA NUESTRA
+              </h6>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
+                cupiditate vel repudiandae libero, magnam quasi nemo alias
+                eligendi exercitationem, neque soluta impedit porro labore,
+                dolores modi tenetur quos esse eos.
+              </p>
+            </MDBCol>
+
+            <MDBCol md="2" lg="2" xl="2" className="mx-auto mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Products</h6>
+              <p>
+                <a href="#!" className="text-reset">
+                  Enlace
                 </a>
-              </li>
-              <li>
-                <Link to="/aboutUs" className="hover:underline">
-                  <PersonSearchIcon className="m-2" /> Developers
+              </p>
+              <p>
+                <a href="#!" className="text-reset">
+                  Enlace
+                </a>
+              </p>
+              <p>
+                <a href="#!" className="text-reset">
+                  Enlace
+                </a>
+              </p>
+              <p>
+                <a href="#!" className="text-reset">
+                  Enlace
+                </a>
+              </p>
+            </MDBCol>
+            <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
+              <p>
+                <Link to="/aboutUs" className="text-reset">
+                  Developers
                 </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <ul className="text-gray-600 dark:text-gray-400">
-              <li className="mb-2">
-                <GpsFixedIcon className="m-2" /> Nebraska - 208 S Broad St
-              </li>
-              <li className="mb-2">
-                <EmailIcon className="m-2" /> TiendaNuestra@atencion.com
-              </li>
-              <li className="mb-2">
-                <LocalPhoneIcon className="m-2" />
-                (252) 482-2676
-              </li>
-            </ul>
-          </div>
-        </div>
+              </p>
+              <p>
+                <Link to="/formRegister" className="text-reset">
+                  Register
+                </Link>
+              </p>
+              <p>
+                <Link to="/login" className="text-reset">
+                  Log In
+                </Link>
+              </p>
+              <p>
+                <Link to="/cart" href="#!" className="text-reset">
+                  Cart
+                </Link>
+              </p>
+            </MDBCol>
+
+            <MDBCol md="4" lg="3" xl="3" className="mx-auto mb-md-0 mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
+              <p>
+                <MDBIcon icon="home" className="me-2" />
+                New York, NY 10012, US
+              </p>
+              <p>
+                <MDBIcon icon="envelope" className="me-3" />
+                info@example.com
+              </p>
+              <p>
+                <MDBIcon icon="phone" className="me-3" /> + 01 234 567 88
+              </p>
+              <p>
+                <MDBIcon icon="print" className="me-3" /> + 01 234 567 89
+              </p>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
+      </section>
+
+      <div
+        className="text-center p-4"
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
+      >
+        © 2021 Copyright:
+        <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
+          TiendaNUESTRA
+        </a>
       </div>
-    </footer>
+    </MDBFooter>
   );
 }

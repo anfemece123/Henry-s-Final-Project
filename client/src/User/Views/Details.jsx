@@ -16,6 +16,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import RatingSystem from "./Rating/RatingSystem";
 import ReviewSystem from "./Rating/ReviewSystem";
 import { getAllReviews } from "../../Redux/Reducer/RatingSlice";
+import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 
 export default function Details() {
   const details = useSelector((state) => state.details);
@@ -27,7 +28,7 @@ export default function Details() {
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = React.useState(false);
   const [warning, setWarning] = React.useState(false);
-  const productId = details.details.id; //lo tengo que mandar a la review para hacer la request de createReview
+  const productId = details.details.id;
 
   useEffect(() => {
     dispatch(getProductDetails(id));
@@ -72,114 +73,93 @@ export default function Details() {
   if (!loading && error) return <h1>{error}</h1>;
 
   return (
-    <>
-      <div className="flex flex-col gap-10">
-        <div className="col-span-4">
+    <MDBContainer fluid className="min-vh-100">
+      <MDBRow>
+        <MDBCol size={12}>
           <NavBar />
-        </div>
-        <Link to="/home">
-          <div
-            className="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer"
-            // onclick="checkoutHandler(false)"
-          >
+        </MDBCol>
+        <MDBCol size={12}>
+          <Link className="text-decoration-none text-black" to="/home">
             <ArrowBackIcon />
-            <p className="text-sm leading-none dark:hover:text-gray-200">
-              Continue Shopping
-            </p>
-          </div>
-        </Link>
-        <div className="flex flex-col justify-center gap-4 mx-auto">
-          <div className="flex flex-row gap-4">
-            <div className="w-[32rem] border border-slate-900 rounded-lg shadow-2xl shadow-gray-600 hover:shadow-2xl">
-              <img
-                className="h-[32rem] m-auto"
-                src={details.details.image}
-                alt={`pic-for${details.details.title}`}
-              />
-            </div>
-            <div className="border border-slate-900 rounded-lg shadow-2xl shadow-gray-600 hover:shadow-2xl  p-10 w-[65rem]">
-              {/*no se si quedan mejor los detalles con esto en el div de arriba
-         de este comentario  => bg-slate-300 p-10 */}
-              <div className="flex gap-32">
-                <div className="font-noto-serif text-3xl justify-center">
-                  <h1 className="capitalize">
-                    PRODUCT: {details.details.title}
-                  </h1>
-                  <br />
-                  <p>PRICE: ${details.details.price}</p>
-                  <br />
-                  <p>SIZE: {details.details.size}</p>
-                  <br />
-                  <p>CATEGORY: {details.details.category}</p>
-                  <br />
-                </div>
-                <div className="font-noto-serif text-3xl m-auto">
-                  <p className="capitalize">COLOR: {details.details.color}</p>
-                  <br />
-                  <p className="capitalize">SEASON: {details.details.season}</p>
-                  <br />
-                  <p className="capitalize">GENDER: {details.details.gender}</p>
-                  <br />
-                  <p>STOCK: {details.details.stock}</p>
-                  <br />
-                </div>
-              </div>
-              <div className="text-center mt-5">
-                <div className="block font-noto-serif text-2xl m-auto">
-                  <span onClick={() => handleQuantity("dec")}>-</span>
-                  <span> {quantity} </span>
-                  <span onClick={() => handleQuantity("inc")}>+</span>
-                </div>
-                <br />
-                {details.details.stock >= 1 && (
-                  <button
-                    className="animate-pulse border border-slate-600 p-2 rounded-lg hover:bg-black hover:border-slate-800 hover:text-white "
-                    onClick={handleClick}
-                  >
-                    add to cart (${details.details.price * quantity} )
-                  </button>
-                )}
-              </div>
-              <div>
-                <Snackbar
-                  open={open}
-                  autoHideDuration={2000}
-                  onClose={handleClose}
-                >
-                  <Alert
-                    onClose={handleClose}
-                    severity="success"
-                    sx={{ width: "100%" }}
-                  >
-                    <AlertTitle>Added to cart successfully!</AlertTitle>
-                    Remember to log in to complete your purchase!
-                  </Alert>
-                </Snackbar>
-                <Snackbar
-                  open={warning}
-                  autoHideDuration={2000}
-                  onClose={handleClose}
-                >
-                  <Alert
-                    onClose={handleClose}
-                    severity="warning"
-                    sx={{ width: "100%" }}
-                  >
-                    <AlertTitle>Max Items</AlertTitle>
-                    You reached the max items available!
-                  </Alert>
-                </Snackbar>
-              </div>
-            </div>
-          </div>
-          <div className="overflow-auto h-[7rem]">
-            <ReviewSystem />
-          </div>
-        </div>
-      </div>
-      <div>
-        <Footer />
-      </div>
-    </>
+            <p>Continue Shopping</p>
+          </Link>
+        </MDBCol>
+        <MDBCol size={6} className="mt-5 mb-5">
+          <img
+            src={details.details.image}
+            alt={`pic-for${details.details.title}`}
+            style={{ width: "620px" }}
+            className="img-fluid"
+          />
+        </MDBCol>
+        <MDBCol size={6} className="mt-5 mb-5">
+          <h1 className="pb-2">PRODUCT: {details.details.title}</h1>
+
+          <p>PRICE: ${details.details.price}</p>
+
+          <p>SIZE: {details.details.size}</p>
+
+          <p>CATEGORY: {details.details.category}</p>
+
+          <p>COLOR: {details.details.color}</p>
+
+          <p>SEASON: {details.details.season}</p>
+
+          <p>GENDER: {details.details.gender}</p>
+
+          <p>STOCK: {details.details.stock}</p>
+
+          <span className="fs-2" onClick={() => handleQuantity("dec")}>
+            -
+          </span>
+          <span className="fs-4"> {quantity} </span>
+          <span className="fs-2" onClick={() => handleQuantity("inc")}>
+            +
+          </span>
+
+          {details.details.stock >= 1 && (
+            <button className="ms-5" onClick={handleClick}>
+              add to cart (${details.details.price * quantity} )
+            </button>
+          )}
+        </MDBCol>
+        <MDBCol size={12}>
+          <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+            <Alert
+              onClose={handleClose}
+              severity="success"
+              sx={{ width: "100%" }}
+            >
+              <AlertTitle>Added to cart successfully!</AlertTitle>
+              Remember to log in to complete your purchase!
+            </Alert>
+          </Snackbar>
+          <Snackbar
+            open={warning}
+            autoHideDuration={2000}
+            onClose={handleClose}
+          >
+            <Alert
+              onClose={handleClose}
+              severity="warning"
+              sx={{ width: "100%" }}
+            >
+              <AlertTitle>Max Items</AlertTitle>
+              You reached the max items available!
+            </Alert>
+          </Snackbar>
+        </MDBCol>
+        <MDBCol
+          size={12}
+          id="reviewSystem"
+          className="shadow-lg mb-5 mt-5 w-50 m-auto"
+        >
+          <ReviewSystem />
+        </MDBCol>
+        <MDBCol size={12} className="bottom">
+          <Footer />
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 }
