@@ -1,8 +1,6 @@
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
-import { Container, Row, Col } from "react-bootstrap";
 import NavBar from "../Features/NavBar";
-import girLanding from "../../Images/bg2.png";
 import { Link } from "react-router-dom";
 import Footer from "../Features/Footer";
 
