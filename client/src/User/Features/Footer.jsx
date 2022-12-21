@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <MDBFooter bgColor="light" className="text-center text-lg-start text-muted">
+    <MDBFooter bgColor="light" className="text-center text-lg-start text-dark">
       <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <div className="me-5 d-none d-lg-block"></div>
         <div>
@@ -124,11 +124,11 @@ export default function Footer() {
 
       <div
         className="text-center p-4"
-        style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
+        style={{ backgroundColor: "rgba(0, 0, 0)", color: "white" }}
       >
-        © 2021 Copyright:
+        © 2021 Copyright: &nbsp;
         <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
-          TiendaNUESTRA
+          TIENDA NUESTRA
         </a>
       </div>
     </MDBFooter>
