@@ -10,6 +10,7 @@ import UsersAdmin from "../Components/UsersAdmin";
 import ProductsAdmin from "../Components/ProductsAdmin";
 import OrdersAdmin from "../Components/OrdersAdmin";
 import ReviewsAdmin from "../Components/ReviewsAdmin";
+import NavBar from "../../../User/Features/NavBar";
 
 export default function AdminContainer() {
   const [justifyActive, setJustifyActive] = useState("tab1");
@@ -24,6 +25,7 @@ export default function AdminContainer() {
 
   return (
     <>
+      <NavBar />
       <MDBTabs justify className="mb-3">
         <MDBTabsItem>
           <MDBTabsLink
