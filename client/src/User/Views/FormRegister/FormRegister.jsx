@@ -7,7 +7,11 @@ import { formRegister } from "../../../Redux/actions";
 // import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import NavBar from "../../Features/NavBar";
-// import Footer from "../../Features/Footer";
+import Footer from "../../Features/Footer";
+import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 export const ForrmRegister = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
@@ -18,7 +22,6 @@ export const ForrmRegister = () => {
 
   const uploadImage = async (e) => {
     const files = e.target.files;
-    console.log("FILES", files);
     const data = new FormData();
     data.append("file", files[0]);
     data.append("upload_preset", "ecommerce");
@@ -37,18 +40,32 @@ export const ForrmRegister = () => {
   };
 
   return (
-    <div className="font-mono bg-gray-400 h-full">
-      <NavBar />
-      <div className="container mx-auto">
-        <div className="flex justify-center px-6 my-12">
-          <div className="w-full xl:w-3/4 lg:w-11/12 flex">
-            <div
-              className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg bg-[url('https://images.hola.com/fashion/imagenes/lifestyle/2019022866847/planes-marzo-madrid-arco/0-279-758/muji-a.jpg')]"
-              // style="background-image: url('https://source.unsplash.com/Mv9hjnEUHR4/600x800')"
-            ></div>
-
-            <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
-              <h3 className="pt-4 text-2xl text-center">Sing Up</h3>
+    <MDBContainer className="fluid min-vw-100">
+      <MDBRow className="">
+        <MDBCol
+          style={{
+            padding: 0,
+          }}
+        >
+          <MDBRow>
+            <MDBCol className="">
+              <NavBar />
+            </MDBCol>
+          </MDBRow>
+          <MDBRow>
+            <MDBCol
+              sm="0"
+              md="0"
+              lg="6"
+              style={{
+                backgroundImage:
+                  "url('https://images.hola.com/fashion/imagenes/lifestyle/2019022866847/planes-marzo-madrid-arco/0-279-758/muji-a.jpg')",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center center",
+              }}
+            ></MDBCol>
+            <MDBCol lg="6" style={{ paddingInline: "10%" }} className="">
+              <h3 className="text-center mt-3">Sign Up</h3>
               <Formik
                 initialValues={{
                   first_name: "",
@@ -82,116 +99,87 @@ export const ForrmRegister = () => {
                   handleBlur,
                   touched,
                 }) => (
-                  <form
-                    className="px-8 pt-6 pb-8 mb-4 bg-white rounded"
-                    onSubmit={handleSubmit}
-                  >
-                    <div className="mb-4 md:flex md:justify-between">
-                      <div className="mb-4 md:mr-2 md:mb-0">
-                        <label
-                          className="block mb-2 text-sm font-bold text-gray-700"
-                          htmlFor="firstName"
-                        >
-                          First Name
-                        </label>
-                        <input
-                          className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                          type="text"
-                          id="first_name"
-                          name="first_name"
-                          placeholder="first_name"
-                          value={values.first_name}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.first_name && errors.first_name && (
-                          <div className="text-xs italic text-red-500">
-                            {errors.first_name}
-                          </div>
-                        )}
-                      </div>
-                      <div className="mb-4 md:mr-2 md:mb-0">
-                        <label
-                          className="block mb-2 text-sm font-bold text-gray-700"
-                          htmlFor="firstName"
-                        >
-                          Last name
-                        </label>
-                        <input
-                          className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                          type="text"
-                          id="last_name"
-                          name="last_name"
-                          placeholder="last_name"
-                          value={values.last_name}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.last_name && errors.last_name && (
-                          <div className="text-xs italic text-red-500">
-                            {errors.last_name}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div className="mb-4 md:flex md:justify-between">
-                      <div className="mb-4 md:mr-2 md:mb-0">
-                        <label
-                          className="block mb-2 text-sm font-bold text-gray-700"
-                          htmlFor="firstName"
-                        >
-                          Phone Number
-                        </label>
-                        <input
-                          className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                          type="text"
-                          id="phoneNumber"
-                          name="phoneNumber"
-                          placeholder="phoneNumber"
-                          value={values.phoneNumber}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.phoneNumber && errors.phoneNumber && (
-                          <div className="text-xs italic text-red-500">
-                            {errors.phoneNumber}
-                          </div>
-                        )}
-                      </div>
-                      <div className="mb-4 md:mr-2 md:mb-0">
-                        <label
-                          className="block mb-2 text-sm font-bold text-gray-700"
-                          htmlFor="firstName"
-                        >
-                          Address
-                        </label>
-                        <input
-                          className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                          type="text"
-                          id="address"
-                          name="address"
-                          placeholder="address"
-                          value={values.address}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.address && errors.address && (
-                          <div className="text-xs italic text-red-500">
-                            {errors.address}
-                          </div>
-                        )}
-                      </div>
-                    </div>
+                  <Form className="" onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3 p-2">
+                      <Form.Label className="" htmlFor="firstName">
+                        First Name
+                      </Form.Label>
+                      <Form.Control
+                        className=""
+                        type="text"
+                        id="first_name"
+                        name="first_name"
+                        placeholder="name"
+                        value={values.first_name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.first_name && errors.first_name && (
+                        <div className="text-danger">{errors.first_name}</div>
+                      )}
+                    </Form.Group>
+                    <Form.Group className="mb-3 p-2">
+                      <Form.Label className="" htmlFor="firstName">
+                        Last Name
+                      </Form.Label>
+                      <Form.Control
+                        className=""
+                        type="text"
+                        id="last_name"
+                        name="last_name"
+                        placeholder="last name"
+                        value={values.last_name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.last_name && errors.last_name && (
+                        <div className="text-danger">{errors.last_name}</div>
+                      )}
+                    </Form.Group>
 
-                    <div className="mb-4">
-                      <label
-                        className="block mb-2 text-sm font-bold text-gray-700"
-                        htmlFor="email"
-                      >
+                    <Form.Group className="mb-3 p-2">
+                      <Form.Label className="" htmlFor="firstName">
+                        Phone Number
+                      </Form.Label>
+                      <Form.Control
+                        className=""
+                        type="text"
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        placeholder="phone number"
+                        value={values.phoneNumber}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.phoneNumber && errors.phoneNumber && (
+                        <div className="text-danger">{errors.phoneNumber}</div>
+                      )}
+                    </Form.Group>
+                    <Form.Group className="mb-3 p-2">
+                      <Form.Label className="" htmlFor="firstName">
+                        Address
+                      </Form.Label>
+                      <Form.Control
+                        className=""
+                        type="text"
+                        id="address"
+                        name="address"
+                        placeholder="address"
+                        value={values.address}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.address && errors.address && (
+                        <div className="text-danger">{errors.address}</div>
+                      )}
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 p-2">
+                      <Form.Label className="" htmlFor="email">
                         Email
-                      </label>
-                      <input
-                        className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      </Form.Label>
+                      <Form.Control
+                        className=""
                         type="email"
                         id="email"
                         name="email"
@@ -201,63 +189,52 @@ export const ForrmRegister = () => {
                         onBlur={handleBlur}
                       />
                       {touched.email && errors.email && (
-                        <div className="text-xs italic text-red-500">
-                          {errors.email}
+                        <div className="text-danger">{errors.email}</div>
+                      )}
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 p-2">
+                      <Form.Label className="" htmlFor="firstName">
+                        Password
+                      </Form.Label>
+                      <Form.Control
+                        className="b"
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="password"
+                        value={values.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.password && errors.password && (
+                        <div className="text-danger">{errors.password}</div>
+                      )}
+                    </Form.Group>
+                    <Form.Group className="mb-3 p-2">
+                      <Form.Label className="" htmlFor="firstName">
+                        Confirm Password
+                      </Form.Label>
+                      <Form.Control
+                        className=""
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="confirm password"
+                        value={values.confirmPassword}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.confirmPassword && errors.confirmPassword && (
+                        <div className="text-danger">
+                          {errors.confirmPassword}
                         </div>
                       )}
-                    </div>
+                    </Form.Group>
 
-                    <div className="mb-4 md:flex md:justify-between">
-                      <div className="mb-4 md:mr-2 md:mb-0">
-                        <label
-                          className="block mb-2 text-sm font-bold text-gray-700"
-                          htmlFor="firstName"
-                        >
-                          Password
-                        </label>
-                        <input
-                          className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                          type="password"
-                          id="password"
-                          name="password"
-                          placeholder="password"
-                          value={values.password}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.password && errors.password && (
-                          <div className="text-xs italic text-red-500">
-                            {errors.password}
-                          </div>
-                        )}
-                      </div>
-                      <div className="mb-4 md:mr-2 md:mb-0">
-                        <label
-                          className="block mb-2 text-sm font-bold text-gray-700"
-                          htmlFor="firstName"
-                        >
-                          Confirm Password
-                        </label>
-                        <input
-                          className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                          type="password"
-                          id="confirmPassword"
-                          name="confirmPassword"
-                          placeholder="confirmPassword"
-                          value={values.confirmPassword}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {touched.confirmPassword && errors.confirmPassword && (
-                          <div className="text-xs italic text-red-500">
-                            {errors.confirmPassword}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div className="pb-3">
+                    <Form.Group className="mb-3 p-2">
                       <p hidden>{(values.profileImage = image)}</p>
-                      <label className="pb-4 block font-semibold"> Image</label>
+                      <p className="text-muted">Image</p>
                       <input
                         type="file"
                         id="profileImage"
@@ -268,44 +245,33 @@ export const ForrmRegister = () => {
                       {loading ? (
                         <img src="https://tradinglatam.com/wp-content/uploads/2019/04/loading-gif-png-4.gif" />
                       ) : (
-                        <img src={image} width="230px" />
+                        <img src={image} width="230px" className="mt-3" />
                       )}
-                    </div>
-                    <div className="mb-6 text-center">
-                      <button
-                        className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                        type="submit"
-                      >
+                    </Form.Group>
+                    <div className="mb-3 p-2">
+                      <button className="" type="submit">
                         Register Account
                       </button>
                     </div>
-                    <hr className="mb-6 border-t" />
-                    {/* <div class="text-center">
-                      <a
-                        class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                        href="#"
-                      >
-                        Forgot Password?
-                      </a>
-                    </div> */}
+                    <hr className="" />
 
-                    <div className="text-center">
-                      <Link to="/login">
-                        <p
-                          className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-                          href=""
-                        >
-                          Already have an account? Login!
-                        </p>
-                      </Link>
-                    </div>
-                  </form>
+                    <Link to="/login">
+                      <p className="text-center" href="">
+                        Already have an account? Login!
+                      </p>
+                    </Link>
+                  </Form>
                 )}
               </Formik>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </MDBCol>
+          </MDBRow>
+          <MDBRow className="">
+            <MDBCol>
+              <Footer />
+            </MDBCol>
+          </MDBRow>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 };
