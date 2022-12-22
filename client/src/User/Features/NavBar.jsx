@@ -29,7 +29,7 @@ export default function NavBar() {
   const admin = auth.isAdmin;
 
   return (
-    <nav className="">
+    <nav className="bg-dark">
       {auth.isAdmin === true ? (
         <>
           <div className="flex flex-row gap-4">
