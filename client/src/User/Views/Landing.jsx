@@ -8,14 +8,9 @@ import logo from "../../Images/logo.png";
 
 export default function Landing() {
   return (
-    <MDBContainer fluid className="mx-0 ">
-      <MDBRow className="">
-        <MDBCol
-          style={{
-            padding: 0,
-            minHeight: "100vw",
-          }}
-        >
+    <MDBContainer fluid className="p-0 m-0">
+      <MDBRow>
+        <MDBCol>
           <MDBRow>
             <NavBar />
           </MDBRow>
