@@ -8,11 +8,12 @@ import logo from "../../Images/logo.png";
 
 export default function Landing() {
   return (
-    <MDBContainer fluid className="mx-0">
+    <MDBContainer fluid className="mx-0 ">
       <MDBRow className="">
         <MDBCol
           style={{
             padding: 0,
+            minHeight: "100vw",
           }}
         >
           <MDBRow>

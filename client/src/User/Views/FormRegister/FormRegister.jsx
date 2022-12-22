@@ -9,6 +9,7 @@ import swal from "sweetalert";
 import NavBar from "../../Features/NavBar";
 import Footer from "../../Features/Footer";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
+import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -39,7 +40,7 @@ export const ForrmRegister = () => {
   };
 
   return (
-    <MDBContainer className="">
+    <MDBContainer className="fluid min-vw-100">
       <MDBRow className="">
         <MDBCol
           style={{
@@ -47,10 +48,23 @@ export const ForrmRegister = () => {
           }}
         >
           <MDBRow>
-            <NavBar />
+            <MDBCol className="">
+              <NavBar />
+            </MDBCol>
           </MDBRow>
-          <MDBRow className="bg-[url('https://images.hola.com/fashion/imagenes/lifestyle/2019022866847/planes-marzo-madrid-arco/0-279-758/muji-a.jpg')]">
-            <MDBCol>
+          <MDBRow>
+            <MDBCol
+              sm="0"
+              md="0"
+              lg="6"
+              style={{
+                backgroundImage:
+                  "url('https://images.hola.com/fashion/imagenes/lifestyle/2019022866847/planes-marzo-madrid-arco/0-279-758/muji-a.jpg')",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center center",
+              }}
+            ></MDBCol>
+            <MDBCol lg="6" style={{ paddingInline: "10%" }} className="">
               <h3 className="text-center mt-3">Sign Up</h3>
               <Formik
                 initialValues={{
