@@ -110,7 +110,7 @@ export const Cart = () => {
         </MDBCol>
       </MDBRow>
       {/* <MDBRow className="" id="checkout"> */}
-      <MDBRow fluid className="p-0 m-0" id="cart">
+      <MDBRow fluid className="p-0 m-0 mt-3" id="cart">
         <MDBCol
           className="p-0 m-0 d-flex flex-column justify-content-center align-items-center"
           size="4"
@@ -119,17 +119,17 @@ export const Cart = () => {
             className="d-flex flex-column justify-content-center align-items-center"
             to="/home"
           >
-            <p className="text-center d-flex flex-column justify-content-center align-items-center">
+            <span className="mb-0 text-center d-flex flex-column justify-content-center align-items-center">
               Continue Shopping
-              <ArrowBackIcon />
-            </p>
+            </span>
+            <ArrowBackIcon />
           </Link>
         </MDBCol>
         <MDBCol
           className="p-0 m-0 d-flex flex-column justify-content-center align-items-center"
           size="4"
         >
-          <p className="text-center">Shopping Cart</p>
+          <p className="mb-0 text-center">Shopping Cart</p>
         </MDBCol>
         <MDBCol
           className="p-0 m-0 d-flex flex-column justify-content-center align-items-center"
@@ -188,15 +188,17 @@ export const Cart = () => {
                 >
                   Remove
                 </button>
-                <p className="mt-3">Total price ${element.price}</p>
+                <p className="mt-3 text-center">
+                  Total price: ${element.price}
+                </p>
               </MDBCol>
             </MDBRow>
           );
         })
       ) : (
-        <div classNameName="">
+        <MDBRow classNameName="">
           <img src={emptyCart} />
-        </div>
+        </MDBRow>
       )}
       <MDBRow light bgColor="light">
         <MDBCol>
