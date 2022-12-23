@@ -20,7 +20,7 @@ export default function Landing() {
                 "url('https://res.cloudinary.com/dyfjoi0td/image/upload/v1671049872/ecommerce/pexels-ylanite-koppens-934064_6_rc0trb.jpg')",
               margin: 0,
               backgroundPosition: "center",
-              backgroundRepeat: "no - repeat",
+              backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               minHeight: "661px",
               alignItems: "center",

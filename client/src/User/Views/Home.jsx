@@ -39,7 +39,7 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <MDBContainer fluid>
+    <MDBContainer fluid className="p-0 m-0">
       <MDBRow>
         <MDBCol size={12}>
           <NavBar />

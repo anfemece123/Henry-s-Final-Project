@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   addQuantity,
   clearCart,
@@ -8,17 +9,26 @@ import {
   removeQuantity,
   setQuantity,
 } from "../../../Redux/Reducer/cartSlice";
+import Footer from "../../Features/Footer";
+import emptyCart from "../../../Images/empty_cart.png";
+import swal from "sweetalert";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import emptyCart from "../../../Images/empty_cart.png";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import swal from "sweetalert";
 import DeleteIcon from "@mui/icons-material/Delete";
 import NavBar from "../../Features/NavBar";
-import { useNavigate } from "react-router-dom";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import { AlertTitle } from "@mui/material";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+  MDBBtn,
+} from "mdb-react-ui-kit";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 export const Cart = () => {
   const dispatch = useDispatch();
@@ -100,164 +110,146 @@ export const Cart = () => {
   };
 
   return (
-    <div
-      className="w-full h-full bg-white dark:bg-gray-900 bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed sticky-0"
-      id="chec-div"
-    >
-      <NavBar />
-      <div
-        className="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700"
-        id="checkout"
-      >
-        <div
-          className="flex items-end lg:flex-row flex-col justify-end"
-          id="cart"
-        >
-          <div
-            className="lg:w-1/2 md:w-8/12 w-full lg:px-8 lg:py-14 md:px-6 px-4 md:py-8 py-4 bg-white dark:bg-gray-800 overflow-y-hidden overflow-x-hidden lg:h-screen h-auto"
-            id="scroll"
+    <MDBContainer fluid className="p-0 m-0" id="chec-div">
+      <MDBRow fluid className="p-0 m-0">
+        <MDBCol className="p-0 m-0">
+          <NavBar />
+        </MDBCol>
+      </MDBRow>
+      {/* <MDBRow className="" id="checkout"> */}
+      <MDBRow start className="p-0 m-0 mt-3" id="cart">
+        <MDBCol className="p-0 m-0 d-flex flex-column justify-content-center align-items-center">
+          <Link
+            className="d-flex flex-column justify-content-center align-items-center"
+            to="/home"
           >
-            <Link to="/home">
-              <div
-                className="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer"
-                // onclick="checkoutHandler(false)"
-              >
-                <ArrowBackIcon />
-                <p className="text-sm pl-2 leading-none dark:hover:text-gray-200">
-                  Continue Shopping
-                </p>
-              </div>
-            </Link>
-
-            <p className="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-black pt-3">
-              Shopping Cart
-            </p>
-            <button
-              className="text-xl leading-normal text-red-500 dark:text-red-500"
-              onClick={() => {
-                dispatch(clearCart());
-              }}
+            <span className="mb-0 text-center d-flex flex-column justify-content-center align-items-center">
+              Continue Shopping
+            </span>
+            <ArrowBackIcon />
+          </Link>
+        </MDBCol>
+        <MDBCol className="p-0 m-0 d-flex flex-column justify-content-center align-items-center">
+          <MDBIcon
+            color="danger"
+            type="button"
+            rounded
+            size="sm"
+            fas
+            icon="trash-alt"
+            onClick={() => {
+              dispatch(clearCart());
+            }}
+          >
+            Clear cart
+          </MDBIcon>
+        </MDBCol>
+      </MDBRow>
+      {infoCart.length > 0 ? (
+        infoCart.map((element, index) => {
+          return (
+            <MDBRow
+              key={index}
+              fluid
+              center
+              className="p-0 pt-4 m-0 shadow-4-strong"
             >
-              <DeleteIcon />
-              Clear cart
-            </button>
-
-            {infoCart.length > 0 ? (
-              infoCart.map((element, index) => {
-                return (
-                  <div className="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
-                    <div className="md:w-4/12 2xl:w-1/4 w-full">
-                      <img
-                        src={element.image}
-                        alt="Black Leather Bag"
-                        className="h-full object-center object-cover md:block hidden"
-                      />
-                    </div>
-                    <div className="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
-                      <p className="text-xs leading-3 text-gray-800 dark:text-black md:pt-0 pt-4">
-                        Category: {element.category}
-                      </p>
-                      <div className="flex items-center justify-between w-full pt-1">
-                        <p className="text-base font-black leading-none text-gray-800 dark:text-black">
-                          {element.title}
-                        </p>
-                        <div
-                          aria-label="Select quantity"
-                          className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
-                        >
-                          <RemoveIcon
-                            onClick={() => handleDeleteItem(element)}
-                          />
-                          <p>{element.quantity}</p>
-                          <AddIcon onClick={() => handleAddItem(element)} />
-                        </div>
-                      </div>
-                      <p className="text-xs leading-3 text-gray-600 dark:text-black pt-2">
-                        Unit price: ${element.price2}
-                      </p>
-                      <p className="text-xs leading-3 text-gray-600 dark:text-black pt-2">
-                        Gender: {element.gender}
-                      </p>
-                      <p className="text-xs leading-3 text-gray-600 dark:text-black py-4">
-                        Color: {element.color}
-                      </p>
-                      <p className="w-96 text-xs leading-3 text-gray-600 dark:text-black">
-                        Size: {element.size}
-                      </p>
-                      <div className="flex items-center justify-between pt-5">
-                        <div className="flex itemms-center">
-                          <p className="text-xs leading-3 underline text-gray-800 dark:text-black cursor-pointer">
-                            Add to favorites
-                          </p>
-                          <button
-                            onClick={() => {
-                              deleteItemShopList(index);
-                            }}
-                          >
-                            <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
-                              Remove
-                            </p>
-                          </button>
-                        </div>
-                        <p className="text-base font-black leading-none text-gray-800 dark:text-black">
-                          Total price ${element.price}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <div classNameName="pl-20">
-                <img src={emptyCart} />
-              </div>
-            )}
-          </div>
-          <div className="lg:w-96 md:w-8/12 w-full bg-gray-100 dark:bg-gray-900 h-full">
-            <div className="flex flex-col lg:h-screen h-auto lg:px-8 md:px-7 px-4 lg:py-20 md:py-10 py-6 justify-between overflow-y-auto">
-              <div>
-                <p className="lg:text-4xl text-3xl font-black leading-9 text-gray-800 dark:text-white">
-                  Summary
+              <MDBCol
+                className="d-flex flex-column justify-content-center"
+                size="4"
+                xl="3"
+              >
+                <img
+                  src={element.image}
+                  alt={element.title}
+                  style={{ maxHeight: "325px", maxWidth: "325px" }}
+                />
+              </MDBCol>
+              <MDBCol
+                style={{ paddingLeft: "7%", paddingRight: 0 }}
+                className="d-flex flex-column justify-content-center"
+                size="4"
+                xl="3"
+              >
+                <p className="">{element.title}</p>
+                <p className="">Category: {element.category}</p>
+                <p className="">Gender: {element.gender}</p>
+                <p className="">Color: {element.color}</p>
+                <p className="">Size: {element.size}</p>
+                <p className="">Unit price: ${element.price2}</p>
+              </MDBCol>
+              <MDBCol
+                className="d-flex flex-column justify-content-center align-items-center"
+                size="4"
+                xl="3"
+              >
+                <p aria-label="Select quantity">
+                  <RemoveIcon onClick={() => handleDeleteItem(element)} />
+                  <span>{element.quantity}</span>
+                  <AddIcon onClick={() => handleAddItem(element)} />
                 </p>
-                <div className="flex items-center justify-between pt-16">
-                  <p className="text-base leading-none text-gray-800 dark:text-white">
-                    Items
-                  </p>
-                  <p className="text-base leading-none text-gray-800 dark:text-white">
-                    {cart.quantity}
-                  </p>
-                </div>
-                <div className="flex items-center justify-between pt-5">
-                  <p className="text-base leading-none text-gray-800 dark:text-white">
-                    Subtotal
-                  </p>
-                  <p className="text-base leading-none text-gray-800 dark:text-white">
-                    ${cart.total}
-                  </p>
-                </div>
-              </div>
-              <div>
-                <div className="flex items-center pb-6 justify-between lg:pt-5 pt-20">
-                  <p className="text-2xl leading-normal text-gray-800 dark:text-white">
-                    Total
-                  </p>
-                  <p className="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">
-                    ${cart.total}
-                  </p>
-                </div>
-                {infoCart.length >= 1 && (
-                  <button
-                    className="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
-                    onClick={checkoutHandler}
-                  >
-                    Checkout (${cart.total})
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                {/* <p className="">Add to favorites</p> */}
+                <MDBIcon
+                  color="danger"
+                  type="button"
+                  rounded
+                  size="sm"
+                  fasc
+                  icon="trash-alt"
+                  onClick={() => {
+                    deleteItemShopList(index);
+                  }}
+                />
+                <p className="mt-3 text-center">
+                  Total price: ${element.price}
+                </p>
+              </MDBCol>
+            </MDBRow>
+          );
+        })
+      ) : (
+        <MDBRow classNameName="">
+          <img src={emptyCart} />
+        </MDBRow>
+      )}
+      <MDBRow light bgColor="light">
+        <MDBCol>
+          <p className="mt-3 text-center">Summary</p>
+        </MDBCol>
+      </MDBRow>
+      <MDBRow center light bgColor="light">
+        <MDBCol xl="3">
+          <p className="text-center">
+            <MDBIcon icon="check-circle" className="me-2 text-success" />
+            Items: {cart.quantity}
+          </p>
+
+          <p className="text-center">
+            <MDBIcon icon="check-circle" className="me-2 text-success" />
+            Subtotal: ${cart.total}
+          </p>
+
+          <p className="text-center">
+            <MDBIcon icon="check-circle" className="me-2 text-success" />
+            Total: ${cart.total}
+          </p>
+        </MDBCol>
+        <MDBCol
+          xl="3"
+          className="d-flex flex-column justify-content-center align-items-center"
+        >
+          {infoCart.length >= 1 && (
+            <MDBBtn
+              className="mb-3"
+              style={{ maxHeight: "100px", maxWidth: "180px" }}
+              onClick={checkoutHandler}
+            >
+              Checkout (${cart.total})
+            </MDBBtn>
+          )}
+        </MDBCol>
+      </MDBRow>
+      {/*  </MDBRow> */}
       <div>
         <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
           <Alert
@@ -275,11 +267,16 @@ export const Cart = () => {
             severity="warning"
             sx={{ width: "100%" }}
           >
-            <AlertTitle>There is no more stock of this product!!</AlertTitle>
-            Come back soon!
+            <AlertTitle>Max Items</AlertTitle>
+            Max items available!
           </Alert>
         </Snackbar>
       </div>
-    </div>
+      <MDBRow className="">
+        <MDBCol>
+          <Footer />
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 };
