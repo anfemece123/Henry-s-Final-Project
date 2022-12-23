@@ -4,7 +4,6 @@ import validate from "./validate";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { formRegister } from "../../../Redux/actions";
-// import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import NavBar from "../../Features/NavBar";
 import Footer from "../../Features/Footer";

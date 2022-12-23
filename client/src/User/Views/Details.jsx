@@ -145,7 +145,7 @@ export default function Details() {
               sx={{ width: "100%" }}
             >
               <AlertTitle>Max Items</AlertTitle>
-              You reached the max items available!
+              Max items available!
             </Alert>
           </Snackbar>
         </MDBCol>
