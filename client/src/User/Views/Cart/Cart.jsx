@@ -9,6 +9,7 @@ import {
   removeQuantity,
   setQuantity,
 } from "../../../Redux/Reducer/cartSlice";
+import Footer from "../../Features/Footer";
 import emptyCart from "../../../Images/empty_cart.png";
 import swal from "sweetalert";
 import AddIcon from "@mui/icons-material/Add";
@@ -19,7 +20,13 @@ import NavBar from "../../Features/NavBar";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import { AlertTitle } from "@mui/material";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+  MDBBtn,
+} from "mdb-react-ui-kit";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
@@ -110,11 +117,8 @@ export const Cart = () => {
         </MDBCol>
       </MDBRow>
       {/* <MDBRow className="" id="checkout"> */}
-      <MDBRow fluid className="p-0 m-0 mt-3" id="cart">
-        <MDBCol
-          className="p-0 m-0 d-flex flex-column justify-content-center align-items-center"
-          size="4"
-        >
+      <MDBRow start className="p-0 m-0 mt-3" id="cart">
+        <MDBCol className="p-0 m-0 d-flex flex-column justify-content-center align-items-center">
           <Link
             className="d-flex flex-column justify-content-center align-items-center"
             to="/home"
@@ -125,44 +129,47 @@ export const Cart = () => {
             <ArrowBackIcon />
           </Link>
         </MDBCol>
-        <MDBCol
-          className="p-0 m-0 d-flex flex-column justify-content-center align-items-center"
-          size="4"
-        >
-          <p className="mb-0 text-center">Shopping Cart</p>
-        </MDBCol>
-        <MDBCol
-          className="p-0 m-0 d-flex flex-column justify-content-center align-items-center"
-          size="4"
-        >
-          <button
-            className=""
+        <MDBCol className="p-0 m-0 d-flex flex-column justify-content-center align-items-center">
+          <MDBIcon
+            color="danger"
+            type="button"
+            rounded
+            size="sm"
+            fas
+            icon="trash-alt"
             onClick={() => {
               dispatch(clearCart());
             }}
           >
-            <DeleteIcon />
             Clear cart
-          </button>
+          </MDBIcon>
         </MDBCol>
       </MDBRow>
       {infoCart.length > 0 ? (
         infoCart.map((element, index) => {
           return (
-            <MDBRow fluid className="p-0 pt-2 m-0 shadow-4-strong">
+            <MDBRow
+              key={index}
+              fluid
+              center
+              className="p-0 pt-4 m-0 shadow-4-strong"
+            >
               <MDBCol
                 className="d-flex flex-column justify-content-center"
                 size="4"
+                xl="3"
               >
                 <img
                   src={element.image}
                   alt={element.title}
-                  className="img-fluid"
+                  style={{ maxHeight: "325px", maxWidth: "325px" }}
                 />
               </MDBCol>
               <MDBCol
+                style={{ paddingLeft: "7%", paddingRight: 0 }}
                 className="d-flex flex-column justify-content-center"
                 size="4"
+                xl="3"
               >
                 <p className="">{element.title}</p>
                 <p className="">Category: {element.category}</p>
@@ -174,6 +181,7 @@ export const Cart = () => {
               <MDBCol
                 className="d-flex flex-column justify-content-center align-items-center"
                 size="4"
+                xl="3"
               >
                 <p aria-label="Select quantity">
                   <RemoveIcon onClick={() => handleDeleteItem(element)} />
@@ -181,13 +189,17 @@ export const Cart = () => {
                   <AddIcon onClick={() => handleAddItem(element)} />
                 </p>
                 {/* <p className="">Add to favorites</p> */}
-                <button
+                <MDBIcon
+                  color="danger"
+                  type="button"
+                  rounded
+                  size="sm"
+                  fasc
+                  icon="trash-alt"
                   onClick={() => {
                     deleteItemShopList(index);
                   }}
-                >
-                  Remove
-                </button>
+                />
                 <p className="mt-3 text-center">
                   Total price: ${element.price}
                 </p>
@@ -202,20 +214,38 @@ export const Cart = () => {
       )}
       <MDBRow light bgColor="light">
         <MDBCol>
-          <p className="text-center">Summary</p>
+          <p className="mt-3 text-center">Summary</p>
         </MDBCol>
       </MDBRow>
-      <MDBRow light bgColor="light">
-        <MDBCol>
-          <p className="text-center">Items: {cart.quantity}</p>
-          <p className="text-center">Subtotal: ${cart.total}</p>
-          <p className="text-center">Total: ${cart.total}</p>
+      <MDBRow center light bgColor="light">
+        <MDBCol xl="3">
+          <p className="text-center">
+            <MDBIcon icon="check-circle" className="me-2 text-success" />
+            Items: {cart.quantity}
+          </p>
+
+          <p className="text-center">
+            <MDBIcon icon="check-circle" className="me-2 text-success" />
+            Subtotal: ${cart.total}
+          </p>
+
+          <p className="text-center">
+            <MDBIcon icon="check-circle" className="me-2 text-success" />
+            Total: ${cart.total}
+          </p>
         </MDBCol>
-        <MDBCol className="d-flex flex-column justify-content-center align-items-center">
+        <MDBCol
+          xl="3"
+          className="d-flex flex-column justify-content-center align-items-center"
+        >
           {infoCart.length >= 1 && (
-            <button className="" onClick={checkoutHandler}>
+            <MDBBtn
+              className="mb-3"
+              style={{ maxHeight: "100px", maxWidth: "180px" }}
+              onClick={checkoutHandler}
+            >
               Checkout (${cart.total})
-            </button>
+            </MDBBtn>
           )}
         </MDBCol>
       </MDBRow>
@@ -242,6 +272,11 @@ export const Cart = () => {
           </Alert>
         </Snackbar>
       </div>
+      <MDBRow className="">
+        <MDBCol>
+          <Footer />
+        </MDBCol>
+      </MDBRow>
     </MDBContainer>
   );
 };
