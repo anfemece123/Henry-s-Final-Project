@@ -145,6 +145,7 @@ export const Cart = () => {
           </MDBIcon>
         </MDBCol>
       </MDBRow>
+
       {infoCart.length > 0 ? (
         infoCart.map((element, index) => {
           return (
@@ -154,6 +155,11 @@ export const Cart = () => {
               center
               className="p-0 pt-4 m-0 shadow-4-strong"
             >
+              <MDBRow classNameName="">
+                <MDBCol className="">
+                  <h2 className="pb-2 text-center">{element.title}</h2>
+                </MDBCol>
+              </MDBRow>
               <MDBCol
                 className="d-flex flex-column justify-content-center"
                 size="4"
@@ -171,7 +177,6 @@ export const Cart = () => {
                 size="4"
                 xl="3"
               >
-                <p className="">{element.title}</p>
                 <p className="">Category: {element.category}</p>
                 <p className="">Gender: {element.gender}</p>
                 <p className="">Color: {element.color}</p>
@@ -214,24 +219,24 @@ export const Cart = () => {
       )}
       <MDBRow light bgColor="light">
         <MDBCol>
-          <p className="mt-3 text-center">Summary</p>
+          <h3 className="mt-3 text-center">Summary</h3>
         </MDBCol>
       </MDBRow>
       <MDBRow center light bgColor="light">
         <MDBCol xl="3">
           <p className="text-center">
             <MDBIcon icon="check-circle" className="me-2 text-success" />
-            Items: {cart.quantity}
+            ITEMS: {cart.quantity}
           </p>
 
           <p className="text-center">
             <MDBIcon icon="check-circle" className="me-2 text-success" />
-            Subtotal: ${cart.total}
+            SUBTOTAL: ${cart.total}
           </p>
 
           <p className="text-center">
             <MDBIcon icon="check-circle" className="me-2 text-success" />
-            Total: ${cart.total}
+            TOTAL: ${cart.total}
           </p>
         </MDBCol>
         <MDBCol

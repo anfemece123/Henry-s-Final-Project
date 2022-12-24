@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../Redux/Reducer/productDetails";
 import { useParams } from "react-router";
@@ -11,12 +10,14 @@ import { addProduct } from "../../Redux/Reducer/cartSlice";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import { AlertTitle } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import RatingSystem from "./Rating/RatingSystem";
 import ReviewSystem from "./Rating/ReviewSystem";
 import { getAllReviews } from "../../Redux/Reducer/RatingSlice";
-import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 
 export default function Details() {
   const details = useSelector((state) => state.details);
@@ -73,28 +74,51 @@ export default function Details() {
   if (!loading && error) return <h1>{error}</h1>;
 
   return (
-    <MDBContainer fluid className="min-vh-100">
-      <MDBRow>
-        <MDBCol size={12}>
+    <MDBContainer fluid className="p-0 m-0">
+      <MDBRow fluid className="p-0 m-0">
+        <MDBCol className="p-0 m-0">
           <NavBar />
         </MDBCol>
-        <MDBCol size={12}>
-          <Link className="text-decoration-none text-black" to="/home">
+      </MDBRow>
+      <MDBRow>
+        <MDBCol
+          className="p-0 m-0 d-flex flex-column justify-content-center align-items-center"
+          start
+        >
+          <Link
+            className="d-flex flex-column justify-content-center align-items-center"
+            to="/home"
+          >
+            <span className="mb-0 text-center d-flex flex-column justify-content-center align-items-center">
+              Continue Shopping
+            </span>
             <ArrowBackIcon />
-            <p>Continue Shopping</p>
           </Link>
         </MDBCol>
-        <MDBCol size={6} className="mt-5 mb-5">
+      </MDBRow>
+      <MDBRow fluid center className="p-0 pt-4 m-0 shadow-4-strong">
+        <MDBRow>
+          <MDBCol>
+            <h2 className="pb-2 text-center">{details.details.title}</h2>
+          </MDBCol>
+        </MDBRow>
+        <MDBCol
+          className="d-flex flex-column justify-content-center"
+          size="4"
+          xl="3"
+        >
           <img
             src={details.details.image}
             alt={`pic-for${details.details.title}`}
-            style={{ width: "620px" }}
-            className="img-fluid"
+            style={{ maxHeight: "325px", maxWidth: "325px" }}
           />
         </MDBCol>
-        <MDBCol size={6} className="mt-5 mb-5">
-          <h1 className="pb-2">PRODUCT: {details.details.title}</h1>
-
+        <MDBCol
+          style={{ paddingLeft: "7%", paddingRight: 0 }}
+          className="d-flex flex-column justify-content-center"
+          size="4"
+          xl="3"
+        >
           <p>PRICE: ${details.details.price}</p>
 
           <p>SIZE: {details.details.size}</p>
@@ -108,19 +132,26 @@ export default function Details() {
           <p>GENDER: {details.details.gender}</p>
 
           <p>STOCK: {details.details.stock}</p>
-
-          <span className="fs-2" onClick={() => handleQuantity("dec")}>
-            -
-          </span>
-          <span className="fs-4"> {quantity} </span>
-          <span className="fs-2" onClick={() => handleQuantity("inc")}>
-            +
-          </span>
+        </MDBCol>
+        <MDBCol
+          className="d-flex flex-column justify-content-center align-items-center"
+          size="4"
+          xl="3"
+        >
+          <p aria-label="Select quantity">
+            <RemoveIcon className="" onClick={() => handleQuantity("dec")}>
+              -
+            </RemoveIcon>
+            <span className=""> {quantity} </span>
+            <AddIcon className="" onClick={() => handleQuantity("inc")}>
+              +
+            </AddIcon>
+          </p>
 
           {details.details.stock >= 1 && (
-            <button className="ms-5" onClick={handleClick}>
-              add to cart (${details.details.price * quantity} )
-            </button>
+            <MDBBtn className="" onClick={handleClick}>
+              add to cart (${details.details.price * quantity})
+            </MDBBtn>
           )}
         </MDBCol>
         <MDBCol size={12}>
@@ -149,6 +180,8 @@ export default function Details() {
             </Alert>
           </Snackbar>
         </MDBCol>
+      </MDBRow>
+      <MDBRow>
         <MDBCol
           size={12}
           id="reviewSystem"
