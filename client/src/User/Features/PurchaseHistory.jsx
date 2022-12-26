@@ -1,10 +1,16 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import Footer from "../Features/Footer";
 import NavBar from "../Features/NavBar";
+
+import {
+  MDBFooter,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+} from "mdb-react-ui-kit";
 
 export default function PurcharseHistory() {
   const userID = useSelector((state) => state.auth.auth.id);
@@ -12,95 +18,99 @@ export default function PurcharseHistory() {
   const users = useSelector((state) => state.users);
   const index = parseInt(userID - 1);
   const reviewID = useSelector((state) => state.users.userId);
-
-  /* useEffect(() => {
-    console.log(`ID del usuario en auth => ${userID}`);
-    console.log(`ID del usuario en users.usersID => ${userOrder}`);
-    console.log(`INdex para buscar => ${index}`);
-  }); */
-
   return (
-    <>
-      <NavBar />
+    <MDBContainer fluid className="p-0 m-0" id="chec-div">
+      <MDBRow fluid className="p-0 m-0">
+        <MDBCol className="p-0 m-0">
+          <NavBar />
+        </MDBCol>
+      </MDBRow>
       {users.allUsers.length ? (
         users.allUsers[index].Orders.map((element) => {
           return (
-            <div className="container">
-              <h1>Numero de Orden: {element.id}</h1>
-              <p>Compra realziada: {element.createdAt}</p>
-              <div>
-                <p>Productos que compro: {element.products_quantity}</p>
-              </div>
-              {element.products.map((element) => {
+            <MDBRow
+              key={index}
+              fluid
+              center
+              className="p-0 pt-4 m-0 shadow-4-strong"
+            >
+              <MDBRow className="p-0 m-0">
+                <MDBCol className="p-0 m-0">
+                  <h2>Order Number: {element.id}</h2>
+                  <p>Purchase Date: {element.createdAt}</p>
+                  <p>Products Quantity: {element.products_quantity}</p>
+                  <p className="">Total: ${element.total}</p>
+                </MDBCol>
+              </MDBRow>
+
+              {element.products.map((element, index) => {
                 return (
-                  <div className="mt-4 md:mt-6 flex  flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full ">
-                    <div className="pb-4 md:pb-8 w-full md:w-40">
+                  <MDBRow
+                    key={index}
+                    fluid
+                    center
+                    className="p-0 pt-4 pb-4 m-0 shadow-4-strong"
+                  >
+                    <MDBRow className="p-0 m-0">
+                      <MDBCol className="p-0 m-0">
+                        <h2 className="pb-2 text-center">{element.title}</h2>
+                      </MDBCol>
+                    </MDBRow>
+                    <MDBCol
+                      className="d-flex flex-column justify-content-center"
+                      size="4"
+                      xl="3"
+                    >
                       <img
-                        className="w-full hidden md:block"
+                        className=""
                         src={element.image}
-                        alt="dress"
-                        style={{ width: "200px" }}
+                        alt={element.title}
+                        style={{ maxHeight: "325px", maxWidth: "325px" }}
                       />
-                      <img
-                        className="w-full md:hidden"
-                        src={element.image}
-                        alt="dress"
-                        style={{ width: "200px" }}
-                      />
-                    </div>
-                    <div className="border-b border-gray-200 md:flex-row flex-col flex justify-between items-start w-full  pb-8 space-y-4 md:space-y-0">
-                      <div className="w-full flex flex-col justify-start items-start space-y-8">
-                        <h3 className="text-xl xl:text-2xl font-semibold leading-6 text-gray-800">
-                          {element.title}
-                        </h3>
-                        <div className="flex justify-start items-start flex-col space-y-2">
-                          <p className="text-sm leading-none text-gray-800">
-                            <span className="text-gray-300">Genre:</span>
-                            {element.gender}
-                          </p>
-                          <p className="text-sm leading-none text-gray-800">
-                            <span className="text-gray-300">Size:</span>
-                            {element.size}
-                          </p>
-                          <p className="text-sm leading-none text-gray-800">
-                            <span className="text-gray-300">Color:</span>
-                            {element.color}
-                          </p>
-                          <p className="text-sm leading-none text-gray-800">
-                            <span className="text-gray-300">Unitario:</span>
-                            {element.price}
-                          </p>
-                          <p className="text-sm leading-none text-gray-800">
-                            <span className="text-gray-300">
-                              Items comprado:
-                            </span>
-                            {element.stock}
-                          </p>
-                          <p className="text-sm leading-none text-gray-800">
-                            <span className="text-gray-300">
-                              Califica esta prenda!
-                            </span>
-                            <Link to={`/createReview/${element.id}`}>
-                              Crear review
-                            </Link>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    </MDBCol>
+                    <MDBCol
+                      style={{ paddingLeft: "7%", paddingRight: 0 }}
+                      className="d-flex flex-column justify-content-center"
+                      size="4"
+                      xl="3"
+                    >
+                      <p className="">Category: {element.category}</p>
+                      <p className="">Gender: {element.gender}</p>
+                      <p className="">Color: {element.color}</p>
+                      <p className="">Size: {element.size}</p>
+                      <p className="">Unit Price: ${element.price2}</p>
+                      <p className="">Purchased Items: {element.quantity}</p>
+                    </MDBCol>
+
+                    <MDBCol
+                      className="d-flex flex-column justify-content-center align-items-center"
+                      size="4"
+                      xl="3"
+                    >
+                      <p className="">
+                        <Link to={`/createReview/${element.id}`}>
+                          Make A Review
+                        </Link>
+                      </p>
+                    </MDBCol>
+                  </MDBRow>
                 );
               })}
-              <div>
-                <p className="text-base xl:text-lg font-semibold leading-6 text-gray-800">
-                  Valor total: ${element.total}
-                </p>
-              </div>
-            </div>
+            </MDBRow>
           );
         })
       ) : (
-        <h1>Aun no has comprado nada</h1>
+        <MDBRow fluid className="p-0 m-0">
+          <MDBCol className="p-0 m-0">
+            <h1>No Purchases</h1>
+          </MDBCol>
+        </MDBRow>
       )}
-    </>
+      <MDBRow className="">
+        <MDBCol>
+          <Footer />
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 }
