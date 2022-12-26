@@ -44,89 +44,90 @@ export default function ProductsAdmin() {
   }, [dispatch]);
 
   return (
-    // <div>
-    <MDBTable responsive>
-      <MDBTableHead>
-        <tr className="table-success">
-          <th scope="col">Name</th>
-          <th scope="col">Price</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Size</th>
-          <th scope="col">Stock</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </MDBTableHead>
-      <MDBTableBody>
-        {products
-          ? products.map((element) => {
-              return (
-                <tr>
-                  <td>
-                    <div className="d-flex align-items-center">
-                      <img
-                        src={element.image}
-                        alt=""
-                        style={{ width: "45px", height: "45px" }}
-                        className="rounded-circle"
-                      />
-                      <div className="ms-3">
-                        <p className="fw-bold mb-1">{element.title}</p>
-                        <p className="text-muted mb-0">{element.category}</p>
+    <div>
+      <MDBTable responsive>
+        <MDBTableHead>
+          <tr className="table-success">
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Size</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </MDBTableHead>
+        <MDBTableBody>
+          {products
+            ? products.map((element) => {
+                return (
+                  <tr>
+                    <td>
+                      <div className="d-flex align-items-center">
+                        <img
+                          src={element.image}
+                          alt=""
+                          style={{ width: "45px", height: "45px" }}
+                          className="rounded-circle"
+                        />
+                        <div className="ms-3">
+                          <p className="fw-bold mb-1">{element.title}</p>
+                          <p className="text-muted mb-0">{element.category}</p>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p className="fw-normal mb-1">${element.price}</p>
-                  </td>
-                  <td>
-                    <p className="fw-normal mb-1">{element.gender}</p>
-                  </td>
-                  <td>
-                    <p className="fw-normal mb-1">{element.size}</p>
-                  </td>
-                  <td>
-                    <p className="fw-normal mb-1">{element.stock}</p>
-                  </td>
-                  <td>
-                    <MDBIcon
-                      color="danger"
-                      value={element.id}
-                      type="submit"
-                      onClick={() => {
-                        {
-                          alertButtonDelete(element.id);
-                        }
-                      }}
-                      rounded
-                      size="sm"
-                      fas
-                      icon="trash-alt"
-                    />
-
-                    <a
-                      className="pr-3"
-                      value={element.id}
-                      type="submit"
-                      onClick={() => {
-                        {
-                          editBotoAlert(element.id);
-                        }
-                      }}
-                      rounded
-                      size="sm"
-                    >
+                    </td>
+                    <td>
+                      <p className="fw-normal mb-1">${element.price}</p>
+                    </td>
+                    <td>
+                      <p className="fw-normal mb-1">{element.gender}</p>
+                    </td>
+                    <td>
+                      <p className="fw-normal mb-1">{element.size}</p>
+                    </td>
+                    <td>
+                      <p className="fw-normal mb-1">{element.stock}</p>
+                    </td>
+                    <td>
                       <MDBIcon
-                        className="ms-2"
-                        onClick={() => dispatch(getById(element.id))}
-                        icon="pen"
+                        color="danger"
+                        value={element.id}
+                        type="submit"
+                        onClick={() => {
+                          {
+                            alertButtonDelete(element.id);
+                          }
+                        }}
+                        rounded
+                        size="sm"
+                        fas
+                        icon="trash-alt"
                       />
-                    </a>
-                  </td>
-                </tr>
-              );
-            })
-          : null}
-      </MDBTableBody>
-    </MDBTable>
+
+                      <a
+                        className="pr-3"
+                        value={element.id}
+                        type="submit"
+                        onClick={() => {
+                          {
+                            editBotoAlert(element.id);
+                          }
+                        }}
+                        rounded
+                        size="sm"
+                      >
+                        <MDBIcon
+                          className="ms-2"
+                          onClick={() => dispatch(getById(element.id))}
+                          icon="pen"
+                        />
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })
+            : null}
+        </MDBTableBody>
+      </MDBTable>
+    </div>
   );
 }

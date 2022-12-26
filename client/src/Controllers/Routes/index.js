@@ -19,6 +19,7 @@ import { FormEditUser } from "../../Admin/Views/FormEditUser/FormEditUser";
 import PurchaseHistory from "../../User/Features/PurchaseHistory";
 import RatingSystem from "../../User/Views/Rating/RatingSystem";
 import AdminContainer from "../../Admin/Views/Container/AdminContainer";
+import Profile from "../../User/Views/Profile";
 
 const router = createBrowserRouter([
   {
@@ -54,10 +55,10 @@ const router = createBrowserRouter([
     path: "/cart",
     element: <Cart />,
   },
-  // {
-  //   path: "/profile",
-  //   element: <Profile />,
-  // },
+  {
+    path: "/profile",
+    element: <Profile />,
+  },
 
   {
     path: "/pasarelaTest",

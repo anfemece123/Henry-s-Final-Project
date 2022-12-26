@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { deleteUserId, getAllusers } from "../../../Redux/Reducer/Users";
 import {
+  MDBIcon,
   MDBBadge,
   MDBBtn,
   MDBTable,
@@ -86,7 +87,7 @@ export default function UsersAdmin() {
                       rounded
                       size="sm"
                     >
-                      Ban
+                      <MDBIcon color="danger" fas icon="user-slash" />
                     </MDBBtn>
                   </td>
                 </tr>
