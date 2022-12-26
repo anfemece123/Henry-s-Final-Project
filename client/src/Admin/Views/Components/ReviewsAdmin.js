@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  MDBIcon,
   MDBBadge,
   MDBBtn,
   MDBTable,
@@ -9,7 +10,6 @@ import {
   MDBTableBody,
 } from "mdb-react-ui-kit";
 import Rating from "@mui/material/Rating";
-import BlockIcon from "@mui/icons-material/Block";
 import {
   getAllReviews,
   updateReview,
@@ -25,7 +25,7 @@ export default function ReviewsAdmin() {
 
   useEffect(() => {
     dispatch(getAllReviews());
-  }, [dispatch, reviews]);
+  }, [dispatch]);
   function alertButtonDelete(e) {
     dispatch(updateReview(e));
   }
@@ -111,7 +111,7 @@ export default function ReviewsAdmin() {
                       rounded
                       size="sm"
                     >
-                      Ban
+                      <MDBIcon color="danger" fas icon="ban" />
                     </MDBBtn>
                   </td>
                 </tr>
