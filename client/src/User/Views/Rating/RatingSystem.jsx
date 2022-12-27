@@ -23,6 +23,15 @@ import swal from "sweetalert";
 import Footer from "../../Features/Footer";
 import NavBar from "../../Features/NavBar";
 import { getProductDetails } from "../../../Redux/Reducer/productDetails";
+import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardImage,
+  MDBBtn,
+} from "mdb-react-ui-kit";
 
 export default function RatingSystem() {
   const dispatch = useDispatch();
@@ -76,25 +85,34 @@ export default function RatingSystem() {
   };
 
   return (
-    <>
-      <div className=" bg-gradient-to-t bg-2">
-        <NavBar />
-
-        <div className="min-w-100 h-[40rem] flex font-noto-serif ">
-          <img
-            src={detail.image}
-            style={{ width: "320px" }}
-            className="m-auto shadow-lg"
-          />
-
-          <FormControl className="w-[55rem] h-[20rem] m-auto text-center">
+    <MDBContainer fluid className="p-0 m-0" id="chec-div">
+      <MDBRow fluid className="p-0 m-0">
+        <MDBCol className="p-0 m-0">
+          <NavBar />
+        </MDBCol>
+      </MDBRow>
+      <MDBRow fluid center className="p-0 pt-4 m-0 shadow-4-strong">
+        <MDBCol className="p-0 m-0" xl="6">
+          <MDBCard>
+            <MDBCardBody className="text-center justify-content-center m-auto">
+              <MDBCardTitle>{detail.title}</MDBCardTitle>
+              <MDBCardImage
+                src={detail.image}
+                position="center"
+                style={{ maxWidth: "320px", minWidth: "320px" }}
+                fluid
+                alt={detail.title}
+              />
+            </MDBCardBody>
+          </MDBCard>
+          <FormControl maxWidth="md" className=" text-center ">
             <Box
               sx={{
                 "& > legend": { mt: 2 },
               }}
             >
               <Typography component="legend">
-                Please review the product
+                Please Rate Your Product
               </Typography>
               <Rating
                 name="simple-controlled"
@@ -104,7 +122,9 @@ export default function RatingSystem() {
                 }}
               />
             </Box>
-            <FormLabel>Your review here</FormLabel>
+            <FormLabel className="align-self-center">
+              Your review here
+            </FormLabel>
             <Textarea
               placeholder="Type something here…"
               minRows={3}
@@ -176,9 +196,13 @@ export default function RatingSystem() {
               }}
             />
           </FormControl>
+        </MDBCol>
+      </MDBRow>
+      <MDBRow className="">
+        <MDBCol>
           <Footer />
-        </div>
-      </div>
-    </>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 }
