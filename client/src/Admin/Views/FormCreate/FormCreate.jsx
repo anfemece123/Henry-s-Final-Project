@@ -4,9 +4,9 @@ import validate from "./validate";
 import swal from "sweetalert";
 
 import { useDispatch } from "react-redux";
-import { formCreate } from "../../../Redux/actions";
+import { formCreate } from "../../../Redux/actions/index";
 import { Link } from "react-router-dom";
-import NavBar from "../../Features/NavBar";
+import NavBar from "../../../User/Features/NavBar";
 
 export const FormCreate = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);

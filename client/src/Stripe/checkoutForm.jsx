@@ -94,6 +94,14 @@ export default function checkoutForm() {
     dispatch(getAllusers());
     dispatch(getByIdUser(user.id));
   }, [dispatch]);
+  const paymentElement = elements.create("payment", {
+    layout: {
+      type: "accordion",
+      defaultCollapsed: false,
+      radios: true,
+      spacedAccordionItems: false,
+    },
+  });
 
   return (
     <div>
@@ -118,7 +126,7 @@ export default function checkoutForm() {
           />
           {loading ? (
             <form onSubmit={handleSubmit} className="text-center">
-              <CardElement />
+              <paymentElement />
               <Button type="submit" variant="outlined" disabled>
                 <img
                   className="animate-spin"
@@ -129,7 +137,7 @@ export default function checkoutForm() {
             </form>
           ) : (
             <form onSubmit={handleSubmit} className="text-center">
-              <CardElement />
+              <paymentElement />
               <Button type="submit" variant="outlined">
                 PAY
               </Button>
