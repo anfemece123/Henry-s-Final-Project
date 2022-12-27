@@ -23,6 +23,7 @@ import swal from "sweetalert";
 import Footer from "../../Features/Footer";
 import NavBar from "../../Features/NavBar";
 import { getProductDetails } from "../../../Redux/Reducer/productDetails";
+import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 
 export default function RatingSystem() {
   const dispatch = useDispatch();
@@ -76,18 +77,26 @@ export default function RatingSystem() {
   };
 
   return (
-    <>
-      <div className=" bg-gradient-to-t bg-2">
-        <NavBar />
-
-        <div className="min-w-100 h-[40rem] flex font-noto-serif ">
+    <MDBContainer fluid className="p-0 m-0" id="chec-div">
+      <MDBRow fluid className="p-0 m-0">
+        <MDBCol className="p-0 m-0">
+          <NavBar />
+        </MDBCol>
+      </MDBRow>
+      <MDBRow fluid center className="p-0 pt-4 m-0 shadow-4-strong">
+        <MDBRow classNameName="p-0 m-0">
+          <MDBCol className="p-0 m-0">
+            <h2 className="p-0 m-0 text-center">{detail.title}</h2>
+          </MDBCol>
+        </MDBRow>
+        <MDBCol className="">
           <img
             src={detail.image}
-            style={{ width: "320px" }}
-            className="m-auto shadow-lg"
+            alt={detail.title}
+            className="img-fluid"
+            style={{ maxHeight: "325px", maxWidth: "325px" }}
           />
-
-          <FormControl className="w-[55rem] h-[20rem] m-auto text-center">
+          <FormControl className="w-[55rem] h-[20rem] text-center ">
             <Box
               sx={{
                 "& > legend": { mt: 2 },
@@ -104,7 +113,9 @@ export default function RatingSystem() {
                 }}
               />
             </Box>
-            <FormLabel>Your review here</FormLabel>
+            <FormLabel className="align-self-center">
+              Your review here
+            </FormLabel>
             <Textarea
               placeholder="Type something here…"
               minRows={3}
@@ -176,9 +187,13 @@ export default function RatingSystem() {
               }}
             />
           </FormControl>
+        </MDBCol>
+      </MDBRow>
+      <MDBRow className="">
+        <MDBCol>
           <Footer />
-        </div>
-      </div>
-    </>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 }

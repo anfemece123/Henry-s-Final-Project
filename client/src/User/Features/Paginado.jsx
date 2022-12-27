@@ -11,10 +11,10 @@ export default function Paginado({
   }
   return (
     <nav>
-      <ul class="pagination">
+      <ul className="pagination">
         <li>
           <button
-            class="page-link"
+            className="page-link"
             onClick={() => {
               currentPage > 1
                 ? paginado(currentPage - 1)
@@ -26,15 +26,15 @@ export default function Paginado({
         </li>
         {pageNumbers &&
           pageNumbers.map((number) => (
-            <li class="page-item" key={number}>
-              <button class="page-link" onClick={() => paginado(number)}>
+            <li className="page-item" key={number}>
+              <button className="page-link" onClick={() => paginado(number)}>
                 {number}
               </button>
             </li>
           ))}
-        <li class="page-item">
+        <li className="page-item">
           <button
-            class="page-link"
+            className="page-link"
             onClick={() => {
               currentPage < pageNumbers.length
                 ? paginado(currentPage + 1)
