@@ -24,6 +24,14 @@ import Footer from "../../Features/Footer";
 import NavBar from "../../Features/NavBar";
 import { getProductDetails } from "../../../Redux/Reducer/productDetails";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardImage,
+  MDBBtn,
+} from "mdb-react-ui-kit";
 
 export default function RatingSystem() {
   const dispatch = useDispatch();
@@ -84,26 +92,27 @@ export default function RatingSystem() {
         </MDBCol>
       </MDBRow>
       <MDBRow fluid center className="p-0 pt-4 m-0 shadow-4-strong">
-        <MDBRow classNameName="p-0 m-0">
-          <MDBCol className="p-0 m-0">
-            <h2 className="p-0 m-0 text-center">{detail.title}</h2>
-          </MDBCol>
-        </MDBRow>
-        <MDBCol className="">
-          <img
-            src={detail.image}
-            alt={detail.title}
-            className="img-fluid"
-            style={{ maxHeight: "325px", maxWidth: "325px" }}
-          />
-          <FormControl className="w-[55rem] h-[20rem] text-center ">
+        <MDBCol className="p-0 m-0" xl="6">
+          <MDBCard>
+            <MDBCardBody className="text-center justify-content-center m-auto">
+              <MDBCardTitle>{detail.title}</MDBCardTitle>
+              <MDBCardImage
+                src={detail.image}
+                position="center"
+                style={{ maxWidth: "320px", minWidth: "320px" }}
+                fluid
+                alt={detail.title}
+              />
+            </MDBCardBody>
+          </MDBCard>
+          <FormControl maxWidth="md" className=" text-center ">
             <Box
               sx={{
                 "& > legend": { mt: 2 },
               }}
             >
               <Typography component="legend">
-                Please review the product
+                Please Rate Your Product
               </Typography>
               <Rating
                 name="simple-controlled"
@@ -175,9 +184,9 @@ export default function RatingSystem() {
                   >
                     <FormatItalic />
                   </IconButton>
-                  <Button onClick={handleClick} sx={{ ml: "auto" }}>
+                  <MDBBtn onClick={handleClick} sx={{ ml: "auto" }}>
                     SUBMIT
-                  </Button>
+                  </MDBBtn>
                 </Box>
               }
               sx={{
