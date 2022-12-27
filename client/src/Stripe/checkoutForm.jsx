@@ -9,7 +9,7 @@ import NavBar from "../User/Features/NavBar";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import CheckoutStructure from "./CheckoutStructure";
-import { Stack } from "@mui/material";
+import { Card, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { getAllusers, getByIdUser } from "../Redux/Reducer/Users";
 
@@ -94,14 +94,6 @@ export default function checkoutForm() {
     dispatch(getAllusers());
     dispatch(getByIdUser(user.id));
   }, [dispatch]);
-  const paymentElement = elements.create("payment", {
-    layout: {
-      type: "accordion",
-      defaultCollapsed: false,
-      radios: true,
-      spacedAccordionItems: false,
-    },
-  });
 
   return (
     <div>
@@ -126,7 +118,7 @@ export default function checkoutForm() {
           />
           {loading ? (
             <form onSubmit={handleSubmit} className="text-center">
-              <paymentElement />
+              <CardElement />
               <Button type="submit" variant="outlined" disabled>
                 <img
                   className="animate-spin"
@@ -137,7 +129,7 @@ export default function checkoutForm() {
             </form>
           ) : (
             <form onSubmit={handleSubmit} className="text-center">
-              <paymentElement />
+              <CardElement />
               <Button type="submit" variant="outlined">
                 PAY
               </Button>
