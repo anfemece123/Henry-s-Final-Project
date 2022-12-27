@@ -184,9 +184,9 @@ export default function RatingSystem() {
                   >
                     <FormatItalic />
                   </IconButton>
-                  <MDBBtn onClick={handleClick} sx={{ ml: "auto" }}>
+                  <Button onClick={handleClick} sx={{ ml: "auto" }}>
                     SUBMIT
-                  </MDBBtn>
+                  </Button>
                 </Box>
               }
               sx={{
