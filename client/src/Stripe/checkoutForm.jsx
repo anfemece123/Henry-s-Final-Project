@@ -9,7 +9,7 @@ import NavBar from "../User/Features/NavBar";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import CheckoutStructure from "./CheckoutStructure";
-import { Stack } from "@mui/material";
+import { Card, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { getAllusers, getByIdUser } from "../Redux/Reducer/Users";
 

@@ -55,7 +55,16 @@ export default function NavBar() {
     <MDBNavbar expand="lg" light bgColor="light">
       {auth.isAdmin === true ? (
         <MDBContainer fluid>
-          <MDBNavbarBrand href="#">Brand</MDBNavbarBrand>
+          <Link to="/admin">
+            <MDBBtn className="text-dark" color="light">
+              Admin
+            </MDBBtn>
+          </Link>
+          {/* <MDBNavbarBrand>
+            <Link className="text-black text-decoration-none" to="/">
+              TIENDANUESTRA
+            </Link>
+          </MDBNavbarBrand> */}
           <MDBNavbarToggler
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
@@ -64,15 +73,44 @@ export default function NavBar() {
           >
             <MDBIcon icon="bars" fas />
           </MDBNavbarToggler>
-          <div>
-            <Link to="/home">
-              <HomeIcon sx={{ fontSize: 45 }}></HomeIcon>
-            </Link>
-            <SearchBar />
-          </div>
-          <div className="">
-            <ContainerLogIn />
-          </div>
+          <MDBCollapse navbar show={showBasic}>
+            <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
+              <MDBNavbarItem>
+                <MDBNavbarLink active aria-current="page" href="#">
+                  <Link to="/home">
+                    <HomeIcon sx={{ fontSize: 45 }}></HomeIcon>
+                  </Link>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink>
+                  <ContainerLogIn />
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+
+              <MDBNavbarItem>
+                <MDBNavbarLink href="#" tabIndex={-1} aria-disabled="true">
+                  <Link to="/cart">
+                    <IconButton aria-label="cart">
+                      <StyledBadge badgeContent={cart} color="secondary">
+                        <ShoppingCartIcon color="primary" />
+                      </StyledBadge>
+                    </IconButton>
+                  </Link>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+            </MDBNavbarNav>
+
+            <form className="d-flex input-group w-auto">
+              <input
+                className="form-control"
+                name="search"
+                onChange={filterUsers}
+                ref={inputRef}
+                placeholder="Search Clothing..."
+              />
+            </form>
+          </MDBCollapse>
         </MDBContainer>
       ) : (
         <MDBContainer fluid>

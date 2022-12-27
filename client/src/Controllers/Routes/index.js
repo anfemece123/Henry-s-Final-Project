@@ -2,15 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../../User/Views/Home";
 import Landing from "../../User/Views/Landing";
 import ErrorPage from "./errorPage";
-import { FormCreate } from "../../User/Views/FormCreate/FormCreate.jsx";
+import { FormCreate } from "../../Admin/Views/FormCreate/FormCreate";
 import Detail from "../../User/Views/Details";
 import LogIn from "../../User/Views/logIn/LogIn";
 import { ForrmRegister } from "../../User/Views/FormRegister/FormRegister";
-
-// import Login from "../../Admin/Views/auth/Login";
-// import Register from "../../Admin/Views/auth/Register";
-// import Profile from "../../Admin/Views/Profile";
-// import Auth from "../../Admin/layouts/Auth";
 import { Cart } from "../../User/Views/Cart/Cart";
 import CheckoutForm from "../../Stripe/checkoutForm";
 import Welcome from "../../User/Views/Welcome";
