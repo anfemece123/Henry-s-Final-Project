@@ -94,14 +94,15 @@ export default function checkoutForm() {
     dispatch(getAllusers());
     dispatch(getByIdUser(user.id));
   }, [dispatch]);
-  const paymentElement = elements.create("payment", {
-    layout: {
-      type: "accordion",
-      defaultCollapsed: false,
-      radios: true,
-      spacedAccordionItems: false,
-    },
-  });
+
+  // const paymentElement = elements.create("payment", {
+  //   layout: {
+  //     type: "accordion",
+  //     defaultCollapsed: false,
+  //     radios: true,
+  //     spacedAccordionItems: false,
+  //   },
+  // });
 
   return (
     <div>
