@@ -6,13 +6,14 @@ import {
   getById,
 } from "../../../Redux/Reducer/allProductSlice";
 import {
+  MDBBtn,
   MDBIcon,
   MDBTable,
   MDBTableHead,
   MDBTableBody,
 } from "mdb-react-ui-kit";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ProductsAdmin() {
   const dispatch = useDispatch();
@@ -45,6 +46,12 @@ export default function ProductsAdmin() {
 
   return (
     <div>
+      <Link to="/formCreate">
+        <MDBBtn className="m-3 text-dark" color="light">
+          add product <MDBIcon fas icon="plus" />
+        </MDBBtn>
+      </Link>
+
       <MDBTable responsive>
         <MDBTableHead>
           <tr className="table-success">
