@@ -22,7 +22,7 @@ export default function Profile() {
 
   function editBotoAlert(e) {
     swal({
-      title: "Are you sure?",
+      title: "Are you sure?",
       text: "Remember to complete all the fields",
       icon: "info",
       buttons: true,
@@ -38,7 +38,7 @@ export default function Profile() {
       <Row>
         <Col lg={12}>
           <NavBar />
-          <div className="float-end">
+          <div className="float-end p-3">
             <button
               onClick={() => {
                 {
@@ -82,7 +82,7 @@ export default function Profile() {
           </Col>
           <Col className="mt-5 border-circle shadow-lg text-start lh-base">
             <div className="m-3">
-              An artist of considerable range, {user.first_name}
+              An artist of considerable range,{user.first_name}&nbsp;
               {user.last_name} the name taken by Melbourne-raised,
               Brooklyn-based Nick Murphy writes, performs and records all of his
               own music, giving it a warm, intimate feel with a solid groove

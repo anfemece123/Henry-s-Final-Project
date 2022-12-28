@@ -3,11 +3,11 @@ import { Formik } from "formik";
 import validate from "./validate";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import swal from "sweetalert";
 import { updateUser } from "../../../Redux/actions";
 import { getAllusers, getByIdUser } from "../../../Redux/Reducer/Users";
 import NavBar from "../../../User/Features/NavBar";
+import { Form, Button, Col, Container, Row } from "react-bootstrap";
 
 export const FormEditUser = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
@@ -28,7 +28,6 @@ export const FormEditUser = () => {
       }).then((willDelete) => {
         if (willDelete) {
           dispatch(getByIdUser(user.id));
-          // dispatch(getAllusers());
           swal("ok!", {
             icon: "success",
           });
@@ -60,11 +59,15 @@ export const FormEditUser = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 antialiased  flex flex-col">
-      <NavBar />
-      <div class="relative py-3 sm:max-w-xl mx-auto text-center">
-        <span class="text-2xl font-light">Form Edit profile</span>
-        <div class="w-50 max-w-lg">
+    <Container fluid>
+      <Row>
+        <Col lg={12}>
+          <NavBar />
+        </Col>
+        <Col lg={12} className="text-center mt-3 mb-2">
+          <h1>Edit your profile</h1>
+        </Col>
+        <Row>
           <Formik
             initialValues={{
               first_name: infoUser.first_name,
@@ -80,11 +83,6 @@ export const FormEditUser = () => {
               console.log("objeto en registro", values);
               resetForm();
               setformularioEnviado(true);
-              // swal({
-              //   title: "Excellent!",
-              //   text: "Remember to verify it! Check your email",
-              //   icon: "success",
-              // });
               navigate("/profile");
             }}
             validate={(values) => validate(values)}
@@ -97,102 +95,76 @@ export const FormEditUser = () => {
               handleBlur,
               touched,
             }) => (
-              <form onSubmit={handleSubmit}>
-                <div className="w-full px-3"></div>
-                <div className="flex flex-wrap -mx-3 mb-6">
-                  <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block font-semibold" for="grid-first-name">
-                      First Name
-                    </label>
-                    <input
-                      className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                      type="text"
-                      id="first_name"
-                      name="first_name"
-                      placeholder="first_name"
-                      value={values.first_name}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.first_name && errors.first_name && (
-                      <div className="text-red-700 underline decoration-pink-500">
-                        {errors.first_name}
-                      </div>
-                    )}
-                  </div>
-                  <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block font-semibold" for="grid-first-name">
-                      Last Name
-                    </label>
-                    <input
-                      className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                      type="text"
-                      id="last_name"
-                      name="last_name"
-                      placeholder="last_name"
-                      value={values.last_name}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.last_name && errors.last_name && (
-                      <div className="text-red-700 underline decoration-pink-500">
-                        {errors.last_name}
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="flex flex-wrap -mx-3 mb-6">
-                  <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block font-semibold" for="grid-first-name">
-                      Phone Number
-                    </label>
-                    <input
-                      className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                      type="text"
-                      id="phoneNumber"
-                      name="phoneNumber"
-                      placeholder="phoneNumber"
-                      value={values.phoneNumber}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.phoneNumber && errors.phoneNumber && (
-                      <div className="text-red-700 underline decoration-pink-500">
-                        {errors.phoneNumber}
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block font-semibold" for="grid-first-name">
-                      Address
-                    </label>
-                    <input
-                      className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md"
-                      type="text"
-                      id="address"
-                      name="address"
-                      placeholder="address"
-                      value={values.address}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.address && errors.address && (
-                      <div className="text-red-700 underline decoration-pink-500">
-                        {errors.address}
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="flex flex-wrap -mx-3 mb-6"></div>
-                <div>
-                  <p hidden>{(values.profileImage = image)}</p>
-                  <label class="block font-semibold"> Image</label>
-                  <input
+              <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="first_name">
+                  <Form.Label>First Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="first_name"
+                    value={values.first_name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="Enter your first name"
+                  />
+                  {touched.first_name && errors.first_name && (
+                    <Form.Text className="text-danger">
+                      {errors.first_name}
+                    </Form.Text>
+                  )}
+                </Form.Group>
+                <Form.Group controlId="last_name">
+                  <Form.Label> Last Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="last_name"
+                    placeholder="Enter your last name"
+                    value={values.last_name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.last_name && errors.last_name && (
+                    <Form.Text className="text-danger">
+                      {errors.last_name}
+                    </Form.Text>
+                  )}
+                </Form.Group>
+                <Form.Group controlId="phoneNumber">
+                  <Form.Label>Phone number</Form.Label>
+                  <Form.Control
+                    name="phoneNumber"
+                    placeholder="Enter your phone number"
+                    value={values.phoneNumber}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.phoneNumber && errors.phoneNumber && (
+                    <Form.Text className="text-danger">
+                      {errors.phoneNumber}
+                    </Form.Text>
+                  )}
+                </Form.Group>
+                <Form.Group controlId="address">
+                  <Form.Label>Address</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="address"
+                    placeholder="Enter your adress"
+                    value={values.address}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.address && errors.address && (
+                    <Form.Text className="text-danger">
+                      {errors.address}
+                    </Form.Text>
+                  )}
+                </Form.Group>
+                <Form.Group controlId="profileImage">
+                  <Form.Label>File</Form.Label>
+                  <Form.Control
                     type="file"
-                    id="profileImage"
-                    name="profileImage"
                     onChange={uploadImage}
+                    name="profileImage"
                     onBlur={handleBlur}
                   />
                   {loading ? (
@@ -200,18 +172,13 @@ export const FormEditUser = () => {
                   ) : (
                     <img src={image} width="230px" />
                   )}
-                </div>
-                <button
-                  onClick={alert}
-                  class="mt-4 bg-black text-white py-2 px-6 rounded-lg"
-                >
-                  Edit User
-                </button>
-              </form>
+                </Form.Group>
+                <Button onClick={alert}>Edit User</Button>
+              </Form>
             )}
           </Formik>
-        </div>
-      </div>
-    </div>
+        </Row>
+      </Row>
+    </Container>
   );
 };
