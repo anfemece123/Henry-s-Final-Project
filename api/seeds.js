@@ -1,7 +1,7 @@
 const products = [
   {
     id: 1,
-    title: "t-shirt blue",
+    title: "T-Shirt Blue",
     category: "t-shirts",
     color: "blue",
     season: "summer",
@@ -14,7 +14,7 @@ const products = [
   },
   {
     id: 2,
-    title: "t-shirt black",
+    title: "T-Shirt Black",
     category: "t-shirts",
     color: "black",
     season: "summer",
@@ -26,7 +26,7 @@ const products = [
   },
   {
     id: 3,
-    title: "t-shirt red",
+    title: "T-Shirt Red",
     category: "t-shirts",
     color: "red",
     season: "summer",
@@ -39,7 +39,7 @@ const products = [
   },
   {
     id: 4,
-    title: "t-shirt green",
+    title: "T-Shirt Green",
     category: "t-shirts",
     color: "green",
     season: "winter",
@@ -51,7 +51,7 @@ const products = [
   },
   {
     id: 5,
-    title: "t-shirt yellow",
+    title: "T-Shirt Yellow",
     category: "t-shirts",
     color: "yellow",
     season: "winter",
@@ -63,7 +63,7 @@ const products = [
   },
   {
     id: 6,
-    title: "shirt white",
+    title: "Shirt White",
     category: "shirts",
     color: "white",
     season: "winter",
@@ -75,7 +75,7 @@ const products = [
   },
   {
     id: 7,
-    title: "shirt blue",
+    title: "Shirt Blue",
     category: "shirts",
     color: "blue",
     season: "winter",
@@ -88,7 +88,7 @@ const products = [
 
   {
     id: 8,
-    title: "shirt black",
+    title: "Shirt Black",
     category: "shirts",
     color: "black",
     season: "winter",
@@ -100,7 +100,7 @@ const products = [
   },
   {
     id: 9,
-    title: "jacket black",
+    title: "Jacket Black",
     category: "jackets",
     color: "black",
     season: "winter",
@@ -113,7 +113,7 @@ const products = [
   },
   {
     id: 10,
-    title: "jacket red",
+    title: "Jacket Red",
     category: "jackets",
     color: "red",
     season: "winter",
@@ -125,7 +125,7 @@ const products = [
   },
   {
     id: 11,
-    title: "jacket yellow",
+    title: "Jacket Yellow",
     category: "jackets",
     color: "yellow",
     season: "winter",
@@ -137,7 +137,7 @@ const products = [
   },
   {
     id: 12,
-    title: "jacket white",
+    title: "Jacket White",
     category: "jackets",
     color: "white",
     season: "winter",
@@ -150,7 +150,7 @@ const products = [
   },
   {
     id: 13,
-    title: "Jeans green",
+    title: "Jeans Green",
     category: "jeans",
     color: "green",
     season: "spring",
@@ -162,7 +162,7 @@ const products = [
   },
   {
     id: 14,
-    title: "jeans Black",
+    title: "Jeans Black",
     category: "jeans",
     color: "black",
     season: "spring",
@@ -174,7 +174,7 @@ const products = [
   },
   {
     id: 15,
-    title: "jeans blue",
+    title: "Jeans Blue",
     category: "jeans",
     color: "blue",
     season: "spring",
@@ -187,7 +187,7 @@ const products = [
   },
   {
     id: 16,
-    title: "jordan red",
+    title: "Jordan Red",
     category: "shoes",
     color: "red",
     brand: "nike",
@@ -200,7 +200,7 @@ const products = [
   },
   {
     id: 17,
-    title: "jordan blue",
+    title: "Jordan Blue",
     category: "shoes",
     color: "blue",
     brand: "nike",
@@ -213,7 +213,7 @@ const products = [
   },
   {
     id: 18,
-    title: "Jordan black",
+    title: "Jordan Black",
     category: "shoes",
     color: "black",
     brand: "nike",
@@ -227,7 +227,7 @@ const products = [
   },
   {
     id: 19,
-    title: "nice red wool t-shirt",
+    title: "Red Wool T-Shirt",
     category: "t-shirts",
     color: "red",
     season: "summer",
@@ -240,7 +240,7 @@ const products = [
   },
   {
     id: 20,
-    title: "green wool t-shirt",
+    title: "Green Wool T-Shirt",
     category: "t-shirts",
     color: "green",
     season: "summer",
@@ -253,7 +253,7 @@ const products = [
   },
   {
     id: 21,
-    title: "perfect black sports t-shirt",
+    title: "Perfect Black Sports T-Shirt",
     category: "t-shirts",
     color: "black",
     season: "summer",
@@ -265,7 +265,7 @@ const products = [
   },
   {
     id: 22,
-    title: "Jean black 2",
+    title: "Jean Black 2",
     category: "jeans",
     color: "black",
     season: "spring",
@@ -330,7 +330,7 @@ const products = [
     season: "winter",
     price: 45,
     size: "L",
-    gender: "female",
+    gender: "other",
     image: "https://m.media-amazon.com/images/I/61D4bBjcM6L._AC_UX575_.jpg",
   },
   {
@@ -400,7 +400,7 @@ const products = [
   },
   {
     id: 33,
-    title: " Shirt Green",
+    title: "Shirt Green",
     category: "shirts",
     color: "green",
     season: "spring",
@@ -413,7 +413,7 @@ const products = [
   },
   {
     id: 34,
-    title: " Shirt Red male",
+    title: "Shirt Red male",
     category: "shirts",
     color: "red",
     season: "spring",
@@ -425,7 +425,7 @@ const products = [
   },
   {
     id: 35,
-    title: " Shirt Red female",
+    title: "Shirt Red female",
     category: "shirts",
     color: "red",
     season: "spring",
@@ -438,7 +438,7 @@ const products = [
   },
   {
     id: 36,
-    title: " Shirt black female",
+    title: "Shirt Black Female",
     category: "shirts",
     color: "black",
     season: "spring",
@@ -450,7 +450,7 @@ const products = [
   },
   {
     id: 37,
-    title: " Shirt yellow male",
+    title: "Shirt yellow Male",
     category: "shirts",
     color: "yellow",
     season: "spring",
@@ -463,7 +463,7 @@ const products = [
   },
   {
     id: 38,
-    title: " Shirt yellow female",
+    title: "Shirt Yellow Female",
     category: "shirts",
     color: "yellow",
     season: "spring",
@@ -476,7 +476,7 @@ const products = [
   },
   {
     id: 39,
-    title: "t-shirt white male",
+    title: "T-Shirt White Male",
     category: "t-shirts",
     color: "white",
     season: "summer",
@@ -489,7 +489,7 @@ const products = [
   },
   {
     id: 40,
-    title: "t-shirt white female",
+    title: "T-Shirt White Female",
     category: "t-shirts",
     color: "white",
     season: "summer",
@@ -502,7 +502,7 @@ const products = [
   },
   {
     id: 41,
-    title: "t-shirt blue female",
+    title: "T-Shirt Blue Female",
     category: "t-shirts",
     color: "blue",
     season: "summer",
@@ -515,7 +515,7 @@ const products = [
   },
   {
     id: 42,
-    title: "t-shirt yellow female",
+    title: "T-Shirt Yellow Female",
     category: "t-shirts",
     color: "yellow",
     season: "summer",
@@ -528,7 +528,7 @@ const products = [
   },
   {
     id: 43,
-    title: "Shoes white male",
+    title: "Shoes White Male",
     category: "shoes",
     color: "white",
     brand: "nike",
@@ -542,7 +542,7 @@ const products = [
   },
   {
     id: 44,
-    title: "Shoes yellow male",
+    title: "Shoes Yellow Male",
     category: "shoes",
     color: "yellow",
     brand: "nike",
@@ -555,7 +555,7 @@ const products = [
   },
   {
     id: 45,
-    title: "Shoes green male",
+    title: "Shoes Green Male",
     category: "shoes",
     color: "green",
     brand: "nike",
@@ -569,7 +569,7 @@ const products = [
   },
   {
     id: 46,
-    title: "Shoes green female",
+    title: "Shoes Green Female",
     category: "shoes",
     color: "green",
     brand: "nike",
@@ -583,7 +583,7 @@ const products = [
   },
   {
     id: 47,
-    title: "Shoes blue female",
+    title: "Shoes Blue Female",
     category: "shoes",
     color: "blue",
     brand: "nike",
@@ -596,7 +596,7 @@ const products = [
   },
   {
     id: 48,
-    title: "Shoes yellow female",
+    title: "Shoes Yellow Female",
     category: "shoes",
     color: "yellow",
     brand: "nike",
@@ -610,7 +610,7 @@ const products = [
   },
   {
     id: 49,
-    title: "Jeans White female",
+    title: "Jeans White Female",
     category: "jeans",
     color: "white",
     season: "spring",
@@ -623,7 +623,7 @@ const products = [
   },
   {
     id: 50,
-    title: "Jeans red male",
+    title: "Jeans Red Male",
     category: "jeans",
     color: "red",
     season: "spring",
@@ -636,7 +636,7 @@ const products = [
   },
   {
     id: 51,
-    title: "Jeans red female",
+    title: "Jeans Red Female",
     category: "jeans",
     color: "red",
     season: "spring",
@@ -649,7 +649,7 @@ const products = [
   },
   {
     id: 52,
-    title: "Jeans yellow female",
+    title: "Jeans Yellow Female",
     category: "jeans",
     color: "yellow",
     season: "spring",
@@ -662,7 +662,7 @@ const products = [
   },
   {
     id: 53,
-    title: "Jeans yellow male",
+    title: "Jeans Yellow Male",
     category: "jeans",
     color: "yellow",
     season: "spring",
@@ -675,7 +675,7 @@ const products = [
   },
   {
     id: 54,
-    title: "Jeans green male",
+    title: "Jeans Green Male",
     category: "jeans",
     color: "green",
     season: "spring",
@@ -688,7 +688,7 @@ const products = [
   },
   {
     id: 55,
-    title: "jacket white male",
+    title: "Jacket White Male",
     category: "jackets",
     color: "white",
     season: "winter",
@@ -701,7 +701,7 @@ const products = [
   },
   {
     id: 56,
-    title: "jacket red female",
+    title: "Jacket Red Female",
     category: "jackets",
     color: "red",
     season: "winter",
@@ -714,7 +714,7 @@ const products = [
   },
   {
     id: 57,
-    title: "jacket blue male",
+    title: "Jacket Blue Male",
     category: "jackets",
     color: "blue",
     season: "winter",
@@ -727,7 +727,7 @@ const products = [
   },
   {
     id: 58,
-    title: "jacket blue female",
+    title: "Jacket Blue Female",
     category: "jackets",
     color: "blue",
     season: "winter",
@@ -740,7 +740,7 @@ const products = [
   },
   {
     id: 59,
-    title: "jacket yellow female",
+    title: "Jacket Yellow Female",
     category: "jackets",
     color: "yellow",
     season: "winter",
@@ -753,7 +753,7 @@ const products = [
   },
   {
     id: 60,
-    title: "jacket green female",
+    title: "Jacket Green Female",
     category: "jackets",
     color: "green",
     season: "winter",
@@ -766,7 +766,7 @@ const products = [
   },
   {
     id: 61,
-    title: "jacket green male",
+    title: "Jacket Green Male",
     category: "jackets",
     color: "green",
     season: "winter",

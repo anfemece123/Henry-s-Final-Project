@@ -33,25 +33,17 @@ export default function Card({
           style={{ width: "200px", height: "150px" }}
           fluid
         />
-        <a>
-          <div
-            className="mask"
-            style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
-          >
-            Podemos poner una descripcion aca o algo :)
-          </div>
-        </a>
       </MDBRipple>
       <MDBCardBody className="text-center justify-content-center m-auto">
         <Link to={`/detail/${id}`}>
           <MDBCardTitle className="text-center">{title}</MDBCardTitle>
         </Link>
         <MDBCardText>
-          <span>Price:$</span>
-          <span> {price}</span>
+          <span>Price: $</span>
+          <span>{price}</span>
           <br />
-          <span>Size:</span>
-          <span> {size}</span>
+          <span>Size: </span>
+          <span>{size}</span>
 
           {stock ? (
             <div>
@@ -61,7 +53,7 @@ export default function Card({
           ) : (
             <div>
               <span>Stock:</span>
-              <span>No disponible</span>
+              <span>Not Available</span>
             </div>
           )}
 

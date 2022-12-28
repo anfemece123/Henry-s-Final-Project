@@ -9,9 +9,10 @@ import NavBar from "../User/Features/NavBar";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import CheckoutStructure from "./CheckoutStructure";
-import { Stack } from "@mui/material";
+import { Card, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { getAllusers, getByIdUser } from "../Redux/Reducer/Users";
+import { MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
 
 export default function checkoutForm() {
   const stripe = useStripe();
@@ -95,15 +96,6 @@ export default function checkoutForm() {
     dispatch(getByIdUser(user.id));
   }, [dispatch]);
 
-  // const paymentElement = elements.create("payment", {
-  //   layout: {
-  //     type: "accordion",
-  //     defaultCollapsed: false,
-  //     radios: true,
-  //     spacedAccordionItems: false,
-  //   },
-  // });
-
   return (
     <div>
       <NavBar />
@@ -127,21 +119,21 @@ export default function checkoutForm() {
           />
           {loading ? (
             <form onSubmit={handleSubmit} className="text-center">
-              <paymentElement />
-              <Button type="submit" variant="outlined" disabled>
-                <img
-                  className="animate-spin"
-                  src={require("../Images/loading.svg").default}
-                  alt="mySvgImage"
+              <CardElement />
+              <MDBBtn disabled>
+                <MDBSpinner
+                  size="sm"
+                  role="status"
+                  tag="span"
+                  className="me-2"
                 />
-              </Button>
+                Loading...
+              </MDBBtn>
             </form>
           ) : (
             <form onSubmit={handleSubmit} className="text-center">
-              <paymentElement />
-              <Button type="submit" variant="outlined">
-                PAY
-              </Button>
+              <CardElement />
+              <MDBBtn type="submit">PAY</MDBBtn>
             </form>
           )}
         </Stack>

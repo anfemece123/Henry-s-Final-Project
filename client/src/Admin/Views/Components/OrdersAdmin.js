@@ -1,5 +1,4 @@
-import { inputAdornmentClasses } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,18 +6,9 @@ import {
   MDBTable,
   MDBTableHead,
   MDBTableBody,
+  MDBTypography,
 } from "mdb-react-ui-kit";
-import swal from "sweetalert";
-
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-// import { getAllProducts } from "../../../Redux/Reducer/allProductSlice";
-
 import { getAllOrders } from "../../../Redux/Reducer/OrderSlice";
-
-// components
 
 export default function OrdersAdmin({ color }) {
   const user = useSelector((state) => state.users.allUsers);
@@ -41,13 +31,26 @@ export default function OrdersAdmin({ color }) {
           return (
             <div>
               {user.Orders.length > 0 ? (
-                <div>
-                  <p>
+                <div className="m-2">
+                  <MDBTypography tag="strong" variant="h4">
+                    Information user
+                  </MDBTypography>
+                  <hr />
+                  <li className="text-muted">
+                    <MDBIcon fas icon="user" color="primary" />{" "}
                     {user.first_name} {user.last_name}
-                  </p>
-                  <p>{user.address}</p>
-                  <p>{user.phoneNumber}</p>
-                  <p>{user.email}</p>
+                  </li>
+                  <li className="text-muted">
+                    <MDBIcon fas icon="location-arrow" color="primary" />{" "}
+                    {user.address}
+                  </li>
+                  <li className="text-muted">
+                    <MDBIcon fas icon="mobile-alt" color="primary" />{" "}
+                    {user.phoneNumber}
+                  </li>
+                  <li className="text-muted">
+                    <MDBIcon far icon="envelope" color="primary" /> {user.email}
+                  </li>
                 </div>
               ) : null}
 
