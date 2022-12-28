@@ -14,7 +14,6 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import RatingSystem from "./Rating/RatingSystem";
 import ReviewSystem from "./Rating/ReviewSystem";
 import { getAllReviews } from "../../Redux/Reducer/RatingSlice";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
@@ -82,21 +81,25 @@ export default function Details() {
       </MDBRow>
       <MDBRow>
         <MDBCol
-          className="p-0 m-0 d-flex flex-column justify-content-center align-items-center"
+          className="p-0 m-0 mb-3 d-flex flex-column justify-content-center align-items-center"
           start
         >
           <Link
             className="d-flex flex-column justify-content-center align-items-center"
             to="/home"
           >
-            <span className="mb-0 text-center d-flex flex-column justify-content-center align-items-center">
+            <span className="mt-3 text-center d-flex flex-column justify-content-center align-items-center">
               Continue Shopping
             </span>
             <ArrowBackIcon />
           </Link>
         </MDBCol>
       </MDBRow>
-      <MDBRow fluid center className="p-0 pt-4 m-0 shadow-4-strong">
+      <MDBRow
+        center
+        className="p-4 m-auto shadow-4-strong"
+        style={{ maxWidth: "1640px" }}
+      >
         <MDBRow>
           <MDBCol>
             <h2 className="pb-2 text-center">{details.details.title}</h2>
@@ -181,14 +184,16 @@ export default function Details() {
           </Snackbar>
         </MDBCol>
       </MDBRow>
-      <MDBRow>
+      <MDBRow className="p-0 m-0">
         <MDBCol
           size={12}
           id="reviewSystem"
-          className="shadow-lg mb-5 mt-5 w-50 m-auto"
+          className="shadow-lg mb-5 mt-5 w-50 m-auto p-0"
         >
           <ReviewSystem />
         </MDBCol>
+      </MDBRow>
+      <MDBRow>
         <MDBCol size={12} className="bottom">
           <Footer />
         </MDBCol>

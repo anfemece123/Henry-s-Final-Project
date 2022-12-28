@@ -52,11 +52,11 @@ export default function Landing() {
               </MDBBtn>
             </MDBCol>
           </MDBRow>
-          <MDBRow className="">
-            <MDBCol>
-              <Footer />
-            </MDBCol>
-          </MDBRow>
+        </MDBCol>
+      </MDBRow>
+      <MDBRow className="">
+        <MDBCol>
+          <Footer />
         </MDBCol>
       </MDBRow>
     </MDBContainer>
