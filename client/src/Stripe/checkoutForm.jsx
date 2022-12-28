@@ -12,6 +12,7 @@ import CheckoutStructure from "./CheckoutStructure";
 import { Card, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { getAllusers, getByIdUser } from "../Redux/Reducer/Users";
+import { MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
 
 export default function checkoutForm() {
   const stripe = useStripe();
@@ -119,20 +120,20 @@ export default function checkoutForm() {
           {loading ? (
             <form onSubmit={handleSubmit} className="text-center">
               <CardElement />
-              <Button type="submit" variant="outlined" disabled>
-                <img
-                  className="animate-spin"
-                  src={require("../Images/loading.svg").default}
-                  alt="mySvgImage"
+              <MDBBtn disabled>
+                <MDBSpinner
+                  size="sm"
+                  role="status"
+                  tag="span"
+                  className="me-2"
                 />
-              </Button>
+                Loading...
+              </MDBBtn>
             </form>
           ) : (
             <form onSubmit={handleSubmit} className="text-center">
               <CardElement />
-              <Button type="submit" variant="outlined">
-                PAY
-              </Button>
+              <MDBBtn type="submit">PAY</MDBBtn>
             </form>
           )}
         </Stack>
