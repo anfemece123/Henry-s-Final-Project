@@ -25,8 +25,8 @@ export default function Card({
       <MDBRipple
         rippleColor="light"
         rippleTag="div"
-        className="bg-image hover-overlay text-center"
-        style={{ maxWidth: "320px", minWidth: "320px" }}
+        className="pt-3 pb-3 bg-image hover-overlay text-center "
+        style={{ maxWidth: "360px", minWidth: "320px" }}
       >
         <MDBCardImage
           src={images}
@@ -35,9 +35,9 @@ export default function Card({
         />
       </MDBRipple>
       <MDBCardBody className="text-center justify-content-center m-auto">
-        <Link to={`/detail/${id}`}>
-          <MDBCardTitle className="text-center">{title}</MDBCardTitle>
-        </Link>
+        <MDBCardTitle className="text-center fw-bolder" tag="h3">
+          {title}
+        </MDBCardTitle>
         <MDBCardText>
           <span>Price: $</span>
           <span>{price}</span>
@@ -47,8 +47,8 @@ export default function Card({
 
           {stock ? (
             <div>
-              <span>Stock:</span>
-              <span> {stock}</span>
+              <span>Stock: </span>
+              <span>{stock}</span>
             </div>
           ) : (
             <div>

@@ -115,9 +115,7 @@ export default function NavBar() {
       ) : (
         <MDBContainer fluid>
           <MDBNavbarBrand>
-            <Link className="text-black text-decoration-none" to="/">
-              TIENDANUESTRA
-            </Link>
+            <span className="text-black">TIENDANUESTRA</span>
           </MDBNavbarBrand>
           <MDBNavbarToggler
             aria-controls="navbarSupportedContent"

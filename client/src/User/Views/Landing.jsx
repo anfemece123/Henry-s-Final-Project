@@ -31,25 +31,19 @@ export default function Landing() {
               <img
                 src={logo}
                 className="mb-3"
-                style={{ minWidth: "200px", maxWidth: "30vw", padding: 0 }}
+                style={{ minWidth: "200px", maxWidth: "30vw" }}
               />
-              <h1
-                className="mb-3"
-                style={{ marginBottom: 0, textAlign: "left", padding: 0 }}
-              >
+              <h1 className="mb-3 fw-bold" style={{ textAlign: "left" }}>
                 The style, is your personality
               </h1>
-              <MDBBtn
-                className="mb-3"
-                style={{ maxHeight: "100px", maxWidth: "180px" }}
-              >
-                <Link
-                  style={{ textDecoration: "none", color: "white" }}
-                  to="/home"
+              <Link to="/home">
+                <MDBBtn
+                  className="mb-3"
+                  style={{ maxHeight: "100px", maxWidth: "180px" }}
                 >
                   WATCH CATALOG
-                </Link>
-              </MDBBtn>
+                </MDBBtn>
+              </Link>
             </MDBCol>
           </MDBRow>
         </MDBCol>
