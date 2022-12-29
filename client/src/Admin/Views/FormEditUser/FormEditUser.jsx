@@ -7,7 +7,8 @@ import swal from "sweetalert";
 import { updateUser } from "../../../Redux/actions";
 import { getAllusers, getByIdUser } from "../../../Redux/Reducer/Users";
 import NavBar from "../../../User/Features/NavBar";
-import { Form, Button, Col, Container, Row } from "react-bootstrap";
+import Footer from "../../../User/Features/Footer";
+import { Form, Button, Col, Container, Row, Image } from "react-bootstrap";
 
 export const FormEditUser = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
@@ -64,10 +65,10 @@ export const FormEditUser = () => {
         <Col lg={12}>
           <NavBar />
         </Col>
-        <Col lg={12} className="text-center mt-3 mb-2">
+        <Col lg={12} className="text-center mt-5 mb-2">
           <h1>Edit your profile</h1>
         </Col>
-        <Row>
+        <Row className="w-50 text-center m-auto mt-5 p-3 border border-2 shadow-lg">
           <Formik
             initialValues={{
               first_name: infoUser.first_name,
@@ -170,14 +171,25 @@ export const FormEditUser = () => {
                   {loading ? (
                     <img src="https://tradinglatam.com/wp-content/uploads/2019/04/loading-gif-png-4.gif" />
                   ) : (
-                    <img src={image} width="230px" />
+                    <Image
+                      src={image}
+                      rounded
+                      fluid
+                      style={{ width: "230px" }}
+                      className="mt-5"
+                    />
                   )}
                 </Form.Group>
-                <Button onClick={alert}>Edit User</Button>
+                <Button className="mt-5 mb-5" onClick={alert}>
+                  Edit User
+                </Button>
               </Form>
             )}
           </Formik>
         </Row>
+        <Col lg={12} className="mt-5">
+          <Footer />
+        </Col>
       </Row>
     </Container>
   );

@@ -97,6 +97,9 @@ export default function Profile() {
             </a>
           </Col>
         </Row>
+        <Col lg={12} className="mt-5">
+          <Footer />
+        </Col>
       </Row>
     </Container>
   );
