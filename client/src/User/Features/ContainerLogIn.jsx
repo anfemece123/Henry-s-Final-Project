@@ -11,14 +11,17 @@ export const ContainerLogIn = () => {
     <>
       {Object.keys(auth) < 1 ? (
         <>
-          <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
-            <Link to="/formRegister">Register</Link>
-          </button>
-          <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
-            <Link to="/login">
+          <Link to="/formRegister">
+            <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
+              Register
+            </button>
+          </Link>
+
+          <Link to="/login">
+            <button className=" h-10 no-underline box-border bg-slate-900 text-slate-50 rounded flex p-2 justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900">
               <LoginIcon /> Log In
-            </Link>
-          </button>
+            </button>
+          </Link>
         </>
       ) : (
         <div className="w-full h-fit items-center flex gap-4">

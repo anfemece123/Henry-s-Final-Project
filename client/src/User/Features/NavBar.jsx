@@ -49,22 +49,16 @@ export default function NavBar() {
     },
   }));
   const auth = useSelector((state) => state.auth.auth);
-  const admin = auth.isAdmin;
 
   return (
-    <MDBNavbar expand="lg" light bgColor="light">
+    <MDBNavbar expand="md" bgColor="light">
       {auth.isAdmin === true ? (
         <MDBContainer fluid>
           <Link to="/admin">
-            <MDBBtn className="text-dark" color="light">
+            <MDBBtn className="text-black" color="light">
               Admin
             </MDBBtn>
           </Link>
-          {/* <MDBNavbarBrand>
-            <Link className="text-black text-decoration-none" to="/">
-              TIENDANUESTRA
-            </Link>
-          </MDBNavbarBrand> */}
           <MDBNavbarToggler
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
@@ -74,29 +68,23 @@ export default function NavBar() {
             <MDBIcon icon="bars" fas />
           </MDBNavbarToggler>
           <MDBCollapse navbar show={showBasic}>
-            <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
+            <MDBNavbarNav className="flex-row mr-auto mb-lg-0">
               <MDBNavbarItem>
-                <MDBNavbarLink active aria-current="page" href="#">
-                  <Link to="/home">
-                    <HomeIcon sx={{ fontSize: 45 }}></HomeIcon>
-                  </Link>
+                <MDBNavbarLink href="/home" tabIndex={-1} aria-disabled="true">
+                  <MDBIcon fas icon="home" />
                 </MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink>
-                  <ContainerLogIn />
-                </MDBNavbarLink>
+                <ContainerLogIn />
               </MDBNavbarItem>
 
               <MDBNavbarItem>
-                <MDBNavbarLink href="#" tabIndex={-1} aria-disabled="true">
-                  <Link to="/cart">
-                    <IconButton aria-label="cart">
-                      <StyledBadge badgeContent={cart} color="secondary">
-                        <ShoppingCartIcon color="primary" />
-                      </StyledBadge>
-                    </IconButton>
-                  </Link>
+                <MDBNavbarLink href="/cart" tabIndex={-1} aria-disabled="true">
+                  <IconButton aria-label="cart">
+                    <StyledBadge badgeContent={cart} color="secondary">
+                      <ShoppingCartIcon color="primary" />
+                    </StyledBadge>
+                  </IconButton>
                 </MDBNavbarLink>
               </MDBNavbarItem>
             </MDBNavbarNav>
@@ -117,7 +105,9 @@ export default function NavBar() {
           <MDBNavbarBrand>
             <span className="text-black">TIENDANUESTRA</span>
           </MDBNavbarBrand>
+
           <MDBNavbarToggler
+            className="text-black"
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
@@ -125,36 +115,10 @@ export default function NavBar() {
           >
             <MDBIcon icon="bars" fas />
           </MDBNavbarToggler>
-          <MDBCollapse navbar show={showBasic}>
-            <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
-              <MDBNavbarItem>
-                <MDBNavbarLink active aria-current="page" href="#">
-                  <Link to="/home">
-                    <HomeIcon sx={{ fontSize: 45 }}></HomeIcon>
-                  </Link>
-                </MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink>
-                  <ContainerLogIn />
-                </MDBNavbarLink>
-              </MDBNavbarItem>
-
-              <MDBNavbarItem>
-                <MDBNavbarLink href="#" tabIndex={-1} aria-disabled="true">
-                  <Link to="/cart">
-                    <IconButton aria-label="cart">
-                      <StyledBadge badgeContent={cart} color="secondary">
-                        <ShoppingCartIcon color="primary" />
-                      </StyledBadge>
-                    </IconButton>
-                  </Link>
-                </MDBNavbarLink>
-              </MDBNavbarItem>
-            </MDBNavbarNav>
-
-            <form className="d-flex input-group w-auto">
+          <MDBCollapse navbar show={showBasic} className="flex-row ">
+            <form className="d-flex input-group">
               <input
+                style={{ maxWidth: "300px" }}
                 className="form-control"
                 name="search"
                 onChange={filterUsers}
@@ -162,6 +126,27 @@ export default function NavBar() {
                 placeholder="Search Clothing..."
               />
             </form>
+            <MDBNavbarNav className="mb-0 mt-2 flex-row justify-content-end">
+              <MDBNavbarItem>
+                <MDBNavbarLink active aria-current="page" href="/home">
+                  <HomeIcon sx={{ fontSize: 45 }}></HomeIcon>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href="/cart" tabIndex={-1} aria-disabled="true">
+                  <IconButton aria-label="cart">
+                    <StyledBadge badgeContent={cart} color="secondary">
+                      <ShoppingCartIcon color="primary" sx={{ fontSize: 35 }} />
+                    </StyledBadge>
+                  </IconButton>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink>
+                  <ContainerLogIn />
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+            </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>
       )}
