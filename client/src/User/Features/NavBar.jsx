@@ -23,10 +23,7 @@ import {
   MDBNavbarItem,
   MDBNavbarLink,
   MDBBtn,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
+  MDBInputGroup,
   MDBCollapse,
 } from "mdb-react-ui-kit";
 
@@ -105,7 +102,6 @@ export default function NavBar() {
           <MDBNavbarBrand>
             <span className="text-black">TIENDANUESTRA</span>
           </MDBNavbarBrand>
-
           <MDBNavbarToggler
             className="text-black"
             aria-controls="navbarSupportedContent"
@@ -115,38 +111,45 @@ export default function NavBar() {
           >
             <MDBIcon icon="bars" fas />
           </MDBNavbarToggler>
-          <MDBCollapse navbar show={showBasic} className="flex-row ">
-            <form className="d-flex input-group">
-              <input
-                style={{ maxWidth: "300px" }}
-                className="form-control"
-                name="search"
-                onChange={filterUsers}
-                ref={inputRef}
-                placeholder="Search Clothing..."
-              />
-            </form>
-            <MDBNavbarNav className="mb-0 mt-2 flex-row justify-content-end">
+          <MDBCollapse navbar show={showBasic} className="flex-row">
+            <MDBNavbarNav className="mb-0 mt-0 flex-row justify-content-center align-items-center">
               <MDBNavbarItem>
-                <MDBNavbarLink active aria-current="page" href="/home">
+                <MDBNavbarLink
+                  active
+                  aria-current="page"
+                  href="/home"
+                  style={{ color: "deepskyblue" }}
+                >
                   <HomeIcon sx={{ fontSize: 45 }}></HomeIcon>
                 </MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
                 <MDBNavbarLink href="/cart" tabIndex={-1} aria-disabled="true">
                   <IconButton aria-label="cart">
-                    <StyledBadge badgeContent={cart} color="secondary">
-                      <ShoppingCartIcon color="primary" sx={{ fontSize: 35 }} />
+                    <StyledBadge badgeContent={cart}>
+                      <ShoppingCartIcon
+                        sx={{ fontSize: 35 }}
+                        style={{ color: "deepskyblue" }}
+                      />
                     </StyledBadge>
                   </IconButton>
                 </MDBNavbarLink>
               </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink>
-                  <ContainerLogIn />
-                </MDBNavbarLink>
-              </MDBNavbarItem>
+              <ContainerLogIn />
             </MDBNavbarNav>
+            <MDBInputGroup tag="form" className="d-flex w-auto">
+              <input
+                style={{ maxWidth: "300px" }}
+                className="form-control"
+                name="search"
+                onChange={filterUsers}
+                ref={inputRef}
+                placeholder=" Search Clothing..."
+                aria-label="Search"
+                type="Search"
+              />
+              <MDBBtn outline>Search</MDBBtn>
+            </MDBInputGroup>
           </MDBCollapse>
         </MDBContainer>
       )}
