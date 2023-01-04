@@ -28,14 +28,14 @@ export const ContainerLogIn = () => {
       {Object.keys(auth) < 1 ? (
         <>
           <MDBNavbarItem>
-            <MDBNavbarLink to="/formRegister">
+            <MDBNavbarLink href="/formRegister">
               <MDBBtn color="primary" outline className="">
                 Register
               </MDBBtn>
             </MDBNavbarLink>
           </MDBNavbarItem>
           <MDBNavbarItem>
-            <MDBNavbarLink to="/login">
+            <MDBNavbarLink href="/login">
               <MDBBtn color="primary" outline className="">
                 Log In
               </MDBBtn>
