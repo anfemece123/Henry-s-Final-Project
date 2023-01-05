@@ -1,4 +1,11 @@
 import * as React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../../Redux/Reducer/cartSlice";
+import { logout } from "../../Redux/Reducer/authSlice";
+import { Link, useNavigate } from "react-router-dom";
+import { getAllusers, getByIdUser } from "../../Redux/Reducer/Users";
+import axios from "axios";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -11,14 +18,20 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "../../Redux/Reducer/cartSlice";
-import { logout } from "../../Redux/Reducer/authSlice";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { getAllusers, getByIdUser } from "../../Redux/Reducer/Users";
-import { useEffect } from "react";
-// import { get } from "../../../../api/src/app";
+import HistoryIcon from "@mui/icons-material/History";
+import {
+  MDBContainer,
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarToggler,
+  MDBIcon,
+  MDBNavbarNav,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBBtn,
+  MDBInputGroup,
+  MDBCollapse,
+} from "mdb-react-ui-kit";
 
 export default function ContainerMenuUser() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -51,7 +64,7 @@ export default function ContainerMenuUser() {
     //si esta logueado y tiene carrito , mando el carrito al back
     if (userId && Object.keys(cart).length > 0) {
       axios
-        .post(`http://localhost:3001/cart/newCart/${userId}`, cart)
+        .post(`http://localhost:3001/cart/newCart/${userId}`, cart) //url
         .then((response) => console.log(response.data))
         .catch((error) => console.log(error));
     }
@@ -115,37 +128,40 @@ export default function ContainerMenuUser() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <Link to="/profile">
-          <MenuItem onClick={() => dispatch(getAllusers())}>
-            <Avatar sx={{ width: 32, height: 32 }}>{name}</Avatar>
-            Profile
-          </MenuItem>
-        </Link>
-        {/* <MenuItem>
-          <Avatar /> My account
-        </MenuItem> */}
-        <Divider />
-        {/* <MenuItem>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem> */}
-        <Link to={`/purchaseHistory/${userId}`}>
-          <MenuItem>
-            <ListItemIcon>
-              <Settings fontSize="small" />
-            </ListItemIcon>
-            Purchase history
-          </MenuItem>
-        </Link>
         <MenuItem>
-          <button onClick={logOutSubmit}>
-            <ListItemIcon>
+          <ListItemIcon className="align-items-center">
+            <Avatar fontSize="large" className="m-0">
+              {name}
+            </Avatar>
+            <Link to="/profile" className="text-decoration-none">
+              &nbsp; Profile
+            </Link>
+          </ListItemIcon>
+        </MenuItem>
+
+        <Divider />
+
+        <MenuItem>
+          <ListItemIcon className="align-items-center">
+            <HistoryIcon fontSize="large" />
+            <Link
+              to={`/purchaseHistory/${userId}`}
+              className="text-decoration-none"
+            >
+              &nbsp; Purchase history
+            </Link>
+          </ListItemIcon>
+        </MenuItem>
+
+        <Divider />
+
+        <MenuItem className="justify-content-center">
+          <ListItemIcon>
+            <MDBBtn color="primary" outline onClick={logOutSubmit}>
               <Logout fontSize="small" />
-            </ListItemIcon>
-            Logout
-          </button>
+              &nbsp; Logout
+            </MDBBtn>
+          </ListItemIcon>
         </MenuItem>
       </Menu>
     </React.Fragment>
