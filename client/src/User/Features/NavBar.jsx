@@ -23,7 +23,6 @@ import {
   MDBNavbarNav,
   MDBNavbarItem,
   MDBNavbarLink,
-  MDBBtn,
   MDBInputGroup,
   MDBCollapse,
 } from "mdb-react-ui-kit";
@@ -166,7 +165,10 @@ export default function NavBar() {
               </MDBNavbarItem>
               <ContainerLogIn />
             </MDBNavbarNav>
-            <MDBInputGroup tag="form" className="d-flex w-auto">
+            <MDBInputGroup
+              tag="form"
+              className="d-flex w-auto justify-content-center"
+            >
               <input
                 style={{ maxWidth: "300px" }}
                 className="form-control"
