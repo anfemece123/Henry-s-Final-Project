@@ -1,18 +1,19 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
+import { ContainerLogIn } from "./ContainerLogIn";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useDispatch, useSelector } from "react-redux";
 import HomeIcon from "@mui/icons-material/Home";
 import LoginIcon from "@mui/icons-material/Login";
 // import MenuContainer from "../../Admin/container/MenuCotainer";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { logout } from "../../Redux/Reducer/authSlice";
-import { clearCart } from "../../Redux/Reducer/cartSlice";
-import { ContainerLogIn } from "./ContainerLogIn";
+// import LogoutIcon from "@mui/icons-material/Logout";
+// import { logout } from "../../Redux/Reducer/authSlice";
+// import { clearCart } from "../../Redux/Reducer/cartSlice";
+
 import {
   MDBContainer,
   MDBNavbar,

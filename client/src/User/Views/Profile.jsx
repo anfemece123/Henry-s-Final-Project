@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
+import Footer from "../../User/Features/Footer";
+import NavBar from "../../User/Features/NavBar";
+import { useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllusers, getByIdUser } from "../../Redux/Reducer/Users";
+import EditIcon from "@mui/icons-material/Edit";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import BusinessIcon from "@mui/icons-material/Business";
-import Footer from "../../User/Features/Footer";
-import NavBar from "../../User/Features/NavBar";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
-import { getAllusers, getByIdUser } from "../../Redux/Reducer/Users";
-import EditIcon from "@mui/icons-material/Edit";
 import { Container, Row, Col, Image } from "react-bootstrap";
 
 export default function Profile() {
