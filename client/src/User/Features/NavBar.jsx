@@ -50,12 +50,13 @@ export default function NavBar() {
   return (
     <MDBNavbar expand="md" bgColor="light">
       {auth.isAdmin === true ? (
-        <MDBContainer fluid>
-          <Link to="/admin">
-            <MDBBtn className="text-black" color="light">
-              Admin
-            </MDBBtn>
-          </Link>
+        <MDBContainer fluid className="align-items-center">
+          <MDBNavbarBrand>
+            <Link to="/admin" className="text-decoration-none">
+              ADMIN PANEL
+            </Link>
+          </MDBNavbarBrand>
+
           <MDBNavbarToggler
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
@@ -64,29 +65,44 @@ export default function NavBar() {
           >
             <MDBIcon icon="bars" fas />
           </MDBNavbarToggler>
-          <MDBCollapse navbar show={showBasic}>
-            <MDBNavbarNav className="flex-row mr-auto mb-lg-0">
+          <MDBCollapse navbar show={showBasic} className="flex-row">
+            <MDBNavbarNav className="mb-0 mt-0 flex-row justify-content-center align-items-center">
               <MDBNavbarItem>
-                <MDBNavbarLink href="/home" tabIndex={-1} aria-disabled="true">
+                {/* <MDBNavbarLink href="/home" tabIndex={-1} aria-disabled="true">
                   <MDBIcon fas icon="home" />
+                </MDBNavbarLink> */}
+                <MDBNavbarLink
+                  active
+                  aria-current="page"
+                  href="/home"
+                  style={{ color: "deepskyblue" }}
+                >
+                  <HomeIcon sx={{ fontSize: 45 }}></HomeIcon>
                 </MDBNavbarLink>
               </MDBNavbarItem>
-              <MDBNavbarItem>
-                <ContainerLogIn />
-              </MDBNavbarItem>
-
               <MDBNavbarItem>
                 <MDBNavbarLink href="/cart" tabIndex={-1} aria-disabled="true">
                   <IconButton aria-label="cart">
+                    <StyledBadge badgeContent={cart}>
+                      <ShoppingCartIcon
+                        sx={{ fontSize: 35 }}
+                        style={{ color: "deepskyblue" }}
+                      />
+                    </StyledBadge>
+                  </IconButton>
+                  {/*   <IconButton aria-label="cart">
                     <StyledBadge badgeContent={cart} color="secondary">
                       <ShoppingCartIcon color="primary" />
                     </StyledBadge>
-                  </IconButton>
+                  </IconButton> */}
                 </MDBNavbarLink>
               </MDBNavbarItem>
-            </MDBNavbarNav>
 
-            <form className="d-flex input-group w-auto">
+              <MDBNavbarItem>
+                <ContainerLogIn />
+              </MDBNavbarItem>
+            </MDBNavbarNav>
+            {/*  <form className="d-flex input-group w-auto">
               <input
                 className="form-control"
                 name="search"
@@ -94,7 +110,19 @@ export default function NavBar() {
                 ref={inputRef}
                 placeholder="Search Clothing..."
               />
-            </form>
+            </form> */}
+            <MDBInputGroup tag="form" className="d-flex w-auto">
+              <input
+                style={{ maxWidth: "300px" }}
+                className="form-control"
+                name="search"
+                onChange={filterUsers}
+                ref={inputRef}
+                placeholder=" Search Clothing..."
+                aria-label="Search"
+                type="Search"
+              />
+            </MDBInputGroup>
           </MDBCollapse>
         </MDBContainer>
       ) : (
@@ -148,7 +176,6 @@ export default function NavBar() {
                 aria-label="Search"
                 type="Search"
               />
-              <MDBBtn outline>Search</MDBBtn>
             </MDBInputGroup>
           </MDBCollapse>
         </MDBContainer>
