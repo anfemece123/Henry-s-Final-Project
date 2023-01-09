@@ -105,7 +105,7 @@ export default function RatingSystem() {
               />
             </MDBCardBody>
           </MDBCard>
-          <FormControl maxWidth="md" className=" text-center ">
+          <FormControl maxWidth="md" className=" text-center mb-5">
             <Box
               sx={{
                 "& > legend": { mt: 2 },

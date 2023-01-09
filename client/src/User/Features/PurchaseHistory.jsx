@@ -35,7 +35,7 @@ export default function PurcharseHistory() {
               className="p-0 pt-4 m-0 shadow-4-strong"
             >
               <MDBRow className="p-0 m-0">
-                <MDBCol className="p-0 m-0">
+                <MDBCol className="p-0 ps-3 m-0">
                   <h2>Order Number: {element.id}</h2>
                   <p>Purchase Date: {element.createdAt}</p>
                   <p>Products Quantity: {element.products_quantity}</p>
@@ -87,11 +87,9 @@ export default function PurcharseHistory() {
                       size="4"
                       xl="3"
                     >
-                      <p className="">
                         <Link to={`/createReview/${element.id}`}>
                           Make A Review
-                        </Link>
-                      </p>
+                        </Link> 
                     </MDBCol>
                   </MDBRow>
                 );

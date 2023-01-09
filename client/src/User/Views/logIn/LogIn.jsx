@@ -94,7 +94,7 @@ export default function LogIn() {
       callback: handleCallBack,
     });
 
-    console.log(google.accounts.id.initialize({
+    console.log(window.google.accounts.id.initialize({
       client_id:
         "367427673923-91opfd7qm11akhltnu97v0emf9e06tj1.apps.googleusercontent.com",
       callback: handleCallBack,

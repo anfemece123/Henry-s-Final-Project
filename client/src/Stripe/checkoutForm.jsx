@@ -99,7 +99,7 @@ export default function checkoutForm() {
 
   return (
     <MDBContainer fluid className="p-0 m-0">
-       <MDBRow fluid className="p-0 m-0">
+       <MDBRow className="p-0 m-0">
         <MDBCol className="p-0 m-0">
           <NavBar />
         </MDBCol>
