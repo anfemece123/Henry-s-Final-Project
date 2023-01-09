@@ -26,8 +26,6 @@ import {
   MDBIcon,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 
 export const Cart = () => {
   const dispatch = useDispatch();
@@ -110,7 +108,7 @@ export const Cart = () => {
 
   return (
     <MDBContainer fluid className="p-0 m-0" id="chec-div">
-      <MDBRow fluid className="p-0 m-0">
+      <MDBRow  className="p-0 m-0">
         <MDBCol className="p-0 m-0">
           <NavBar />
         </MDBCol>
@@ -132,7 +130,6 @@ export const Cart = () => {
           <MDBIcon
             color="danger"
             type="button"
-            rounded
             size="sm"
             fas
             icon="trash-alt"
@@ -140,7 +137,7 @@ export const Cart = () => {
               dispatch(clearCart());
             }}
           >
-            Clear cart
+          &nbsp; Clear cart
           </MDBIcon>
         </MDBCol>
       </MDBRow>
@@ -150,11 +147,11 @@ export const Cart = () => {
           return (
             <MDBRow
               key={index}
-              fluid
+             
               center
               className="p-0 pt-4 m-0 shadow-4-strong"
             >
-              <MDBRow classNameName="">
+              <MDBRow className="">
                 <MDBCol className="">
                   <h2 className="pb-2 text-center">{element.title}</h2>
                 </MDBCol>
@@ -196,9 +193,9 @@ export const Cart = () => {
                 <MDBIcon
                   color="danger"
                   type="button"
-                  rounded
+                  
                   size="sm"
-                  fasc
+                  fas
                   icon="trash-alt"
                   onClick={() => {
                     deleteItemShopList(index);
@@ -212,16 +209,16 @@ export const Cart = () => {
           );
         })
       ) : (
-        <MDBRow classNameName="">
+        <MDBRow className="bg-light">
           <img src={emptyCart} />
         </MDBRow>
       )}
-      <MDBRow light bgColor="light">
+      <MDBRow  className="bg-light">
         <MDBCol>
           <h3 className="mt-3 text-center">Summary</h3>
         </MDBCol>
       </MDBRow>
-      <MDBRow center light bgColor="light">
+      <MDBRow center  className="bg-light">
         <MDBCol xl="3">
           <p className="text-center">
             <MDBIcon icon="check-circle" className="me-2 text-success" />

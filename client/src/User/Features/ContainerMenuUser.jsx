@@ -88,6 +88,7 @@ export default function ContainerMenuUser() {
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
+            className="m-0"
           >
             <Avatar alt="Remy Sharp" src={image.profileImage} />
           </IconButton>

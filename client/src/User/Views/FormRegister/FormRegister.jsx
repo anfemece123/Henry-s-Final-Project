@@ -7,7 +7,13 @@ import { formRegister } from "../../../Redux/actions";
 import swal from "sweetalert";
 import NavBar from "../../Features/NavBar";
 import Footer from "../../Features/Footer";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBBtn,
+  MDBInputGroup,
+} from "mdb-react-ui-kit";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -234,13 +240,28 @@ export const ForrmRegister = () => {
                     <Form.Group className="mb-3 p-2">
                       <p hidden>{(values.profileImage = image)}</p>
                       <p className="text-muted">Image</p>
-                      <input
+                      {/* <input
                         type="file"
                         id="profileImage"
                         name="profileImage"
                         onChange={uploadImage}
                         onBlur={handleBlur}
-                      />
+                      /> */}
+                      <MDBInputGroup
+                        className="mb-3"
+                        textBefore="Upload"
+                        textTag="label"
+                        textProps={{ htmlFor: "inputGroupFile01" }}
+                      >
+                        <input
+                          className="form-control"
+                          type="file"
+                          id="profileImage"
+                          name="profileImage"
+                          onChange={uploadImage}
+                          onBlur={handleBlur}
+                        />
+                      </MDBInputGroup>
                       {loading ? (
                         <img src="https://tradinglatam.com/wp-content/uploads/2019/04/loading-gif-png-4.gif" />
                       ) : (
@@ -248,9 +269,9 @@ export const ForrmRegister = () => {
                       )}
                     </Form.Group>
                     <div className="mb-3 p-2">
-                      <button className="" type="submit">
+                      <MDBBtn color="primary" outline type="submit">
                         Register Account
-                      </button>
+                      </MDBBtn>
                     </div>
                     <hr className="" />
 
