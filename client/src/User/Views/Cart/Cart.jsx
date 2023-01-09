@@ -26,8 +26,6 @@ import {
   MDBIcon,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 
 export const Cart = () => {
   const dispatch = useDispatch();

@@ -1,5 +1,4 @@
 import React from "react";
-import Container from "@mui/material/Container";
 import { TextField, Avatar, Stack } from "@mui/material";
 
 export default function CheckoutStructure({
@@ -11,7 +10,7 @@ export default function CheckoutStructure({
   email,
 }) {
   return (
-    <Container>
+    <>
       <Stack spacing={2}>
         <Avatar alt={first_name} src={profileImage} />
         <TextField
@@ -51,6 +50,6 @@ export default function CheckoutStructure({
           variant="filled"
         />
       </Stack>
-    </Container>
+    </>
   );
 }
