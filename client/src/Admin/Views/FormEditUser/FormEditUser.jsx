@@ -5,10 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
 import { updateUser } from "../../../Redux/actions";
-import { getAllusers, getByIdUser } from "../../../Redux/Reducer/Users";
+import { getByIdUser } from "../../../Redux/Reducer/Users";
 import NavBar from "../../../User/Features/NavBar";
 import Footer from "../../../User/Features/Footer";
-import { Form, Button, Col, Container, Row, Image } from "react-bootstrap";
+import { Form, Button, Col, Container, Row, Image } from "react-bootstrap"
+import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";;
 
 export const FormEditUser = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
@@ -60,7 +61,7 @@ export const FormEditUser = () => {
   };
 
   return (
-    <Container fluid>
+    <MDBContainer fluid className="p-0 m-0">
       <Row>
         <Col lg={12}>
           <NavBar />
@@ -68,7 +69,9 @@ export const FormEditUser = () => {
         <Col lg={12} className="text-center mt-5 mb-2">
           <h1>Edit your profile</h1>
         </Col>
-        <Row className="w-50 text-center m-auto mt-5 p-3 border border-2 shadow-lg">
+        <Row style={{maxWidth:"992px"}}
+        className="text-center m-auto mt-5 p-3 border border-2 shadow-lg">
+        <MDBCol >
           <Formik
             initialValues={{
               first_name: infoUser.first_name,
@@ -96,7 +99,7 @@ export const FormEditUser = () => {
               handleBlur,
               touched,
             }) => (
-              <Form onSubmit={handleSubmit}>
+              <Form onSubmit={handleSubmit} className="p-0 m-0">
                 <Form.Group controlId="first_name">
                   <Form.Label>First Name</Form.Label>
                   <Form.Control
@@ -180,17 +183,18 @@ export const FormEditUser = () => {
                     />
                   )}
                 </Form.Group>
-                <Button className="mt-5 mb-5" onClick={alert}>
-                  Edit User
+                <Button className="mt-5 mb-2" onClick={alert}>
+                  Done!
                 </Button>
               </Form>
             )}
           </Formik>
+          </MDBCol>
         </Row>
         <Col lg={12} className="mt-5">
           <Footer />
         </Col>
       </Row>
-    </Container>
+    </MDBContainer>
   );
 };

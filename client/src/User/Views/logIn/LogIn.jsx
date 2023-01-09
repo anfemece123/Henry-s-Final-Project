@@ -1,4 +1,14 @@
 import { React, useEffect } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import { googleAuth } from "../../../Redux/actions/index";
+import { useDispatch, useSelector } from "react-redux";
+import NavBar from "../../Features/NavBar";
+import { logIn } from "../../../Redux/actions/index";
+import { errorRemove } from "../../../Redux/Reducer/authSlice";
+
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,17 +21,13 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import NavBar from "../../Features/NavBar";
-import { logIn } from "../../../Redux/actions/index";
-import { useNavigate, useNavigation } from "react-router-dom";
+
 import swal from "sweetalert";
-import { Link } from "react-router-dom";
-import { errorRemove } from "../../../Redux/Reducer/authSlice";
-import jwt_decode from "jwt-decode";
-import { redirect } from "react-router-dom";
-import { googleAuth } from "../../../Redux/actions/index";
+
+
+
+
+
 import logo from "../../../Images/logo.png";
 
 function Copyright(props) {
@@ -82,18 +88,25 @@ export default function LogIn() {
 
   useEffect(() => {
     // Variables globales de google (vienen del script que estan en el html)
-    google.accounts.id.initialize({
+    window.google.accounts.id.initialize({
       client_id:
         "367427673923-91opfd7qm11akhltnu97v0emf9e06tj1.apps.googleusercontent.com",
       callback: handleCallBack,
     });
 
-    google.accounts.id.renderButton(document.getElementById("signInDiv"), {
+    console.log(google.accounts.id.initialize({
+      client_id:
+        "367427673923-91opfd7qm11akhltnu97v0emf9e06tj1.apps.googleusercontent.com",
+      callback: handleCallBack,
+    }))
+    
+    window.google.accounts.id.renderButton(document.getElementById("signInDiv"), {
       theme: "outline",
       size: "large",
     });
 
-    google.accounts.id.prompt(); // Esto hace que te "popee" el cartelito de elegir cuenta al loguearte
+    // Esto hace que te "popee" el cartelito de elegir cuenta al loguearte
+    google.accounts.id.prompt(); 
 
     // hasta aca llega google
     dispatch(errorRemove());

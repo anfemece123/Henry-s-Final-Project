@@ -21,7 +21,7 @@ export default function Profile() {
     dispatch(getByIdUser(user.id));
   }, [dispatch]);
 
-  function editBotoAlert(e) {
+ /*  function editBotoAlert(e) {
     swal({
       title: "Are you sure?",
       text: "Remember to complete all the fields",
@@ -33,7 +33,7 @@ export default function Profile() {
         navigate("/formEditUser");
       }
     });
-  }
+  } */
   return (
     <MDBContainer fluid className="p-0 m-0">
       <MDBRow>
@@ -45,9 +45,10 @@ export default function Profile() {
         <MDBCol className="d-flex justify-content-end p-3">
           <MDBBtn
             onClick={() => {
-              {
+             /*  {
                 editBotoAlert(user.id);
-              }
+              } */
+              navigate("/formEditUser")
             }}
           >
             <EditIcon onClick={() => dispatch(getByIdUser(user.id))} />
