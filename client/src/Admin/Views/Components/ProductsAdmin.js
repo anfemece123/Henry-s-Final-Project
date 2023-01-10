@@ -65,9 +65,9 @@ export default function ProductsAdmin() {
         </MDBTableHead>
         <MDBTableBody>
           {products
-            ? products.map((element) => {
+            ? products.map((element, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>
                       <div className="d-flex align-items-center">
                         <img
@@ -104,7 +104,6 @@ export default function ProductsAdmin() {
                             alertButtonDelete(element.id);
                           }
                         }}
-                        rounded
                         size="sm"
                         fas
                         icon="trash-alt"
@@ -119,7 +118,6 @@ export default function ProductsAdmin() {
                             editBotoAlert(element.id);
                           }
                         }}
-                        rounded
                         size="sm"
                       >
                         <MDBIcon

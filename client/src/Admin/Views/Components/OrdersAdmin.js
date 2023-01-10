@@ -12,11 +12,6 @@ import { getAllOrders } from "../../../Redux/Reducer/OrderSlice";
 
 export default function OrdersAdmin({ color }) {
   const user = useSelector((state) => state.users.allUsers);
-  const userMap = user.map((e) => e.Orders.length);
-  console.log(
-    "orders",
-    userMap.map((e) => e)
-  );
 
   const dispatch = useDispatch();
 
@@ -27,13 +22,13 @@ export default function OrdersAdmin({ color }) {
   return (
     <div>
       <div>
-        {user.map((user) => {
+        {user.map((user, index) => {
           return (
-            <div>
+            <div key={index}>
               {user.Orders.length > 0 ? (
                 <div className="m-2">
                   <MDBTypography tag="strong" variant="h4">
-                    Information user
+                    User Data
                   </MDBTypography>
                   <hr />
                   <li className="text-muted">
@@ -54,9 +49,9 @@ export default function OrdersAdmin({ color }) {
                 </div>
               ) : null}
 
-              {user.Orders.map((order) => {
+              {user.Orders.map((order,index) => {
                 return (
-                  <div className="mt-4">
+                  <div key={index} className="mt-4">
                     {/* Projects table */}
                     <MDBTable responsive>
                       <MDBTableHead>
@@ -71,8 +66,8 @@ export default function OrdersAdmin({ color }) {
                       </MDBTableHead>
 
                       <MDBTableBody>
-                        {order.products.map((element) => (
-                          <tr>
+                        {order.products.map((element,index) => (
+                          <tr key={index}>
                             <td>
                               <div className="d-flex align-items-center">
                                 <img

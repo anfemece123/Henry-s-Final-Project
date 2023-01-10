@@ -14,8 +14,6 @@ import {
   MDBBtn,
   MDBInputGroup,
 } from "mdb-react-ui-kit";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 export const ForrmRegister = () => {
@@ -240,13 +238,6 @@ export const ForrmRegister = () => {
                     <Form.Group className="mb-3 p-2">
                       <p hidden>{(values.profileImage = image)}</p>
                       <p className="text-muted">Image</p>
-                      {/* <input
-                        type="file"
-                        id="profileImage"
-                        name="profileImage"
-                        onChange={uploadImage}
-                        onBlur={handleBlur}
-                      /> */}
                       <MDBInputGroup
                         className="mb-3"
                         textBefore="Upload"
