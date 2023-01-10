@@ -8,6 +8,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import image from "../../Images/welcome-bg.jpg";
+import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 
 const Welcome = () => {
   const url = "https://henry-s-final-project-backend-production.up.railway.app";
@@ -25,9 +26,10 @@ const Welcome = () => {
   }
 
   return (
-    <div className="text-center flex min-h-screen min-w-full bg-slate-200">
-      <div className="m-auto">
-        <Card sx={{ maxWidth: 800 }}>
+    <MDBContainer style={{minHeight: "100vh"}} fluid className="text-center d-flex justify-content-center align-items-center bg-slate-200 p-0 m-0">
+      <MDBRow className="m-auto">
+        <MDBCol>
+        <Card sx={{ maxWidth: 800 }} className="shadow-lg">
           <CardActionArea>
             <CardMedia
               component="img"
@@ -47,14 +49,17 @@ const Welcome = () => {
               </Typography>
             </CardContent>
           </CardActionArea>
-          <CardActions>
-            <Button size="large" className="text-center" color="primary">
-              <Link to={"/login"}> Log in</Link>
-            </Button>
+          <CardActions className="d-flex justify-content-center">
+            <Link to="/login">
+              <MDBBtn color="primary" outline >
+                Log In
+              </MDBBtn>
+            </Link>
           </CardActions>
         </Card>
-      </div>
-    </div>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 };
 

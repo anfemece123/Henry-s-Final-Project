@@ -20,7 +20,7 @@ export default function PurcharseHistory() {
   const reviewID = useSelector((state) => state.users.userId);
   return (
     <MDBContainer fluid className="p-0 m-0" id="chec-div">
-      <MDBRow fluid className="p-0 m-0">
+      <MDBRow className="p-0 m-0">
         <MDBCol className="p-0 m-0">
           <NavBar />
         </MDBCol>
@@ -35,7 +35,7 @@ export default function PurcharseHistory() {
               className="p-0 pt-4 m-0 shadow-4-strong"
             >
               <MDBRow className="p-0 m-0">
-                <MDBCol className="p-0 m-0">
+                <MDBCol className="p-0 ps-3 m-0">
                   <h2>Order Number: {element.id}</h2>
                   <p>Purchase Date: {element.createdAt}</p>
                   <p>Products Quantity: {element.products_quantity}</p>
@@ -47,7 +47,6 @@ export default function PurcharseHistory() {
                 return (
                   <MDBRow
                     key={index}
-                    fluid
                     center
                     className="p-0 pt-4 pb-4 m-0 shadow-4-strong"
                   >
@@ -87,11 +86,9 @@ export default function PurcharseHistory() {
                       size="4"
                       xl="3"
                     >
-                      <p className="">
                         <Link to={`/createReview/${element.id}`}>
                           Make A Review
-                        </Link>
-                      </p>
+                        </Link> 
                     </MDBCol>
                   </MDBRow>
                 );
@@ -100,7 +97,7 @@ export default function PurcharseHistory() {
           );
         })
       ) : (
-        <MDBRow fluid className="p-0 m-0">
+        <MDBRow className="p-0 m-0">
           <MDBCol className="p-0 m-0">
             <h1>No Purchases</h1>
           </MDBCol>

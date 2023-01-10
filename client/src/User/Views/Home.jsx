@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import NavBar from "../Features/NavBar";
 import Loading from "../Features/Loading";
 import Footer from "../Features/Footer";
@@ -9,8 +8,8 @@ import { ErrorSearch } from "../Features/ErrorSearch";
 import { Filtros } from "../Features/Filtros";
 import { getAllProducts } from "../../Redux/Reducer/allProductSlice";
 import Card from "../Features/Card";
-
 import Paginado from "../Features/Paginado";
+import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 
 export default function Home() {
   const product = useSelector((state) => state.allProducts);

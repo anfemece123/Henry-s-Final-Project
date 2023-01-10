@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getProductDetails } from "../../Redux/Reducer/productDetails";
-import { useParams } from "react-router";
+
 import Loading from "../Features/Loading";
 import NavBar from "../Features/NavBar";
 import Footer from "../Features/Footer";
+import ReviewSystem from "./Rating/ReviewSystem";
 import { addProduct } from "../../Redux/Reducer/cartSlice";
+import { getProductDetails } from "../../Redux/Reducer/productDetails";
+import { getAllReviews } from "../../Redux/Reducer/RatingSlice";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import { AlertTitle } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { Link } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ReviewSystem from "./Rating/ReviewSystem";
-import { getAllReviews } from "../../Redux/Reducer/RatingSlice";
+
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 
 export default function Details() {
@@ -28,7 +30,7 @@ export default function Details() {
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = React.useState(false);
   const [warning, setWarning] = React.useState(false);
-  const productId = details.details.id;
+
 
   useEffect(() => {
     dispatch(getProductDetails(id));
@@ -74,7 +76,7 @@ export default function Details() {
 
   return (
     <MDBContainer fluid className="p-0 m-0">
-      <MDBRow fluid className="p-0 m-0">
+      <MDBRow className="p-0 m-0">
         <MDBCol className="p-0 m-0">
           <NavBar />
         </MDBCol>

@@ -39,33 +39,33 @@ export default function Card({
           {title}
         </MDBCardTitle>
         <MDBCardText>
-          <span>Price: $</span>
-          <span>{price}</span>
+          <span >Price: </span>
+          <span className="fw-bolder">${price}</span>
           <br />
           <span>Size: </span>
-          <span>{size}</span>
+          <span className="fw-bolder">{size}</span>
 
           {stock ? (
             <div>
               <span>Stock: </span>
-              <span>{stock}</span>
+              <span className="fw-bolder">{stock}</span>
             </div>
           ) : (
             <div>
               <span>Stock:</span>
-              <span>Not Available</span>
+              <span className="fw-bolder"> Not Available</span>
             </div>
           )}
 
           {gender ? (
             <div>
               <span>Gender:</span>
-              <span> {gender}</span>
+              <span className="fw-bolder"> {gender}</span>
             </div>
           ) : (
             <div>
               <span>Gender:</span>
-              <span> All</span>
+              <span className="fw-bolder"> All</span>
             </div>
           )}
         </MDBCardText>

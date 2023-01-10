@@ -26,6 +26,7 @@ export default function UsersAdmin() {
 
   if (useSelector((state) => !state.users.loading && state.users.error))
     return <h1>{error}</h1>;
+
   return (
     <MDBTable responsive>
       <MDBTableHead>
@@ -39,9 +40,9 @@ export default function UsersAdmin() {
       </MDBTableHead>
       <MDBTableBody>
         {Array.isArray(user)
-          ? user.map((element) => {
+          ? user.map((element, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>
                     <div className="d-flex align-items-center">
                       <img

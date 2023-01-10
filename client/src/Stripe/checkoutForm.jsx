@@ -4,15 +4,16 @@ import axios from "axios";
 import swal from "sweetalert";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { getAllusers, getByIdUser } from "../Redux/Reducer/Users";
 import { clearCart } from "../Redux/Reducer/cartSlice";
 import NavBar from "../User/Features/NavBar";
-import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
+import Footer from "../User/Features/Footer";
 import CheckoutStructure from "./CheckoutStructure";
-import { Card, Stack } from "@mui/material";
+
+import { Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { getAllusers, getByIdUser } from "../Redux/Reducer/Users";
-import { MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
+
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBSpinner } from "mdb-react-ui-kit";
 
 export default function checkoutForm() {
   const stripe = useStripe();
@@ -26,7 +27,6 @@ export default function checkoutForm() {
   const [loading, setLoading] = React.useState(false);
 
   const totalCart = useSelector((state) => state.cart.total);
-  console.log("array de productos", cart.products);
   const url = "https://henry-s-final-project-backend-production.up.railway.app";
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -97,47 +97,61 @@ export default function checkoutForm() {
   }, [dispatch]);
 
   return (
-    <div>
-      <NavBar />
-      <Link to="/cart">
-        <div className="flex items-center text-gray-500 hover:text-gray-600 dark:text-black cursor-pointer">
-          <ArrowBackIcon />
-          <p className="text-sm pl-2 leading-none dark:hover:text-gray-200">
-            back to cart
-          </p>
-        </div>
-      </Link>
-      <Container className="border border-red-900">
-        <Stack spacing={3}>
-          <CheckoutStructure
-            first_name={user.first_name}
-            address={user.address}
-            phoneNumber={user.phoneNumber}
-            profileImage={user.profileImage}
-            last_name={user.last_name}
-            email={user.email}
-          />
-          {loading ? (
-            <form onSubmit={handleSubmit} className="text-center">
-              <CardElement />
-              <MDBBtn disabled>
-                <MDBSpinner
-                  size="sm"
-                  role="status"
-                  tag="span"
-                  className="me-2"
-                />
-                Loading...
-              </MDBBtn>
-            </form>
-          ) : (
-            <form onSubmit={handleSubmit} className="text-center">
-              <CardElement />
-              <MDBBtn type="submit">PAY</MDBBtn>
-            </form>
-          )}
-        </Stack>
-      </Container>
-    </div>
+    <MDBContainer fluid className="p-0 m-0">
+       <MDBRow className="p-0 m-0">
+        <MDBCol className="p-0 m-0">
+          <NavBar />
+        </MDBCol>
+      </MDBRow>
+      <MDBRow>
+        <MDBCol className="p-0 m-0 mb-3 d-flex flex-column justify-content-center align-items-center"
+            start>
+          <Link className="d-flex flex-column justify-content-center align-items-center" to="/cart">
+              <span className="mt-3 text-center d-flex flex-column justify-content-center align-items-center">
+                Back to Cart
+              </span>
+              <ArrowBackIcon />
+          </Link>
+        </MDBCol>
+      </MDBRow>
+      <MDBRow style={{maxWidth:"992px"}} className="m-auto mb-5 p-3 border border-red-900">
+        <MDBCol className="mt-3 mb-3">
+          <Stack spacing={2}>
+              <CheckoutStructure
+                first_name={user.first_name}
+                address={user.address}
+                phoneNumber={user.phoneNumber}
+                profileImage={user.profileImage}
+                last_name={user.last_name}
+                email={user.email}
+              />
+              {loading ? (
+                <form onSubmit={handleSubmit} className="text-center">
+                  <CardElement />
+                  <MDBBtn disabled>
+                    <MDBSpinner
+                      size="sm"
+                      role="status"
+                      tag="span"
+                      className="me-2"
+                    />
+                    Loading...
+                  </MDBBtn>
+                </form>
+              ) : (
+                <form onSubmit={handleSubmit} className="text-center">
+                  <CardElement />
+                  <MDBBtn type="submit" className="mt-3 mb-3">TO PAY</MDBBtn>
+                </form>
+              )}
+            </Stack>
+          </MDBCol>
+      </MDBRow>
+      <MDBRow>
+        <MDBCol size={12} className="bottom">
+          <Footer />
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 }
