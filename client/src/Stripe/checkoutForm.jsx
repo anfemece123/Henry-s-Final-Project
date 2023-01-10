@@ -27,7 +27,6 @@ export default function checkoutForm() {
   const [loading, setLoading] = React.useState(false);
 
   const totalCart = useSelector((state) => state.cart.total);
-  console.log("array de productos", cart.products);
   const url = "https://henry-s-final-project-backend-production.up.railway.app";
   const handleSubmit = async (e) => {
     e.preventDefault();

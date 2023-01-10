@@ -62,8 +62,8 @@ export default function RatingSystem() {
 
   useEffect(() => {
     dispatch(getProductDetails(id));
-    console.log(verificar);
   }, [dispatch]);
+  
   const handleClick = (e) => {
     if (!verificar.length) {
       const reviewData = { calification, ...comment, productId, token };

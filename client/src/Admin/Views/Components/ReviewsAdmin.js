@@ -19,7 +19,6 @@ import {
 
 export default function ReviewsAdmin() {
   const reviews = useSelector((state) => state.reviews.allReview);
-  console.log("reviews", reviews);
 
   const dispatch = useDispatch();
 
@@ -44,9 +43,9 @@ export default function ReviewsAdmin() {
       </MDBTableHead>
       <MDBTableBody>
         {Array.isArray(reviews)
-          ? reviews.map((element) => {
+          ? reviews.map((element, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>
                     <div className="d-flex align-items-center">
                       <img

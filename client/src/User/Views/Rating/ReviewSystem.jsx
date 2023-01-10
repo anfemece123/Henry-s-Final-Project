@@ -20,9 +20,8 @@ export default function ReviewSystem(props) {
         details.Reviews.map(
           (review, index) =>
             review.isVisible && (
-              <MDBRow className="h-100 p-0 m-0">
+              <MDBRow key={index} className="h-100 p-0 m-0">
                 <MDBCol
-                  key={index}
                   className="h-100 p-0 m-0 d-flex flex-column justify-content-center align-items-center shadow-gray-600 hover:shadow-2xl square border-top border-bottom border-dark"
                 >
                   <p>User: {review.UserId}</p>

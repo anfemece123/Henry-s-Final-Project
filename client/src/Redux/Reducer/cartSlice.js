@@ -12,7 +12,7 @@ export const clearCart = createAsyncThunk(
   "clearCart/clearCart",
   async (idUser) => {
     return await axios
-      .delete(`http://localhost:3001/cart/delete/${idUser}`)
+      .delete(`http://localhost:3001/cart/delete/${idUser}`) // url
       .then((respuesta) => console.log(respuesta))
       .catch((respuesta) => console.log(respuesta));
   }
