@@ -9,7 +9,7 @@ import { updateUser } from "../../../Redux/actions";
 import { getAllusers, getByIdUser } from "../../../Redux/Reducer/Users";
 import NavBar from "../../../User/Features/NavBar";
 
-export const FormEditUser = () => {
+export const FormEditUserOld = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,6 +17,7 @@ export const FormEditUser = () => {
   const user = useSelector((state) => state.auth.auth);
   const [image, setImage] = useState(infoUser.profileImage);
   const [loading, setLoading] = useState(false);
+
   const alert = (e) => {
     if (!formularioEnviado) {
       return swal({
