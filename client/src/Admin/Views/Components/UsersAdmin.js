@@ -18,7 +18,8 @@ export default function UsersAdmin() {
 
   useEffect(() => {
     dispatch(getAllusers());
-  }, [dispatch]);
+  }, []);
+  
   function alertButtonDelete(e) {
     dispatch(deleteUserId(e));
     dispatch(getAllusers());
@@ -32,8 +33,8 @@ export default function UsersAdmin() {
       <MDBTableHead>
         <tr className="table-primary">
           <th scope="col">Name</th>
-          <th scope="col">information</th>
-          <th scope="col">Banned</th>
+          <th scope="col">Information</th>
+          <th scope="col">Status</th>
           <th scope="col">Privileges(ADM)</th>
           <th scope="col">Actions</th>
         </tr>

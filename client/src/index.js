@@ -25,7 +25,7 @@ root.render(
       <Elements stripe={stripePromise}>
         <React.StrictMode>
           <RouterProvider router={router} />
-        </React.StrictMode>
+       </React.StrictMode>
       </Elements>
     </Provider>
   </PersistGate>

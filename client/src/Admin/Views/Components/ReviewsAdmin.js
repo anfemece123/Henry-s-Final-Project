@@ -24,9 +24,11 @@ export default function ReviewsAdmin() {
 
   useEffect(() => {
     dispatch(getAllReviews());
-  }, [dispatch]);
+  }, []);
+
   function alertButtonDelete(e) {
     dispatch(updateReview(e));
+    dispatch(getAllReviews());
   }
 
   return (
@@ -37,7 +39,7 @@ export default function ReviewsAdmin() {
           <th scope="col">Product</th>
           <th scope="col">Calification</th>
           <th scope="col">Coments</th>
-          <th scope="col">Visible</th>
+          <th scope="col">Status</th>
           <th scope="col">Actions</th>
         </tr>
       </MDBTableHead>
@@ -86,13 +88,13 @@ export default function ReviewsAdmin() {
                     <p>{element.comment}</p>
                   </td>
                   <td>
-                    {element.isVisible ? (
+                      {element.isVisible ? (
                       <MDBBadge color="success" pill>
-                        {element.isVisible ? "Active" : "Baned"}
+                        Active
                       </MDBBadge>
                     ) : (
                       <MDBBadge color="danger" pill>
-                        {element.isVisible ? "Active" : "Baned"}
+                         Hidden
                       </MDBBadge>
                     )}
                   </td>

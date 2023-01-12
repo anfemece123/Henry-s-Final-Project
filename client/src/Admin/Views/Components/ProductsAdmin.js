@@ -24,6 +24,10 @@ export default function ProductsAdmin() {
     dispatch(deleteProId(e));
   }
 
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [dispatch]);
+
   function editBotoAlert(e) {
     swal({
       title: "Are you sure?",
@@ -40,9 +44,7 @@ export default function ProductsAdmin() {
       }
     });
   }
-  useEffect(() => {
-    dispatch(getAllProducts());
-  }, [dispatch]);
+
 
   return (
     <div>

@@ -81,24 +81,14 @@ export default function LogIn() {
     }
   };
 
-  const handleSingOut = () => {
-    setGoogleUser({});
-    document.getElementById("signInDiv").hidden = false;
-  };
-
   useEffect(() => {
     // Variables globales de google (vienen del script que estan en el html)
+    /* if (window.hasOwnProperty("account")) { */
     window.google.accounts.id.initialize({
       client_id:
         "367427673923-91opfd7qm11akhltnu97v0emf9e06tj1.apps.googleusercontent.com",
       callback: handleCallBack,
     });
-
-    console.log(window.google.accounts.id.initialize({
-      client_id:
-        "367427673923-91opfd7qm11akhltnu97v0emf9e06tj1.apps.googleusercontent.com",
-      callback: handleCallBack,
-    }))
     
     window.google.accounts.id.renderButton(document.getElementById("signInDiv"), {
       theme: "outline",
@@ -106,7 +96,7 @@ export default function LogIn() {
     });
 
     // Esto hace que te "popee" el cartelito de elegir cuenta al loguearte
-    google.accounts.id.prompt(); 
+    // google.accounts.id.prompt(); 
 
     // hasta aca llega google
     dispatch(errorRemove());
@@ -121,12 +111,8 @@ export default function LogIn() {
         button: "ok",
       });
     }
-  }, [errorAuth]);
+  /* } */}, [errorAuth]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(logIn(input));
-  };
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -134,6 +120,16 @@ export default function LogIn() {
       ...input,
       [e.target.name]: e.target.value,
     });
+  };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(logIn(input));
+  };
+
+   const handleSingOut = () => {
+    setGoogleUser({});
+    document.getElementById("signInDiv").hidden = false;
   };
 
   return (

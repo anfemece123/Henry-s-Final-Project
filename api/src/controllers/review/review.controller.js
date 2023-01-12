@@ -61,7 +61,7 @@ changeVisibility = async (req, res) => {
       isVisible: false,
     });
     await review.save();
-    res.status(200).send(idReview);
+    res.status(200).send("Review Successfully Updated");
   } catch (error) {
     console.log(error);
     return res.status(404).send(error.message);
