@@ -11,12 +11,20 @@ export default function ReviewSystem(props) {
       {(details.Reviews === undefined || details.Reviews.length === 0) && (
         <MDBRow className="h-100 p-0 m-0">
           <MDBCol className="h-100 p-0 m-0 d-flex flex-column justify-content-center align-items-center">
-            <h3 className="text-center">No Reviews Yet</h3>{" "}
+            <h3 className="text-center">No Reviews Yet</h3>
           </MDBCol>
         </MDBRow>
       )}
-
-      {details.Reviews &&
+      { details.Reviews && 
+        details.Reviews.length === 1 && 
+        !details.Reviews[0].isVisible && (
+        <MDBRow className="h-100 p-0 m-0">
+          <MDBCol className="h-100 p-0 m-0 d-flex flex-column justify-content-center align-items-center">
+            <h3 className="text-center">No Reviews Yet</h3>
+          </MDBCol>
+        </MDBRow>
+      )}
+      {details.Reviews && 
         details.Reviews.map(
           (review, index) =>
             review.isVisible && (
@@ -36,7 +44,8 @@ export default function ReviewSystem(props) {
                 </MDBCol>
               </MDBRow>
             )
-        )}
+        )
+        }
     </MDBContainer>
   );
 }

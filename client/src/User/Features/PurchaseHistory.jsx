@@ -29,8 +29,7 @@ export default function PurcharseHistory() {
         users.allUsers[index].Orders.map((element) => {
           return (
             <MDBRow
-              key={index}
-              fluid
+              key={element.id}
               center
               className="p-0 pt-4 m-0 shadow-4-strong"
             >
@@ -46,7 +45,7 @@ export default function PurcharseHistory() {
               {element.products.map((element, index) => {
                 return (
                   <MDBRow
-                    key={index}
+                    key={element.id}
                     center
                     className="p-0 pt-4 pb-4 m-0 shadow-4-strong"
                   >

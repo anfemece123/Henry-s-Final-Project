@@ -9,6 +9,7 @@ const initialState = {
   error: "",
 };
 const url = "https://henry-s-final-project-backend-production.up.railway.app";
+
 export const getAllReviews = createAsyncThunk(
   "getAllReviews/getAllReviews",
   async () => {
@@ -20,7 +21,6 @@ export const getAllReviews = createAsyncThunk(
 export const createProductReview = createAsyncThunk(
   "createProductReview/createProductReview",
   async (reviewData) => {
-    console.log("reviewData: ", reviewData);
     const idProduct = reviewData.productId;
     const token = reviewData.token;
     const calification = reviewData.calification;
@@ -48,8 +48,12 @@ export const createProductReview = createAsyncThunk(
 export const updateReview = createAsyncThunk(
   "updateReview/updateReview",
   async (idReview) => {
-    // console.log("idreducer", id);
-    return await axios.put(`http://localhost:3001/review/update/${idReview}`);
+     console.log("Se updatea la review", idReview);
+    return await axios.put(`http://localhost:3001/review/update/${idReview}`)
+    .then((response) =>
+        console.log(`Respuesta del back de update review => ${response.data}`)
+      )
+      .catch((error) => console.log(error));;
   }
 );
 

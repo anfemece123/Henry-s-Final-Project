@@ -10,7 +10,7 @@ import {
 } from "mdb-react-ui-kit";
 import { getAllOrders } from "../../../Redux/Reducer/OrderSlice";
 
-export default function OrdersAdmin({ color }) {
+export default function OrdersAdmin() {
   const user = useSelector((state) => state.users.allUsers);
 
   const dispatch = useDispatch();

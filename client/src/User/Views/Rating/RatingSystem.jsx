@@ -86,12 +86,12 @@ export default function RatingSystem() {
 
   return (
     <MDBContainer fluid className="p-0 m-0" id="chec-div">
-      <MDBRow fluid className="p-0 m-0">
+      <MDBRow  className="p-0 m-0">
         <MDBCol className="p-0 m-0">
           <NavBar />
         </MDBCol>
       </MDBRow>
-      <MDBRow fluid center className="p-0 pt-4 m-0 shadow-4-strong">
+      <MDBRow  center className="p-0 pt-4 m-0 shadow-4-strong">
         <MDBCol className="p-0 m-0" xl="6">
           <MDBCard>
             <MDBCardBody className="text-center justify-content-center m-auto">
@@ -105,7 +105,7 @@ export default function RatingSystem() {
               />
             </MDBCardBody>
           </MDBCard>
-          <FormControl maxWidth="md" className=" text-center mb-5">
+          <FormControl className=" text-center mb-5">
             <Box
               sx={{
                 "& > legend": { mt: 2 },
