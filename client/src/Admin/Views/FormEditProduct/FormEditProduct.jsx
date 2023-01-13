@@ -56,11 +56,11 @@ export const FormEditProduct = () => {
             padding: 0,
           }}
         >
-      <MDBRow>
-            <MDBCol className="">
-              <NavBar />
-            </MDBCol>
-          </MDBRow>
+        <MDBRow>
+          <MDBCol className="">
+            <NavBar />
+         </MDBCol>
+        </MDBRow>
           <MDBRow>
             <MDBCol
               sm="0"
@@ -146,7 +146,9 @@ export const FormEditProduct = () => {
                           )}
                         </Form.Group>
                         <Form.Group className="mb-3 p-2">
-                          <Form.Label  className="block font-semibold"> Category</Form.Label>
+                          <Form.Label  className="block font-semibold">
+                             Category
+                          </Form.Label>
 
                           <Form.Select
                             className="mt-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -208,7 +210,9 @@ export const FormEditProduct = () => {
                         </Form.Group>
                       
                       <Form.Group className="mb-3 p-2">
-                        <Form.Label className="font-semibold"> Color</Form.Label>
+                        <Form.Label className="font-semibold">
+                          Color
+                        </Form.Label>
                        
                           <div>
                             <input
@@ -399,7 +403,7 @@ export const FormEditProduct = () => {
                       <Form.Group className="mb-3 p-2">
                         <Form.Label className="block font-semibold"> Season</Form.Label>
                         <Form.Select
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                           type="text"
                           id="season"
                           name="season"
@@ -431,8 +435,8 @@ export const FormEditProduct = () => {
                   )}
                 </Formik>
             </MDBCol>
-      </MDBRow>
-      </MDBCol>
+          </MDBRow>
+        </MDBCol>
       </MDBRow>
     </MDBContainer>
   );
