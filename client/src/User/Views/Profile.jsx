@@ -62,7 +62,7 @@ export default function Profile() {
             src={user2.profileImage}
             fluid
             roundedCircle
-            style={{ minHeight: "320px" }}
+            style={{ minHeight: "320px", maxHeight: "600px" }}
           />
         </MDBCol>
       </MDBRow>
@@ -97,9 +97,8 @@ export default function Profile() {
             artist of considerable range.
           </div>
           <a
-            href="#pablo"
+            href="#"
             className="float-end"
-            onClick={(e) => e.preventDefault()}
           >
             Show more
           </a>

@@ -19,7 +19,7 @@ import Form from "react-bootstrap/Form";
 export const ForrmRegister = () => {
   const [formularioEnviado, setformularioEnviado] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
 
